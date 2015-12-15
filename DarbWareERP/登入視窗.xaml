@@ -5,26 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DarbWareERP"
         mc:Ignorable="d"
-        Title="登入視窗" Height="768" Width="1024" WindowStartupLocation="Manual" WindowState="Maximized">
+        Title="登入視窗" WindowState="Maximized">
+
     <Grid Margin="-3,0,3.6,-0.6">
-        <Grid Margin="280,142,281,142" Width="456" Height="455" HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <Grid Margin="152,26,146,10.2" Width="463" Height="470" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Grid.Background>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/登入底圖.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Image/Icon_png/登入底圖.png" Stretch="Uniform"/>
             </Grid.Background>
             <Label x:Name="label" Content="使用者帳號" HorizontalAlignment="Left" Margin="72,198,0,0" VerticalAlignment="Top" FontSize="21.333"/>
             <Label x:Name="label1" Content="使用者密碼" HorizontalAlignment="Left" Margin="72,246,0,0" VerticalAlignment="Top" FontSize="21.333"/>
-            <TextBox x:Name="txt帳號" Margin="217,201,0,0" TextWrapping="Wrap" FontSize="21.333" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170"/>
-            <TextBox x:Name="txt密碼" HorizontalAlignment="Left" Height="33" Margin="217,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="21.333"/>
-            <Button x:Name="btn登入" Margin="129,332,0,0" Height="44" VerticalAlignment="Top" HorizontalAlignment="Left" Width="44" Click="btn登入_Click">
-                <Image Source="pack://siteoforigin:,,,/Resources/進入系統00.png" Height="38" Width="38"/>
+            <TextBox x:Name="txt帳號" Margin="217,197,0,0" TextWrapping="Wrap" FontSize="21.333" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" TabIndex="1"/>
+            <PasswordBox x:Name="pwd密碼" HorizontalAlignment="Left" Margin="217,242,0,0" FontSize="18.667" VerticalAlignment="Top" Width="170" Height="34"  TabIndex="2"/>
+            <Button x:Name="btn登入" Margin="129,332,0,0" Height="44" VerticalAlignment="Top" HorizontalAlignment="Left" Width="44" Click="btn登入_Click" TabIndex="3">
+                <Image Source="Image/icon_png/進入系統00.png" Height="38" Width="38"/>
             </Button>
             <Button x:Name="btn離開" Margin="291,332,0,0" HorizontalAlignment="Left" Width="44" Height="44" VerticalAlignment="Top" Click="btn離開_Click">
-                <Image Source="pack://siteoforigin:,,,/Resources/離開系統00.png" Height="38" Width="38"/>
+                <Image Source="Image/icon_png/離開系統00.png" Height="38" Width="38"/>
             </Button>
             <Grid Margin="49,77,135,280">
                 <Label x:Name="label2" Content="Darbware" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C"/>
                 <Label x:Name="label3" Content="V-ERP System" Margin="39,42,-45,-11.8" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C" Height="68"/>
             </Grid>
+            
         </Grid>
     </Grid>
 </Window>

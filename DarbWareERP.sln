@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarbWareERP", "DarbWareERP\DarbWareERP.csproj", "{9E9E613C-EE1E-4CB7-BBC3-A806EF357166}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "邏輯", "邏輯\邏輯.csproj", "{2F31B07A-2111-4CE7-854B-6EC399619C55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "數據庫連線", "數據庫連線\數據庫連線.csproj", "{8C4809E3-0A72-473F-B20D-00C18E39EC5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9E9E613C-EE1E-4CB7-BBC3-A806EF357166}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E9E613C-EE1E-4CB7-BBC3-A806EF357166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E9E613C-EE1E-4CB7-BBC3-A806EF357166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F31B07A-2111-4CE7-854B-6EC399619C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F31B07A-2111-4CE7-854B-6EC399619C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F31B07A-2111-4CE7-854B-6EC399619C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F31B07A-2111-4CE7-854B-6EC399619C55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C4809E3-0A72-473F-B20D-00C18E39EC5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C4809E3-0A72-473F-B20D-00C18E39EC5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C4809E3-0A72-473F-B20D-00C18E39EC5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C4809E3-0A72-473F-B20D-00C18E39EC5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
