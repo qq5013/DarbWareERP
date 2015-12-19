@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DarbWareERP"
+        xmlns:local="clr-namespace:DarbWareERP"   
+        xmlns:valid ="clr-namespace:DarbWareERP.驗證規則"
         mc:Ignorable="d"
         Title="登入視窗" WindowState="Maximized">
-
     <Grid Margin="-3,0,3.6,-0.6">
         <Grid Margin="152,26,146,10.2" Width="463" Height="470" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Grid.Background>
@@ -26,7 +26,6 @@
                 <Label x:Name="label2" Content="Darbware" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C"/>
                 <Label x:Name="label3" Content="V-ERP System" Margin="39,42,-45,-11.8" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C" Height="68"/>
             </Grid>
-            
-        </Grid>
+        </Grid>        
     </Grid>
 </Window>

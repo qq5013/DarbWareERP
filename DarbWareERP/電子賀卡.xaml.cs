@@ -34,9 +34,9 @@ namespace DarbWareERP
         private void btn查詢_Click(object sender, RoutedEventArgs e)
         {
             DataSet ds = Log.Log_Sys_Exec("CUDATABrowse", "DARB_BROWSE", "CUDATA", "客戶代號 NOT LIKE N'QWERT%'", "2", "0");
-            ds.Tables[0].Columns.Add("是否寄信",typeof(bool)).SetOrdinal(0);
-            dataGrid.ItemsSource = ds.Tables[0].DefaultView;         
-            
+            ds.Tables[0].Columns.Add("是否寄信", typeof(bool)).SetOrdinal(0);
+            dataGrid.ItemsSource = ds.Tables[0].DefaultView;
+
         }
 
         private void btn寄信_Click(object sender, RoutedEventArgs e)
@@ -56,9 +56,9 @@ namespace DarbWareERP
         {
             foreach (DataRowView q in dataGrid.ItemsSource)
             {
-                
+
             }
-            
+
         }
     }
 }

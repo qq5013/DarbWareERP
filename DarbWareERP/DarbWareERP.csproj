@@ -98,6 +98,7 @@
     <Compile Include="電子賀卡.xaml.cs">
       <DependentUpon>電子賀卡.xaml</DependentUpon>
     </Compile>
+    <Compile Include="驗證規則\PositivePriceRule.cs" />
     <Page Include="主題\BureauBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -291,6 +292,9 @@
       <Name>邏輯</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="B.基本資料\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

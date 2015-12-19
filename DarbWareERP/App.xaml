@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:DarbWareERP"
              StartupUri="登入視窗.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="主題/WhistlerBlue.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                  <ResourceDictionary Source="主題/WhistlerBlue.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
