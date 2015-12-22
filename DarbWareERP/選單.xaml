@@ -30,6 +30,14 @@
             <Button x:Name="button_Copy11" Content="Button" HorizontalAlignment="Left" Margin="580,111,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
             <Button x:Name="button_Copy12" Content="Button" HorizontalAlignment="Left" Margin="675,110,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
             <Button x:Name="button_Copy13" Content="Button" HorizontalAlignment="Left" Margin="770,110,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="btn返回登入視窗" HorizontalAlignment="Center" Margin="668,576,52,25" VerticalAlignment="Center" Width="160" Height="55
+                    " FontSize="16" Click="btn返回登入視窗_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Image/Icon_png/取消00.png" Stretch="None"/>
+                    <TextBlock Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center">回到登入視窗</TextBlock>
+
+                </StackPanel>
+            </Button>
 
         </Grid>
     </Grid>

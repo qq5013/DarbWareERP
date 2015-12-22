@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+using 數據庫連線;
 
 namespace DarbWareERP.B.基本資料
 {
@@ -22,6 +24,13 @@ namespace DarbWareERP.B.基本資料
         public 業務資料表()
         {
             InitializeComponent();
+            //DataSet Q = Log.Log_Sys_Exec("業務資料表", "DARB_MOVEREC", "SALESMEN", "NEXT");
+            //salesmenDataGrid.DataContext = Q.Tables[0];
+        }
+
+        private void 命令區塊_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

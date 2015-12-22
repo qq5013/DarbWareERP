@@ -26,9 +26,9 @@ namespace DarbWareERP.控制項
         }
         private void btn返回上一層_Click(object sender, RoutedEventArgs e)
         {
-            ((Window)((Grid)(this.Parent)).Parent).Close();
             選單 window = new 選單();
             window.Show();
+            ((Window)((Grid)(this.Parent)).Parent).Close();            
         }
     }
 }

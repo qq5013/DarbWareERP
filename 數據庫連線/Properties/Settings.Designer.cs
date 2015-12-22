@@ -58,5 +58,15 @@ namespace 數據庫連線.Properties {
                 return ((string)(this["PassWord"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=darbkccsa1;Integrated Security=True")]
+        public string darbkccsa1ConnectionString {
+            get {
+                return ((string)(this["darbkccsa1ConnectionString"]));
+            }
+        }
     }
 }

@@ -33,5 +33,12 @@ namespace DarbWareERP
             window.Show();
             this.Close();
         }
+
+        private void btn返回登入視窗_Click(object sender, RoutedEventArgs e)
+        {
+            登入視窗 window = new 登入視窗();
+            window.Show();
+            this.Close();
+        }
     }
 }
