@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="DarbWareERP.控制項.命令區塊"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DarbWareERP.控制項"
+             mc:Ignorable="d" 
+              d:DesignHeight="230" d:DesignWidth="120">
+    <Grid>
+        <Button x:Name="btn返回上一層" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Width="45" Height="45" RenderTransformOrigin="1.713,0.393" Click="btn返回上一層_Click">
+            <Image Source="/DarbWareERP;component/Image/Icon_png/返回上一層00.png"></Image>
+        </Button>
+        <Button x:Name="btn7" Content="7"  HorizontalAlignment="Left" Margin="65,175,0,0" VerticalAlignment="Top" Width="45" Height="45">
+
+        </Button>
+        <Button x:Name="btn5" Content="5" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Width="45" Height="45">
+
+        </Button>
+        <Button x:Name="btn3" Content="3"  HorizontalAlignment="Left" Margin="10,65,0,89" VerticalAlignment="Top" Width="45" Height="45" Padding="3">
+
+        </Button>
+        <Button x:Name="btn2" Content="2"  HorizontalAlignment="Left" Margin="65,10,0,0" VerticalAlignment="Top" Width="45" Height="45">
+
+        </Button>
+        <Button x:Name="btn6" Content="6"  HorizontalAlignment="Left" Margin="65,120,0,0" VerticalAlignment="Top" Width="45" Height="45">
+
+        </Button>
+        <Button x:Name="btn4" Content="4"  HorizontalAlignment="Left" Margin="65,65,0,89" VerticalAlignment="Top" Width="45" Height="45" Padding="3">
+
+        </Button>
+        <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="45" Height="45">
+
+        </Button>
+    </Grid>
+</UserControl>

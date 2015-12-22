@@ -5,16 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DarbWareERP"
         mc:Ignorable="d"
-        Title="選單" Height="768" Width="1024" WindowState="Maximized"> 
+        Title="選單" Height="768" Width="1024" WindowState="Maximized">
     <Grid>
-        <Grid Height="655" Margin="69,48,68.6,35.4" Width="880" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Height="655" Margin="68,38,69.6,45.4" Width="880" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.Background>
                 <ImageBrush ImageSource="Image/Icon_png/選單頁底圖.png"/>
             </Grid.Background>
             <Label x:Name="label2" Content="Darbware" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="64" FontWeight="Bold" Foreground="#FFE6B43C" Margin="0,15,0,0"/>
-            <Button x:Name="btn電子賀卡" Content="電子賀卡" Margin="10,111,0,0" HorizontalAlignment="Left" Width="90" Height="41" VerticalAlignment="Top" Click="btn電子賀卡_Click"/>            
-            <Button x:Name="btn台銀匯率" Content="台銀匯率" Margin="105,111,0,0" HorizontalAlignment="Left" Width="90" Height="41" VerticalAlignment="Top" Click="btn台銀匯率_Click"/>
-           
+            <Button x:Name="btn電子賀卡" Content="電子賀卡" Margin="10,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn電子賀卡_Click"/>
+            <Button x:Name="btn台銀匯率" Content="台銀匯率" Margin="105,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn台銀匯率_Click"/>
+            <Button x:Name="btn系統資料" Content="A.系統資料" Margin="10,111,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top"/>
+            <Button x:Name="btn基本資料" Content="B.基本資料" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="90" Height="40" Click="btn基本資料_Click"/>
+            <Button x:Name="button_Copy" Content="Button" HorizontalAlignment="Left" Margin="105,156,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy1" Content="Button" HorizontalAlignment="Left" Margin="200,156,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy2" Content="Button" HorizontalAlignment="Left" Margin="295,156,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy3" Content="Button" HorizontalAlignment="Left" Margin="390,156,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy4" Content="Button" HorizontalAlignment="Left" Margin="485,156,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy5" Content="Button" HorizontalAlignment="Left" Margin="580,156,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy6" Content="Button" HorizontalAlignment="Left" Margin="675,155,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy7" Content="Button" HorizontalAlignment="Left" Margin="770,155,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy8" Content="Button" HorizontalAlignment="Left" Margin="295,111,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy9" Content="Button" HorizontalAlignment="Left" Margin="390,111,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy10" Content="Button" HorizontalAlignment="Left" Margin="485,111,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy11" Content="Button" HorizontalAlignment="Left" Margin="580,111,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy12" Content="Button" HorizontalAlignment="Left" Margin="675,110,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+            <Button x:Name="button_Copy13" Content="Button" HorizontalAlignment="Left" Margin="770,110,0,0" VerticalAlignment="Top" Width="90" Height="40"/>
+
         </Grid>
     </Grid>
 </Window>

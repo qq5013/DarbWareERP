@@ -1,0 +1,15 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
+        xmlns:控制項="clr-namespace:DarbWareERP.控制項" x:Class="DarbWareERP.B.基本資料.業務資料表"
+        mc:Ignorable="d"
+        Title="業務資料表" Height="768" Width="1024" WindowState="Maximized">
+    <Grid>
+
+        <控制項:命令區塊 HorizontalAlignment="Left" Margin="0,0,0,0.4" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderThickness="5" Width="130" Height="230" VerticalAlignment="Bottom"/>
+
+    </Grid>
+</Window>

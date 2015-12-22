@@ -16,11 +16,11 @@
             <Label x:Name="label1" Content="使用者密碼" HorizontalAlignment="Left" Margin="72,246,0,0" VerticalAlignment="Top" FontSize="21.333"/>
             <TextBox x:Name="txt帳號" Margin="217,197,0,0" TextWrapping="Wrap" FontSize="21.333" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" TabIndex="1"/>
             <PasswordBox x:Name="pwd密碼" HorizontalAlignment="Left" Margin="217,242,0,0" FontSize="18.667" VerticalAlignment="Top" Width="170" Height="34"  TabIndex="2"/>
-            <Button x:Name="btn登入" Margin="129,332,0,0" Height="44" VerticalAlignment="Top" HorizontalAlignment="Left" Width="44" Click="btn登入_Click" TabIndex="3">
-                <Image Source="Image/icon_png/進入系統00.png" Height="38" Width="38"/>
+            <Button x:Name="btn登入" Margin="129,332,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45" Click="btn登入_Click" TabIndex="3">
+                <Image Source="Image/icon_png/進入系統00.png"/>
             </Button>
-            <Button x:Name="btn離開" Margin="291,332,0,0" HorizontalAlignment="Left" Width="44" Height="44" VerticalAlignment="Top" Click="btn離開_Click">
-                <Image Source="Image/icon_png/離開系統00.png" Height="38" Width="38"/>
+            <Button x:Name="btn離開" Margin="291,332,0,0" HorizontalAlignment="Left" Width="45" Height="45" VerticalAlignment="Top" Click="btn離開_Click">
+                <Image Source="Image/icon_png/離開系統00.png"/>
             </Button>
             <Grid Margin="49,77,135,280">
                 <Label x:Name="label2" Content="Darbware" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C"/>
