@@ -31,16 +31,20 @@ namespace 邏輯
             HtmlElementCollection tr = htmldoc.GetElementsByTagName("tr");
             DataTable dt = new DataTable();                        
             dt.Columns.Add("幣別");
+            dt.Columns.Add("幣別說明");
             dt.Columns.Add("現金買入");
             dt.Columns.Add("現金賣出");
             dt.Columns.Add("即期買入");
             dt.Columns.Add("即期賣出");
             for (int i = 2; i < tr.Count; i++)
-            {
-                
+            {                
                 HtmlElementCollection td = tr[i].GetElementsByTagName("td");
                 DataRow dr = dt.NewRow();
-                dr["幣別"] =td[0].InnerText;
+                int 左括號位置= td[0].InnerText.IndexOf("(");                
+                int 右括號位置 = td[0].InnerText.IndexOf(")");
+                int 字串長度 = 右括號位置-左括號位置-1;
+                dr["幣別"] = td[0].InnerText.Substring(左括號位置+1, 字串長度);
+                dr["幣別說明"]=  td[0].InnerText.Substring(0, 左括號位置);
                 dr["現金買入"] = td[1].InnerText;
                 dr["現金賣出"] = td[2].InnerText;
                 dr["即期買入"] = td[3].InnerText;

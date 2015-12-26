@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DarbWareERP"   
         xmlns:valid ="clr-namespace:DarbWareERP.驗證規則"
         mc:Ignorable="d"
-        Title="登入視窗" WindowState="Maximized">
+        Title="登入視窗" WindowState="Maximized" Icon="Image/Icon_png/EARTH.ICO">
     <Grid Margin="-3,0,3.6,-0.6">
         <Grid Margin="152,26,146,10.2" Width="463" Height="470" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Grid.Background>
@@ -14,8 +14,16 @@
             </Grid.Background>
             <Label x:Name="label" Content="使用者帳號" HorizontalAlignment="Left" Margin="72,198,0,0" VerticalAlignment="Top" FontSize="21.333"/>
             <Label x:Name="label1" Content="使用者密碼" HorizontalAlignment="Left" Margin="72,246,0,0" VerticalAlignment="Top" FontSize="21.333"/>
-            <TextBox x:Name="txt帳號" Margin="217,197,0,0" TextWrapping="Wrap" FontSize="21.333" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" TabIndex="1"/>
-            <PasswordBox x:Name="pwd密碼" HorizontalAlignment="Left" Margin="217,242,0,0" FontSize="18.667" VerticalAlignment="Top" Width="170" Height="34"  TabIndex="2"/>
+            <TextBox x:Name="txt帳號" Margin="217,197,0,0" TextWrapping="Wrap" FontSize="21.333" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" TabIndex="1" KeyDown="txt帳號_KeyDown">
+                <TextBox.InputScope>
+                    <InputScope>
+                        <InputScope.Names>
+                            <InputScopeName NameValue="AlphanumericHalfWidth"/>
+                        </InputScope.Names>
+                    </InputScope>
+                </TextBox.InputScope>
+            </TextBox>
+            <PasswordBox x:Name="pwd密碼" HorizontalAlignment="Left" Margin="217,242,0,0" FontSize="18.667" VerticalAlignment="Top" Width="170" Height="34"  TabIndex="2" KeyDown="pwd密碼_KeyDown"/>
             <Button x:Name="btn登入" Margin="129,332,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45" Click="btn登入_Click" TabIndex="3">
                 <Image Source="Image/icon_png/進入系統00.png"/>
             </Button>

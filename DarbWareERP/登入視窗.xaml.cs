@@ -30,7 +30,9 @@ namespace DarbWareERP
         public 登入視窗()
         {
             InitializeComponent();
-            txt帳號.Focus();
+            txt帳號.Focus();          
+            
+            
         }
 
         private void btn離開_Click(object sender, RoutedEventArgs e)
@@ -41,8 +43,13 @@ namespace DarbWareERP
         private void btn登入_Click(object sender, RoutedEventArgs e)
         {
 
-            int logbookid;
-            使用者.權限表 = Log.Log_LogOn(txt帳號.Text, pwd密碼.Password, out logbookid);
+            int logbookid=0;
+            try
+            {
+                使用者.權限表 = Log.Log_LogOn(txt帳號.Text, pwd密碼.Password, out logbookid);
+            }
+            catch { }
+            
             使用者.LogBookId = logbookid;
             使用者.使用者代號 = txt帳號.Text;
             
@@ -59,5 +66,24 @@ namespace DarbWareERP
             }
         }
 
+        private void txt帳號_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);                
+                UIElement element = Keyboard.FocusedElement as UIElement;
+                element.MoveFocus(request);
+            }
+        }
+
+        private void pwd密碼_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);
+                UIElement element = Keyboard.FocusedElement as UIElement;
+                element.MoveFocus(request);
+            }
+        }
     }
 }
