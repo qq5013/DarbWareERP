@@ -10,24 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data;
-using 數據庫連線;
-using DarbWareERP.繼承窗口;
 
-namespace DarbWareERP.B.基本資料
+namespace DarbWareERP.控制項
 {
     /// <summary>
-    /// 業務資料表.xaml 的互動邏輯
+    /// 返回選單按鈕.xaml 的互動邏輯
     /// </summary>
-    public partial class 業務資料表 : 視窗繼承
+    public partial class 返回選單按鈕 : UserControl
     {
-        public 業務資料表()
+        public 返回選單按鈕()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
-  
-
-      
     }
 }

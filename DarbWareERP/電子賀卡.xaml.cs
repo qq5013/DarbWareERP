@@ -18,13 +18,14 @@ using 邏輯;
 using System.Data;
 using System.Net;
 using System.Net.Mail;
+using DarbWareERP.繼承窗口;
 
 namespace DarbWareERP
 {
     /// <summary>
     /// 電子賀卡.xaml 的互動邏輯
     /// </summary>
-    public partial class 電子賀卡 : Window
+    public partial class 電子賀卡 : 視窗繼承
     {
         public 電子賀卡()
         {

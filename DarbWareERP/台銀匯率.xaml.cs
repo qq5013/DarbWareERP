@@ -16,13 +16,14 @@ using System.Data;
 using 數據庫連線;
 using System.Xml;
 using System.Xml.Linq;
+using DarbWareERP.繼承窗口;
 
 namespace DarbWareERP
 {
     /// <summary>
     /// 台銀匯率.xaml 的互動邏輯
     /// </summary>
-    public partial class 台銀匯率 : Window
+    public partial class 台銀匯率 : 視窗繼承
     {
         public 台銀匯率()
         {

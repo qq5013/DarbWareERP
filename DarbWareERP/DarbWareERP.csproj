@@ -101,6 +101,13 @@
     <Compile Include="控制項\命令區塊.xaml.cs">
       <DependentUpon>命令區塊.xaml</DependentUpon>
     </Compile>
+    <Compile Include="控制項\導覽區按鈕.xaml.cs">
+      <DependentUpon>導覽區按鈕.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\返回選單按鈕.xaml.cs">
+      <DependentUpon>返回選單按鈕.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="繼承窗口\視窗繼承.cs" />
     <Compile Include="選單.xaml.cs">
       <DependentUpon>選單.xaml</DependentUpon>
     </Compile>
@@ -112,19 +119,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="主題\BureauBlue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="主題\WhistlerBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="控制項\自訂樣式.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="台銀匯率.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="控制項\命令區塊.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\導覽區按鈕.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\返回選單按鈕.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,6 +155,10 @@
       <DependentUpon>登入視窗.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="繼承窗口\BaseWindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="選單.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,7 +185,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
