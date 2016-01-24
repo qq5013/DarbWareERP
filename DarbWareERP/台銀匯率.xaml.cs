@@ -4,16 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using 邏輯;
 using System.Data;
-using 數據庫連線;
 using System.Xml;
 using System.Xml.Linq;
 using DarbWareERP.繼承窗口;
@@ -45,7 +37,8 @@ namespace DarbWareERP
 
         private void 資料庫抓幣別(out string 訊息)
         {
-            DataSet ds = Log.Log_Sys_Exec("BCURRENBrowse", "DARB_BROWSE", "BCURREN", "序號 <> 0", "2", "0");
+            自動抓取幣別 bcurren = new 自動抓取幣別();
+            DataSet ds = bcurren.Sql幣別表();
             DataTable 資料庫的幣別 = ds.Tables[0];
             DataTable 台銀匯率 = ((DataView)dataGrid.ItemsSource).Table;
             DataTable 上傳明細 = 明細datatable();
@@ -55,7 +48,7 @@ namespace DarbWareERP
             XDocument 上傳明細表 = 寫成XML(上傳明細, "匯率明細");
             主檔資料設定(主檔);
             XDocument 上傳主檔 = 寫成XML(主檔, "匯率主檔");            
-            string 傳回訊息 = 訊息 + Log.Log_Sys_Input("INPUT-BB", "BCURRENM", "Normal Add", "", "bcurrenm", "bcurrend", LP_DATA1: 上傳主檔.Document.ToString(), LP_DATA2: 上傳明細表.Document.ToString());
+            string 傳回訊息 = 訊息 + bcurren.上傳幣別表(上傳主檔.Document.ToString(),上傳明細表.Document.ToString());
             MessageBox.Show(傳回訊息);
         }
 

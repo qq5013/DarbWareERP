@@ -4,6 +4,97 @@
         <name>DarbWareERP</name>
     </assembly>
     <members>
+        <member name="T:DarbWareERP.B.基本資料.單位轉換表">
+            <summary>
+            單位轉換表.xaml 的互動邏輯
+            </summary>
+            <summary>
+            單位轉換表
+            </summary>
+        </member>
+        <member name="M:DarbWareERP.B.基本資料.單位轉換表.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DarbWareERP.B.基本資料.業務資料表">
+            <summary>
+            業務資料表.xaml 的互動邏輯
+            </summary>
+            <summary>
+            業務資料表
+            </summary>
+        </member>
+        <member name="M:DarbWareERP.B.基本資料.業務資料表.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DarbWareERP.台銀匯率">
+            <summary>
+            台銀匯率.xaml 的互動邏輯
+            </summary>
+            <summary>
+            台銀匯率
+            </summary>
+        </member>
+        <member name="M:DarbWareERP.台銀匯率.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DarbWareERP.控制項.命令區塊">
+            <summary>
+            命令區塊.xaml 的互動邏輯
+            </summary>
+            <summary>
+            命令區塊
+            </summary>
+        </member>
+        <member name="M:DarbWareERP.控制項.命令區塊.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DarbWareERP.控制項.導覽區.B_基本資料">
+            <summary>
+            B_基本資料.xaml 的互動邏輯
+            </summary>
+            <summary>
+            B_基本資料
+            </summary>
+        </member>
+        <member name="M:DarbWareERP.控制項.導覽區.B_基本資料.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DarbWareERP.控制項.導覽區.導覽區按鈕">
+            <summary>
+            導覽區按鈕.xaml 的互動邏輯
+            </summary>
+            <summary>
+            導覽區按鈕
+            </summary>
+        </member>
+        <member name="M:DarbWareERP.控制項.導覽區.導覽區按鈕.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DarbWareERP.控制項.返回選單按鈕">
+            <summary>
+            返回選單按鈕.xaml 的互動邏輯
+            </summary>
+            <summary>
+            返回選單按鈕
+            </summary>
+        </member>
+        <member name="M:DarbWareERP.控制項.返回選單按鈕.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:DarbWareERP.選單">
             <summary>
             選單.xaml 的互動邏輯
@@ -59,6 +150,36 @@
         <member name="M:DarbWareERP.登入視窗.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

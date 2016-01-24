@@ -10,19 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DarbWareERP.控制項
+namespace DarbWareERP.B.基本資料
 {
     /// <summary>
-    /// 導覽區按鈕.xaml 的互動邏輯
+    /// 單位轉換表.xaml 的互動邏輯
     /// </summary>
-    public partial class 導覽區按鈕 : Button
+    public partial class 單位轉換表 : Window
     {
-        public 導覽區按鈕()
-        {            
-            InitializeComponent();            
+        public 單位轉換表()
+        {
+            InitializeComponent();
+            
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

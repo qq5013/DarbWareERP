@@ -12,7 +12,7 @@
         <DataGrid x:Name="dataGrid" Margin="10,36,9.6,0" Height="154" VerticalAlignment="Top"/>
         <Button x:Name="btn插入資料庫" Content="插入資料庫" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Width="75" Click="btn插入資料庫_Click"/>
         <DataGrid x:Name="dataGrid1" Margin="10,195,9.6,10.4"/>
-        <控制項:返回選單按鈕 HorizontalAlignment="Left" Margin="170,6,0,0" VerticalAlignment="Top" Height="25" Width="78"/>
+        <控制項:返回選單按鈕 HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Height="25" Width="78"/>
 
     </Grid>
 </src:視窗繼承>

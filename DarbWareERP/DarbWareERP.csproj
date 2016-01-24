@@ -92,6 +92,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="B.基本資料\單位轉換表.xaml.cs">
+      <DependentUpon>單位轉換表.xaml</DependentUpon>
+    </Compile>
     <Compile Include="B.基本資料\業務資料表.xaml.cs">
       <DependentUpon>業務資料表.xaml</DependentUpon>
     </Compile>
@@ -101,7 +104,10 @@
     <Compile Include="控制項\命令區塊.xaml.cs">
       <DependentUpon>命令區塊.xaml</DependentUpon>
     </Compile>
-    <Compile Include="控制項\導覽區按鈕.xaml.cs">
+    <Compile Include="控制項\導覽區\B_基本資料.xaml.cs">
+      <DependentUpon>B_基本資料.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\導覽區\導覽區按鈕.xaml.cs">
       <DependentUpon>導覽區按鈕.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項\返回選單按鈕.xaml.cs">
@@ -115,6 +121,10 @@
       <DependentUpon>電子賀卡.xaml</DependentUpon>
     </Compile>
     <Compile Include="驗證規則\PositivePriceRule.cs" />
+    <Page Include="B.基本資料\單位轉換表.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="B.基本資料\業務資料表.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,6 +132,10 @@
     <Page Include="主題\WhistlerBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="控制項\導覽區\B_基本資料.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="控制項\自訂樣式.xaml">
       <SubType>Designer</SubType>
@@ -135,7 +149,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="控制項\導覽區按鈕.xaml">
+    <Page Include="控制項\導覽區\導覽區按鈕.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -321,9 +335,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\數據庫連線\數據庫連線.csproj">
-      <Project>{8c4809e3-0a72-473f-b20d-00c18e39ec5e}</Project>
-      <Name>數據庫連線</Name>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{a5d42071-97fd-4447-a969-b7895289feb1}</Project>
+      <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\邏輯\邏輯.csproj">
       <Project>{2f31b07a-2111-4ce7-854b-6ec399619c55}</Project>

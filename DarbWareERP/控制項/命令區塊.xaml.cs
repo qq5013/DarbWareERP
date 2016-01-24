@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DarbWareERP.繼承窗口;
 
 namespace DarbWareERP.控制項
 {
@@ -28,7 +29,7 @@ namespace DarbWareERP.控制項
         {
             選單 window = new 選單();
             window.Show();
-            ((Window)((Grid)(this.Parent)).Parent).Close();            
+           ((視窗繼承)((Grid)((Border)((Grid)(this.Parent)).Parent).Parent).Parent).CloseWindow();
         }
     }
 }

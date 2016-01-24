@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DarbWareERP.控制項"
              mc:Ignorable="d" 
-              d:DesignHeight="200" d:DesignWidth="120">
+              d:DesignHeight="200" d:DesignWidth="96">
     <Grid>
-        <Button x:Name="btn返回上一層" HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top" Width="45" Height="45" RenderTransformOrigin="1.713,0.393" Click="btn返回上一層_Click">
+        <Button x:Name="btn返回上一層" HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top" Width="45" Height="45" Click="btn返回上一層_Click">
             <Image Source="/DarbWareERP;component/Image/Icon_png/返回上一層00.png"></Image>
         </Button>
         <Button x:Name="btn7" Content="7"  HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="45" Height="45">
@@ -29,5 +29,6 @@
 
         </Button>
         <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="45"/>
+        
     </Grid>
 </UserControl>

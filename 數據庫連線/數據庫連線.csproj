@@ -83,9 +83,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\邏輯\邏輯.csproj">
-      <Project>{2f31b07a-2111-4ce7-854b-6ec399619c55}</Project>
-      <Name>邏輯</Name>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{a5d42071-97fd-4447-a969-b7895289feb1}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

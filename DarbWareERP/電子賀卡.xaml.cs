@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using 數據庫連線;
 using 邏輯;
 using System.Data;
 using System.Net;
@@ -34,10 +33,10 @@ namespace DarbWareERP
 
         private void btn查詢_Click(object sender, RoutedEventArgs e)
         {
-            DataSet ds = Log.Log_Sys_Exec("CUDATABrowse", "DARB_BROWSE", "CUDATA", "客戶代號 NOT LIKE N'QWERT%'", "2", "0");
+            電子賀卡Bll 電子賀卡Bll = new 電子賀卡Bll();
+            DataSet ds = 電子賀卡Bll.客戶查詢();
             ds.Tables[0].Columns.Add("是否寄信", typeof(bool)).SetOrdinal(0);
             dataGrid.ItemsSource = ds.Tables[0].DefaultView;
-
         }
 
         private void btn寄信_Click(object sender, RoutedEventArgs e)

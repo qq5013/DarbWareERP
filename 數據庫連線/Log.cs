@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using 邏輯;
 
 namespace 數據庫連線
 {
     public static class Log
     {
+        public static string 使用者代號 { get; set; }
+        public static string 使用者名稱 { get; set; }
+        public static int LogBookId { get; set; }
+        public static DataTable 權限表 { get; set; }
+
         static string DataSource = Properties.Settings.Default.DataSource,
                 Database = Properties.Settings.Default.DataBase,
                 UserID = Properties.Settings.Default.UserId,
@@ -43,7 +47,7 @@ namespace 數據庫連線
             cmd.Parameters.AddWithValue("@param10", LP_P10);
             cmd.Parameters.AddWithValue("@param11", LP_P11);
             cmd.Parameters.AddWithValue("@param12", LP_P12);
-            cmd.Parameters.AddWithValue("@inputstaff", 使用者.使用者名稱);
+            cmd.Parameters.AddWithValue("@inputstaff", 使用者名稱);
             cmd.Parameters.AddWithValue("@localtime", DateTime.Now);
             cmd.Parameters.AddWithValue("@inputplace", Environment.MachineName);
             cmd.Parameters.AddWithValue("@srvdbid", 1);
@@ -153,11 +157,11 @@ namespace 數據庫連線
             cmd.Parameters.AddWithValue("@data3", LP_DATA3);
             cmd.Parameters.AddWithValue("@data4", LP_DATA4);
             cmd.Parameters.AddWithValue("@data5", LP_DATA5);
-            cmd.Parameters.AddWithValue("@inputstaff", 使用者.使用者名稱);
+            cmd.Parameters.AddWithValue("@inputstaff", 使用者名稱);
             cmd.Parameters.AddWithValue("@localtime", DateTime.Now);
             cmd.Parameters.AddWithValue("@inputplace", Environment.MachineName);
             cmd.Parameters.AddWithValue("@srvdbid", 1);
-            cmd.Parameters.AddWithValue("@logbookid", 使用者.LogBookId);
+            cmd.Parameters.AddWithValue("@logbookid", LogBookId);
             cmd.Parameters.AddWithValue("@permitcode", LP_PERMITCODE);
             SqlParameter L_RESULT = cmd.Parameters.Add("@result", SqlDbType.NChar, 254);
             cmd.Parameters["@result"].Direction = ParameterDirection.Output;

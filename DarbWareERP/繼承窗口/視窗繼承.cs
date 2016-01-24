@@ -23,7 +23,7 @@ namespace DarbWareERP.繼承窗口
             base.OnClosing(e);
             e.Cancel = !canClose;
         }
-        protected void CloseWindow()
+        public void CloseWindow()
         {
             canClose = true;
             this.Close();
