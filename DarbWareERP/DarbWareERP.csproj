@@ -114,6 +114,9 @@
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
     </Compile>
     <Compile Include="繼承窗口\視窗繼承.cs" />
+    <Compile Include="轉資料\轉Accl.xaml.cs">
+      <DependentUpon>轉Accl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="選單.xaml.cs">
       <DependentUpon>選單.xaml</DependentUpon>
     </Compile>
@@ -170,6 +173,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="繼承窗口\BaseWindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="轉資料\轉Accl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

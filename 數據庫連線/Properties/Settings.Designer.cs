@@ -25,16 +25,7 @@ namespace 數據庫連線.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.228")]
-        public string DataSource {
-            get {
-                return ((string)(this["DataSource"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("darbkclog1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("darbdcstlog1")]
         public string DataBase {
             get {
                 return ((string)(this["DataBase"]));
@@ -61,11 +52,19 @@ namespace 數據庫連線.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=darbkccsa1;Integrated Security=True")]
-        public string darbkccsa1ConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        public string DataSource {
             get {
-                return ((string)(this["darbkccsa1ConnectionString"]));
+                return ((string)(this["DataSource"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("銓昱")]
+        public string 資料庫名稱 {
+            get {
+                return ((string)(this["資料庫名稱"]));
             }
         }
     }

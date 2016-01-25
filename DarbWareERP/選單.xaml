@@ -39,6 +39,7 @@
 
                 </StackPanel>
             </Button>
+            <Button x:Name="btn轉ACCL" Content="轉ACCL" Margin="200,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn轉ACCL_Click" />
 
         </Grid>
     </Grid>

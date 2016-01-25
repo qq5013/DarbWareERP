@@ -10,6 +10,11 @@ namespace 數據庫連線
         public static string 使用者名稱 { get; set; }
         public static int LogBookId { get; set; }
         public static DataTable 權限表 { get; set; }
+        public static string 資料庫
+        {
+            get
+            { return Properties.Settings.Default.資料庫名稱; }
+        }
 
         static string DataSource = Properties.Settings.Default.DataSource,
                 Database = Properties.Settings.Default.DataBase,

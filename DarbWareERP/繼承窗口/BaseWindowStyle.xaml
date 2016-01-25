@@ -5,7 +5,7 @@
                     xmlns:Base="clr-namespace:DarbWareERP">
     <Style x:Key="IconAndTitle" TargetType="Window">
         <Setter Property="Icon" Value="/DarbWareERP;component/Image/Icon_png/EARTH.ICO"></Setter>        
-        <Setter Property="Title" Value="DarbWareERP 2015/12/29"></Setter>
+        <Setter Property="Title" Value="DarbWareERP 2015/01/25"></Setter>
         <Setter Property="WindowState" Value="Maximized"></Setter>
         <Setter Property="Background" Value="Gray"></Setter>
         </Style>

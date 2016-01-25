@@ -34,6 +34,7 @@
                 <Label x:Name="label2" Content="Darbware" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C"/>
                 <Label x:Name="label3" Content="V-ERP System" Margin="39,42,-45,-11.8" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C" Height="68"/>
             </Grid>
+            <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="102,177,0,0" VerticalAlignment="Top" Height="21" Width="33"/>
         </Grid>
     </Grid>
 </src:視窗繼承>

@@ -28,11 +28,13 @@ namespace DarbWareERP
     /// </summary>
     public partial class 登入視窗 : 視窗繼承
     {
+        登入Bll 登入Bll;
         public 登入視窗()
         {
             InitializeComponent();
+            登入Bll = new 登入Bll();
             txt帳號.Focus();
-
+            label4.Content = 登入Bll.資料庫;
         }
 
         private void btn離開_Click(object sender, RoutedEventArgs e)
@@ -41,8 +43,7 @@ namespace DarbWareERP
         }
 
         private void btn登入_Click(object sender, RoutedEventArgs e)
-        {
-            登入Bll 登入Bll = new 登入Bll();
+        {            
             try
             {
                 if (登入Bll.登入(txt帳號.Text, pwd密碼.Password))
