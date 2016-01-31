@@ -32,7 +32,23 @@ namespace 邏輯
                         if (!pi.CanWrite) continue;
                         object value = dr[tempName];
                         if (value != DBNull.Value)
-                            pi.SetValue(t, value, null);
+                        {
+                            if (value.GetType() == typeof(Boolean))
+                            {
+                                if (value.ToString() == "true")
+                                {
+                                    pi.SetValue(t, "Y", null);
+                                }
+                                else
+                                {
+                                    pi.SetValue(t, "N", null);
+                                }
+                            }
+                            else
+                            {
+                                pi.SetValue(t, value, null);
+                            }
+                        }
                     }
                 }
                 ts.Add(t);

@@ -55,6 +55,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Log.cs" />
+    <Compile Include="轉資料Dal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

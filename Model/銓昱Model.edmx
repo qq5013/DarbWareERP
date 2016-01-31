@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="darbdcstcsa1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="darbdcstcsa1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="accl">
           <Key>
             <PropertyRef Name="pkid" />
@@ -143,8 +143,7 @@
           <EntitySet Name="sliy" EntityType="Self.sliy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliym" EntityType="Self.sliym" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="darbdcstcsa1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -192,7 +191,7 @@
           <Property Name="srvdbid" Type="Int16" Nullable="false" />
           <Property Name="pkid" Type="Int32" Nullable="false" />
           <Property Name="logid" Type="Int32" Nullable="false" />
-          <Property Name="linkid" Type="Int32" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="sliy">
           <Key>
@@ -245,7 +244,7 @@
           <Property Name="srvdbid" Type="Int16" Nullable="false" />
           <Property Name="pkid" Type="Int32" Nullable="false" />
           <Property Name="logid" Type="Int32" Nullable="false" />
-          <Property Name="linkid" Type="Int32" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="sliym">
           <Key>
@@ -279,7 +278,7 @@
           <Property Name="srvdbid" Type="Int16" Nullable="false" />
           <Property Name="pkid" Type="Int32" Nullable="false" />
           <Property Name="logid" Type="Int32" Nullable="false" />
-          <Property Name="linkid" Type="Int32" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="darbdcstcsa1Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="accl" EntityType="Self.accl" />

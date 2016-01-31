@@ -24,6 +24,7 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     BeginNamespace(code);
 #>
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
+using System.Xml.Serialization;
 <#=codeStringGenerator.EntityClassOpening(entity)#>
 {
 <#
@@ -70,6 +71,7 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
         foreach (var edmProperty in simpleProperties)
         {
 #>
+[XmlAttribute()]
     <#=codeStringGenerator.Property(edmProperty)#>
 <#
         }

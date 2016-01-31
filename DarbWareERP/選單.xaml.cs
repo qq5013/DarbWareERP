@@ -44,9 +44,16 @@ namespace DarbWareERP
 
         private void btn轉ACCL_Click(object sender, RoutedEventArgs e)
         {
-            DarbWareERP.轉資料.轉ACCL window = new 轉資料.轉ACCL();
+            DarbWareERP.轉資料.轉Accl window = new 轉資料.轉Accl();
             window.Show();
-            this.Close();
+            this.CloseWindow();
+        }
+
+        private void btn轉sily_Click(object sender, RoutedEventArgs e)
+        {
+            DarbWareERP.轉資料.轉Sliy window = new 轉資料.轉Sliy();
+            window.Show();
+            this.CloseWindow();
         }
     }
 }
