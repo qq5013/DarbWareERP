@@ -34,7 +34,7 @@ namespace DarbWareERP.控制項
             w = FindParent<視窗繼承>(this);
             w.CloseWindow();          
         }
-        public T FindParent<T>(DependencyObject i_dp) where T : DependencyObject
+        private T FindParent<T>(DependencyObject i_dp) where T : DependencyObject
         {
             DependencyObject dobj = (DependencyObject)VisualTreeHelper.GetParent(i_dp);
             if (dobj != null)

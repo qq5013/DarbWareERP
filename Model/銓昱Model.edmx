@@ -138,10 +138,89 @@
           <Property Name="logid" Type="int" Nullable="false" />
           <Property Name="linkid" Type="int" />
         </EntityType>
+        <EntityType Name="sliyyear">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="序號" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="科目代號" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="幣別" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="原借方金額" Type="money" Nullable="false" />
+          <Property Name="原貸方金額" Type="money" Nullable="false" />
+          <Property Name="匯率" Type="numeric" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="本借方金額" Type="money" Nullable="false" />
+          <Property Name="本貸方金額" Type="money" Nullable="false" />
+          <Property Name="功能幣匯率" Type="numeric" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="借方金額" Type="money" Nullable="false" />
+          <Property Name="貸方金額" Type="money" Nullable="false" />
+          <Property Name="集團幣匯率" Type="numeric" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="集貸方金額" Type="money" Nullable="false" />
+          <Property Name="集借方金額" Type="money" Nullable="false" />
+          <Property Name="摘要" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="分類索引1" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="分類索引2" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="分類索引3" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="項目編號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="部門代號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="客廠代號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="員工編號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="專案代號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="產品群組" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="單別1" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="單號1" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="單別2" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="單號2" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="財務單id" Type="int" Nullable="false" />
+          <Property Name="財務明細id" Type="int" Nullable="false" />
+          <Property Name="輸入日期" Type="datetime" Nullable="false" />
+          <Property Name="輸入人員" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="輸入地點" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="增刪修" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="選擇" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="管制碼" Type="int" Nullable="false" />
+          <Property Name="srvdbid" Type="smallint" Nullable="false" />
+          <Property Name="pkid" Type="int" Nullable="false" />
+          <Property Name="logid" Type="int" Nullable="false" />
+          <Property Name="linkid" Type="int" />
+        </EntityType>
+        <EntityType Name="sliyyearm">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="公司代碼" Type="smallint" Nullable="false" />
+          <Property Name="帳別" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="傳票號碼" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="年度" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="傳票日期" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="傳票種類" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="功能幣匯率" Type="numeric" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="集團幣匯率" Type="numeric" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="是否過帳" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="轉入備註" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="過帳備註" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="內外關連號" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="聯絡單id" Type="int" Nullable="false" />
+          <Property Name="工作流程" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="審核人員" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="審核日期" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="已審核" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="輸入日期" Type="datetime" Nullable="false" />
+          <Property Name="輸入人員" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="輸入地點" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="增刪修" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="選擇" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="管制碼" Type="int" Nullable="false" />
+          <Property Name="srvdbid" Type="smallint" Nullable="false" />
+          <Property Name="pkid" Type="int" Nullable="false" />
+          <Property Name="logid" Type="int" Nullable="false" />
+          <Property Name="linkid" Type="int" />
+        </EntityType>
         <EntityContainer Name="darbdcstcsa1ModelStoreContainer">
           <EntitySet Name="accl" EntityType="Self.accl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliy" EntityType="Self.sliy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliym" EntityType="Self.sliym" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sliyyear" EntityType="Self.sliyyear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sliyyearm" EntityType="Self.sliyyearm" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -284,7 +363,86 @@
           <EntitySet Name="accl" EntityType="Self.accl" />
           <EntitySet Name="sliy" EntityType="Self.sliy" />
           <EntitySet Name="sliym" EntityType="Self.sliym" />
+          <EntitySet Name="sliyyear" EntityType="darbdcstcsa1Model.sliyyear" />
+          <EntitySet Name="sliyyearm" EntityType="darbdcstcsa1Model.sliyyearm" />
         </EntityContainer>
+        <EntityType Name="sliyyear">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="序號" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="科目代號" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="幣別" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="原借方金額" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="原貸方金額" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="匯率" Type="Decimal" Nullable="false" Precision="12" Scale="4" />
+          <Property Name="本借方金額" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="本貸方金額" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="功能幣匯率" Type="Decimal" Nullable="false" Precision="12" Scale="4" />
+          <Property Name="借方金額" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="貸方金額" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="集團幣匯率" Type="Decimal" Nullable="false" Precision="12" Scale="4" />
+          <Property Name="集貸方金額" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="集借方金額" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="摘要" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="分類索引1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="分類索引2" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="分類索引3" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="項目編號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="部門代號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="客廠代號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="員工編號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="專案代號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="產品群組" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="單別1" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="單號1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="單別2" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="單號2" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="財務單id" Type="Int32" Nullable="false" />
+          <Property Name="財務明細id" Type="Int32" Nullable="false" />
+          <Property Name="輸入日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="增刪修" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="選擇" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="管制碼" Type="Int32" Nullable="false" />
+          <Property Name="srvdbid" Type="Int16" Nullable="false" />
+          <Property Name="pkid" Type="Int32" Nullable="false" />
+          <Property Name="logid" Type="Int32" Nullable="false" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sliyyearm">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="公司代碼" Type="Int16" Nullable="false" />
+          <Property Name="帳別" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="傳票號碼" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="年度" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="傳票日期" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="傳票種類" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="功能幣匯率" Type="Decimal" Nullable="false" Precision="12" Scale="4" />
+          <Property Name="集團幣匯率" Type="Decimal" Nullable="false" Precision="12" Scale="4" />
+          <Property Name="是否過帳" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="轉入備註" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="過帳備註" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="內外關連號" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="聯絡單id" Type="Int32" Nullable="false" />
+          <Property Name="工作流程" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="審核人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="審核日期" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="已審核" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="輸入日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="增刪修" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="選擇" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="管制碼" Type="Int32" Nullable="false" />
+          <Property Name="srvdbid" Type="Int16" Nullable="false" />
+          <Property Name="pkid" Type="Int32" Nullable="false" />
+          <Property Name="logid" Type="Int32" Nullable="false" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -424,6 +582,85 @@
                 <ScalarProperty Name="pkid" ColumnName="pkid" />
                 <ScalarProperty Name="logid" ColumnName="logid" />
                 <ScalarProperty Name="linkid" ColumnName="linkid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sliyyear">
+            <EntityTypeMapping TypeName="darbdcstcsa1Model.sliyyear">
+              <MappingFragment StoreEntitySet="sliyyear">
+                <ScalarProperty Name="linkid" ColumnName="linkid" />
+                <ScalarProperty Name="logid" ColumnName="logid" />
+                <ScalarProperty Name="pkid" ColumnName="pkid" />
+                <ScalarProperty Name="srvdbid" ColumnName="srvdbid" />
+                <ScalarProperty Name="管制碼" ColumnName="管制碼" />
+                <ScalarProperty Name="選擇" ColumnName="選擇" />
+                <ScalarProperty Name="增刪修" ColumnName="增刪修" />
+                <ScalarProperty Name="輸入地點" ColumnName="輸入地點" />
+                <ScalarProperty Name="輸入人員" ColumnName="輸入人員" />
+                <ScalarProperty Name="輸入日期" ColumnName="輸入日期" />
+                <ScalarProperty Name="財務明細id" ColumnName="財務明細id" />
+                <ScalarProperty Name="財務單id" ColumnName="財務單id" />
+                <ScalarProperty Name="單號2" ColumnName="單號2" />
+                <ScalarProperty Name="單別2" ColumnName="單別2" />
+                <ScalarProperty Name="單號1" ColumnName="單號1" />
+                <ScalarProperty Name="單別1" ColumnName="單別1" />
+                <ScalarProperty Name="產品群組" ColumnName="產品群組" />
+                <ScalarProperty Name="專案代號" ColumnName="專案代號" />
+                <ScalarProperty Name="員工編號" ColumnName="員工編號" />
+                <ScalarProperty Name="客廠代號" ColumnName="客廠代號" />
+                <ScalarProperty Name="部門代號" ColumnName="部門代號" />
+                <ScalarProperty Name="項目編號" ColumnName="項目編號" />
+                <ScalarProperty Name="分類索引3" ColumnName="分類索引3" />
+                <ScalarProperty Name="分類索引2" ColumnName="分類索引2" />
+                <ScalarProperty Name="分類索引1" ColumnName="分類索引1" />
+                <ScalarProperty Name="摘要" ColumnName="摘要" />
+                <ScalarProperty Name="集借方金額" ColumnName="集借方金額" />
+                <ScalarProperty Name="集貸方金額" ColumnName="集貸方金額" />
+                <ScalarProperty Name="集團幣匯率" ColumnName="集團幣匯率" />
+                <ScalarProperty Name="貸方金額" ColumnName="貸方金額" />
+                <ScalarProperty Name="借方金額" ColumnName="借方金額" />
+                <ScalarProperty Name="功能幣匯率" ColumnName="功能幣匯率" />
+                <ScalarProperty Name="本貸方金額" ColumnName="本貸方金額" />
+                <ScalarProperty Name="本借方金額" ColumnName="本借方金額" />
+                <ScalarProperty Name="匯率" ColumnName="匯率" />
+                <ScalarProperty Name="原貸方金額" ColumnName="原貸方金額" />
+                <ScalarProperty Name="原借方金額" ColumnName="原借方金額" />
+                <ScalarProperty Name="幣別" ColumnName="幣別" />
+                <ScalarProperty Name="科目代號" ColumnName="科目代號" />
+                <ScalarProperty Name="序號" ColumnName="序號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sliyyearm">
+            <EntityTypeMapping TypeName="darbdcstcsa1Model.sliyyearm">
+              <MappingFragment StoreEntitySet="sliyyearm">
+                <ScalarProperty Name="linkid" ColumnName="linkid" />
+                <ScalarProperty Name="logid" ColumnName="logid" />
+                <ScalarProperty Name="pkid" ColumnName="pkid" />
+                <ScalarProperty Name="srvdbid" ColumnName="srvdbid" />
+                <ScalarProperty Name="管制碼" ColumnName="管制碼" />
+                <ScalarProperty Name="選擇" ColumnName="選擇" />
+                <ScalarProperty Name="增刪修" ColumnName="增刪修" />
+                <ScalarProperty Name="輸入地點" ColumnName="輸入地點" />
+                <ScalarProperty Name="輸入人員" ColumnName="輸入人員" />
+                <ScalarProperty Name="輸入日期" ColumnName="輸入日期" />
+                <ScalarProperty Name="已審核" ColumnName="已審核" />
+                <ScalarProperty Name="審核日期" ColumnName="審核日期" />
+                <ScalarProperty Name="審核人員" ColumnName="審核人員" />
+                <ScalarProperty Name="工作流程" ColumnName="工作流程" />
+                <ScalarProperty Name="聯絡單id" ColumnName="聯絡單id" />
+                <ScalarProperty Name="內外關連號" ColumnName="內外關連號" />
+                <ScalarProperty Name="過帳備註" ColumnName="過帳備註" />
+                <ScalarProperty Name="轉入備註" ColumnName="轉入備註" />
+                <ScalarProperty Name="是否過帳" ColumnName="是否過帳" />
+                <ScalarProperty Name="集團幣匯率" ColumnName="集團幣匯率" />
+                <ScalarProperty Name="功能幣匯率" ColumnName="功能幣匯率" />
+                <ScalarProperty Name="傳票種類" ColumnName="傳票種類" />
+                <ScalarProperty Name="傳票日期" ColumnName="傳票日期" />
+                <ScalarProperty Name="年度" ColumnName="年度" />
+                <ScalarProperty Name="傳票號碼" ColumnName="傳票號碼" />
+                <ScalarProperty Name="帳別" ColumnName="帳別" />
+                <ScalarProperty Name="公司代碼" ColumnName="公司代碼" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

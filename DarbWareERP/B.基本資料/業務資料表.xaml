@@ -20,11 +20,12 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto" MinWidth="254.4"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="656*"/>
                 </Grid.ColumnDefinitions>
-                <導覽區:B_基本資料 HorizontalAlignment="Left" Margin="1.2,0,0,-0.4" Width="252" Grid.Column="1" Height="Auto"/>
                 <控制項:命令區塊 Margin="0,14,0,0.6" HorizontalAlignment="Left" Width="95" Grid.Column="0"/>
+                <導覽區:B_基本資料 HorizontalAlignment="Left" VerticalAlignment="Top" Width="244" Grid.Column="1"/>
+                <導覽區:導覽區 Grid.Column="2" HorizontalAlignment="Left" Margin="9.8,1,0,0" VerticalAlignment="Top" Width="244"/>
             </Grid>
         </Border>
 

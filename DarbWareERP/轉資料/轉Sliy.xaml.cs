@@ -28,8 +28,15 @@ namespace DarbWareERP.轉資料
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            轉資料Bll 轉資料 = new 轉資料Bll();
+            轉傳票Bll 轉資料 = new 轉傳票Bll();
             string result = 轉資料.轉SliyNew();
+            MessageBox.Show(result);
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            轉傳票Bll 轉資料 = new 轉傳票Bll();
+            string result = 轉資料.轉SliyYear();
             MessageBox.Show(result);
         }
     }

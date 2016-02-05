@@ -28,8 +28,30 @@ namespace DarbWareERP.控制項
         private void btn返回上一層_Click(object sender, RoutedEventArgs e)
         {
             選單 window = new 選單();
-            window.Show();
-           ((視窗繼承)((Grid)((Border)((Grid)(this.Parent)).Parent).Parent).Parent).CloseWindow();
+            window.Show();            
+            視窗繼承 w = null;
+            w = FindParent<視窗繼承>(this);
+            w.CloseWindow();
+        }
+        private T FindParent<T>(DependencyObject i_dp) where T : DependencyObject
+        {
+            DependencyObject dobj = (DependencyObject)VisualTreeHelper.GetParent(i_dp);
+            if (dobj != null)
+            {
+                if (dobj is T)
+                {
+                    return (T)dobj;
+                }
+                else
+                {
+                    dobj = FindParent<T>(dobj);
+                    if (dobj != null && dobj is T)
+                    {
+                        return (T)dobj;
+                    }
+                }
+            }
+            return null;
         }
     }
 }

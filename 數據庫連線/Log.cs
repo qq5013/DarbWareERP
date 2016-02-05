@@ -9,7 +9,7 @@ namespace 數據庫連線
         public static string 使用者代號 { get; set; }
         public static string 使用者名稱 { get; set; }
         public static int LogBookId { get; set; }
-        public static DataTable 權限表 { get; set; }
+        public static DataTable 權限表 { get; set; } //登入成功時賦值
         public static string 資料庫
         {
             get
@@ -137,6 +137,7 @@ namespace 數據庫連線
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dt);
             logbookid = (int)slogbookid.Value;
+            權限表 = dt;
             return dt;
         }
         public static string Log_Sys_Input(string LP_EVENTTYPE, string LP_DATAEVENT, string LP_DATAFUNC,

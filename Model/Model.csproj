@@ -61,6 +61,12 @@
     <Compile Include="sliym.cs">
       <DependentUpon>銓昱Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="sliyyear.cs">
+      <DependentUpon>銓昱Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sliyyearm.cs">
+      <DependentUpon>銓昱Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="銓昱Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

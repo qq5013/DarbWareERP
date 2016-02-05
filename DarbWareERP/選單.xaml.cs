@@ -1,6 +1,11 @@
 ﻿using System.Windows;
 using DarbWareERP.B.基本資料;
 using DarbWareERP.繼承窗口;
+using 邏輯.視窗相關;
+using System.Collections.Generic;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System;
 
 namespace DarbWareERP
 {
@@ -8,7 +13,7 @@ namespace DarbWareERP
     /// 選單.xaml 的互動邏輯
     /// </summary>
     public partial class 選單 : 視窗繼承
-    {
+    {       
         public 選單()
         {
             InitializeComponent();
@@ -28,13 +33,6 @@ namespace DarbWareERP
             this.CloseWindow();
         }
 
-        private void btn基本資料_Click(object sender, RoutedEventArgs e)
-        {
-            業務資料表 window = new 業務資料表();
-            window.Show();
-            this.CloseWindow();
-        }
-
         private void btn返回登入視窗_Click(object sender, RoutedEventArgs e)
         {
             登入視窗 window = new 登入視窗();
@@ -49,9 +47,39 @@ namespace DarbWareERP
             this.CloseWindow();
         }
 
-        private void btn轉sily_Click(object sender, RoutedEventArgs e)
+        private void btn轉sliy_Click(object sender, RoutedEventArgs e)
         {
             DarbWareERP.轉資料.轉Sliy window = new 轉資料.轉Sliy();
+            window.Show();
+            this.CloseWindow();
+        }        
+
+        private void 視窗繼承_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> 選單列表 = WindowBll.GetInstance().選單按鈕名稱列表();
+            DependencyObject doj = VisualTreeHelper.GetChild(WrapPanel, 0);
+            int 按鈕數 = VisualTreeHelper.GetChildrenCount(WrapPanel);
+            for (int i = 0; i < 按鈕數; i++)
+            {
+                Button btn = (Button)VisualTreeHelper.GetChild(WrapPanel, i);
+                if (i < 選單列表.Count)
+                {                    
+                    btn.Content = 選單列表[i];
+                    btn.Click += 開啟視窗_Click; 
+                }
+                else
+                {
+                    btn.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        private void 開啟視窗_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            List<string> 程式名稱列表 = WindowBll.GetInstance().程式名稱列表(btn.Content.ToString());
+            Type CAType = Type.GetType("DarbWareERP." + btn.Content + "." + 程式名稱列表[0]);
+            Window window = (Window)Activator.CreateInstance(CAType);
             window.Show();
             this.CloseWindow();
         }

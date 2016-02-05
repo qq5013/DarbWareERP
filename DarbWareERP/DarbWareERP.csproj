@@ -92,6 +92,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="A.系統資料\密碼權限表.xaml.cs">
+      <DependentUpon>密碼權限表.xaml</DependentUpon>
+    </Compile>
     <Compile Include="B.基本資料\單位轉換表.xaml.cs">
       <DependentUpon>單位轉換表.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,9 @@
     </Compile>
     <Compile Include="控制項\命令區塊.xaml.cs">
       <DependentUpon>命令區塊.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\導覽區\導覽區.xaml.cs">
+      <DependentUpon>導覽區.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項\導覽區\B_基本資料.xaml.cs">
       <DependentUpon>B_基本資料.xaml</DependentUpon>
@@ -127,6 +133,10 @@
       <DependentUpon>電子賀卡.xaml</DependentUpon>
     </Compile>
     <Compile Include="驗證規則\PositivePriceRule.cs" />
+    <Page Include="A.系統資料\密碼權限表.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="B.基本資料\單位轉換表.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="主題\WhistlerBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="控制項\導覽區\導覽區.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

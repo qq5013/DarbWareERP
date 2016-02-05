@@ -56,7 +56,8 @@
     <Compile Include="登入Bll.cs" />
     <Compile Include="自動抓取幣別.cs" />
     <Compile Include="抓台銀匯率.cs" />
-    <Compile Include="轉資料\轉資料Bll.cs" />
+    <Compile Include="視窗相關\WindowBll.cs" />
+    <Compile Include="轉資料\轉傳票Bll.cs" />
     <Compile Include="電子賀卡Bll.cs" />
   </ItemGroup>
   <ItemGroup>
