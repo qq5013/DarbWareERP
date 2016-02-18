@@ -21,7 +21,7 @@ namespace DarbWareERP.繼承窗口
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            e.Cancel = !canClose;
+            e.Cancel = !canClose;            
         }
         public void CloseWindow()
         {
