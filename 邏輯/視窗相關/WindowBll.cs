@@ -11,7 +11,7 @@ namespace 邏輯.視窗相關
     public class WindowBll
     {
         private static WindowBll windowbll;
-        private static DataTable 權限表;
+        private static DataTable 權限表 = Log.權限表;
         public string 系統名稱 { get; private set; }
         private WindowBll()
         {
@@ -22,8 +22,7 @@ namespace 邏輯.視窗相關
             if (windowbll == null)
             {
                 windowbll = new WindowBll();
-            }
-            權限表 = Log.權限表;
+            }            
             return windowbll;
         }
         public List<string> 選單按鈕名稱列表()
@@ -44,13 +43,18 @@ namespace 邏輯.視窗相關
         {
             this.系統名稱 = 系統名稱;
             List<string> 程式名稱列表 = new List<string>();
-            var qry = from a in 權限表.AsEnumerable()
-                      where a.Field<string>("按鈕名稱") == 系統名稱
-                      select a.Field<string>("程式名稱");
-            foreach (var qq in qry)
-            {
-                程式名稱列表.Add(qq);
-            }
+            //DataRow[] drs = 權限表.Select();
+            //foreach (DataRow dr in drs)
+            //{
+            //    程式名稱列表.Add(dr["程式名稱"].ToString());
+            //}
+            //var qry = from a in 權限表.AsEnumerable()
+            //          where a.Field<string>("按鈕名稱") == 系統名稱
+            //          select a.Field<string>("程式名稱");
+            //foreach (var qq in qry)
+            //{
+            //    程式名稱列表.Add(qq);
+            //}
             return 程式名稱列表;
         }       
     }
