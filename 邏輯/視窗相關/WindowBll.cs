@@ -12,7 +12,7 @@ namespace 邏輯.視窗相關
     {
         private static WindowBll windowbll;
         private static DataTable 權限表;
-        public string 系統名稱 { get;private set; }       
+        public string 系統名稱 { get; private set; }
         private WindowBll()
         {
 
@@ -21,13 +21,13 @@ namespace 邏輯.視窗相關
         {
             if (windowbll == null)
             {
-                windowbll = new WindowBll();                
+                windowbll = new WindowBll();
             }
             權限表 = Log.權限表;
             return windowbll;
         }
         public List<string> 選單按鈕名稱列表()
-        {           
+        {
             List<string> 選單 = new List<string>();
             var qry = (from a in 權限表.AsEnumerable()
                        select a.Field<string>("按鈕名稱")).Distinct();
@@ -52,6 +52,6 @@ namespace 邏輯.視窗相關
                 程式名稱列表.Add(qq);
             }
             return 程式名稱列表;
-        }      
+        }       
     }
 }

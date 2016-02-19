@@ -6,17 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Interop;
 
 namespace DarbWareERP.繼承窗口
 {
     public class 視窗繼承 : Window
-    {
+    {       
         private bool canClose = false;
         public 視窗繼承()
         {
-
+            
         }
         protected override void OnClosing(CancelEventArgs e)
         {

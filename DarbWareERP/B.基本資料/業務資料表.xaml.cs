@@ -23,7 +23,7 @@ namespace DarbWareERP.B.基本資料
     {
         public 業務資料表()
         {
-            InitializeComponent();           
+            InitializeComponent();                       
         }
 
       

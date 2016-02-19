@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DarbWareERP"
         xmlns:src="clr-namespace:DarbWareERP.繼承窗口"   
         mc:Ignorable="d"
-        Height="768" Width="1024" WindowState="Maximized" Loaded="視窗繼承_Loaded">
+        Height="768" Width="1024" WindowState="Maximized" Loaded="視窗繼承_Loaded" Tag="選單">
     <Grid>
         <Grid Height="655" Margin="68,38,69.6,45.4" Width="880" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.Background>

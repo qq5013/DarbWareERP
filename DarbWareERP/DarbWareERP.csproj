@@ -120,6 +120,7 @@
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
     </Compile>
     <Compile Include="繼承窗口\視窗繼承.cs" />
+    <Compile Include="控制項\表單控制.cs" />
     <Compile Include="轉資料\轉Sliy.xaml.cs">
       <DependentUpon>轉Sliy.xaml</DependentUpon>
     </Compile>

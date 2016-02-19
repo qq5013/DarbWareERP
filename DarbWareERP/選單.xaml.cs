@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System;
+using DarbWareERP.控制項;
 
 namespace DarbWareERP
 {
@@ -13,7 +14,7 @@ namespace DarbWareERP
     /// 選單.xaml 的互動邏輯
     /// </summary>
     public partial class 選單 : 視窗繼承
-    {       
+    {
         public 選單()
         {
             InitializeComponent();
@@ -52,7 +53,7 @@ namespace DarbWareERP
             DarbWareERP.轉資料.轉Sliy window = new 轉資料.轉Sliy();
             window.Show();
             this.CloseWindow();
-        }        
+        }
 
         private void 視窗繼承_Loaded(object sender, RoutedEventArgs e)
         {
@@ -63,9 +64,9 @@ namespace DarbWareERP
             {
                 Button btn = (Button)VisualTreeHelper.GetChild(WrapPanel, i);
                 if (i < 選單列表.Count)
-                {                    
+                {
                     btn.Content = 選單列表[i];
-                    btn.Click += 開啟視窗_Click; 
+                    btn.Click += 開啟視窗_Click;
                 }
                 else
                 {
@@ -78,9 +79,11 @@ namespace DarbWareERP
         {
             Button btn = (Button)sender;
             List<string> 程式名稱列表 = WindowBll.GetInstance().程式名稱列表(btn.Content.ToString());
-            Type CAType = Type.GetType("DarbWareERP." + btn.Content + "." + 程式名稱列表[0]);
-            Window window = (Window)Activator.CreateInstance(CAType);
+            Type CAType = Type.GetType("DarbWareERP." + btn.Content + "." + 程式名稱列表[0]);            
+            視窗繼承 window = (視窗繼承)Activator.CreateInstance(CAType);            
             window.Show();
+            視窗控制.視窗加入(程式名稱列表[0],window);
+            視窗控制.目前視窗 = 程式名稱列表[0];
             this.CloseWindow();
         }
     }

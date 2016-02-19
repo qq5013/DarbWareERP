@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DarbWareERP"   
         xmlns:src="clr-namespace:DarbWareERP.繼承窗口"   
         xmlns:valid ="clr-namespace:DarbWareERP.驗證規則"
-        mc:Ignorable="d" WindowState="Maximized">
+        mc:Ignorable="d" WindowState="Maximized" Tag="登入視窗">
     <Grid Margin="-3,0,3.6,-0.6">
         <Grid Margin="152,26,146,10.2" Width="463" Height="470" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Grid.Background>
