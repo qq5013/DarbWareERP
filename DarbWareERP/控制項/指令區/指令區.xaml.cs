@@ -13,16 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DarbWareERP.控制項.導覽區
+namespace DarbWareERP.控制項.指令區
 {
     /// <summary>
-    /// B_基本資料.xaml 的互動邏輯
+    /// 指令區.xaml 的互動邏輯
     /// </summary>
-    public partial class B_基本資料 : UserControl
+    public partial class 指令區 : UserControl
     {
-        public B_基本資料()
+        public 指令區()
         {
-            InitializeComponent();            
-        }        
+            InitializeComponent();
+        }
     }
 }

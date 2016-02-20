@@ -30,6 +30,7 @@ namespace DarbWareERP.繼承窗口
             this.Close();
             canClose = false;
         }
+        public string KeyFldValue { get; set; }
     }
 }
 

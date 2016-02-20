@@ -6,10 +6,12 @@ namespace 數據庫連線
 {
     public static class Log
     {
+
         public static string 使用者代號 { get; set; }
         public static string 使用者名稱 { get; set; }
         public static int LogBookId { get; set; }
-        public static DataTable 權限表 { get; set; } //登入成功時賦值
+        private static DataTable _權限表 = new DataTable(); //配合usercontrol，設計
+        public static DataTable 權限表 { get { return _權限表; } set { _權限表 = value; } } //登入成功時賦值
         public static string 資料庫
         {
             get

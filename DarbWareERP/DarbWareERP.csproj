@@ -110,11 +110,14 @@
     <Compile Include="控制項\導覽區\導覽區.xaml.cs">
       <DependentUpon>導覽區.xaml</DependentUpon>
     </Compile>
-    <Compile Include="控制項\導覽區\B_基本資料.xaml.cs">
-      <DependentUpon>B_基本資料.xaml</DependentUpon>
-    </Compile>
     <Compile Include="控制項\導覽區\導覽區按鈕.xaml.cs">
       <DependentUpon>導覽區按鈕.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\指令區\指令區.xaml.cs">
+      <DependentUpon>指令區.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\指令區\查詢區.xaml.cs">
+      <DependentUpon>查詢區.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項\返回選單按鈕.xaml.cs">
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
@@ -154,7 +157,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="控制項\導覽區\B_基本資料.xaml">
+    <Page Include="控制項\指令區\指令區.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\指令區\查詢區.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

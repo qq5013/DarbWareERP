@@ -6,28 +6,35 @@
              xmlns:控制項="clr-namespace:DarbWareERP.控制項" xmlns:local="clr-namespace:DarbWareERP.控制項.導覽區" x:Class="DarbWareERP.控制項.導覽區.導覽區"
              mc:Ignorable="d" Height="210" Width="243.6" Loaded="UserControl_Loaded">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="37*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="txt系統名稱"  TextWrapping="Wrap" FontSize="18.667" Grid.Row="0"/>
-        <WrapPanel Name="WrapPanel" Margin="0,2.2,-0.2,-0.4" Grid.Row="1">
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕1" Content="導覽區按鈕1"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕2" Content="導覽區按鈕2"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕3" Content="導覽區按鈕3"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕4" Content="導覽區按鈕4"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕5" Content="導覽區按鈕5"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕6" Content="導覽區按鈕6"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕7" Content="導覽區按鈕7"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕8" Content="導覽區按鈕8"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕9" Content="導覽區按鈕9"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕10" Content="導覽區按鈕10"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕11" Content="導覽區按鈕11"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕12" Content="導覽區按鈕12"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕13" Content="導覽區按鈕13"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕14" Content="導覽區按鈕14"/>
-            <local:導覽區按鈕 x:Name="btn導覽區按鈕15" Content="導覽區按鈕15" />
-        </WrapPanel>
+        <Border BorderThickness="1" Grid.Row="1">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+            </Border.BorderBrush>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="37*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="txbl系統名稱"  TextWrapping="Wrap" FontSize="18.667" Grid.Row="0"/>
+                <WrapPanel Name="WrapPanel" Margin="0,2.2,-0.2,-0.4" Grid.Row="1">
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕1" Content="導覽區按鈕1"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕2" Content="導覽區按鈕2"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕3" Content="導覽區按鈕3"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕4" Content="導覽區按鈕4"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕5" Content="導覽區按鈕5"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕6" Content="導覽區按鈕6"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕7" Content="導覽區按鈕7"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕8" Content="導覽區按鈕8"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕9" Content="導覽區按鈕9"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕10" Content="導覽區按鈕10"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕11" Content="導覽區按鈕11"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕12" Content="導覽區按鈕12"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕13" Content="導覽區按鈕13"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕14" Content="導覽區按鈕14"/>
+                    <local:導覽區按鈕 x:Name="btn導覽區按鈕15" Content="導覽區按鈕15" />
+                </WrapPanel>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
 

@@ -23,13 +23,13 @@ namespace DarbWareERP.控制項.導覽區
     {
         public 導覽區()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            txt系統名稱.Text = WindowBll.GetInstance().系統名稱;
-            List<string> 按鈕列表 = WindowBll.GetInstance().程式名稱列表(txt系統名稱.Text);
+        {           
+            txbl系統名稱.Text = WindowBll.GetInstance().系統名稱;
+            List<string> 按鈕列表 = WindowBll.GetInstance().程式名稱列表(txbl系統名稱.Text);
             DependencyObject doj = VisualTreeHelper.GetChild(WrapPanel, 0);
             int 按鈕數 = VisualTreeHelper.GetChildrenCount(WrapPanel);
             for (int i = 0; i < 按鈕數; i++)
@@ -45,6 +45,6 @@ namespace DarbWareERP.控制項.導覽區
                 }
             }
         }
-       
+
     }
 }

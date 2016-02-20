@@ -5,30 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DarbWareERP.控制項"
              mc:Ignorable="d" 
-              d:DesignHeight="200" d:DesignWidth="96">
+              d:DesignHeight="210" d:DesignWidth="100">
     <Grid>
-        <Button x:Name="btn返回上一層" HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top" Width="45" Height="45" Click="btn返回上一層_Click">
-            <Image Source="/DarbWareERP;component/Image/Icon_png/返回上一層00.png"></Image>
-        </Button>
-        <Button x:Name="btn7" Content="7"  HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="45" Height="45">
+        <Border BorderThickness="1" Grid.Row="1">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+            </Border.BorderBrush>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="207*"></RowDefinition>
+                </Grid.RowDefinitions>                
+                <WrapPanel Grid.Row="1" Margin="0,2.2,-0.4,0">
+                    <Button x:Name="btn7" Content="7"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="45" Height="45" Margin="2,5,2,2">
 
-        </Button>
-        <Button x:Name="btn5" Content="5" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Width="45" Height="45">
+                    </Button>
+                    <Button x:Name="btn5" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="45" Margin="2,5,2,2">
 
-        </Button>
-        <Button x:Name="btn3" Content="3"  HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" Width="45" Height="45" Padding="3">
+                    </Button>
+                    <Button x:Name="btn3" Content="3"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="45" Margin="2">
 
-        </Button>
-        <Button x:Name="btn2" Content="2"  HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Width="45" Height="45">
+                    </Button>
+                    <Button x:Name="btn2" Content="2"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="45" Margin="2">
 
-        </Button>
-        <Button x:Name="btn6" Content="6"  HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top" Width="45" Height="45">
+                    </Button>
+                    <Button x:Name="btn6" Content="6"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="45" Margin="2">
 
-        </Button>
-        <Button x:Name="btn4" Content="4"  HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Width="45" Height="45" Padding="3">
+                    </Button>
+                    <Button x:Name="btn4" Content="4"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="45" Height="45" Margin="2">
 
-        </Button>
-        <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="45"/>
-        
+                    </Button>
+                    <Button x:Name="btn返回上一層" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="45" Click="btn返回上一層_Click" Margin="2">
+                        <Image Source="/DarbWareERP;component/Image/Icon_png/返回上一層00.png"></Image>
+                    </Button>
+                    <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="45" Margin="2"/>
+                </WrapPanel>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
