@@ -30,5 +30,6 @@ namespace Model
         public virtual DbSet<sliym> sliym { get; set; }
         public virtual DbSet<sliyyear> sliyyear { get; set; }
         public virtual DbSet<sliyyearm> sliyyearm { get; set; }
+        public virtual DbSet<unitba> unitba { get; set; }
     }
 }

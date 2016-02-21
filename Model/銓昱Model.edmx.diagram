@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="darbdcstcsa1Model.sliym" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="darbdcstcsa1Model.sliyyear" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="darbdcstcsa1Model.sliyyearm" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="darbdcstcsa1Model.unitba" Width="1.5" PointX="11.125" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

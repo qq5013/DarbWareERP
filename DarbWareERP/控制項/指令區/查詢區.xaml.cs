@@ -24,5 +24,23 @@ namespace DarbWareERP.控制項.指令區
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            rbtn鑑值.IsChecked = true;
+            rbtn瀏覽頁面.IsChecked = true;
+        }
+
+        private void btn檔首_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("檔首");
+        }
+
+        private void btn上一筆_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("上一筆");
+        }
+        //btn上一筆.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+        
     }
 }

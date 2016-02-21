@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DarbWareERP.控制項.指令區"
-             xmlns:darb ="clr-namespace:DarbWareERP.繼承窗口"
+             xmlns:src ="clr-namespace:DarbWareERP.繼承窗口"
              mc:Ignorable="d" 
-          d:DesignHeight="210" d:DesignWidth="196">
+          d:DesignHeight="210" d:DesignWidth="195" IsTabStop="False">
     <Grid>
         <Border BorderThickness="1" Grid.Row="1">
             <Border.BorderBrush>
@@ -17,40 +17,40 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="10*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="txbl程式名稱" Grid.Row="0" Text="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType=darb:視窗繼承}}"></TextBlock>
+                <TextBlock x:Name="txbl程式名稱" Grid.Row="0" Text="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType=src:視窗繼承}}"></TextBlock>
                 <WrapPanel Grid.Row="1">
-                    <Button x:Name="btn新增" Width="44" Height="44" Margin="2">
+                    <Button x:Name="btn新增" Width="44" Height="44" Margin="2" IsTabStop="False">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/新增00.png"></Image>
                     </Button>
-                    <Button x:Name="btn複製"  Width="44" Height="44" Margin="2">
+                    <Button x:Name="btn複製"  Width="44" Height="44" Margin="2" IsTabStop="False">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/複製00.png"></Image>
                     </Button>
-                    <Button x:Name="btn修改"  Width="44" Height="44" Margin="2">
+                    <Button x:Name="btn修改"  Width="44" Height="44" Margin="2" IsTabStop="False">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/修改00.png"></Image>
                     </Button>
-                    <Button x:Name="btn刪除"  Width="44" Height="44" Margin="2">
+                    <Button x:Name="btn刪除"  Width="44" Height="44" Margin="2" IsTabStop="False">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/刪除00.png"></Image>
                     </Button>
-                    <Button x:Name="btn歷史"  Width="44" Height="44" Margin="2">
+                    <Button x:Name="btn歷史"  Width="44" Height="44" Margin="2" IsTabStop="False">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/歷史檔案00.png"></Image>
                     </Button>
-                    <Button x:Name="btn列印"  Width="44" Height="44" Margin="2">
+                    <Button x:Name="btn列印"  Width="44" Height="44" Margin="2" IsTabStop="False">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/列印00.png"></Image>
                     </Button>
-                    <Button x:Name="btn瀏覽"  Width="44" Height="44" Margin="2">
+                    <Button x:Name="btn瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/瀏覽00.png"></Image>
                     </Button>
-                    <Button x:Name="btn明細瀏覽"  Width="44" Height="44" Margin="2">
+                    <Button x:Name="btn明細瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/清單瀏覽00.png"></Image>
                     </Button>
-                    <Button x:Name="btn1" Content="btn1" Width="44" Height="44" Margin="2"/>
-                    <Button x:Name="btn2" Content="btn2" Width="44" Height="44" Margin="2"/>
-                    <Button x:Name="btn3" Content="btn3" Width="44" Height="44" Margin="2"/>
-                    <Button x:Name="btn4" Content="btn4" Width="44" Height="44" Margin="2"/>
-                    <Button x:Name="btn5" Content="btn5" Width="44" Height="44" Margin="2"/>
-                    <Button x:Name="btn6" Content="btn6" Width="44" Height="44" Margin="2"/>
-                    <Button x:Name="btn7" Content="btn7" Width="44" Height="44" Margin="2"/>
-                    <Button x:Name="btn8" Content="btn8" Width="44" Height="44" Margin="2"/>
+                    <Button x:Name="btn1" Content="btn1" Width="44" Height="44" Margin="2" IsTabStop="False"/>
+                    <Button x:Name="btn2" Content="btn2" Width="44" Height="44" Margin="2" IsTabStop="False"/>
+                    <Button x:Name="btn3" Content="btn3" Width="44" Height="44" Margin="2" IsTabStop="False"/>
+                    <Button x:Name="btn4" Content="btn4" Width="44" Height="44" Margin="2" IsTabStop="False"/>
+                    <Button x:Name="btn5" Content="btn5" Width="44" Height="44" Margin="2" IsTabStop="False"/>
+                    <Button x:Name="btn6" Content="btn6" Width="44" Height="44" Margin="2" IsTabStop="False"/>
+                    <Button x:Name="btn7" Content="btn7" Width="44" Height="44" Margin="2" IsTabStop="False"/>
+                    <Button x:Name="btn8" Content="btn8" Width="44" Height="44" Margin="2" IsTabStop="False"/>
                 </WrapPanel>
             </Grid>
         </Border>

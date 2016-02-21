@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:DarbWareERP.控制項.指令區"
              xmlns:src ="clr-namespace:DarbWareERP.繼承窗口"
              mc:Ignorable="d" 
-             d:DesignHeight="210" d:DesignWidth="490">
-    <Grid>
+             d:DesignHeight="210" d:DesignWidth="490" Loaded="UserControl_Loaded" IsTabStop="False">
+    <Grid Grid.Column="0">
         <Border BorderThickness="1" Grid.Row="1">
             <Border.BorderBrush>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
@@ -17,31 +17,62 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="413*"></ColumnDefinition>
+                        <ColumnDefinition Width="75"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dataGrid" Margin="10,10,4.8,10.4"/>
+                    <RadioButton x:Name="rbtn瀏覽頁面" Content="瀏覽頁面" Grid.Column="1" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" IsTabStop="False"/>
+                    <RadioButton x:Name="rbtn資料歷程" Content="資料歷程" Grid.Column="1" Margin="0,31,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" IsTabStop="False"/>
+                    <RadioButton x:Name="rbtn工作流程" Content="工作流程" Grid.Column="1" Margin="0,52,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" IsTabStop="False"/>
+                    <RadioButton x:Name="rbtn特定查詢" Content="特定查詢" Grid.Column="1" Margin="0,73,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" IsTabStop="False"/>
+                    <RadioButton x:Name="rbtn其他" Content="其他" Grid.Column="1" Margin="0,94,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" IsTabStop="False"/>
+
+                </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="137*"></ColumnDefinition>
-                        <ColumnDefinition Width="auto" MinWidth="48.8"></ColumnDefinition>
-                        <ColumnDefinition Width="302*"></ColumnDefinition>
+                        <ColumnDefinition Width="128*"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="305"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="txbl搜尋資料" Text="{Binding Path=KeyFldValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=src:視窗繼承}}" Grid.Column="0" TextAlignment="Center" Margin="0,0,2.8,-0.4"/>
-                    <TextBox Grid.Column="0" Width="50"></TextBox>
-                    <Grid Grid.Column="1" Margin="3.2,0,0.6,-0.4">
+                    <Grid Grid.Column="0" HorizontalAlignment="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="95*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="txbl搜尋資料" Text="{Binding Path=KeyFldValue, RelativeSource={RelativeSource AncestorType=src:視窗繼承}}" Grid.Column="0" Height="15" HorizontalAlignment="Right" />
+                        <TextBox Grid.Column="1" Height="25" Width="100" Margin="2" HorizontalAlignment="Right"  IsTabStop="False"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <RadioButton Grid.Row="0" Content="鑑值"/>
-                        <RadioButton Grid.Row="1" Content="瀏覽"/>
-                        <RadioButton Grid.Row="2" Content="歷程"/>
+                        <RadioButton x:Name="rbtn鑑值" Grid.Row="0" Content="鑑值"  IsTabStop="False"/>
+                        <RadioButton x:Name="rbtn瀏覽" Grid.Row="1" Content="瀏覽"  IsTabStop="False"/>
+                        <RadioButton x:Name="rbtn歷程" Grid.Row="2" Content="歷程"  IsTabStop="False"/>
                     </Grid>
-                    <WrapPanel Grid.Column="2" Margin="4.4,0,0,-0.4">
-                        <Button Width="45" Height="45" Margin="2.5"></Button>
-                        <Button Width="45" Height="45" Margin="2.5"></Button>
-                        <Button Width="45" Height="45" Margin="2.5"></Button>
-                        <Button Width="45" Height="45" Margin="2.5"></Button>
-                        <Button Width="45" Height="45" Margin="2.5"></Button>
-                        <Button Width="45" Height="45" Margin="2.5"></Button>
+                    <WrapPanel Grid.Column="2" Margin="1.2,0,0,-0.4" HorizontalAlignment="Right">
+                        <Button x:Name="btn檔首" Width="45" Height="45" Margin="2.5" Click="btn檔首_Click" IsTabStop="False">
+                            <Image Source="/DarbWareERP;component/Image/Icon_png/檔首00y.png"></Image>
+                        </Button>
+                        <Button x:Name="btn上一筆" Width="45" Height="45" Margin="2.5" Click="btn上一筆_Click"  IsTabStop="False">
+                            <Image Source="/DarbWareERP;component/Image/Icon_png/上一筆00y.png"></Image>
+                        </Button>
+                        <Button  x:Name="btn重新整理" Width="45" Height="45" Margin="2.5"  IsTabStop="False">
+                            <Image Source="/DarbWareERP;component/Image/Icon_png/重新整理00y.png"></Image>
+                        </Button>
+                        <Button  x:Name="btn下一筆" Width="45" Height="45" Margin="2.5"  IsTabStop="False">
+                            <Image Source="/DarbWareERP;component/Image/Icon_png/下一筆00y.png"></Image>
+                        </Button>
+                        <Button x:Name="btn檔尾" Width="45" Height="45" Margin="2.5"  IsTabStop="False">
+                            <Image Source="/DarbWareERP;component/Image/Icon_png/檔尾00y.png"></Image>
+                        </Button>
+                        <Button  x:Name="btn說明" Width="45" Height="45" Margin="2.5"  IsTabStop="False">
+                            <Image Source="/DarbWareERP;component/Image/Icon_png/HELP00y.png"></Image>
+                        </Button>
                     </WrapPanel>
                 </Grid>
             </Grid>

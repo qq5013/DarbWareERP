@@ -13,42 +13,14 @@ namespace Model
     using System.Collections.Generic;
     
     using System.Xml.Serialization;
-    public partial class sliyyearm
+    public partial class unitba
     {
     [XmlAttribute()]
-        public short 公司代碼 { get; set; }
+        public string 單位 { get; set; }
     [XmlAttribute()]
-        public string 帳別 { get; set; }
+        public string 說明 { get; set; }
     [XmlAttribute()]
-        public string 傳票號碼 { get; set; }
-    [XmlAttribute()]
-        public string 年度 { get; set; }
-    [XmlAttribute()]
-        public string 傳票日期 { get; set; }
-    [XmlAttribute()]
-        public string 傳票種類 { get; set; }
-    [XmlAttribute()]
-        public decimal 功能幣匯率 { get; set; }
-    [XmlAttribute()]
-        public decimal 集團幣匯率 { get; set; }
-    [XmlAttribute()]
-        public string 是否過帳 { get; set; }
-    [XmlAttribute()]
-        public string 轉入備註 { get; set; }
-    [XmlAttribute()]
-        public string 過帳備註 { get; set; }
-    [XmlAttribute()]
-        public string 內外關連號 { get; set; }
-    [XmlAttribute()]
-        public int 聯絡單id { get; set; }
-    [XmlAttribute()]
-        public string 工作流程 { get; set; }
-    [XmlAttribute()]
-        public string 審核人員 { get; set; }
-    [XmlAttribute()]
-        public string 審核日期 { get; set; }
-    [XmlAttribute()]
-        public string 已審核 { get; set; }
+        public byte 小數位數 { get; set; }
     [XmlAttribute()]
         public System.DateTime 輸入日期 { get; set; }
     [XmlAttribute()]

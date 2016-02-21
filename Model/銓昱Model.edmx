@@ -215,12 +215,31 @@
           <Property Name="logid" Type="int" Nullable="false" />
           <Property Name="linkid" Type="int" />
         </EntityType>
+        <EntityType Name="unitba">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="單位" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="說明" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="小數位數" Type="tinyint" Nullable="false" />
+          <Property Name="輸入日期" Type="datetime" Nullable="false" />
+          <Property Name="輸入人員" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="輸入地點" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="增刪修" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="選擇" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="管制碼" Type="int" Nullable="false" />
+          <Property Name="srvdbid" Type="smallint" Nullable="false" />
+          <Property Name="pkid" Type="int" Nullable="false" />
+          <Property Name="logid" Type="int" Nullable="false" />
+          <Property Name="linkid" Type="int" />
+        </EntityType>
         <EntityContainer Name="darbdcstcsa1ModelStoreContainer">
           <EntitySet Name="accl" EntityType="Self.accl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliy" EntityType="Self.sliy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliym" EntityType="Self.sliym" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliyyear" EntityType="Self.sliyyear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliyyearm" EntityType="Self.sliyyearm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="unitba" EntityType="Self.unitba" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -365,6 +384,7 @@
           <EntitySet Name="sliym" EntityType="Self.sliym" />
           <EntitySet Name="sliyyear" EntityType="darbdcstcsa1Model.sliyyear" />
           <EntitySet Name="sliyyearm" EntityType="darbdcstcsa1Model.sliyyearm" />
+          <EntitySet Name="unitba" EntityType="darbdcstcsa1Model.unitba" />
         </EntityContainer>
         <EntityType Name="sliyyear">
           <Key>
@@ -433,6 +453,24 @@
           <Property Name="審核日期" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="已審核" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="輸入日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="增刪修" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="選擇" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="管制碼" Type="Int32" Nullable="false" />
+          <Property Name="srvdbid" Type="Int16" Nullable="false" />
+          <Property Name="pkid" Type="Int32" Nullable="false" />
+          <Property Name="logid" Type="Int32" Nullable="false" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitba">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="單位" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="說明" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="小數位數" Type="Byte" Nullable="false" />
+          <Property Name="輸入日期" Type="DateTime" Nullable="false" />
           <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
           <Property Name="增刪修" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
@@ -664,6 +702,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="unitba">
+            <EntityTypeMapping TypeName="darbdcstcsa1Model.unitba">
+              <MappingFragment StoreEntitySet="unitba">
+                <ScalarProperty Name="linkid" ColumnName="linkid" />
+                <ScalarProperty Name="logid" ColumnName="logid" />
+                <ScalarProperty Name="pkid" ColumnName="pkid" />
+                <ScalarProperty Name="srvdbid" ColumnName="srvdbid" />
+                <ScalarProperty Name="管制碼" ColumnName="管制碼" />
+                <ScalarProperty Name="選擇" ColumnName="選擇" />
+                <ScalarProperty Name="增刪修" ColumnName="增刪修" />
+                <ScalarProperty Name="輸入地點" ColumnName="輸入地點" />
+                <ScalarProperty Name="輸入人員" ColumnName="輸入人員" />
+                <ScalarProperty Name="輸入日期" ColumnName="輸入日期" />
+                <ScalarProperty Name="小數位數" ColumnName="小數位數" />
+                <ScalarProperty Name="說明" ColumnName="說明" />
+                <ScalarProperty Name="單位" ColumnName="單位" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -682,6 +739,7 @@
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+        <DesignerProperty Name="SynchronizePropertyFacets" Value="False" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
