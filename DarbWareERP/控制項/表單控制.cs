@@ -9,7 +9,7 @@ namespace DarbWareERP.控制項
 {
     static class 視窗控制
     {
-        public static  string 目前視窗 {get;set;}
+        public static string 目前視窗 { get; set; }
         private static List<視窗繼承> 視窗列表 = new List<視窗繼承>(); // 存放實體
         private static List<string> 視窗名稱列表 = new List<string>();
         public static bool 視窗是否存在(string 視窗名稱)
@@ -28,6 +28,5 @@ namespace DarbWareERP.控制項
             視窗繼承 window = 視窗列表.Find(x => x.Tag.ToString() == 視窗名稱);
             window.Show();
         }
-
     }
 }

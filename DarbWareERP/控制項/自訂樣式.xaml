@@ -1,11 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:DarbWareERP.控制項.導覽區">
+                    xmlns:local="clr-namespace:DarbWareERP.控制項.下方共同區塊">
     <!--參考主題whistlerblue-->
-    <Style TargetType="{x:Type local:導覽區按鈕}">
+    <Style TargetType="{x:Type local:切換表單按鈕}">
         <Setter Property="Foreground" Value="{StaticResource ButtonFontColor}"/>
         <Setter Property="Padding" Value="3"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource NuclearButtonFocusVisual}"/>
         <Setter Property="Template" Value="{DynamicResource ButtonTemplate}" />
-    </Style>
+    </Style>    
 </ResourceDictionary>

@@ -14,14 +14,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using 邏輯.視窗相關;
 
-namespace DarbWareERP.控制項.導覽區
+namespace DarbWareERP.控制項.下方共同區塊
 {
     /// <summary>
     /// B_基本資料.xaml 的互動邏輯
     /// </summary>
-    public partial class 導覽區 : UserControl
+    public partial class 切換表單區 : UserControl
     {
-        public 導覽區()
+        public 切換表單區()
         {
             InitializeComponent();
         }

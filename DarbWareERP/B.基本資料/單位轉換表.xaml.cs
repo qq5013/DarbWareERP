@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
+using Model;
 
 namespace DarbWareERP.B.基本資料
 {
@@ -20,11 +21,18 @@ namespace DarbWareERP.B.基本資料
     /// </summary>
     public partial class 單位轉換表 : 視窗繼承
     {
+        控制項操作 控制項操作 = new 控制項操作();
         public 單位轉換表()
         {
-            InitializeComponent();
-            
+            InitializeComponent();       
         }
-        
+
+        private void 視窗繼承_Loaded(object sender, RoutedEventArgs e)
+        {
+            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
+            // 透過設定 CollectionViewSource.Source 屬性載入資料: 
+            // unitbaViewSource.Source = [泛用資料來源]
+            控制項操作.設定TextboxReadonly(this,true);            
+        }        
     }
 }

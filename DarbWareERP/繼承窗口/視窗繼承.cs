@@ -15,11 +15,17 @@ namespace DarbWareERP.繼承窗口
 {
     public class 視窗繼承 : Window
     {
+        private 控制項操作 控制項操作 = new 控制項操作();
         private bool canClose = false;
+        public string KeyFldValue { get; set; }        
+        public string 資料表名稱 { get; set; }
+        public CollectionViewSource CollectionViewSource { get; set; }
+
         public 視窗繼承()
         {
+            
+        }     
 
-        }
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
@@ -31,37 +37,17 @@ namespace DarbWareERP.繼承窗口
             this.Close();
             canClose = false;
         }
-        public string KeyFldValue { get; set; }
+        
         protected override void OnKeyDown(KeyEventArgs e)
         {
             //在視窗中用左右鍵控制上一筆下一筆
             base.OnKeyDown(e);
             if (e.Key == Key.Left)
             {
-                Button btn = FindChild<Button>(this, "btn上一筆");
+                Button btn = 控制項操作.用名稱尋找子代<Button>(this, "btn上一筆");
                 btn.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             }
-        }
-        private static T FindChild<T>(DependencyObject depObj, string childName) where T : DependencyObject
-        {
-
-            if (depObj == null) return null;
-
-            if (depObj is T && ((FrameworkElement)depObj).Name == childName)
-                return depObj as T;
-
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-
-                T obj = FindChild<T>(child, childName);
-
-                if (obj != null)
-                    return obj;
-            }
-
-            return null;
-        }
+        }             
     }
 }
 

@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
         xmlns:src="clr-namespace:DarbWareERP.繼承窗口"  
-    xmlns:指令區="clr-namespace:DarbWareERP.控制項.指令區"
-        xmlns:控制項="clr-namespace:DarbWareERP.控制項" xmlns:導覽區="clr-namespace:DarbWareERP.控制項.導覽區" x:Class="DarbWareERP.B.基本資料.業務資料表"
+        xmlns:控制項="clr-namespace:DarbWareERP.控制項" 
+    xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"
+    x:Class="DarbWareERP.B.基本資料.業務資料表"
         mc:Ignorable="d"
         Height="768" Width="1024" WindowState="Maximized" Tag="業務資料表">
     <Grid>
@@ -26,8 +27,8 @@
                     <ColumnDefinition Width="196"/>
                 </Grid.ColumnDefinitions>
                 <控制項:命令區塊 HorizontalAlignment="Left" Width="100" Grid.Column="0"/>
-                <導覽區:導覽區  HorizontalAlignment="Left" VerticalAlignment="Top" Width="245" Grid.Column="1"/>
-                <指令區:指令區 HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="3"/>
+                <下方共同區塊:切換表單區  HorizontalAlignment="Left" VerticalAlignment="Top" Width="245" Grid.Column="1"/>
+                <下方共同區塊:指令區 HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="3"/>
             </Grid>
         </Border>
     </Grid>

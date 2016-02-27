@@ -31,5 +31,7 @@ namespace Model
         public virtual DbSet<sliyyear> sliyyear { get; set; }
         public virtual DbSet<sliyyearm> sliyyearm { get; set; }
         public virtual DbSet<unitba> unitba { get; set; }
+        public virtual DbSet<cupdma> cupdma { get; set; }
+        public virtual DbSet<cupdt> cupdt { get; set; }
     }
 }

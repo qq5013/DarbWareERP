@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="DarbWareERP.控制項.指令區.查詢區"
+﻿<UserControl x:Class="DarbWareERP.控制項.下方共同區塊.導覽區"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DarbWareERP.控制項.指令區"
+             xmlns:local="clr-namespace:DarbWareERP.控制項.下方共同區塊"
              xmlns:src ="clr-namespace:DarbWareERP.繼承窗口"
              mc:Ignorable="d" 
              d:DesignHeight="210" d:DesignWidth="490" Loaded="UserControl_Loaded" IsTabStop="False">
@@ -28,7 +28,6 @@
                     <RadioButton x:Name="rbtn工作流程" Content="工作流程" Grid.Column="1" Margin="0,52,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" IsTabStop="False"/>
                     <RadioButton x:Name="rbtn特定查詢" Content="特定查詢" Grid.Column="1" Margin="0,73,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" IsTabStop="False"/>
                     <RadioButton x:Name="rbtn其他" Content="其他" Grid.Column="1" Margin="0,94,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" IsTabStop="False"/>
-
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -61,13 +60,13 @@
                         <Button x:Name="btn上一筆" Width="45" Height="45" Margin="2.5" Click="btn上一筆_Click"  IsTabStop="False">
                             <Image Source="/DarbWareERP;component/Image/Icon_png/上一筆00y.png"></Image>
                         </Button>
-                        <Button  x:Name="btn重新整理" Width="45" Height="45" Margin="2.5"  IsTabStop="False">
+                        <Button  x:Name="btn重新整理" Width="45" Height="45" Margin="2.5"  IsTabStop="False" Click="btn重新整理_Click">
                             <Image Source="/DarbWareERP;component/Image/Icon_png/重新整理00y.png"></Image>
                         </Button>
-                        <Button  x:Name="btn下一筆" Width="45" Height="45" Margin="2.5"  IsTabStop="False">
+                        <Button  x:Name="btn下一筆" Width="45" Height="45" Margin="2.5"  IsTabStop="False" Click="btn下一筆_Click">
                             <Image Source="/DarbWareERP;component/Image/Icon_png/下一筆00y.png"></Image>
                         </Button>
-                        <Button x:Name="btn檔尾" Width="45" Height="45" Margin="2.5"  IsTabStop="False">
+                        <Button x:Name="btn檔尾" Width="45" Height="45" Margin="2.5"  IsTabStop="False" Click="btn檔尾_Click">
                             <Image Source="/DarbWareERP;component/Image/Icon_png/檔尾00y.png"></Image>
                         </Button>
                         <Button  x:Name="btn說明" Width="45" Height="45" Margin="2.5"  IsTabStop="False">

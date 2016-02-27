@@ -494,11 +494,7 @@
                 </Trigger.EnterActions>
             </Trigger>
             <Trigger Property="IsEnabled" Value="true"/>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
-                <Setter Property="Visibility" TargetName="DisabledVisualElement" Value="Visible"/>
-                <Setter Property="Visibility" TargetName="DisabledOverlay" Value="Visible"/>
-                <Setter Property="Visibility" TargetName="contentPresenter" Value="Collapsed"/>
+            <Trigger Property="IsEnabled" Value="false">                
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -2498,6 +2494,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Top"/>
         <Setter Property="Foreground" Value="{StaticResource OutsideFontColor}"/>
+        <Setter Property="FontSize" Value="16"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Label}">

@@ -107,21 +107,22 @@
     <Compile Include="控制項\命令區塊.xaml.cs">
       <DependentUpon>命令區塊.xaml</DependentUpon>
     </Compile>
-    <Compile Include="控制項\導覽區\導覽區.xaml.cs">
-      <DependentUpon>導覽區.xaml</DependentUpon>
+    <Compile Include="控制項\下方共同區塊\切換表單區.xaml.cs">
+      <DependentUpon>切換表單區.xaml</DependentUpon>
     </Compile>
-    <Compile Include="控制項\導覽區\導覽區按鈕.xaml.cs">
-      <DependentUpon>導覽區按鈕.xaml</DependentUpon>
+    <Compile Include="控制項\下方共同區塊\切換表單按鈕.xaml.cs">
+      <DependentUpon>切換表單按鈕.xaml</DependentUpon>
     </Compile>
-    <Compile Include="控制項\指令區\指令區.xaml.cs">
+    <Compile Include="控制項\下方共同區塊\指令區.xaml.cs">
       <DependentUpon>指令區.xaml</DependentUpon>
     </Compile>
-    <Compile Include="控制項\指令區\查詢區.xaml.cs">
-      <DependentUpon>查詢區.xaml</DependentUpon>
+    <Compile Include="控制項\下方共同區塊\導覽區.xaml.cs">
+      <DependentUpon>導覽區.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項\返回選單按鈕.xaml.cs">
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
     </Compile>
+    <Compile Include="控制項操作.cs" />
     <Compile Include="繼承窗口\視窗繼承.cs" />
     <Compile Include="控制項\表單控制.cs" />
     <Compile Include="轉資料\轉Sliy.xaml.cs">
@@ -153,15 +154,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="控制項\導覽區\導覽區.xaml">
+    <Page Include="控制項\下方共同區塊\切換表單區.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="控制項\指令區\指令區.xaml">
+    <Page Include="控制項\下方共同區塊\指令區.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="控制項\指令區\查詢區.xaml">
+    <Page Include="控制項\下方共同區塊\導覽區.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,7 +178,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="控制項\導覽區\導覽區按鈕.xaml">
+    <Page Include="控制項\下方共同區塊\切換表單按鈕.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
