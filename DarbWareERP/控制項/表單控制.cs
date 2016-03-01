@@ -7,7 +7,7 @@ using DarbWareERP.繼承窗口;
 
 namespace DarbWareERP.控制項
 {
-    static class 視窗控制
+    static class 表單控制
     {
         public static string 目前視窗 { get; set; }
         private static List<視窗繼承> 視窗列表 = new List<視窗繼承>(); // 存放實體

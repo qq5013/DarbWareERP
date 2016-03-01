@@ -32,18 +32,18 @@ namespace DarbWareERP.控制項.下方共同區塊
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {                                   
-            if (視窗控制.目前視窗 != this.Content.ToString())
+            if (表單控制.目前視窗 != this.Content.ToString())
             {
                 系統別 = ((TextBlock)((WrapPanel)this.Parent).FindName("txbl系統名稱")).Text;
-                if (視窗控制.視窗是否存在(this.Content.ToString()))
+                if (表單控制.視窗是否存在(this.Content.ToString()))
                 {
-                    視窗控制.開啟隱藏的視窗(this.Content.ToString());                    
+                    表單控制.開啟隱藏的視窗(this.Content.ToString());                    
                 }
                 else
                 {
-                    視窗控制.視窗加入(this.Content.ToString(), 打開表單(this.Content.ToString()));                    
+                    表單控制.視窗加入(this.Content.ToString(), 打開表單(this.Content.ToString()));                    
                 }
-                視窗控制.目前視窗 = this.Content.ToString();
+                表單控制.目前視窗 = this.Content.ToString();
                 控制項操作.尋找父代<視窗繼承>(this).Hide();
             }
         }

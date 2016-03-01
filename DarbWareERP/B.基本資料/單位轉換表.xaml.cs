@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
 using Model;
+using 邏輯.視窗相關;
+using 邏輯.視窗相關.B.基本資料;
 
 namespace DarbWareERP.B.基本資料
 {
@@ -24,7 +26,7 @@ namespace DarbWareERP.B.基本資料
         控制項操作 控制項操作 = new 控制項操作();
         public 單位轉換表()
         {
-            InitializeComponent();       
+            InitializeComponent();
         }
 
         private void 視窗繼承_Loaded(object sender, RoutedEventArgs e)
@@ -32,7 +34,29 @@ namespace DarbWareERP.B.基本資料
             CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
             // 透過設定 CollectionViewSource.Source 屬性載入資料: 
             // unitbaViewSource.Source = [泛用資料來源]
-            控制項操作.設定TextboxReadonly(this,true);            
-        }        
+            控制項操作.設定TextboxReadonly(this, true);
+        }
+        public override void SetControls()
+        {
+            base.SetControls();            
+            txt單位.IsReadOnly = Status == 0;
+            txt小數位數.IsReadOnly = Status == 0;
+            txt說明.IsReadOnly = Status == 0;
+        }
+        public override void SetDefaultValue()
+        {
+            base.SetDefaultValue();
+            txtpkid.Text = "";
+            txt單位.Text = "+++";
+            txt小數位數.Text = "0";
+            txt說明.Text = "";
+            txt單位.Focus();
+        }
+
+        public override bool UpdateData(CollectionViewSource cv)
+        {
+            單位轉換表Bll Bll = new 單位轉換表Bll();            
+            return Bll.UpdateData(cv);
+        }
     }
 }

@@ -12,7 +12,19 @@ using System.Windows;
 namespace 邏輯.視窗相關
 {
     public class 導覽區Bll
-    {        
+    {
+        public void 查詢(string 程式名稱, CollectionViewSource cv, string 資料表名稱, string keyfldvalue)
+        {
+            DataSet ds = Log.Log_Sys_Exec("SQLEDIT-" + 程式名稱, "DARB_MOVEREC", 資料表名稱, "SEEK", keyfldvalue);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                MessageBox.Show("查無資料", "訊息視窗", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                cv.Source = ds.Tables[0];                
+            }
+        }
         public void 檔首(string 程式名稱, CollectionViewSource cv, string 資料表名稱, string keyfldvalue)
         {
             DataSet ds = Log.Log_Sys_Exec("SQLEDIT-" + 程式名稱, "DARB_MOVEREC", 資料表名稱, "TOP", keyfldvalue);
@@ -23,7 +35,7 @@ namespace 邏輯.視窗相關
             DataSet ds = Log.Log_Sys_Exec("SQLEDIT-" + 程式名稱, "DARB_MOVEREC", 資料表名稱, "PRIOR", keyfldvalue);
             if (ds.Tables[0].Rows.Count == 0)
             {
-                MessageBox.Show("無上一筆紀錄可移動","訊息視窗",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                MessageBox.Show("無上一筆紀錄可移動", "訊息視窗", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DarbWareERP.控制項.下方共同區塊"
              xmlns:src ="clr-namespace:DarbWareERP.繼承窗口"
              mc:Ignorable="d" 
-          d:DesignHeight="210" d:DesignWidth="195" IsTabStop="False">    
+          d:DesignHeight="210" d:DesignWidth="195" IsTabStop="False" Loaded="UserControl_Loaded">    
     <Grid>
         <Border BorderThickness="1" Grid.Row="1">
             <Border.BorderBrush>

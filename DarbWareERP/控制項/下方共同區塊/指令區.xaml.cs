@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace DarbWareERP.控制項.下方共同區塊
 {
@@ -34,52 +35,119 @@ namespace DarbWareERP.控制項.下方共同區塊
 
         private void btn新增_Click(object sender, RoutedEventArgs e)
         {
-            控制項可否編輯(true);
-            顯示儲存和取消鍵();
+            控制項操作 控制項操作 = new 控制項操作();
+            視窗繼承 window = 控制項操作.尋找父代<視窗繼承>(this);            
+            if (window.BeforeAddNew())
+            {
+                清除綁定datatable(控制項操作, window);
+                BindingListCollectionView collectionview = (BindingListCollectionView)window.CollectionViewSource.View;
+                collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
+                window.Status = enumStatus.新增;
+                指令區按鈕顯示(true);
+                導覽區Enable(false);
+                window.SetControls();
+                window.SetDefaultValue();
+                window.AfterAddNew();                
+            }
         }
-        private void ButtonEnable(bool enable)
+        private void 清除綁定datatable(控制項操作 控制項操作, 視窗繼承 window)
+        {
+            導覽區 導覽區 = 控制項操作.用名稱尋找子代<導覽區>(window, "導覽區");
+            導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            DataTable dt = ((DataTable)window.CollectionViewSource.Source);
+            dt.Rows.Clear();            
+        }
+
+        private void btn儲存_Click(object sender, RoutedEventArgs e)
+        {
+            控制項操作 控制項操作 = new 控制項操作();
+            視窗繼承 window = 控制項操作.尋找父代<視窗繼承>(this);
+            導覽區 導覽區 = 控制項操作.用名稱尋找子代<導覽區>(window, "導覽區");                       
+            if (window.BeforeEndEdit())
+            {
+                enumStatus PrevTableStatus = window.Status;
+                BindingListCollectionView collectionview = (BindingListCollectionView)window.CollectionViewSource.View;
+                switch (window.Status)
+                {
+                    case enumStatus.一般:
+                        MessageBox.Show("儲存出錯，Status要設定為新增或修改");
+                        break;
+                    case enumStatus.新增:                        
+                        collectionview.CommitNew();
+                        break;
+                    case enumStatus.修改:                        
+                        collectionview.CommitEdit();
+                        break;
+                }                
+
+                try
+                {
+                    if (window.UpdateData(window.CollectionViewSource))
+                    {
+                        window.Status = 0;
+                        window.SetControls();
+                        window.AfterEndEdit();
+                        指令區按鈕顯示(false);
+                        導覽區Enable(true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("儲存不成功","錯誤訊息" ,MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "操作錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
+                    window.Status = PrevTableStatus;
+                }
+                
+            }
+        }       
+
+        private void btn取消_Click(object sender, RoutedEventArgs e)
+        {
+            控制項操作 控制項操作 = new 控制項操作();
+            視窗繼承 window = 控制項操作.尋找父代<視窗繼承>(this);
+            導覽區 導覽區= 控制項操作.用名稱尋找子代<導覽區>(window, "導覽區");
+            if (window.BeforeCancelEdit())
+            {
+                window.Status = enumStatus.一般;
+                指令區按鈕顯示(false);
+                導覽區Enable(true);
+                window.SetControls();
+                導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                window.AfterCancelEdit();
+            }
+        }
+        private void 導覽區Enable(bool enable)
+        {
+            控制項操作 控制項操作 = new 控制項操作();
+            視窗繼承 window = 控制項操作.尋找父代<視窗繼承>(this);
+            導覽區 導覽區 = 控制項操作.用名稱尋找子代<導覽區>(window, "導覽區");
+            導覽區.IsEnabled = enable;
+        }
+             
+        private void 指令區按鈕顯示(bool 顯示)
         {
             控制項操作 控制項操作 = new 控制項操作();
             WrapPanel wrap = 控制項操作.用名稱尋找子代<WrapPanel>(this, "wrappanel指令區");
             foreach (UIElement element in wrap.Children)
             {
-                ((Button)element).IsEnabled = enable; //儲存和取消鍵另外設定
+                ((Button)element).IsEnabled = !顯示; //儲存和取消鍵另外設定
+            }
+            btn儲存.IsEnabled = 顯示;
+            btn取消.IsEnabled = 顯示;
+            if (顯示)
+            {
+                btn儲存.Visibility = Visibility.Visible;
+                btn取消.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btn儲存.Visibility = Visibility.Hidden;
+                btn取消.Visibility = Visibility.Hidden;
             }
         }
-        private void 顯示儲存和取消鍵()
-        {
-            btn儲存.Visibility = Visibility.Visible;
-            btn儲存.IsEnabled = true;
-            btn取消.Visibility = Visibility.Visible;
-            btn取消.IsEnabled = true;
-        }
-        private void 隱藏儲存和取消鍵()
-        {
-            btn儲存.Visibility = Visibility.Hidden;
-            btn儲存.IsEnabled = false;
-            btn取消.Visibility = Visibility.Hidden;
-            btn取消.IsEnabled = false;
-        }
-
-        private void btn儲存_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn取消_Click(object sender, RoutedEventArgs e)
-        {
-            控制項可否編輯(false);
-            隱藏儲存和取消鍵();
-        }
-
-        private void 控制項可否編輯(bool 可否編輯)
-        {
-            控制項操作 控制項操作 = new 控制項操作();
-            視窗繼承 window = 控制項操作.尋找父代<視窗繼承>(this);
-            控制項操作.設定TextboxReadonly(window, !可否編輯);
-            ButtonEnable(!可否編輯);
-        }
-
         private void btn新增_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             改變ButtonContent(btn新增);
@@ -88,7 +156,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         private void btn複製_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             改變ButtonContent(btn複製);
-        }      
+        }
 
         private void btn修改_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -138,5 +206,11 @@ namespace DarbWareERP.控制項.下方共同區塊
             image.Source = new BitmapImage(new Uri(@"/DarbWareERP;component/Image/Icon_png/" + 圖片名稱 + ".png", UriKind.Relative));
             btn.Content = image;
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+         
     }
 }

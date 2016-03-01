@@ -82,8 +82,8 @@ namespace DarbWareERP
             Type CAType = Type.GetType("DarbWareERP." + btn.Content + "." + 程式名稱列表[0]);            
             視窗繼承 window = (視窗繼承)Activator.CreateInstance(CAType);            
             window.Show();
-            視窗控制.視窗加入(程式名稱列表[0],window);
-            視窗控制.目前視窗 = 程式名稱列表[0];
+            表單控制.視窗加入(程式名稱列表[0],window);
+            表單控制.目前視窗 = 程式名稱列表[0];
             this.CloseWindow();
         }
     }
