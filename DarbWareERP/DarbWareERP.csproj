@@ -137,7 +137,6 @@
     <Compile Include="電子賀卡.xaml.cs">
       <DependentUpon>電子賀卡.xaml</DependentUpon>
     </Compile>
-    <Compile Include="驗證規則\PositivePriceRule.cs" />
     <Page Include="A.系統資料\密碼權限表.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

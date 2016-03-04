@@ -60,6 +60,7 @@
     <Compile Include="cupdt.cs">
       <DependentUpon>銓昱Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sliy.cs">
       <DependentUpon>銓昱Model.tt</DependentUpon>

@@ -24,6 +24,7 @@ namespace DarbWareERP.B.基本資料
     public partial class 單位轉換表 : 視窗繼承
     {
         控制項操作 控制項操作 = new 控制項操作();
+        單位轉換表Bll Bll = new 單位轉換表Bll();
         public 單位轉換表()
         {
             InitializeComponent();
@@ -38,10 +39,10 @@ namespace DarbWareERP.B.基本資料
         }
         public override void SetControls()
         {
-            base.SetControls();            
-            txt單位.IsReadOnly = Status == 0;
-            txt小數位數.IsReadOnly = Status == 0;
-            txt說明.IsReadOnly = Status == 0;
+            base.SetControls();
+            txt單位.IsReadOnly = Status == EnumStatus.一般;
+            txt小數位數.IsReadOnly = Status == EnumStatus.一般;
+            txt說明.IsReadOnly = Status == EnumStatus.一般;
         }
         public override void SetDefaultValue()
         {
@@ -55,8 +56,15 @@ namespace DarbWareERP.B.基本資料
 
         public override bool UpdateData(CollectionViewSource cv)
         {
-            單位轉換表Bll Bll = new 單位轉換表Bll();            
-            return Bll.UpdateData(cv);
+            return Bll.UpdateData(cv, out this._增刪修訊息);
+        }
+
+        private void txt單位_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Status != EnumStatus.一般)
+            {
+                Bll.主索引鍵檢查(Status);
+            }
         }
     }
 }

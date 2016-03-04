@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using Model;
 
 namespace 邏輯.視窗相關
 {
     interface IWindow
     {
         //所有視窗的邏輯處理都要用這個介面
-        bool UpdateData(CollectionViewSource cv);        
+        bool UpdateData(CollectionViewSource cv,out string result);
+        void 主索引鍵檢查(EnumStatus status);
     }
 }

@@ -10,23 +10,23 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using Model;
 
 namespace DarbWareERP.繼承窗口
 {
-    public enum enumStatus
-    {
-        一般, 新增, 修改
-    }
+    
     public class 視窗繼承 : Window
     {
         
         private 控制項操作 控制項操作 = new 控制項操作();
         private bool canClose = false;
-        private enumStatus status = enumStatus.一般;               
+        private EnumStatus status = EnumStatus.一般;        
+        protected string _增刪修訊息;
+        public string 增刪修訊息 { get { return _增刪修訊息; } set { _增刪修訊息 = value; } }
         public string KeyFldValue { get; set; }
         public string 目前KeyFldValue { get; set; }
         public string 資料表名稱 { get; set; }        
-        public enumStatus Status { get { return status; } set { status = value; } } //0瀏覽模式,1新增模式,2修改模式，控制控制項的readonly、enable等             
+        public EnumStatus Status { get { return status; } set { status = value; } } //0瀏覽模式,1新增模式,2修改模式，控制控制項的readonly、enable等             
         public CollectionViewSource CollectionViewSource { get; set; }       
         public 視窗繼承()
         {
@@ -91,12 +91,14 @@ namespace DarbWareERP.繼承窗口
             if (e.Key == Key.Left)
             {
                 Button btn上一筆 = 控制項操作.用名稱尋找子代<Button>(this, "btn上一筆");
-                btn上一筆.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));                
+                btn上一筆.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                this.Focus();      
             }
             else if (e.Key == Key.Right)
             {
                 Button btn下一筆 = 控制項操作.用名稱尋找子代<Button>(this, "btn下一筆");
                 btn下一筆.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                this.Focus();
             }
         }
     }
