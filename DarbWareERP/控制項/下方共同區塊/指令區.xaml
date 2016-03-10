@@ -40,7 +40,7 @@
                     <Button x:Name="btn瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn瀏覽_IsEnabledChanged">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/瀏覽00.png"></Image>
                     </Button>
-                    <Button x:Name="btn清單瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn清單瀏覽_IsEnabledChanged">
+                    <Button x:Name="btn清單瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn清單瀏覽_IsEnabledChanged" Click="btn清單瀏覽_Click">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/清單瀏覽00.png"></Image>
                     </Button>
                     <Button x:Name="btn1" Content="btn1" Width="44" Height="44" Margin="2" IsTabStop="False"/>

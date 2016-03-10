@@ -83,7 +83,7 @@ namespace DarbWareERP
             視窗繼承 window = (視窗繼承)Activator.CreateInstance(CAType);            
             window.Show();
             表單控制.視窗加入(程式名稱列表[0],window);
-            表單控制.目前視窗 = 程式名稱列表[0];
+            表單控制.目前視窗 = 程式名稱列表[0];            
             this.CloseWindow();
         }
     }

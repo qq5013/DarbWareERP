@@ -35,7 +35,7 @@ namespace DarbWareERP.B.基本資料
             CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
             // 透過設定 CollectionViewSource.Source 屬性載入資料: 
             // unitbaViewSource.Source = [泛用資料來源]
-            控制項操作.設定TextboxReadonly(this, true);
+            控制項操作.設定TextboxReadonly(this, true);            
         }
         public override void SetControls()
         {
@@ -57,14 +57,6 @@ namespace DarbWareERP.B.基本資料
         public override bool UpdateData(CollectionViewSource cv)
         {
             return Bll.UpdateData(cv, out this._增刪修訊息);
-        }
-
-        private void txt單位_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (Status != EnumStatus.一般)
-            {
-                Bll.主索引鍵檢查(Status);
-            }
-        }
+        }        
     }
 }

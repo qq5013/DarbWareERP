@@ -29,10 +29,10 @@ namespace 數據庫連線
                           "Password=" + Password + ";"
         };
         public static DataSet Log_Sys_Exec(string LP_DATAEVENT, string LP_DATAFUNC,
-            string LP_P1, string LP_P2, string LP_P3 = "", string LP_P4 = "", string LP_P5 = "", string LP_P6 = "",
+           ref string LP_P1, string LP_P2, string LP_P3 = "", string LP_P4 = "", string LP_P5 = "", string LP_P6 = "",
             string LP_P7 = "", string LP_P8 = "", string LP_P9 = "", string LP_P10 = "", string LP_P11 = "",
             string LP_P12 = "")
-        {
+        {                  
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = conn;
@@ -40,9 +40,10 @@ namespace 數據庫連線
             cmd.Parameters.AddWithValue("@languagen", "");
             cmd.Parameters.AddWithValue("@eventtype", "Exec Proc");
             cmd.Parameters.AddWithValue("@dataevent", LP_DATAEVENT);
-            cmd.Parameters.AddWithValue("@datafunc", LP_DATAFUNC);
-            cmd.Parameters.Add(new SqlParameter("@param1", SqlDbType.NVarChar, 200)).Value = LP_P1;
+            cmd.Parameters.AddWithValue("@datafunc", LP_DATAFUNC);            
+            SqlParameter L_Param1 = cmd.Parameters.Add(new SqlParameter("@param1", SqlDbType.NVarChar, 200));            
             cmd.Parameters["@param1"].Direction = ParameterDirection.InputOutput;
+            L_Param1.Value = LP_P1;
             cmd.Parameters.AddWithValue("@param2", LP_P2);
             cmd.Parameters.AddWithValue("@param3", LP_P3);
             cmd.Parameters.AddWithValue("@param4", LP_P4);
@@ -63,6 +64,7 @@ namespace 數據庫連線
             SqlParameter L_RESULT = cmd.Parameters.Add("@result", SqlDbType.NChar, 254);
             cmd.Parameters["@result"].Direction = ParameterDirection.Output;
             DataSet ds = 判斷表名(LP_DATAFUNC, cmd);
+            LP_P1 = L_Param1.Value.ToString();
             return ds;
         }
 

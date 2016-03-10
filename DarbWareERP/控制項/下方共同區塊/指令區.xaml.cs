@@ -39,8 +39,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
 
         private void btn新增_Click(object sender, RoutedEventArgs e)
-        {
-                  
+        {                  
             if (window.BeforeAddNew())
             {
                 清除綁定datatable(控制項操作, window);
@@ -50,7 +49,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
                 window.SetControls();
-                window.SetDefaultValue();
+                window.SetDefaultValue();                
                 window.AfterAddNew();                
             }
         }
@@ -99,10 +98,14 @@ namespace DarbWareERP.控制項.下方共同區塊
                 }
                 
             }
+            else
+            {
+                MessageBox.Show("請確認是否有輸入錯誤資料", "訊息視窗", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }       
 
         private void btn取消_Click(object sender, RoutedEventArgs e)
-        {          
+        {            
             if (window.BeforeCancelEdit())
             {
                 BindingListCollectionView collectionview = (BindingListCollectionView)window.CollectionViewSource.View;
@@ -217,6 +220,25 @@ namespace DarbWareERP.控制項.下方共同區塊
             導覽區 = 控制項操作.用名稱尋找子代<導覽區>(window, "導覽區");
             wrap = 控制項操作.用名稱尋找子代<WrapPanel>(this, "wrappanel指令區");
         }
-         
+        bool bo = true;
+        Brush br = null;
+        Brush br1 = new SolidColorBrush(Colors.Coral);
+        
+        private void btn清單瀏覽_Click(object sender, RoutedEventArgs e)
+        {            
+            if (bo)
+            {
+                Button QQ = 控制項操作.用名稱尋找子代<Button>(window, "btn導覽區按鈕1");
+                br = QQ.Foreground;
+                QQ.Foreground = br1;
+                bo = !bo;
+            }
+            else
+            {
+                Button QQ = 控制項操作.用名稱尋找子代<Button>(window, "btn導覽區按鈕1");
+                QQ.Foreground = br;
+                bo = !bo;
+            }
+        }
     }
 }

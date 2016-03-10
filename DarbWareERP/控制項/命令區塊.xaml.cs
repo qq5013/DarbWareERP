@@ -27,11 +27,19 @@ namespace DarbWareERP.控制項
         }
         private void btn返回上一層_Click(object sender, RoutedEventArgs e)
         {
-            選單 window = new 選單();
-            window.Show();            
-            視窗繼承 w = null;
-            w = FindParent<視窗繼承>(this);
-            w.CloseWindow();
+            if (Model.視窗Model.是否可以離開頁面)
+            {
+                選單 window = new 選單();
+                window.Show();
+                視窗繼承 w = null;
+                w = FindParent<視窗繼承>(this);
+                w.CloseWindow();
+                表單控制.視窗列表清空();
+            }
+            else
+            {
+                MessageBox.Show(Model.視窗Model.目前編修資料表 + "正在編修中，不得離開。","提醒",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            }
         }
         private T FindParent<T>(DependencyObject i_dp) where T : DependencyObject
         {

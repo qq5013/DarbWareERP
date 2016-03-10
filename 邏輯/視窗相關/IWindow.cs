@@ -11,7 +11,6 @@ namespace 邏輯.視窗相關
     interface IWindow
     {
         //所有視窗的邏輯處理都要用這個介面
-        bool UpdateData(CollectionViewSource cv,out string result);
-        void 主索引鍵檢查(EnumStatus status);
+        bool UpdateData(CollectionViewSource cv,out string result);        
     }
 }

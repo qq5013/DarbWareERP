@@ -23,15 +23,14 @@ namespace DarbWareERP.控制項.下方共同區塊
     public partial class 切換表單按鈕 : Button
     {
         private string 系統別;
-        private 控制項操作 控制項操作 = new 控制項操作();
+        private 控制項操作 控制項操作 = new 控制項操作();                
         public 切換表單按鈕()
         {
             InitializeComponent();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {                                   
+        {            
             if (表單控制.目前視窗 != this.Content.ToString())
             {
                 系統別 = ((TextBlock)((WrapPanel)this.Parent).FindName("txbl系統名稱")).Text;
@@ -40,10 +39,10 @@ namespace DarbWareERP.控制項.下方共同區塊
                     表單控制.開啟隱藏的視窗(this.Content.ToString());                    
                 }
                 else
-                {
+                {                    
                     表單控制.視窗加入(this.Content.ToString(), 打開表單(this.Content.ToString()));                    
                 }
-                表單控制.目前視窗 = this.Content.ToString();
+                表單控制.目前視窗 = this.Content.ToString();                
                 控制項操作.尋找父代<視窗繼承>(this).Hide();
             }
         }

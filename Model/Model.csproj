@@ -38,11 +38,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,6 +80,7 @@
     <Compile Include="unitba.cs">
       <DependentUpon>銓昱Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="視窗Model.cs" />
     <Compile Include="銓昱Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -32,18 +32,6 @@ namespace 邏輯.視窗相關.B.基本資料
             return true;             
         }
 
-        public void 主索引鍵檢查(EnumStatus status)
-        {
-            switch (status)
-            {
-                case EnumStatus.新增:
-                    
-                    break;
-                case EnumStatus.修改:
-                    break;
-            }           
-        }
-
         private void unitba新增值(List<unitba> listunitba)
         {
             foreach (unitba unitba in listunitba)

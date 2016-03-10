@@ -37,12 +37,19 @@ namespace DarbWareERP.控制項.下方共同區塊
                 if (i < 按鈕列表.Count)
                 {
                     btn.Content = 按鈕列表[i];
+                    btn.Name = "btn" + 按鈕列表[i];
+                    if (btn.Name== "btn" + Model.視窗Model.目前編修資料表)
+                    {
+                        btn.Foreground = 表單控制.增刪修的顏色;
+                    }
                 }
                 else
                 {
                     btn.Visibility = Visibility.Collapsed;
                 }
             }
+            
+            
         }
 
     }

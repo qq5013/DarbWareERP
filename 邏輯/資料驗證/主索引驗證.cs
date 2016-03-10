@@ -5,30 +5,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Data;
 using 數據庫連線;
+using System.Data;
+using System.Windows;
 
 namespace 邏輯.資料驗證
 {
-    public class 主索引驗證:ValidationRule
+    public class 主索引驗證 : ValidationRule
     {
+        public CollectionViewSource cvs { get; set; }
         public string ControlSource { get; set; }
-        private string returnValue;
-        string validData;
-        string existTable;
-        string chkField;
+        public string Table { get; set; }
+        public string ChkField { get { return Model.視窗Model.KeyFldValue; } }
+        private string returnValue = "";
         string addedit;
         string srvbid;
-        string pkid;
+        int pkid;
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
+            ControlSource = ((BindingListCollectionView)cvs.View).ToString();
+            DataTable dt = (DataTable)cvs.Source;
             try
             {
-                Log.Log_Sys_Exec(ControlSource,"DARB_CHKDBL",out returnValue,validData,existTable,chkField,addedit,srvbid,pkid);
+                if (dt.Rows.Count == 0)
+                {
+                    addedit = "A";
+                    srvbid = "0";
+                    pkid = 0;
+                }
+                else
+                {
+                    addedit = "E";
+                }                
+                Log.Log_Sys_Exec(ControlSource, "DARB_CHKDBL", ref returnValue, value.ToString(), Table, ChkField, addedit, srvbid, pkid.ToString());
+                if (returnValue == "Y")
+                {
+                    Model.視窗Model.是否可以儲存 = false;
+                    MessageBox.Show("資料不得重複", "輸入錯誤", MessageBoxButton.OK, MessageBoxImage.Error);                    
+                    return new ValidationResult(false, "不合法的輸入");
+                }               
             }
             catch
             {
                 return new ValidationResult(false, "不合法的輸入");
             }
+            Model.視窗Model.是否可以儲存 = true;
             return new ValidationResult(true, null);
         }
     }
