@@ -57,6 +57,7 @@
     <Compile Include="自動抓取幣別.cs" />
     <Compile Include="抓台銀匯率.cs" />
     <Compile Include="視窗相關\B.基本資料\單位轉換表Bll.cs" />
+    <Compile Include="視窗相關\B.基本資料\業務資料表Bll.cs" />
     <Compile Include="視窗相關\IWindow.cs" />
     <Compile Include="視窗相關\WindowBll.cs" />
     <Compile Include="視窗相關\導覽區Bll.cs" />

@@ -12,12 +12,13 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using Model;
 using DarbWareERP.控制項;
+using 邏輯.視窗相關.B.基本資料;
 
 namespace DarbWareERP.繼承窗口
 {
 
     public class 視窗繼承 : Window, INotifyPropertyChanged
-    {
+    {        
         public event PropertyChangedEventHandler PropertyChanged; //配合新增修改時，按鈕的顏色
         public void OnPropertyChanged(PropertyChangedEventArgs e)
         {
@@ -27,11 +28,12 @@ namespace DarbWareERP.繼承窗口
                 PropertyChanged(this, e);
             }
         }
-        private 控制項操作 控制項操作 = new 控制項操作();
+        
         private bool canClose = false;
         private EnumStatus status = EnumStatus.一般;
         private bool _新增修改中 = false;
         protected string _增刪修訊息;
+        public 控制項操作 控制項操作 = new 控制項操作();        
         public string 增刪修訊息 { get { return _增刪修訊息; } set { _增刪修訊息 = value; } }
         public string KeyFldValue { get; set; }
         public string 目前KeyFldValue { get; set; }

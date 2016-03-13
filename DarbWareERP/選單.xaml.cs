@@ -86,5 +86,6 @@ namespace DarbWareERP
             表單控制.目前視窗 = 程式名稱列表[0];            
             this.CloseWindow();
         }
+        
     }
 }

@@ -18,5 +18,5 @@
     <Style TargetType="{x:Type Base:選單 }" BasedOn="{StaticResource  IconAndTitle}"/>
     
     <Style TargetType="{x:Type data:轉Accl}" BasedOn="{StaticResource  IconAndTitle}"/>
-    <Style TargetType="{x:Type data:轉Sliy}" BasedOn="{StaticResource  IconAndTitle}"/>
+    <Style TargetType="{x:Type data:轉Sliy}" BasedOn="{StaticResource  IconAndTitle}"/>    
 </ResourceDictionary>

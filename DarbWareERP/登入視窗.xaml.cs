@@ -83,7 +83,5 @@ namespace DarbWareERP
                 element.MoveFocus(request);
             }
         }
-
-
     }
 }

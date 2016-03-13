@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="darbdcstcsa1Model.unitba" Width="1.5" PointX="11.125" PointY="0.75" />
         <EntityTypeShape EntityType="darbdcstcsa1Model.cupdma" Width="1.5" PointX="9.375" PointY="7.75" />
         <EntityTypeShape EntityType="darbdcstcsa1Model.cupdt" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="darbdcstcsa1Model.salesmen" Width="1.5" PointX="0.75" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

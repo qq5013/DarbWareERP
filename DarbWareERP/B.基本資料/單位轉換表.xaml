@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
-        xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
-          xmlns:控制項="clr-namespace:DarbWareERP.控制項"     
+        xmlns:src="clr-namespace:DarbWareERP.繼承窗口"   
+    xmlns:控制項="clr-namespace:DarbWareERP.控制項"     
     xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊"    
     xmlns:Model="clr-namespace:Model;assembly=Model"
     xmlns:rule ="clr-namespace:邏輯.資料驗證;assembly=邏輯"
     x:Class="DarbWareERP.B.基本資料.單位轉換表"    
-        mc:Ignorable="d" Height="768" Width="1024" Tag="單位轉換表" KeyFldValue="單位" 資料表名稱="UNITBA" Loaded="視窗繼承_Loaded">
+        mc:Ignorable="d" Height="768" Width="1024" Tag="單位轉換表" KeyFldValue="單位" 資料表名稱="UNITBA" 
+    Loaded="視窗繼承_Loaded">
     <src:視窗繼承.Resources>
         <CollectionViewSource x:Key="unitbaViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:unitba}, CreateList=True}"/>
     </src:視窗繼承.Resources>
@@ -61,9 +62,11 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
-            </TextBox>            
+            </TextBox>
             <Label Content="說明:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
             <TextBox x:Name="txt說明" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding 說明, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="197,374,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+
     </Grid>
 </src:視窗繼承>

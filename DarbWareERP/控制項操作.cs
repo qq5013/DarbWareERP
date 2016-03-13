@@ -9,25 +9,8 @@ using System.Windows.Media;
 
 namespace DarbWareERP
 {
-    class 控制項操作
-    {
-        /// <summary>
-        /// 設定資料區中的TEXTBOX的isreadonly值，在畫面初始、新增、儲存使用
-        /// </summary>
-        /// <param name="dobj"></param>
-        /// <param name="是否可見"></param>
-        public void 設定TextboxReadonly(DependencyObject dobj,bool 是否可見)
-        {
-            Grid grid = 用名稱尋找子代<Grid>(dobj, "資料區");
-            if (grid == null) { return; }
-            foreach (UIElement txt in grid.Children)
-            {                
-                if (txt is TextBox)
-                {
-                    ((TextBox)txt).IsReadOnly = 是否可見;
-                }
-            }
-        }       
+    public class 控制項操作
+    {       
         public T 用名稱尋找子代<T>(DependencyObject depObj, string childName) where T : DependencyObject
         {
 

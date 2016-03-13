@@ -66,10 +66,12 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
@@ -374,6 +376,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{a5d42071-97fd-4447-a969-b7895289feb1}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\報表\報表.csproj">
+      <Project>{e2d3506d-660c-443c-8011-1aaa17a3983e}</Project>
+      <Name>報表</Name>
     </ProjectReference>
     <ProjectReference Include="..\邏輯\邏輯.csproj">
       <Project>{2f31b07a-2111-4ce7-854b-6ec399619c55}</Project>

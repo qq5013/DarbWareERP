@@ -55,8 +55,8 @@ namespace 邏輯.視窗相關
                 MessageBox.Show("無下一筆紀錄可移動", "訊息視窗", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
-            {
-                cv.Source = ds.Tables[0];
+            {               
+                    cv.Source = ds.Tables[0];                
             }
         }
         public void 檔尾(string 程式名稱, CollectionViewSource cv, string 資料表名稱, string keyfldvalue)

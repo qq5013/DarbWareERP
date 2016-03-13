@@ -127,6 +127,26 @@
           <Property Name="logid" Type="int" Nullable="false" />
           <Property Name="linkid" Type="int" />
         </EntityType>
+        <EntityType Name="salesmen">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="業務員編號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="姓名" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="部門代號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="到職日期" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="離職日期" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="輸入日期" Type="datetime" Nullable="false" />
+          <Property Name="輸入人員" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="輸入地點" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="增刪修" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="選擇" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="管制碼" Type="int" Nullable="false" />
+          <Property Name="srvdbid" Type="smallint" Nullable="false" />
+          <Property Name="pkid" Type="int" Nullable="false" />
+          <Property Name="logid" Type="int" Nullable="false" />
+          <Property Name="linkid" Type="int" />
+        </EntityType>
         <EntityType Name="sliy">
           <Key>
             <PropertyRef Name="pkid" />
@@ -313,6 +333,7 @@
           <EntitySet Name="accl" EntityType="Self.accl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cupdma" EntityType="Self.cupdma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cupdt" EntityType="Self.cupdt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="salesmen" EntityType="Self.salesmen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliy" EntityType="Self.sliy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliym" EntityType="Self.sliym" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sliyyear" EntityType="Self.sliyyear" Schema="dbo" store:Type="Tables" />
@@ -465,6 +486,7 @@
           <EntitySet Name="unitba" EntityType="darbdcstcsa1Model.unitba" />
           <EntitySet Name="cupdma" EntityType="darbdcstcsa1Model.cupdma" />
           <EntitySet Name="cupdt" EntityType="darbdcstcsa1Model.cupdt" />
+          <EntitySet Name="salesmen" EntityType="darbdcstcsa1Model.salesmen" />
         </EntityContainer>
         <EntityType Name="sliyyear">
           <Key>
@@ -626,6 +648,26 @@
           <Property Name="模具編號" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="備註" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="單重" Type="Decimal" Nullable="false" Precision="16" Scale="6" />
+          <Property Name="輸入日期" Type="DateTime" Nullable="false" />
+          <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="增刪修" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="選擇" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="管制碼" Type="Int32" Nullable="false" />
+          <Property Name="srvdbid" Type="Int16" Nullable="false" />
+          <Property Name="pkid" Type="Int32" Nullable="false" />
+          <Property Name="logid" Type="Int32" Nullable="false" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salesmen">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="業務員編號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="姓名" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="部門代號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="到職日期" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="離職日期" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="輸入日期" Type="DateTime" Nullable="false" />
           <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
@@ -952,6 +994,27 @@
                 <ScalarProperty Name="品號" ColumnName="品號" />
                 <ScalarProperty Name="客戶品號" ColumnName="客戶品號" />
                 <ScalarProperty Name="序號" ColumnName="序號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salesmen">
+            <EntityTypeMapping TypeName="darbdcstcsa1Model.salesmen">
+              <MappingFragment StoreEntitySet="salesmen">
+                <ScalarProperty Name="linkid" ColumnName="linkid" />
+                <ScalarProperty Name="logid" ColumnName="logid" />
+                <ScalarProperty Name="pkid" ColumnName="pkid" />
+                <ScalarProperty Name="srvdbid" ColumnName="srvdbid" />
+                <ScalarProperty Name="管制碼" ColumnName="管制碼" />
+                <ScalarProperty Name="選擇" ColumnName="選擇" />
+                <ScalarProperty Name="增刪修" ColumnName="增刪修" />
+                <ScalarProperty Name="輸入地點" ColumnName="輸入地點" />
+                <ScalarProperty Name="輸入人員" ColumnName="輸入人員" />
+                <ScalarProperty Name="輸入日期" ColumnName="輸入日期" />
+                <ScalarProperty Name="離職日期" ColumnName="離職日期" />
+                <ScalarProperty Name="到職日期" ColumnName="到職日期" />
+                <ScalarProperty Name="部門代號" ColumnName="部門代號" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="業務員編號" ColumnName="業務員編號" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

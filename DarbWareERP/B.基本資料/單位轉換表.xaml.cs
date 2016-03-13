@@ -15,6 +15,11 @@ using DarbWareERP.繼承窗口;
 using Model;
 using 邏輯.視窗相關;
 using 邏輯.視窗相關.B.基本資料;
+using 報表;
+using System.Data;
+using System.Reflection;
+using System.Printing;
+using System.Drawing.Printing;
 
 namespace DarbWareERP.B.基本資料
 {
@@ -23,8 +28,7 @@ namespace DarbWareERP.B.基本資料
     /// </summary>
     public partial class 單位轉換表 : 視窗繼承
     {
-        控制項操作 控制項操作 = new 控制項操作();
-        單位轉換表Bll Bll = new 單位轉換表Bll();
+        private 單位轉換表Bll 單位轉換表Bll = new 單位轉換表Bll();
         public 單位轉換表()
         {
             InitializeComponent();
@@ -32,10 +36,8 @@ namespace DarbWareERP.B.基本資料
 
         private void 視窗繼承_Loaded(object sender, RoutedEventArgs e)
         {
-            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
-            // 透過設定 CollectionViewSource.Source 屬性載入資料: 
-            // unitbaViewSource.Source = [泛用資料來源]
-            控制項操作.設定TextboxReadonly(this, true);            
+            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));            
+            SetControls();            
         }
         public override void SetControls()
         {
@@ -56,7 +58,21 @@ namespace DarbWareERP.B.基本資料
 
         public override bool UpdateData(CollectionViewSource cv)
         {
-            return Bll.UpdateData(cv, out this._增刪修訊息);
-        }        
+            return 單位轉換表Bll.UpdateData(cv, out this._增刪修訊息);
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Form1 f = new Form1();
+            f.Show();
+            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
+            DataTable dt = (DataTable)CollectionViewSource.Source;            
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = dt;
+            f.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            f.reportViewer1.RefreshReport();
+
+        }
     }
 }
