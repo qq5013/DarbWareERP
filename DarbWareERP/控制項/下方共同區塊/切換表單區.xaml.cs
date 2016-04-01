@@ -25,8 +25,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         {
             InitializeComponent();
         }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        public void 按鈕賦值()
         {
             txbl系統名稱.Text = WindowBll.GetInstance().系統名稱;
             List<string> 按鈕列表 = WindowBll.GetInstance().程式名稱列表(txbl系統名稱.Text);
@@ -36,21 +35,14 @@ namespace DarbWareERP.控制項.下方共同區塊
                 Button btn = (Button)VisualTreeHelper.GetChild(WrapPanel, i);
                 if (i < 按鈕列表.Count)
                 {
-                    btn.Content = 按鈕列表[i];
-                    btn.Name = "btn" + 按鈕列表[i];
-                    if (btn.Name== "btn" + Model.視窗Model.目前編修資料表)
-                    {
-                        btn.Foreground = 表單控制.增刪修的顏色;
-                    }
+                    btn.Content = 按鈕列表[i];      
+                    btn.Name = "btn"+ 按鈕列表[i];
                 }
                 else
                 {
                     btn.Visibility = Visibility.Collapsed;
                 }
             }
-            
-            
         }
-
     }
 }

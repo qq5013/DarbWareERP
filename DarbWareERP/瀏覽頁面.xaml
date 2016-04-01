@@ -1,0 +1,49 @@
+﻿<src:頁面繼承 x:Class="DarbWareERP.瀏覽頁面"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DarbWareERP"
+      xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
+      xmlns:控制項="clr-namespace:DarbWareERP.控制項"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="瀏覽頁面">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="259*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="3" Grid.Row="1">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+                </Border.BorderBrush>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="100"/>
+                        <ColumnDefinition Width="Auto" MinWidth="245"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <控制項:瀏覽條件區 Grid.Column="2" Height="210"/>
+                    <控制項:瀏覽指令區 Grid.Column="3" Height="210"/>
+                </Grid>
+            </Border>
+            <Grid x:Name="資料區" Grid.Row="0" HorizontalAlignment="Left" Margin="40,52,0,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>                
+            </Grid>
+            <DataGrid x:Name="datagrid" Grid.Row="0" Margin="3"/>
+        </Grid>
+    </Grid>
+</src:頁面繼承>

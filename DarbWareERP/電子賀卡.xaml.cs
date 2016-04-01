@@ -24,7 +24,7 @@ namespace DarbWareERP
     /// <summary>
     /// 電子賀卡.xaml 的互動邏輯
     /// </summary>
-    public partial class 電子賀卡 : 視窗繼承
+    public partial class 電子賀卡 : 頁面繼承
     {
         public 電子賀卡()
         {

@@ -8,6 +8,6 @@ namespace Model
 {    
     public enum EnumStatus
     {
-        一般, 新增, 修改
+        一般, 新增, 修改,複製
     }
 }

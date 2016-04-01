@@ -20,7 +20,7 @@ namespace 邏輯.資料驗證
         public string ChkField { get { return Model.視窗Model.KeyFldValue; } }
         private string returnValue = "";
         string addedit;
-        string srvbid;
+        int srvbid;
         int pkid;
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
@@ -31,14 +31,14 @@ namespace 邏輯.資料驗證
                 if (dt.Rows.Count == 0)
                 {
                     addedit = "A";
-                    srvbid = "0";
+                    srvbid =Log.srvdbid;
                     pkid = 0;
                 }
                 else
                 {
                     addedit = "E";
                 }                
-                Log.Log_Sys_Exec(ControlSource, "DARB_CHKDBL", ref returnValue, value.ToString(), Table, ChkField, addedit, srvbid, pkid.ToString());
+                Log.Log_Sys_Exec(ControlSource, "DARB_CHKDBL", ref returnValue, value.ToString(), Table, ChkField, addedit, srvbid.ToString(), pkid.ToString());
                 if (returnValue == "Y")
                 {
                     Model.視窗Model.是否可以儲存 = false;

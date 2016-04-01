@@ -28,11 +28,7 @@ namespace DarbWareERP.控制項
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            視窗繼承 w = null;
-            選單 window = new 選單();
-            window.Show();
-            w = FindParent<視窗繼承>(this);
-            w.CloseWindow();          
+                     
         }
         private T FindParent<T>(DependencyObject i_dp) where T : DependencyObject
         {

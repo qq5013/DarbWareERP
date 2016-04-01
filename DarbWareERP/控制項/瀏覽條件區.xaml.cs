@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DarbWareERP.繼承窗口;
 
-namespace DarbWareERP.B.基本資料
+namespace DarbWareERP.控制項
 {
     /// <summary>
-    /// 業務資料表.xaml 的互動邏輯
+    /// 瀏覽條件區.xaml 的互動邏輯
     /// </summary>
-    public partial class 業務資料表 : 頁面繼承
+    public partial class 瀏覽條件區 : UserControl
     {
-        public 業務資料表()
+        public 瀏覽條件區()
         {
             InitializeComponent();
-        }
-        private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
-        {
-            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("salesmenViewSource")));
-            SetControls();
         }
     }
 }

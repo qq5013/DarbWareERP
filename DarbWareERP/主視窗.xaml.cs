@@ -12,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
-using 邏輯.轉資料;
 
-namespace DarbWareERP.轉資料
+namespace DarbWareERP
 {
     /// <summary>
-    /// 轉ACCL.xaml 的互動邏輯
+    /// 主視窗.xaml 的互動邏輯
     /// </summary>
-    public partial class 轉Accl : 頁面繼承
+    public partial class 主視窗 : Window
     {
-        public 轉Accl()
+        public 主視窗()
         {
-            InitializeComponent();
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            轉傳票Bll 轉資料 = new 轉傳票Bll();
-            string result= 轉資料.轉Accl();
-            MessageBox.Show(result);
+            InitializeComponent();            
         }
     }
 }

@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using Model;
+using 邏輯.視窗相關;
 
 namespace DarbWareERP.控制項.下方共同區塊
 {
@@ -24,7 +25,7 @@ namespace DarbWareERP.控制項.下方共同區塊
     public partial class 指令區 : UserControl
     {
         控制項操作 控制項操作;
-        視窗繼承 window;
+        頁面繼承 page;
         導覽區 導覽區;
         WrapPanel wrap;
         public 指令區()
@@ -39,77 +40,131 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
 
         private void btn新增_Click(object sender, RoutedEventArgs e)
-        {                  
-            if (window.BeforeAddNew())
+        {
+            if (page.BeforeAddNew())
             {
-                清除綁定datatable(控制項操作, window);
-                BindingListCollectionView collectionview = (BindingListCollectionView)window.CollectionViewSource.View;
+                清除綁定datatable(控制項操作, page);
+                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
+                collectionview.Refresh();
                 collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
-                window.Status = EnumStatus.新增;
+                
+                page.Status = EnumStatus.新增;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
-                window.SetControls();
-                window.SetDefaultValue();                
-                window.AfterAddNew();                
+                page.SetControls();
+                page.SetDefaultValue();
+                page.AfterAddNew();
             }
         }
-        private void 清除綁定datatable(控制項操作 控制項操作, 視窗繼承 window)
-        {            
+        private void btn修改_Click(object sender, RoutedEventArgs e)
+        {
+            if (!確認資料是否存在())
+            {
+                MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            if (page.BeforeEdit())
+            {
+                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
+                collectionview.EditItem(collectionview.CurrentItem);
+                page.Status = EnumStatus.修改;
+                指令區按鈕顯示(true);
+                導覽區Enable(false);
+                page.SetControls();
+                page.AfterEdit();
+            }
+        }
+        private void btn複製_Click(object sender, RoutedEventArgs e)
+        {
+            if (page.BeforeCopy())
+            {
+                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
+                collectionview.EditItem(collectionview.CurrentItem);
+                page.Status = EnumStatus.複製;
+                指令區按鈕顯示(true);
+                導覽區Enable(false);
+                page.SetControls();
+                page.AfterCopy();
+            }
+        }       
+        private void btn刪除_Click(object sender, RoutedEventArgs e)
+        {           
+            if (!確認資料是否存在())
+            {
+                MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            if (page.BeforeDelete())
+            {
+                if( MessageBox.Show("是否刪除此筆資料", "刪除", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                {
+                    page.DeleteData(page.Pkid);
+                    MessageBox.Show("刪除成功", "訊息", MessageBoxButton.OK, MessageBoxImage.Information);
+                }                
+                導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));                
+            }
+            page.AfterDelete();
+        }
+        private void 清除綁定datatable(控制項操作 控制項操作, 頁面繼承 page)
+        {
             導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            DataTable dt = ((DataTable)window.CollectionViewSource.Source);
-            dt.Rows.Clear();            
+            DataTable dt = ((DataTable)page.CollectionViewSource.Source);
+            dt.Rows.Clear();
         }
 
         private void btn儲存_Click(object sender, RoutedEventArgs e)
-        {                            
-            if (window.BeforeEndEdit())
+        {
+            if (page.BeforeEndEdit())
             {
-                EnumStatus PrevTableStatus = window.Status;
-                BindingListCollectionView collectionview = (BindingListCollectionView)window.CollectionViewSource.View;
-                switch (window.Status)
+                EnumStatus PrevTableStatus = page.Status;
+                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
+                switch (page.Status)
                 {
                     case EnumStatus.一般:
                         MessageBox.Show("儲存出錯，Status要設定為新增或修改");
                         break;
-                    case EnumStatus.新增:                        
+                    case EnumStatus.新增:
                         collectionview.CommitNew();
                         break;
-                    case EnumStatus.修改:                        
+                    case EnumStatus.修改:
                         collectionview.CommitEdit();
                         break;
-                }                
+                    case EnumStatus.複製:
+                        collectionview.CommitEdit();
+                        break;
+                }
 
                 try
                 {
-                    if (window.UpdateData(window.CollectionViewSource))
+                    if (page.UpdateData(page.CollectionViewSource,page.Status))
                     {
-                        window.Status = 0;
-                        window.SetControls();
-                        window.AfterEndEdit();
+                        page.Status = EnumStatus.一般;
+                        page.SetControls();
+                        page.AfterEndEdit();
                         指令區按鈕顯示(false);
                         導覽區Enable(true);
-                        MessageBox.Show(window.增刪修訊息);
-                    }                    
+                    }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "操作錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
-                    window.Status = PrevTableStatus;
+                    page.Status = PrevTableStatus;
                 }
+                MessageBox.Show(page.增刪修訊息);
                 
             }
             else
             {
                 MessageBox.Show("請確認是否有輸入錯誤資料", "訊息視窗", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
-        }       
+            }            
+        }
 
         private void btn取消_Click(object sender, RoutedEventArgs e)
-        {            
-            if (window.BeforeCancelEdit())
+        {
+            if (page.BeforeCancelEdit())
             {
-                BindingListCollectionView collectionview = (BindingListCollectionView)window.CollectionViewSource.View;
-                switch (window.Status)
+                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
+                switch (page.Status)
                 {
                     case EnumStatus.一般:
                         MessageBox.Show("取消出錯，Status要設定為新增或修改");
@@ -119,24 +174,28 @@ namespace DarbWareERP.控制項.下方共同區塊
                         break;
                     case EnumStatus.修改:
                         collectionview.CancelEdit();
+                        
+                        break;
+                    case EnumStatus.複製:
+                        collectionview.CancelEdit();
                         break;
                 }
-                window.Status = EnumStatus.一般;
+                page.Status = EnumStatus.一般;
                 指令區按鈕顯示(false);
                 導覽區Enable(true);
-                window.SetControls();
+                page.SetControls();
                 導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                window.AfterCancelEdit();
+                page.AfterCancelEdit();
             }
         }
         private void 導覽區Enable(bool enable)
-        {            
+        {
             導覽區.IsEnabled = enable;
         }
-             
+
         private void 指令區按鈕顯示(bool 顯示)
-        {           
-            
+        {
+
             foreach (UIElement element in wrap.Children)
             {
                 ((Button)element).IsEnabled = !顯示; //儲存和取消鍵另外設定
@@ -216,29 +275,37 @@ namespace DarbWareERP.控制項.下方共同區塊
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             控制項操作 = new 控制項操作();
-            window = 控制項操作.尋找父代<視窗繼承>(this);
-            導覽區 = 控制項操作.用名稱尋找子代<導覽區>(window, "導覽區");
+            page = 控制項操作.尋找父代<頁面繼承>(this);
+            導覽區 = 控制項操作.用名稱尋找子代<導覽區>(page, "導覽區");
             wrap = 控制項操作.用名稱尋找子代<WrapPanel>(this, "wrappanel指令區");
         }
-        bool bo = true;
-        Brush br = null;
-        Brush br1 = new SolidColorBrush(Colors.Coral);
-        
-        private void btn清單瀏覽_Click(object sender, RoutedEventArgs e)
-        {            
-            if (bo)
+        private bool 確認資料是否存在()
+        {
+            bool result = true;
+            string pkid = page.目前KeyFldValue;
+            導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            if (pkid != page.目前KeyFldValue)
             {
-                Button QQ = 控制項操作.用名稱尋找子代<Button>(window, "btn導覽區按鈕1");
-                br = QQ.Foreground;
-                QQ.Foreground = br1;
-                bo = !bo;
+                result = false;
+            }
+            return result;
+        }
+
+        private void btn瀏覽_Click(object sender, RoutedEventArgs e)
+        {           
+            NavigationService nav;
+            頁面繼承 page;
+            nav = NavigationService.GetNavigationService(this);          
+            if (表單控制.Page實體列表.Any(x => x.Title == txbl程式名稱.Text+"瀏覽頁面"))
+            {
+                page = 表單控制.Page實體列表.Find(x => x.Title == txbl程式名稱.Text + "瀏覽頁面");
             }
             else
             {
-                Button QQ = 控制項操作.用名稱尋找子代<Button>(window, "btn導覽區按鈕1");
-                QQ.Foreground = br;
-                bo = !bo;
+                page = new 瀏覽頁面(txbl程式名稱.Text);
             }
+            表單控制.目前頁面 = page;
+            nav.Navigate(page);
         }
     }
 }

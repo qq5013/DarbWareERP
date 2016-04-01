@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,34 +11,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DarbWareERP.繼承窗口;
-using Model;
 using 邏輯.視窗相關;
 using 邏輯.視窗相關.B.基本資料;
-using 報表;
-using System.Data;
-using System.Reflection;
-using System.Printing;
-using System.Drawing.Printing;
 
 namespace DarbWareERP.B.基本資料
 {
     /// <summary>
     /// 單位轉換表.xaml 的互動邏輯
     /// </summary>
-    public partial class 單位轉換表 : 視窗繼承
+    public partial class 單位轉換表 : 繼承窗口.頁面繼承
     {
-        private 單位轉換表Bll 單位轉換表Bll = new 單位轉換表Bll();
+        單位轉換表Bll 單位轉換表Bll = new 單位轉換表Bll();
         public 單位轉換表()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
-
-        private void 視窗繼承_Loaded(object sender, RoutedEventArgs e)
+        protected override void 初始值設定()
         {
-            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));            
-            SetControls();            
+            KeyFldValue = "單位";
+            資料表名稱 = "UNITBA";
+        }
+        private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
+        {
+            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
+            SetControls();
         }
         public override void SetControls()
         {
@@ -49,30 +48,19 @@ namespace DarbWareERP.B.基本資料
         public override void SetDefaultValue()
         {
             base.SetDefaultValue();
+            foreach (Control c in 資料區.Children)
+            {
+                c.Focus();
+            }
             txtpkid.Text = "";
             txt單位.Text = "+++";
             txt小數位數.Text = "0";
-            txt說明.Text = "";
+            txt說明.Text ="1";           
             txt單位.Focus();
         }
-
-        public override bool UpdateData(CollectionViewSource cv)
+        public override bool UpdateData(CollectionViewSource cv,EnumStatus status)
         {
-            return 單位轉換表Bll.UpdateData(cv, out this._增刪修訊息);
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            Form1 f = new Form1();
-            f.Show();
-            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
-            DataTable dt = (DataTable)CollectionViewSource.Source;            
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = dt;
-            f.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            f.reportViewer1.RefreshReport();
-
-        }
+            return 單位轉換表Bll.UpdateData(cv,out this._增刪修訊息,status);
+        }        
     }
 }

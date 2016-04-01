@@ -11,16 +11,20 @@ using System.Windows;
 
 namespace 邏輯.視窗相關.B.基本資料
 {
-    public class 業務資料表Bll : IWindow
+    public class 業務資料表Bll 
     {
         public bool UpdateData(CollectionViewSource cv, out string result)
         {
             try
             {
-                List<salesmen> listunitba = (List<salesmen>)DataTableToList<salesmen>.ConvertToModel((DataTable)cv.Source);
-                unitba新增值(listunitba);
-                string 上傳資料 = XmlToSql<unitba>.WriteXml(listunitba);
-                result = Log.Log_Sys_Input("INPUT-BB", "UNITBA", "Normal Add", "", "unitba", LP_DATA1: 上傳資料);
+                List<salesmen> salesmen = (List<salesmen>)DataTableToList<salesmen>.ConvertToModel((DataTable)cv.Source);
+                salesmen新增值(salesmen);
+                string 上傳資料 = XmlToSql<salesmen>.WriteXml(salesmen);
+                result = Log.Log_Sys_Input("INPUT-BB", "SALESMEN", "Normal Add", "", "salesmen", LP_DATA1: 上傳資料);
+                if (result.ToString().Contains("NG"))
+                {
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -30,15 +34,15 @@ namespace 邏輯.視窗相關.B.基本資料
             }
             return true;
         }
-        private void unitba新增值(List<salesmen> salesmen)
+        private void salesmen新增值(List<salesmen> salesmen)
         {
-            foreach (unitba unitba in listunitba)
+            foreach (var sales in salesmen)
             {
-                unitba.輸入人員 = Log.使用者名稱;
-                unitba.輸入日期 = DateTime.Now;
-                unitba.輸入地點 = Environment.MachineName;
-                unitba.增刪修 = "A";
-                unitba.選擇 = "";
+                sales.輸入人員 = Log.使用者名稱;
+                sales.輸入日期 = DateTime.Now;
+                sales.輸入地點 = Environment.MachineName;
+                sales.增刪修 = "A";
+                sales.選擇 = "";
             }
         }
     }

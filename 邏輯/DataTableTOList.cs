@@ -5,11 +5,15 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
+using 數據庫連線;
+using System.Windows.Data;
+using System.Windows;
 
 namespace 邏輯
 {
     public class DataTableToList<T> where T : new()
-    {
+    {      
         public static IList<T> ConvertToModel(DataTable dt)
         {
             // 定义集合

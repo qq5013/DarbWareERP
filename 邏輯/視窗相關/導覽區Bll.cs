@@ -11,8 +11,9 @@ using System.Windows;
 
 namespace 邏輯.視窗相關
 {
+    public delegate void 導覽區指令Delegate(string 程式名稱, CollectionViewSource cv, string 資料表名稱, string keyfldvalue);
     public class 導覽區Bll
-    {
+    {       
         public void 查詢(string 程式名稱, CollectionViewSource cv, string 資料表名稱, string keyfldvalue)
         {
             DataSet ds = Log.Log_Sys_Exec("SQLEDIT-" + 程式名稱, "DARB_MOVEREC",ref 資料表名稱, "SEEK", keyfldvalue);

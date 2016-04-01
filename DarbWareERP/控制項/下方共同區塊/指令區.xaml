@@ -17,18 +17,18 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="10*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="txbl程式名稱" Grid.Row="0" Text="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType=src:視窗繼承}}"></TextBlock>
+                <TextBlock x:Name="txbl程式名稱" Grid.Row="0" Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType=src:頁面繼承}}"></TextBlock>
                 <WrapPanel x:Name="wrappanel指令區" Grid.Row="1">
                     <Button x:Name="btn新增" Width="44" Height="44" Margin="2" IsTabStop="False" Click="btn新增_Click" IsEnabledChanged="btn新增_IsEnabledChanged">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/新增00.png"></Image>
                     </Button>
-                    <Button x:Name="btn複製"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn複製_IsEnabledChanged">
+                    <Button x:Name="btn複製"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn複製_IsEnabledChanged" Click="btn複製_Click">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/複製00.png"></Image>
                     </Button>
-                    <Button x:Name="btn修改"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn修改_IsEnabledChanged">
+                    <Button x:Name="btn修改"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn修改_IsEnabledChanged" Click="btn修改_Click">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/修改00.png"></Image>
                     </Button>
-                    <Button x:Name="btn刪除"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn刪除_IsEnabledChanged">
+                    <Button x:Name="btn刪除"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn刪除_IsEnabledChanged" Click="btn刪除_Click">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/刪除00.png"></Image>
                     </Button>
                     <Button x:Name="btn歷史檔案"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn歷史檔案_IsEnabledChanged">
@@ -37,10 +37,10 @@
                     <Button x:Name="btn列印"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn列印_IsEnabledChanged">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/列印00.png"></Image>
                     </Button>
-                    <Button x:Name="btn瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn瀏覽_IsEnabledChanged">
+                    <Button x:Name="btn瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn瀏覽_IsEnabledChanged" Click="btn瀏覽_Click">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/瀏覽00.png"></Image>
                     </Button>
-                    <Button x:Name="btn清單瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn清單瀏覽_IsEnabledChanged" Click="btn清單瀏覽_Click">
+                    <Button x:Name="btn清單瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn清單瀏覽_IsEnabledChanged">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/清單瀏覽00.png"></Image>
                     </Button>
                     <Button x:Name="btn1" Content="btn1" Width="44" Height="44" Margin="2" IsTabStop="False"/>

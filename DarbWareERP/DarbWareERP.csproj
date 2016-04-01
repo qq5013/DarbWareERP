@@ -103,6 +103,9 @@
     <Compile Include="B.基本資料\業務資料表.xaml.cs">
       <DependentUpon>業務資料表.xaml</DependentUpon>
     </Compile>
+    <Compile Include="主視窗.xaml.cs">
+      <DependentUpon>主視窗.xaml</DependentUpon>
+    </Compile>
     <Compile Include="台銀匯率.xaml.cs">
       <DependentUpon>台銀匯率.xaml</DependentUpon>
     </Compile>
@@ -121,20 +124,33 @@
     <Compile Include="控制項\下方共同區塊\導覽區.xaml.cs">
       <DependentUpon>導覽區.xaml</DependentUpon>
     </Compile>
+    <Compile Include="控制項\瀏覽指令區.xaml.cs">
+      <DependentUpon>瀏覽指令區.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\瀏覽條件區.xaml.cs">
+      <DependentUpon>瀏覽條件區.xaml</DependentUpon>
+    </Compile>
     <Compile Include="控制項\返回選單按鈕.xaml.cs">
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項操作.cs" />
-    <Compile Include="繼承窗口\視窗繼承.cs" />
-    <Compile Include="控制項\表單控制.cs" />
+    <Compile Include="瀏覽頁面.xaml.cs">
+      <DependentUpon>瀏覽頁面.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="登入頁面.xaml.cs">
+      <DependentUpon>登入頁面.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="繼承窗口\頁面枚舉.cs" />
+    <Compile Include="表單控制.cs" />
+    <Compile Include="繼承窗口\頁面繼承.cs" />
     <Compile Include="轉資料\轉Sliy.xaml.cs">
       <DependentUpon>轉Sliy.xaml</DependentUpon>
     </Compile>
     <Compile Include="轉資料\轉Accl.xaml.cs">
       <DependentUpon>轉Accl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="選單.xaml.cs">
-      <DependentUpon>選單.xaml</DependentUpon>
+    <Compile Include="選單頁面.xaml.cs">
+      <DependentUpon>選單頁面.xaml</DependentUpon>
     </Compile>
     <Compile Include="電子賀卡.xaml.cs">
       <DependentUpon>電子賀卡.xaml</DependentUpon>
@@ -151,6 +167,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="主視窗.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="主題\WhistlerBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -164,6 +184,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="控制項\下方共同區塊\導覽區.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\瀏覽指令區.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\瀏覽條件區.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -187,18 +215,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="登入視窗.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="登入視窗.xaml.cs">
-      <DependentUpon>登入視窗.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="瀏覽頁面.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="登入頁面.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="繼承窗口\BaseWindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,7 +239,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="選單.xaml">
+    <Page Include="選單頁面.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

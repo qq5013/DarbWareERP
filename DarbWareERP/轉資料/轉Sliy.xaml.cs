@@ -19,7 +19,7 @@ namespace DarbWareERP.轉資料
     /// <summary>
     /// Window1.xaml 的互動邏輯
     /// </summary>
-    public partial class 轉Sliy : 視窗繼承
+    public partial class 轉Sliy : 頁面繼承
     {
         public 轉Sliy()
         {
