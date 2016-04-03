@@ -27,24 +27,24 @@
             <Button x:Name="btn轉ACCL" Content="轉ACCL" Margin="200,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn轉ACCL_Click" />
             <Button x:Name="btn轉sliy" Content="轉Sliy" Margin="295,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn轉sliy_Click"  />
             <WrapPanel Name="WrapPanel" Height="104" Margin="0,102,0,0" VerticalAlignment="Top" Orientation="Vertical" >
-                <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button3" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button4" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button5" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button6" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button7" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button8" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button9" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button10" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button11" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button12" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button13" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button14" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button15" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button16" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button17" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button18" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button1" Content="A.系統資料" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button2" Content="B.基本資料" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button3" Content="C.總務管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button4" Content="D.工程資料" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button5" Content="E.營業收款" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button6" Content="F.生產管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button7" Content="G.採購付款" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button8" Content="H.庫存管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button9" Content="I.帳款管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button10" Content="J.品質管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button11" Content="K.成本管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button12" Content="L.聯絡傳訊" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button13" Content="M.主管資訊" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button14" Content="N.總帳管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button15" Content="O.銀行票據" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button16" Content="P.發票管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button17" Content="Q.固定資產" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button18" Content="R.人事薪資" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
             </WrapPanel>
         </Grid>
     </Grid>

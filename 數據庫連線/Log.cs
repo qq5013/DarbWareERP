@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace 數據庫連線
 {
@@ -12,7 +13,18 @@ namespace 數據庫連線
         public static int srvdbid { get { return 1; } }
         public static int LogBookId { get; set; }
         private static DataTable _權限表 = new DataTable(); //配合usercontrol，設計
-        public static DataTable 權限表 { get { return _權限表; } set { _權限表 = value; } } //登入成功時賦值
+        public static DataTable 權限表
+        {
+            get
+            {
+                return _權限表;
+            }
+            set
+            {
+                Model.視窗Model.權限表 = value;
+                _權限表 = value;
+            }
+        } //登入成功時賦值
         public static string 資料庫
         {
             get
@@ -33,7 +45,7 @@ namespace 數據庫連線
            ref string LP_P1, string LP_P2, string LP_P3 = "", string LP_P4 = "", string LP_P5 = "", string LP_P6 = "",
             string LP_P7 = "", string LP_P8 = "", string LP_P9 = "", string LP_P10 = "", string LP_P11 = "",
             string LP_P12 = "")
-        {                  
+        {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = conn;
@@ -41,8 +53,8 @@ namespace 數據庫連線
             cmd.Parameters.AddWithValue("@languagen", "");
             cmd.Parameters.AddWithValue("@eventtype", "Exec Proc");
             cmd.Parameters.AddWithValue("@dataevent", LP_DATAEVENT);
-            cmd.Parameters.AddWithValue("@datafunc", LP_DATAFUNC);            
-            SqlParameter L_Param1 = cmd.Parameters.Add(new SqlParameter("@param1", SqlDbType.NVarChar, 200));            
+            cmd.Parameters.AddWithValue("@datafunc", LP_DATAFUNC);
+            SqlParameter L_Param1 = cmd.Parameters.Add(new SqlParameter("@param1", SqlDbType.NVarChar, 200));
             cmd.Parameters["@param1"].Direction = ParameterDirection.InputOutput;
             L_Param1.Value = LP_P1;
             cmd.Parameters.AddWithValue("@param2", LP_P2);
@@ -68,11 +80,10 @@ namespace 數據庫連線
             LP_P1 = L_Param1.Value.ToString();
             return ds;
         }
-
         private static DataSet 判斷表名(string LP_DATAFUNC, SqlCommand cmd)
-        {
+        {            
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
+            DataSet ds = new DataSet();            
             //DataTable LN_EXEC_RESULT;
             switch (GetStringHeader(LP_DATAFUNC))
             {
@@ -178,7 +189,7 @@ namespace 數據庫連線
             cmd.Parameters["@result"].Direction = ParameterDirection.Output;
             cmd.Connection.Open();
             cmd.ExecuteScalar();
-            cmd.Connection.Close();            
+            cmd.Connection.Close();
             return (string)cmd.Parameters["@result"].Value;
         }
         private enum StringHeader

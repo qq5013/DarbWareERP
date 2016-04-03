@@ -103,6 +103,9 @@
     <Compile Include="B.基本資料\業務資料表.xaml.cs">
       <DependentUpon>業務資料表.xaml</DependentUpon>
     </Compile>
+    <Compile Include="B.基本資料\部門表.xaml.cs">
+      <DependentUpon>部門表.xaml</DependentUpon>
+    </Compile>
     <Compile Include="主視窗.xaml.cs">
       <DependentUpon>主視窗.xaml</DependentUpon>
     </Compile>
@@ -123,12 +126,6 @@
     </Compile>
     <Compile Include="控制項\下方共同區塊\導覽區.xaml.cs">
       <DependentUpon>導覽區.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="控制項\瀏覽指令區.xaml.cs">
-      <DependentUpon>瀏覽指令區.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="控制項\瀏覽條件區.xaml.cs">
-      <DependentUpon>瀏覽條件區.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項\返回選單按鈕.xaml.cs">
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
@@ -167,6 +164,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="B.基本資料\部門表.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="主視窗.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -184,14 +185,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="控制項\下方共同區塊\導覽區.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="控制項\瀏覽指令區.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="控制項\瀏覽條件區.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,6 +250,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Model.dept.datasource" />
+    <None Include="Model.dept_1.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

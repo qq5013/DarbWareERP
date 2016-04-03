@@ -58,13 +58,14 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
         private void btn修改_Click(object sender, RoutedEventArgs e)
         {
-            if (!確認資料是否存在())
-            {
-                MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
-            }
+            
             if (page.BeforeEdit())
             {
+                if (!確認資料是否存在())
+                {
+                    MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
                 BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
                 collectionview.EditItem(collectionview.CurrentItem);
                 page.Status = EnumStatus.修改;
@@ -88,15 +89,15 @@ namespace DarbWareERP.控制項.下方共同區塊
             }
         }       
         private void btn刪除_Click(object sender, RoutedEventArgs e)
-        {           
-            if (!確認資料是否存在())
-            {
-                MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
-            }
+        {                       
             if (page.BeforeDelete())
             {
-                if( MessageBox.Show("是否刪除此筆資料", "刪除", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                if (!確認資料是否存在())
+                {
+                    MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+                if ( MessageBox.Show("是否刪除此筆資料", "刪除", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {
                     page.DeleteData(page.Pkid);
                     MessageBox.Show("刪除成功", "訊息", MessageBoxButton.OK, MessageBoxImage.Information);

@@ -18,5 +18,6 @@ namespace Model
         public static string 資料表名稱 { get; set; }
         public static int 放行碼 { get; set; }
         public static DataSet 登入暫存表 { get; set; }
+        public static DataTable 權限表 { get; set; }
     }
 }

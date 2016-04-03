@@ -8,7 +8,7 @@
       xmlns:控制項="clr-namespace:DarbWareERP.控制項"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="瀏覽頁面">
+      Title="瀏覽頁面" Loaded="頁面繼承_Loaded">
 
     <Grid>
         <Grid>
@@ -26,24 +26,68 @@
                         <ColumnDefinition Width="Auto" MinWidth="245"/>
                         <ColumnDefinition />
                         <ColumnDefinition Width="100" />
-                    </Grid.ColumnDefinitions>
-                    <控制項:瀏覽條件區 Grid.Column="2" Height="210"/>
-                    <控制項:瀏覽指令區 Grid.Column="3" Height="210"/>
+                    </Grid.ColumnDefinitions>                    
+                    <Grid x:Name="瀏覽條件區" Grid.Column="2" Height="210">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="AUTO"></RowDefinition>
+                            <RowDefinition Height="182*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="txbl預設條件" Text="預設條件" Grid.Column="0" Margin="3,4,0,0" FontSize="18.667" Foreground="#FF313AE8"/>
+                            <ComboBox x:Name="cbx預設條件" Grid.Column="1" Margin="3,6,0,0"  Width="120"/>
+                            <TextBox x:Name="txt預設條件說明" Grid.Column="2" Margin="3,6,0,0"  Width="240" IsReadOnly="True"/>
+                        </Grid>
+                        <DataGrid x:Name="dg查詢條件" Margin="3" Grid.Row="1"/>
+                    </Grid>
+                    <Grid x:Name="瀏覽指令區" Grid.Column="3">
+                        <Border BorderThickness="1" Grid.Row="1">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+                            </Border.BorderBrush>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="10*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Name="txbl程式名稱" Grid.Row="0" ></TextBlock>
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Button x:Name="btn查詢" Grid.Column="0" Grid.Row="0" Width="44" Height="44" Margin="2" IsTabStop="False">
+                                        <Image Source="/DarbWareERP;component/Image/Icon_png/查詢00.png"></Image>
+                                    </Button>
+                                    <Button x:Name="btn篩選" Grid.Column="0" Grid.Row="2" Width="44" Height="44" Margin="2" IsTabStop="False">
+                                        <Image Source="/DarbWareERP;component/Image/Icon_png/篩選00.png"></Image>
+                                    </Button>
+                                    <Button x:Name="btn定位" Grid.Column="0" Grid.Row="3" Width="44" Height="44" Margin="2" IsTabStop="False">
+                                        <Image Source="/DarbWareERP;component/Image/Icon_png/定位00.png"></Image>
+                                    </Button>
+                                    <Button x:Name="btn尋找" Grid.Column="1" Grid.Row="2" Width="44" Height="44" Margin="2" IsTabStop="False">
+                                        <Image Source="/DarbWareERP;component/Image/Icon_png/查詢-再找00.png"></Image>
+                                    </Button>
+                                    <Button x:Name="btn返回" Grid.Column="1" Grid.Row="3" Width="44" Height="44" Margin="2" IsTabStop="False" Click="btn返回_Click">
+                                        <Image Source="/DarbWareERP;component/Image/Icon_png/返回00.png"></Image>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
                 </Grid>
-            </Border>
-            <Grid x:Name="資料區" Grid.Row="0" HorizontalAlignment="Left" Margin="40,52,0,0" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>                
-            </Grid>
-            <DataGrid x:Name="datagrid" Grid.Row="0" Margin="3"/>
+            </Border>           
+            <DataGrid x:Name="dg資料顯示" Grid.Row="0" Margin="3"/>
         </Grid>
     </Grid>
 </src:頁面繼承>

@@ -23,7 +23,7 @@ namespace DarbWareERP.B.基本資料
     /// </summary>
     public partial class 單位轉換表 : 繼承窗口.頁面繼承
     {
-        單位轉換表Bll 單位轉換表Bll = new 單位轉換表Bll();
+        
         public 單位轉換表()
         {
             InitializeComponent();            
@@ -60,6 +60,7 @@ namespace DarbWareERP.B.基本資料
         }
         public override bool UpdateData(CollectionViewSource cv,EnumStatus status)
         {
+            單位轉換表Bll 單位轉換表Bll = new 單位轉換表Bll();
             return 單位轉換表Bll.UpdateData(cv,out this._增刪修訊息,status);
         }        
     }

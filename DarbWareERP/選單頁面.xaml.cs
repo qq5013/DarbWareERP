@@ -66,27 +66,39 @@ namespace DarbWareERP
             Button btn = (Button)sender;
             List<string> 程式名稱列表 = WindowBll.GetInstance().程式名稱列表(btn.Content.ToString());
             切換頁面("DarbWareERP." + btn.Content +".", 程式名稱列表[0]);
-            表單控制.切換表單區實體.按鈕賦值();
-            
+            表單控制.切換表單區實體.按鈕賦值();            
+        }
+        private void 沒有權限_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("沒有權限，不行進入程式", "訊息", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
         {
             List<string> 選單列表 = WindowBll.GetInstance().選單按鈕名稱列表();
             DependencyObject doj = VisualTreeHelper.GetChild(WrapPanel, 0);
-            int 按鈕數 = VisualTreeHelper.GetChildrenCount(WrapPanel);
+            int 按鈕數 = VisualTreeHelper.GetChildrenCount(WrapPanel);          
+            
             for (int i = 0; i < 按鈕數; i++)
             {
                 Button btn = (Button)VisualTreeHelper.GetChild(WrapPanel, i);
-                if (i < 選單列表.Count)
+                if (選單列表.Contains(btn.Content.ToString()))
                 {
-                    btn.Content = 選單列表[i];
                     btn.Click += 開啟視窗_Click;
                 }
                 else
                 {
-                    btn.Visibility = Visibility.Collapsed;
+                    btn.Click += 沒有權限_Click;
                 }
+                //if (i < 選單列表.Count)
+                //{
+                //    btn.Content = 選單列表[i];
+                //    btn.Click += 開啟視窗_Click;
+                //}
+                //else
+                //{
+                //    btn.Visibility = Visibility.Collapsed;
+                //}
             }
         }
         

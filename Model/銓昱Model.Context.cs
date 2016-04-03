@@ -34,5 +34,7 @@ namespace Model
         public virtual DbSet<cupdma> cupdma { get; set; }
         public virtual DbSet<cupdt> cupdt { get; set; }
         public virtual DbSet<salesmen> salesmen { get; set; }
+        public virtual DbSet<dept> dept { get; set; }
+        public virtual DbSet<dept_1> dept_1 { get; set; }
     }
 }

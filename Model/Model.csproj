@@ -63,6 +63,12 @@
     <Compile Include="cupdt.cs">
       <DependentUpon>銓昱Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="dept.cs">
+      <DependentUpon>銓昱Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dept_1.cs">
+      <DependentUpon>銓昱Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="salesmen.cs">
