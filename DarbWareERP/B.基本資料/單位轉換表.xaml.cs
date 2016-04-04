@@ -31,11 +31,11 @@ namespace DarbWareERP.B.基本資料
         protected override void 初始值設定()
         {
             KeyFldValue = "單位";
-            資料表名稱 = "UNITBA";
+            資料表名稱[0] = "unitba";
         }
         private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
         {
-            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
+            CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
             SetControls();
         }
         public override void SetControls()
@@ -48,6 +48,7 @@ namespace DarbWareERP.B.基本資料
         public override void SetDefaultValue()
         {
             base.SetDefaultValue();
+            //要先focus後才可以設值，不然會被判定為null
             foreach (Control c in 資料區.Children)
             {
                 c.Focus();
@@ -58,7 +59,7 @@ namespace DarbWareERP.B.基本資料
             txt說明.Text ="1";           
             txt單位.Focus();
         }
-        public override bool UpdateData(CollectionViewSource cv,EnumStatus status)
+        public override bool UpdateData(CollectionViewSource[] cv,EnumStatus status)
         {
             單位轉換表Bll 單位轉換表Bll = new 單位轉換表Bll();
             return 單位轉換表Bll.UpdateData(cv,out this._增刪修訊息,status);

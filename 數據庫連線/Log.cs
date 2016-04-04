@@ -79,7 +79,7 @@ namespace 數據庫連線
             DataSet ds = 判斷表名(LP_DATAFUNC, cmd);
             LP_P1 = L_Param1.Value.ToString();
             return ds;
-        }
+        }        
         private static DataSet 判斷表名(string LP_DATAFUNC, SqlCommand cmd)
         {            
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);

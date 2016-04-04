@@ -44,10 +44,16 @@ namespace DarbWareERP.控制項.下方共同區塊
             if (page.BeforeAddNew())
             {
                 清除綁定datatable(控制項操作, page);
-                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
-                collectionview.Refresh();
-                collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
-                
+                foreach (CollectionViewSource cv in page.CollectionViewSources)
+                {
+                    if (cv != null)
+                    {
+                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
+                        collectionview.Refresh();
+                        collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
+                    }
+                }
+                //BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;    
                 page.Status = EnumStatus.新增;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
@@ -58,7 +64,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
         private void btn修改_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (page.BeforeEdit())
             {
                 if (!確認資料是否存在())
@@ -66,8 +72,15 @@ namespace DarbWareERP.控制項.下方共同區塊
                     MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
-                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
-                collectionview.EditItem(collectionview.CurrentItem);
+                //BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
+                foreach (CollectionViewSource cv in page.CollectionViewSources)
+                {
+                    if (cv != null)
+                    {
+                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
+                        collectionview.EditItem(collectionview.CurrentItem);
+                    }
+                }
                 page.Status = EnumStatus.修改;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
@@ -79,17 +92,23 @@ namespace DarbWareERP.控制項.下方共同區塊
         {
             if (page.BeforeCopy())
             {
-                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
-                collectionview.EditItem(collectionview.CurrentItem);
+                foreach (CollectionViewSource cv in page.CollectionViewSources)
+                {
+                    if (cv != null)
+                    {
+                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
+                        collectionview.EditItem(collectionview.CurrentItem);
+                    }
+                }
                 page.Status = EnumStatus.複製;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
                 page.SetControls();
                 page.AfterCopy();
             }
-        }       
+        }
         private void btn刪除_Click(object sender, RoutedEventArgs e)
-        {                       
+        {
             if (page.BeforeDelete())
             {
                 if (!確認資料是否存在())
@@ -97,20 +116,26 @@ namespace DarbWareERP.控制項.下方共同區塊
                     MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
-                if ( MessageBox.Show("是否刪除此筆資料", "刪除", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                if (MessageBox.Show("是否刪除此筆資料", "刪除", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {
                     page.DeleteData(page.Pkid);
                     MessageBox.Show("刪除成功", "訊息", MessageBoxButton.OK, MessageBoxImage.Information);
-                }                
-                導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));                
+                }
+                導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             }
             page.AfterDelete();
         }
         private void 清除綁定datatable(控制項操作 控制項操作, 頁面繼承 page)
         {
             導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            DataTable dt = ((DataTable)page.CollectionViewSource.Source);
-            dt.Rows.Clear();
+            foreach (CollectionViewSource cv in page.CollectionViewSources)
+            {
+                if (cv != null)
+                {
+                    DataTable dt = (DataTable)cv.Source;
+                    dt.Rows.Clear();
+                }
+            }
         }
 
         private void btn儲存_Click(object sender, RoutedEventArgs e)
@@ -118,26 +143,35 @@ namespace DarbWareERP.控制項.下方共同區塊
             if (page.BeforeEndEdit())
             {
                 EnumStatus PrevTableStatus = page.Status;
-                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
-                switch (page.Status)
+                foreach (CollectionViewSource cv in page.CollectionViewSources)
                 {
-                    case EnumStatus.一般:
-                        MessageBox.Show("儲存出錯，Status要設定為新增或修改");
+                    if (cv != null)
+                    {
+                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
+                        switch (page.Status)
+                        {
+                            case EnumStatus.一般:
+                                MessageBox.Show("儲存出錯，Status要設定為新增或修改");
+                                break;
+                            case EnumStatus.新增:
+                                collectionview.CommitNew();
+                                break;
+                            case EnumStatus.修改:
+                                collectionview.CommitEdit();
+                                break;
+                            case EnumStatus.複製:
+                                collectionview.CommitEdit();
+                                break;
+                        }
+                    }
+                    else
+                    {
                         break;
-                    case EnumStatus.新增:
-                        collectionview.CommitNew();
-                        break;
-                    case EnumStatus.修改:
-                        collectionview.CommitEdit();
-                        break;
-                    case EnumStatus.複製:
-                        collectionview.CommitEdit();
-                        break;
+                    }
                 }
-
                 try
                 {
-                    if (page.UpdateData(page.CollectionViewSource,page.Status))
+                    if (page.UpdateData(page.CollectionViewSources, page.Status))
                     {
                         page.Status = EnumStatus.一般;
                         page.SetControls();
@@ -152,34 +186,40 @@ namespace DarbWareERP.控制項.下方共同區塊
                     page.Status = PrevTableStatus;
                 }
                 MessageBox.Show(page.增刪修訊息);
-                
+
             }
             else
             {
                 MessageBox.Show("請確認是否有輸入錯誤資料", "訊息視窗", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }            
+            }
         }
 
         private void btn取消_Click(object sender, RoutedEventArgs e)
         {
             if (page.BeforeCancelEdit())
             {
-                BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
-                switch (page.Status)
+                foreach (CollectionViewSource cv in page.CollectionViewSources)
                 {
-                    case EnumStatus.一般:
-                        MessageBox.Show("取消出錯，Status要設定為新增或修改");
-                        break;
-                    case EnumStatus.新增:
-                        collectionview.CancelNew();
-                        break;
-                    case EnumStatus.修改:
-                        collectionview.CancelEdit();
-                        
-                        break;
-                    case EnumStatus.複製:
-                        collectionview.CancelEdit();
-                        break;
+                    if (cv != null)
+                    {
+                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
+                        switch (page.Status)
+                        {
+                            case EnumStatus.一般:
+                                MessageBox.Show("取消出錯，Status要設定為新增或修改");
+                                break;
+                            case EnumStatus.新增:
+                                collectionview.CancelNew();
+                                break;
+                            case EnumStatus.修改:
+                                collectionview.CancelEdit();
+
+                                break;
+                            case EnumStatus.複製:
+                                collectionview.CancelEdit();
+                                break;
+                        }
+                    }
                 }
                 page.Status = EnumStatus.一般;
                 指令區按鈕顯示(false);
@@ -293,11 +333,11 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
 
         private void btn瀏覽_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             NavigationService nav;
             頁面繼承 page;
-            nav = NavigationService.GetNavigationService(this);          
-            if (表單控制.Page實體列表.Any(x => x.Title == txbl程式名稱.Text+"瀏覽頁面"))
+            nav = NavigationService.GetNavigationService(this);
+            if (表單控制.Page實體列表.Any(x => x.Title == txbl程式名稱.Text + "瀏覽頁面"))
             {
                 page = 表單控制.Page實體列表.Find(x => x.Title == txbl程式名稱.Text + "瀏覽頁面");
             }

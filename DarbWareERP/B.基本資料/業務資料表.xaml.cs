@@ -26,8 +26,8 @@ namespace DarbWareERP.B.基本資料
             InitializeComponent();
         }
         private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
-        {
-            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("salesmenViewSource")));
+        {                        
+            CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("salesmenViewSource")));
             SetControls();
         }
     }

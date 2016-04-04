@@ -30,12 +30,14 @@ namespace DarbWareERP.B.基本資料
         protected override void 初始值設定()
         {
             KeyFldValue = "部門代號";
-            資料表名稱 = "DEPT";
+            資料表名稱[0] = "dept";
+            資料表名稱[1] = "dept_1";
         }
 
         private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
         {
-            CollectionViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("deptViewSource")));
+            CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("deptViewSource")));
+            CollectionViewSources[1] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("dept_1ViewSource")));
             SetControls();
         }
         public override void SetControls()
@@ -48,12 +50,25 @@ namespace DarbWareERP.B.基本資料
                     (c as TextBox).IsReadOnly = Status == EnumStatus.一般;
                 }
             }
+            txtpkid.IsReadOnly = true;
         }
         public override void SetDefaultValue()
         {
-            base.SetDefaultValue();
+            base.SetDefaultValue();           
+            foreach (Control c in grid1.Children)
+            {
+                if (c is TextBox)
+                {
+                    c.Focus();
+                    ((TextBox)c).Text = "";
+                }
+            }
+            要員人數TextBox.Text = "0";
+            要員人數TextBox.Focus();
+            txt部門代號.Focus();
+            
         }
-        public override bool UpdateData(CollectionViewSource cv, EnumStatus status)
+        public override bool UpdateData(CollectionViewSource[] cv, EnumStatus status)
         {
             新增修改刪除<dept> dept = new 新增修改刪除<Model.dept>();
             return dept.UpdateData(cv, out this._增刪修訊息, status);

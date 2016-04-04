@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using 邏輯;
 using DarbWareERP.繼承窗口;
+using System.ComponentModel;
 
 namespace DarbWareERP
 {
@@ -23,12 +24,14 @@ namespace DarbWareERP
     public partial class 登入頁面 : 頁面繼承
     {
         登入Bll 登入Bll;
+        BackgroundWorker backgroundWorker;
         public 登入頁面()
         {
             InitializeComponent();
             登入Bll = new 登入Bll();
             txt帳號.Focus();
-            label4.Content = 登入Bll.資料庫;            
+            label4.Content = 登入Bll.資料庫;
+            backgroundWorker = (BackgroundWorker)this.FindResource("backgroundWorker");
         }
 
         private void btn離開_Click(object sender, RoutedEventArgs e)
@@ -38,24 +41,40 @@ namespace DarbWareERP
 
         private void btn登入_Click(object sender, RoutedEventArgs e)
         {
+            btn登入.IsEnabled = false;
+            btn離開.IsEnabled = false;
+            string[] argument = new string[2];
+            argument[0] = txt帳號.Text;
+            argument[1] = pwd密碼.Password;
+            backgroundWorker.RunWorkerAsync(argument);
+        }
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string[] argument = (string[])e.Argument;
             try
-            {
-                if (登入Bll.登入(txt帳號.Text, pwd密碼.Password))
-                {
-                    切換頁面("DarbWareERP.", 頁面枚舉.選單頁面);                               
-                }
-                else
-                {
-                    MessageBox.Show("帳號或密碼輸入錯誤");
-                    pwd密碼.Password = "";
-                }
+            {                
+                e.Result = 登入Bll.登入(argument[0], argument[1]);                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
-
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if ((bool)e.Result == true)
+            {
+                切換頁面("DarbWareERP.", 頁面枚舉.選單頁面);
+            }
+            else
+            {
+                MessageBox.Show("帳號或密碼輸入錯誤");
+                pwd密碼.Password = "";
+            }
+            btn登入.IsEnabled = true;
+            btn離開.IsEnabled = true;
+        }
+        
         private void txt帳號_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -74,6 +93,11 @@ namespace DarbWareERP
                 UIElement element = Keyboard.FocusedElement as UIElement;
                 element.MoveFocus(request);
             }
+        }
+
+        private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            
         }
     }
 }
