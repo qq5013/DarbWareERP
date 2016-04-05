@@ -12,7 +12,7 @@ using System.Data;
 
 namespace 邏輯.視窗相關.B.基本資料
 {
-    public class 單位轉換表Bll : 新增修改刪除<unitba>
+    public class 單位轉換表Bll : 新增修改刪除
     {     
        
     }     

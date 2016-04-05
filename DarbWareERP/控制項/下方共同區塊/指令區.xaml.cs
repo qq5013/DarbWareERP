@@ -48,12 +48,11 @@ namespace DarbWareERP.控制項.下方共同區塊
                 {
                     if (cv != null)
                     {
-                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
+                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;                        
                         collectionview.Refresh();
                         collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
                     }
-                }
-                //BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;    
+                }                 
                 page.Status = EnumStatus.新增;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);

@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
 using Model;
 using 邏輯.視窗相關;
+using 邏輯.視窗相關.B.基本資料;
+using System.Data;
 
 namespace DarbWareERP.B.基本資料
 {
@@ -54,7 +56,7 @@ namespace DarbWareERP.B.基本資料
         }
         public override void SetDefaultValue()
         {
-            base.SetDefaultValue();           
+            base.SetDefaultValue();
             foreach (Control c in grid1.Children)
             {
                 if (c is TextBox)
@@ -63,14 +65,22 @@ namespace DarbWareERP.B.基本資料
                     ((TextBox)c).Text = "";
                 }
             }
+            DataView dt = (DataView)this.CollectionViewSources[1].View.SourceCollection;
+            dt[0].Row["序號"] = "001";            
+            dt[0].Row["人員別"] = 0;
+            dt[0].Row["員工編號"] = "";
+            dt[0].Row["姓名"] = "";
+            dt[0].Row["備註"] = "";
+            txtpkid.Text = "";
+            txtpkid.Focus();
             要員人數TextBox.Text = "0";
             要員人數TextBox.Focus();
             txt部門代號.Focus();
-            
+
         }
         public override bool UpdateData(CollectionViewSource[] cv, EnumStatus status)
         {
-            新增修改刪除<dept> dept = new 新增修改刪除<Model.dept>();
+            部門表Bll dept = new 部門表Bll();
             return dept.UpdateData(cv, out this._增刪修訊息, status);
         }
     }
