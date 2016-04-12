@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Data;
 using Model;
 using 邏輯.視窗相關;
+using 報表;
 
 namespace DarbWareERP.控制項.下方共同區塊
 {
@@ -44,19 +45,20 @@ namespace DarbWareERP.控制項.下方共同區塊
             if (page.BeforeAddNew())
             {
                 清除綁定datatable(控制項操作, page);
-                foreach (CollectionViewSource cv in page.CollectionViewSources)
-                {
-                    if (cv != null)
-                    {
-                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;                        
-                        collectionview.Refresh();
-                        collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
-                    }
-                }                 
+
                 page.Status = EnumStatus.新增;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
                 page.SetControls();
+                foreach (CollectionViewSource cv in page.CollectionViewSources)
+                {
+                    if (cv != null)
+                    {
+                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
+                        collectionview.Refresh();
+                        collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
+                    }
+                }
                 page.SetDefaultValue();
                 page.AfterAddNew();
             }
@@ -71,7 +73,10 @@ namespace DarbWareERP.控制項.下方共同區塊
                     MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
-                //BindingListCollectionView collectionview = (BindingListCollectionView)page.CollectionViewSource.View;
+                page.Status = EnumStatus.修改;
+                指令區按鈕顯示(true);
+                導覽區Enable(false);
+                page.SetControls();
                 foreach (CollectionViewSource cv in page.CollectionViewSources)
                 {
                     if (cv != null)
@@ -80,10 +85,6 @@ namespace DarbWareERP.控制項.下方共同區塊
                         collectionview.EditItem(collectionview.CurrentItem);
                     }
                 }
-                page.Status = EnumStatus.修改;
-                指令區按鈕顯示(true);
-                導覽區Enable(false);
-                page.SetControls();
                 page.AfterEdit();
             }
         }
@@ -91,6 +92,10 @@ namespace DarbWareERP.控制項.下方共同區塊
         {
             if (page.BeforeCopy())
             {
+                page.Status = EnumStatus.複製;
+                指令區按鈕顯示(true);
+                導覽區Enable(false);
+                page.SetControls();
                 foreach (CollectionViewSource cv in page.CollectionViewSources)
                 {
                     if (cv != null)
@@ -99,10 +104,6 @@ namespace DarbWareERP.控制項.下方共同區塊
                         collectionview.EditItem(collectionview.CurrentItem);
                     }
                 }
-                page.Status = EnumStatus.複製;
-                指令區按鈕顯示(true);
-                導覽區Enable(false);
-                page.SetControls();
                 page.AfterCopy();
             }
         }
@@ -142,6 +143,7 @@ namespace DarbWareERP.控制項.下方共同區塊
             if (page.BeforeEndEdit())
             {
                 EnumStatus PrevTableStatus = page.Status;
+                page.SetValueEndEdit();
                 foreach (CollectionViewSource cv in page.CollectionViewSources)
                 {
                     if (cv != null)
@@ -334,7 +336,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         private void btn瀏覽_Click(object sender, RoutedEventArgs e)
         {
             NavigationService nav;
-            頁面繼承 page;
+            頁面繼承 page = 表單控制.目前頁面;
             nav = NavigationService.GetNavigationService(this);
             if (表單控制.Page實體列表.Any(x => x.Title == txbl程式名稱.Text + "瀏覽頁面"))
             {
@@ -342,10 +344,19 @@ namespace DarbWareERP.控制項.下方共同區塊
             }
             else
             {
-                page = new 瀏覽頁面(txbl程式名稱.Text);
+                Type type = Type.GetType("DarbWareERP.瀏覽頁面" + page.瀏覽頁面);
+                page = (頁面繼承)Activator.CreateInstance(type,new object[] { txbl程式名稱.Text,page.BrowseType });                
             }
             表單控制.目前頁面 = page;
             nav.Navigate(page);
+        }
+
+        private void btn列印_Click(object sender, RoutedEventArgs e)
+        {
+            DataTable dt = new DataTable();
+           dt=(DataTable) page.CollectionViewSources[0].Source;
+            Form1 form1 = new Form1(dt);
+            form1.ShowDialog();
         }
     }
 }

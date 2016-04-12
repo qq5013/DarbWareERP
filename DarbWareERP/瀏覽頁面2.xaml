@@ -1,4 +1,4 @@
-﻿<src:頁面繼承 x:Class="DarbWareERP.瀏覽頁面"
+﻿<src:頁面繼承 x:Class="DarbWareERP.瀏覽頁面2"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,15 +8,15 @@
       xmlns:控制項="clr-namespace:DarbWareERP.控制項"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="瀏覽頁面" Loaded="頁面繼承_Loaded">
-
+      Title="瀏覽頁面" Loaded="頁面繼承_Loaded">    
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="259*"/>
+                <RowDefinition Height="276*"/>
+                <RowDefinition Height="276*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Border BorderThickness="3" Grid.Row="1">
+            <Border BorderThickness="3" Grid.Row="2">
                 <Border.BorderBrush>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
                 </Border.BorderBrush>
@@ -26,7 +26,7 @@
                         <ColumnDefinition Width="Auto" MinWidth="245"/>
                         <ColumnDefinition />
                         <ColumnDefinition Width="100" />
-                    </Grid.ColumnDefinitions>                    
+                    </Grid.ColumnDefinitions>
                     <Grid x:Name="瀏覽條件區" Grid.Column="2" Height="210">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="AUTO"></RowDefinition>
@@ -39,10 +39,22 @@
                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Name="txbl預設條件" Text="預設條件" Grid.Column="0" Margin="3,4,0,0" FontSize="18.667" Foreground="#FF313AE8"/>
-                            <ComboBox x:Name="cbx預設條件" Grid.Column="1" Margin="3,6,0,0"  Width="120"/>
+                            <ComboBox x:Name="cbx預設條件" Grid.Column="1" Margin="3,6,0,0"  Width="120" SelectionChanged="cbx預設條件_SelectionChanged"/>
                             <TextBox x:Name="txt預設條件說明" Grid.Column="2" Margin="3,6,0,0"  Width="240" IsReadOnly="True"/>
                         </Grid>
-                        <DataGrid x:Name="dg查詢條件" Margin="3" Grid.Row="1"/>
+                        <DataGrid x:Name="dg查詢條件" Margin="3" Grid.Row="1" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Path=No}" ClipboardContentBinding="{x:Null}" Header="NO."/>
+                                <DataGridComboBoxColumn x:Name="欄位Column" ClipboardContentBinding="{x:Null}" Header="欄位No." SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}"/>
+                                <DataGridTextColumn Binding="{Binding Path=欄位說明}" ClipboardContentBinding="{x:Null}" Header="欄位說明"/>
+                                <DataGridComboBoxColumn x:Name="運算子Column" Header="運算子編號" DisplayMemberPath="運算子說明" SelectedValuePath="運算子編號" SelectedValueBinding="{Binding Path=運算子編號}"  />
+                                <DataGridTextColumn Binding="{Binding ElementName=運算子Column, Path=SelectedValueBinding.Path}" ClipboardContentBinding="{x:Null}" Header="運算子說明"/>
+                                <DataGridTextColumn Binding="{Binding Path=起始值}" ClipboardContentBinding="{x:Null}" Header="起始值(其他條件值)"/>
+                                <DataGridTextColumn Binding="{Binding Path=截止值}" ClipboardContentBinding="{x:Null}" Header="截止值"/>
+                                <DataGridTextColumn Binding="{Binding Path=欄位}" ClipboardContentBinding="{x:Null}" Header="欄位"/>
+                                <DataGridTextColumn Binding="{Binding Path=欄位TYPE}" ClipboardContentBinding="{x:Null}" Header="欄位TYPE"/>
+                            </DataGrid.Columns>
+                        </DataGrid>                        
                     </Grid>
                     <Grid x:Name="瀏覽指令區" Grid.Column="3">
                         <Border BorderThickness="1" Grid.Row="1">
@@ -86,8 +98,9 @@
                         </Border>
                     </Grid>
                 </Grid>
-            </Border>           
-            <DataGrid x:Name="dg資料顯示" Grid.Row="0" Margin="3"/>
+            </Border>
+            <DataGrid x:Name="dg資料顯示1" Grid.Row="0" Margin="3"/>
+            <DataGrid x:Name="dg資料顯示2" Grid.Row="1" Margin="3"/>
         </Grid>
     </Grid>
 </src:頁面繼承>

@@ -28,12 +28,23 @@ namespace DarbWareERP.B.基本資料
         public 部門表()
         {
             InitializeComponent();
+            CommandBinding binding = new CommandBinding(ApplicationCommands.ContextMenu);
+            binding.Executed += ContextMenu_Executed;
+            this.CommandBindings.Add(binding);
         }
+
+        private void ContextMenu_Executed(object sender, ExecutedRoutedEventArgs e)
+        {            
+            MessageBox.Show("qq");
+        }
+
         protected override void 初始值設定()
         {
             KeyFldValue = "部門代號";
             資料表名稱[0] = "dept";
             資料表名稱[1] = "dept_1";
+            瀏覽頁面 = "2";
+            BrowseType = "DPT";
         }
 
         private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
@@ -53,6 +64,7 @@ namespace DarbWareERP.B.基本資料
                 }
             }
             txtpkid.IsReadOnly = true;
+            dept_1DataGrid.IsReadOnly = Status == EnumStatus.一般;
         }
         public override void SetDefaultValue()
         {
@@ -66,22 +78,34 @@ namespace DarbWareERP.B.基本資料
                 }
             }
             DataView dt = (DataView)this.CollectionViewSources[1].View.SourceCollection;
-            dt[0].Row["序號"] = "001";            
+            dt[0].Row["序號"] = "001";
             dt[0].Row["人員別"] = 0;
-            dt[0].Row["員工編號"] = "";
-            dt[0].Row["姓名"] = "";
-            dt[0].Row["備註"] = "";
-            txtpkid.Text = "";
+            txtpkid.Text = "0";
             txtpkid.Focus();
             要員人數TextBox.Text = "0";
             要員人數TextBox.Focus();
             txt部門代號.Focus();
-
+        }
+        public override void SetValueEndEdit()
+        {
+            DataView dt = (DataView)this.CollectionViewSources[1].View.SourceCollection;
+            if (dt[0].Row[2] == DBNull.Value && dt[0].Row[3] == DBNull.Value)
+            {
+                dt.Delete(0);
+            }
         }
         public override bool UpdateData(CollectionViewSource[] cv, EnumStatus status)
         {
             部門表Bll dept = new 部門表Bll();
             return dept.UpdateData(cv, out this._增刪修訊息, status);
+        }
+
+        private void dept_1DataGrid_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            if (((DataGrid)sender).IsReadOnly)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

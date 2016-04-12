@@ -2079,7 +2079,7 @@
         <Grid>
             <ToggleButton Grid.Column="2" Template="{DynamicResource ComboBoxToggleButton}" x:Name="ToggleButton" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press"/>
             <ContentPresenter HorizontalAlignment="Left" Margin="3,3,23,3" x:Name="ContentSite" VerticalAlignment="Center" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" IsHitTestVisible="False"/>
-
+            
             <TextBox Visibility="Hidden" Template="{DynamicResource ComboBoxTextBox}" HorizontalAlignment="Left" Margin="3,3,23,3" x:Name="PART_EditableTextBox" Style="{x:Null}" VerticalAlignment="Center" Focusable="True" Background="Transparent" IsReadOnly="{TemplateBinding IsReadOnly}"/>
             <Rectangle x:Name="DisabledVisualElement" Fill="#A5FFFFFF" RadiusX="4" RadiusY="4" IsHitTestVisible="false" Visibility="Collapsed" />
             <Rectangle x:Name="FocusVisualElement" Margin="-1" Stroke="{StaticResource selectedStroke}" StrokeThickness="1" RadiusX="4" RadiusY="4" IsHitTestVisible="false" Opacity="0"/>
@@ -2154,9 +2154,7 @@
                         <Rectangle x:Name="BackgroundGradientSelected" Fill="{StaticResource BtnOverFill}" Stroke="{StaticResource selectedStroke}" RadiusX="2" RadiusY="2" Opacity="0"/>
                         <Rectangle x:Name="BackgroundHighlight" Margin="1" Stroke="#A0FFFFFF" RadiusX="1" RadiusY="1"/>
                         <ContentPresenter
-	                        	x:Name="contentPresenter"
-	                        	Content="{TemplateBinding Content}"
-	                        	ContentTemplate="{TemplateBinding ContentTemplate}"
+	                        	x:Name="contentPresenter"	                        	
 	                        	HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
 	                        	Margin="{TemplateBinding Padding}"/>
                     </Grid>

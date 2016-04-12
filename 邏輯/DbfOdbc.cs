@@ -10,7 +10,7 @@ namespace 邏輯
 {
     public class DbfOdbc
     {
-        public OdbcConnection OdbcDbfOpenConn(string Database)
+        private OdbcConnection OdbcDbfOpenConn(string Database)
         {
             string cnstr = "Driver={Microsoft Visual FoxPro Driver}; SourceType=DBF; SourceDB="
                 + Database + "; Exclusive=No; Collate=Machine; NULL=Yes; DELETED=Yes; BACKGROUNDFETCH=Yes;";

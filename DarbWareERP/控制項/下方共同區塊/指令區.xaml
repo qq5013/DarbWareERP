@@ -34,7 +34,7 @@
                     <Button x:Name="btn歷史檔案"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn歷史檔案_IsEnabledChanged">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/歷史檔案00.png"></Image>
                     </Button>
-                    <Button x:Name="btn列印"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn列印_IsEnabledChanged">
+                    <Button x:Name="btn列印"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn列印_IsEnabledChanged" Click="btn列印_Click">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/列印00.png"></Image>
                     </Button>
                     <Button x:Name="btn瀏覽"  Width="44" Height="44" Margin="2" IsTabStop="False" IsEnabledChanged="btn瀏覽_IsEnabledChanged" Click="btn瀏覽_Click">
