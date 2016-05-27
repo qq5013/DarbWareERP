@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
 using System.Data;
+using System.Globalization;
 
 namespace DarbWareERP
 {
@@ -80,7 +81,7 @@ namespace DarbWareERP
             條件["欄位No"] = 原始編號[0]["欄位編號"];
             條件["欄位說明"] = rows自訂條件欄位[0]["欄位說明"];
             條件["運算子編號"] = 原始編號[0]["運算子編號"];
-            //條件["運算子說明"] = rows運算子[0]["運算子說明"];
+            條件["運算子說明"] = rows運算子[0]["運算子說明"];
             條件["起始值"] = 原始編號[0]["值1"];
             條件["截止值"] = 原始編號[0]["值2"];
             條件["欄位"] = rows自訂條件欄位[0]["欄位"];
@@ -88,11 +89,10 @@ namespace DarbWareERP
             查詢條件表.Rows.Add(條件);
 
             欄位Column.ItemsSource = rows自訂條件欄位;
-            運算子Column.ItemsSource = 運算子.DefaultView;            
+            運算子Column.ItemsSource = 運算子.DefaultView;
             dg查詢條件.ItemsSource = 查詢條件表.DefaultView;
 
-        }
-        
+        }        
         private void dg資料顯示()
         {
             DataRow[] dr = Model.視窗Model.登入暫存表.Tables[0].Select("資料表別名 like '%" + 程式名稱 + "%'");
@@ -141,6 +141,11 @@ namespace DarbWareERP
         {
             int no = ((ComboBox)sender).SelectedIndex;
             txt預設條件說明.Text = 條件說明[no];
+        }
+
+        private void btn查詢_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

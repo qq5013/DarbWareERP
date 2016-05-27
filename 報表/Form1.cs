@@ -28,6 +28,7 @@ namespace 報表
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "報表.Report2.rdlc";
             unitbaBindingSource.DataSource = datatable;
             this.reportViewer1.RefreshReport();
+            
         }
     }
 }

@@ -187,7 +187,6 @@ namespace DarbWareERP.控制項.下方共同區塊
                     page.Status = PrevTableStatus;
                 }
                 MessageBox.Show(page.增刪修訊息);
-
             }
             else
             {

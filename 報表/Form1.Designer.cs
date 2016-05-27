@@ -30,13 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.unitbaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.unitbaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
+            // unitbaBindingSource
+            // 
+            this.unitbaBindingSource.DataSource = typeof(Model.unitba);
+            // 
             // reportViewer1
             // 
+            this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             reportDataSource1.Name = "DataSet1";
             reportDataSource1.Value = this.unitbaBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
@@ -45,10 +52,6 @@
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(874, 462);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // unitbaBindingSource
-            // 
-            this.unitbaBindingSource.DataSource = typeof(Model.unitba);
             // 
             // Form1
             // 

@@ -8,7 +8,26 @@
       xmlns:控制項="clr-namespace:DarbWareERP.控制項"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="瀏覽頁面" Loaded="頁面繼承_Loaded">    
+      Title="瀏覽頁面" Loaded="頁面繼承_Loaded">
+    <src:頁面繼承.Resources>
+        <Style x:Key="test" TargetType="ComboBox">          
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition MinWidth="10"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Path=運算子編號}" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="{Binding Path=運算子說明}" Grid.Column="2"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>                
+            </Setter>                     
+        </Style>
+    </src:頁面繼承.Resources>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -42,20 +61,23 @@
                             <ComboBox x:Name="cbx預設條件" Grid.Column="1" Margin="3,6,0,0"  Width="120" SelectionChanged="cbx預設條件_SelectionChanged"/>
                             <TextBox x:Name="txt預設條件說明" Grid.Column="2" Margin="3,6,0,0"  Width="240" IsReadOnly="True"/>
                         </Grid>
-                        <DataGrid x:Name="dg查詢條件" Margin="3" Grid.Row="1" AutoGenerateColumns="False">
+                        <DataGrid x:Name="dg查詢條件" Margin="3" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Path=No}" ClipboardContentBinding="{x:Null}" Header="NO."/>
                                 <DataGridComboBoxColumn x:Name="欄位Column" ClipboardContentBinding="{x:Null}" Header="欄位No." SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}"/>
                                 <DataGridTextColumn Binding="{Binding Path=欄位說明}" ClipboardContentBinding="{x:Null}" Header="欄位說明"/>
-                                <DataGridComboBoxColumn x:Name="運算子Column" Header="運算子編號" DisplayMemberPath="運算子說明" SelectedValuePath="運算子編號" SelectedValueBinding="{Binding Path=運算子編號}"  />
-                                <DataGridTextColumn Binding="{Binding ElementName=運算子Column, Path=SelectedValueBinding.Path}" ClipboardContentBinding="{x:Null}" Header="運算子說明"/>
+                                <DataGridComboBoxColumn x:Name="運算子Column" Header="運算子編號" DisplayMemberPath="運算子編號" SelectedValuePath="運算子編號" SelectedValueBinding="{Binding Path=運算子編號}" EditingElementStyle="{StaticResource ResourceKey=test}">
+                                    
+                                </DataGridComboBoxColumn>
+                                <DataGridTextColumn Binding="{Binding Path=運算子說明}" ClipboardContentBinding="{x:Null}" Header="運算子說明" IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding Path=起始值}" ClipboardContentBinding="{x:Null}" Header="起始值(其他條件值)"/>
                                 <DataGridTextColumn Binding="{Binding Path=截止值}" ClipboardContentBinding="{x:Null}" Header="截止值"/>
                                 <DataGridTextColumn Binding="{Binding Path=欄位}" ClipboardContentBinding="{x:Null}" Header="欄位"/>
                                 <DataGridTextColumn Binding="{Binding Path=欄位TYPE}" ClipboardContentBinding="{x:Null}" Header="欄位TYPE"/>
                             </DataGrid.Columns>
-                        </DataGrid>                        
+                        </DataGrid>
                     </Grid>
+                    
                     <Grid x:Name="瀏覽指令區" Grid.Column="3">
                         <Border BorderThickness="1" Grid.Row="1">
                             <Border.BorderBrush>
@@ -78,7 +100,7 @@
                                         <RowDefinition></RowDefinition>
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Button x:Name="btn查詢" Grid.Column="0" Grid.Row="0" Width="44" Height="44" Margin="2" IsTabStop="False">
+                                    <Button x:Name="btn查詢" Grid.Column="0" Grid.Row="0" Width="44" Height="44" Margin="2" IsTabStop="False" Click="btn查詢_Click">
                                         <Image Source="/DarbWareERP;component/Image/Icon_png/查詢00.png"></Image>
                                     </Button>
                                     <Button x:Name="btn篩選" Grid.Column="0" Grid.Row="2" Width="44" Height="44" Margin="2" IsTabStop="False">

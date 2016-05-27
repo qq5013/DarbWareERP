@@ -61,7 +61,7 @@ namespace 數據庫連線.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("銓昱")]
+        [global::System.Configuration.DefaultSettingValueAttribute("銓育")]
         public string 資料庫名稱 {
             get {
                 return ((string)(this["資料庫名稱"]));

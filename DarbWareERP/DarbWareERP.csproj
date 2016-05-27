@@ -149,7 +149,6 @@
     <Compile Include="轉資料\轉Accl.xaml.cs">
       <DependentUpon>轉Accl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="運算子.cs" />
     <Compile Include="選單頁面.xaml.cs">
       <DependentUpon>選單頁面.xaml</DependentUpon>
     </Compile>
