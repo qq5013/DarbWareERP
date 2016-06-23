@@ -344,7 +344,7 @@ namespace DarbWareERP.控制項.下方共同區塊
             else
             {
                 Type type = Type.GetType("DarbWareERP.瀏覽頁面" + page.瀏覽頁面);
-                page = (頁面繼承)Activator.CreateInstance(type,new object[] { txbl程式名稱.Text,page.BrowseType });                
+                page = (頁面繼承)Activator.CreateInstance(type,new object[] { txbl程式名稱.Text,page.BrowseType,page.資料表名稱 });                
             }
             表單控制.目前頁面 = page;
             nav.Navigate(page);

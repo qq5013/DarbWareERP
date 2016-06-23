@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
 using System.Data;
 using System.Globalization;
+using 邏輯.視窗相關;
 
 namespace DarbWareERP
 {
@@ -26,13 +27,20 @@ namespace DarbWareERP
         string 程式名稱;
         List<string> 條件編號 = null;
         List<string> 條件說明 = null;
-        public 瀏覽頁面2(string title, string browsetype)
+        public 瀏覽頁面2(string title, string browsetype, string[] 資料表名稱)
         {
             InitializeComponent();
             this.Title = title + Title;
+            for (int i = 0; i < 資料表名稱.Count(); i++)
+            {
+                if (資料表名稱[i] != null)
+                {
+                    this.資料表名稱[i] = 資料表名稱[i];
+                }
+            }
             程式名稱 = 表單控制.目前頁面.Title.Replace("瀏覽頁面", "");
             txbl程式名稱.Text = 程式名稱;
-            dg資料顯示();
+            //dg資料顯示();
 
             DataRow[] dr = Model.視窗Model.登入暫存表.Tables[0].Select("資料表別名 = '" + "LCL自訂條件別" + "'");
             int no = Model.視窗Model.登入暫存表.Tables[0].Rows.IndexOf(dr[0]);
@@ -78,7 +86,7 @@ namespace DarbWareERP
 
             DataRow 條件 = 查詢條件表.NewRow();
             條件["No"] = 原始編號[0]["序號"];
-            條件["欄位No"] = 原始編號[0]["欄位編號"];
+            條件["欄位編號"] = 原始編號[0]["欄位編號"];
             條件["欄位說明"] = rows自訂條件欄位[0]["欄位說明"];
             條件["運算子編號"] = 原始編號[0]["運算子編號"];
             條件["運算子說明"] = rows運算子[0]["運算子說明"];
@@ -87,12 +95,18 @@ namespace DarbWareERP
             條件["欄位"] = rows自訂條件欄位[0]["欄位"];
             條件["欄位TYPE"] = 原始編號[0]["序號"];
             查詢條件表.Rows.Add(條件);
+            DataTable 欄位 = rows自訂條件欄位[0].Table.Clone();
+            foreach (DataRow row in rows自訂條件欄位)
+            {
 
-            欄位Column.ItemsSource = rows自訂條件欄位;
+                欄位.ImportRow(row);
+            }
+
+            欄位Column.ItemsSource = 欄位.DefaultView;
             運算子Column.ItemsSource = 運算子.DefaultView;
             dg查詢條件.ItemsSource = 查詢條件表.DefaultView;
 
-        }        
+        }
         private void dg資料顯示()
         {
             DataRow[] dr = Model.視窗Model.登入暫存表.Tables[0].Select("資料表別名 like '%" + 程式名稱 + "%'");
@@ -105,7 +119,7 @@ namespace DarbWareERP
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("No");
-            dt.Columns.Add("欄位No");
+            dt.Columns.Add("欄位編號");
             dt.Columns.Add("欄位說明");
             dt.Columns.Add("運算子編號");
             dt.Columns.Add("運算子說明");
@@ -145,7 +159,31 @@ namespace DarbWareERP
 
         private void btn查詢_Click(object sender, RoutedEventArgs e)
         {
+            string 查詢條件 = "";
+            
+            for (int i = 0; i < dg查詢條件.Items.Count; i++)
+            {
+                DataRowView drv = (DataRowView)dg查詢條件.Items[i];
+                查詢條件 = SearchItemSql(drv);
 
+            }
+            瀏覽 瀏覽 = new 瀏覽();
+            DataSet ds = 瀏覽.瀏覽查詢(資料表名稱[0], 查詢條件);
+            ds.Relations.Add("relation",ds.Tables[0].Columns["pkid"], ds.Tables[1].Columns["linkid"]);
+            //this.DataContext = ds;
+            dg資料顯示1.ItemsSource = ds.Tables[0].DefaultView;
+
+        }
+        private string SearchItemSql(DataRowView drv)
+        {
+            string result = "";
+            switch (drv["運算子編號"].ToString())
+            {
+                case "C":                      
+                    result = drv["欄位說明"].ToString() +  " not like " + "'" + drv["起始值"].ToString() + "'";
+                    break;
+            }
+            return result;
         }
     }
 }
