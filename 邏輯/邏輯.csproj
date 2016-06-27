@@ -62,6 +62,7 @@
     <Compile Include="視窗相關\新增修改刪除.cs" />
     <Compile Include="視窗相關\WindowBll.cs" />
     <Compile Include="視窗相關\導覽區Bll.cs" />
+    <Compile Include="視窗相關\瀏覽.cs" />
     <Compile Include="資料驗證\主索引驗證.cs" />
     <Compile Include="轉資料\轉傳票Bll.cs" />
     <Compile Include="電子賀卡Bll.cs" />

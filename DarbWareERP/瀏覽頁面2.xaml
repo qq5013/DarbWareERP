@@ -27,6 +27,23 @@
                 </Setter.Value>                
             </Setter>                     
         </Style>
+        <Style x:Key="欄位" TargetType="ComboBox">
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition MinWidth="10"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Path=欄位編號}" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="{Binding Path=欄位說明}" Grid.Column="2"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </src:頁面繼承.Resources>
     <Grid>
         <Grid>
@@ -64,7 +81,7 @@
                         <DataGrid x:Name="dg查詢條件" Margin="3" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Path=No}" ClipboardContentBinding="{x:Null}" Header="NO."/>
-                                <DataGridComboBoxColumn x:Name="欄位Column" ClipboardContentBinding="{x:Null}" Header="欄位No." SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}"/>
+                                <DataGridComboBoxColumn x:Name="欄位Column" ClipboardContentBinding="{x:Null}" Header="欄位編號" DisplayMemberPath="欄位編號" SelectedValuePath="欄位編號" SelectedValueBinding="{Binding Path=欄位編號}" EditingElementStyle="{StaticResource ResourceKey=欄位}"/>
                                 <DataGridTextColumn Binding="{Binding Path=欄位說明}" ClipboardContentBinding="{x:Null}" Header="欄位說明"/>
                                 <DataGridComboBoxColumn x:Name="運算子Column" Header="運算子編號" DisplayMemberPath="運算子編號" SelectedValuePath="運算子編號" SelectedValueBinding="{Binding Path=運算子編號}" EditingElementStyle="{StaticResource ResourceKey=test}">
                                     
@@ -121,8 +138,8 @@
                     </Grid>
                 </Grid>
             </Border>
-            <DataGrid x:Name="dg資料顯示1" Grid.Row="0" Margin="3"/>
-            <DataGrid x:Name="dg資料顯示2" Grid.Row="1" Margin="3"/>
+            <DataGrid x:Name="dg資料顯示1" Grid.Row="0" Margin="3" ItemsSource="{Binding Path=NewDataSet.Tables[0]}" AutoGenerateColumns="True"/>
+            <DataGrid x:Name="dg資料顯示2" Grid.Row="1" Margin="3" ItemsSource="{Binding ElementName=dg資料顯示1,Path=SelectedItem.relation}" />
         </Grid>
     </Grid>
 </src:頁面繼承>
