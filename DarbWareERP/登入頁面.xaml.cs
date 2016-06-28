@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using 邏輯;
 using DarbWareERP.繼承窗口;
 using System.ComponentModel;
+using 邏輯.訊息相關;
 
 namespace DarbWareERP
 {
@@ -28,6 +29,7 @@ namespace DarbWareERP
         public 登入頁面()
         {
             InitializeComponent();
+            表單控制.目前頁面 = this;
             登入Bll = new 登入Bll();
             txt帳號.Focus();
             label4.Content = 登入Bll.資料庫;
@@ -64,11 +66,11 @@ namespace DarbWareERP
         {
             if ((bool)e.Result == true)
             {
-                切換頁面("DarbWareERP.", 頁面枚舉.選單頁面);
+                表單控制.切換頁面("DarbWareERP.", "選單頁面");
             }
             else
             {
-                MessageBox.Show("帳號或密碼輸入錯誤");
+                錯誤訊息.錯誤訊息顯示(0);
                 pwd密碼.Password = "";
             }
             btn登入.IsEnabled = true;

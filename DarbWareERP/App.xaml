@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="主題/控制項設定.xaml"/>
                 <!--<ResourceDictionary Source="主題/WhistlerBlue.xaml"/>-->                
                 <!--<ResourceDictionary Source="控制項/自訂樣式.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>

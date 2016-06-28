@@ -24,5 +24,9 @@ namespace DarbWareERP
         {
             InitializeComponent();            
         }
+        protected override void OnClosed(EventArgs e)
+        {
+            
+        }
     }
 }

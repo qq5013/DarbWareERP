@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows;
 using DarbWareERP.控制項.下方共同區塊;
 using DarbWareERP.控制項;
+using System.Windows.Navigation;
 
 namespace DarbWareERP
 {
@@ -56,12 +57,58 @@ namespace DarbWareERP
             }
         }
         public static Brush 增刪修的顏色 { get { return new SolidColorBrush(Colors.Red); } }
-        public static 頁面繼承 目前頁面 { get; set; }        
+        
+        public static 頁面繼承 目前頁面 { get; set ; }        
 
         private static List<頁面繼承> _Page實體列表 = new List<頁面繼承>();       
         public static List<頁面繼承> Page實體列表 { get { return _Page實體列表; } set { _Page實體列表 = value; } }
         public static string 目前編修資料表 { get { return _目前編修資料表; } set { _目前編修資料表 = value; } }
         private static string _目前編修資料表 = "";
-        
+        public static void 切換頁面(string nameSpace, string pageTitle)
+        {
+            NavigationService nav;
+            頁面繼承 page;
+            nav = NavigationService.GetNavigationService(目前頁面);
+            if (表單控制.Page實體列表.Any(x => x.Title == pageTitle.ToString()))
+            {
+                page = 表單控制.Page實體列表.Find(x => x.Title == pageTitle.ToString());
+            }
+            else
+            {
+                Type CAType = Type.GetType(nameSpace + pageTitle.ToString());
+                if (CAType == null)
+                {
+                    MessageBox.Show("頁面不存在");
+                    return;
+                }
+                page = (頁面繼承)Activator.CreateInstance(CAType);
+                Page實體列表.Add(page);
+            }
+            表單控制.目前頁面 = page;
+            nav.Navigate(page);
+        }
+        public static void 切換頁面(string nameSpace, string pageTitle,params object[] args)
+        {
+            NavigationService nav;
+            頁面繼承 page;
+            nav = NavigationService.GetNavigationService(目前頁面);
+            if (表單控制.Page實體列表.Any(x => x.Title == pageTitle.ToString()))
+            {
+                page = 表單控制.Page實體列表.Find(x => x.Title == pageTitle.ToString());
+            }
+            else
+            {
+                Type CAType = Type.GetType(nameSpace + pageTitle.ToString());
+                if (CAType == null)
+                {
+                    MessageBox.Show("頁面不存在");
+                    return;
+                }
+                page = (頁面繼承)Activator.CreateInstance(CAType,args);
+                Page實體列表.Add(page);
+            }
+            表單控制.目前頁面 = page;
+            nav.Navigate(page);
+        }
     }
 }
