@@ -23,10 +23,6 @@ namespace DarbWareERP
         public 主視窗()
         {
             InitializeComponent();            
-        }        
-        protected override void OnClosed(EventArgs e)
-        {
-            
         }
     }
 }
