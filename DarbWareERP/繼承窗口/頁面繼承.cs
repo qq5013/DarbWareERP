@@ -15,27 +15,28 @@ using 邏輯.視窗相關;
 
 
 namespace DarbWareERP.繼承窗口
-{    
+{
     public class 頁面繼承 : Page, INotifyPropertyChanged
     {
-        
+
         public event PropertyChangedEventHandler PropertyChanged; //配合新增修改時，按鈕的顏色
-        public void OnPropertyChanged(PropertyChangedEventArgs e)
+
+        public void OnPropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
+
             if (PropertyChanged != null)
             {
-                PropertyChanged(this, e);
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+
         }
         private bool _新增修改中 = false;
         private EnumStatus status = EnumStatus.一般;
         private string[] _資料表名稱;
-        protected string _增刪修訊息;        
+        protected string _增刪修訊息;
         private string _目前KeyFldValue;
         private string keyFldValue;
         private string browseType = "";
-        public string 瀏覽頁面 { get; set; }
         public string Pkid { get; set; }
         public string KeyFldValue
         {
@@ -67,8 +68,8 @@ namespace DarbWareERP.繼承窗口
                 Model.視窗Model.資料表名稱 = value;
             }
         }
-        public string BrowseType { get { return browseType; } set {browseType=value; } }
-        public CollectionViewSource[] CollectionViewSources { get { return collectionViesSources; } set{ collectionViesSources = value; } }
+        public string BrowseType { get { return browseType; } set { browseType = value; } }
+        public CollectionViewSource[] CollectionViewSources { get { return collectionViesSources; } set { collectionViesSources = value; } }
         private CollectionViewSource[] collectionViesSources = new CollectionViewSource[5];
         public EnumStatus Status { get { return status; } set { status = value; } } //0瀏覽模式,1新增模式,2修改模式，控制控制項的readonly、enable等         
         public 控制項操作 控制項操作 = new 控制項操作();
@@ -82,19 +83,19 @@ namespace DarbWareERP.繼承窗口
             set
             {
                 _新增修改中 = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("新增修改中"));
+                OnPropertyChanged("新增修改中");
             }
-        }        
+        }
         public 頁面繼承()
         {
-            表單控制.Page實體列表.Add(this);
+            表單控制.目前頁面 = this;
             資料表名稱 = new string[5];
             初始值設定();
             目前KeyFldValue = "";
         }
         protected virtual void 初始值設定()
         {
-            
+
         }
         public virtual bool BeforeAddNew()
         {
@@ -115,10 +116,10 @@ namespace DarbWareERP.繼承窗口
         {
             //按下新增按鈕紀錄之後
             增修共同處理(true);
-            
+
         }
         public virtual bool BeforeEdit()
-        {            
+        {
             bool result = 檢查有無KeyFldValue();
             if (result == false)
             {
@@ -146,11 +147,11 @@ namespace DarbWareERP.繼承窗口
         }
         public virtual bool BeforeCancelEdit()
         {
-            視窗Model.是否可以儲存 = true;            
+            視窗Model.是否可以儲存 = true;
             return true;
         }
         public virtual void AfterCancelEdit()
-        {            
+        {
             if (視窗Model.放行碼 > 0)
             {
                 新增修改刪除 page = new 新增修改刪除();
@@ -165,7 +166,7 @@ namespace DarbWareERP.繼承窗口
         }
         public virtual void SetValueEndEdit()
         {
-            
+
         }
         public virtual void AfterEndEdit()
         {
@@ -178,7 +179,7 @@ namespace DarbWareERP.繼承窗口
             {
                 MessageBox.Show("請先選擇一筆資料", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
-            }            
+            }
             新增修改刪除 page = new 新增修改刪除();
             return page.取得放行碼(Pkid);
         }
@@ -194,9 +195,9 @@ namespace DarbWareERP.繼承窗口
                 新增修改刪除 page = new 新增修改刪除();
                 page.刪除放行碼();
             }
-        }        
+        }
         public virtual bool UpdateData(CollectionViewSource[] cv, EnumStatus status)
-        {                        
+        {
             //資料存到資料庫
             return true;
         }
@@ -226,46 +227,7 @@ namespace DarbWareERP.繼承窗口
                 this.Focus();
             }
         }
-        public void 切換頁面(string nameSpace, 頁面枚舉 pageTitle)
-        {
-            NavigationService nav;
-            頁面繼承 page;
-            nav = NavigationService.GetNavigationService(this);
-            if (表單控制.Page實體列表.Any(x => x.Title == pageTitle.ToString()))
-            {
-                page = 表單控制.Page實體列表.Find(x => x.Title == pageTitle.ToString());
-            }
-            else
-            {
-                Type CAType = Type.GetType(nameSpace + pageTitle.ToString());
-                page = (頁面繼承)Activator.CreateInstance(CAType);
-            }
-            表單控制.目前頁面 = page;
-            nav.Navigate(page);
-        }
-        /// <summary>
-        /// 選單頁面特定用
-        /// </summary>
-        /// <param name="nameSpace"></param>
-        /// <param name="pageTitle"></param>
-        public void 切換頁面(string nameSpace, string pageTitle)
-        {
-            NavigationService nav;
-            頁面繼承 page;
-            nav = NavigationService.GetNavigationService(this);
-            if (表單控制.Page實體列表.Any(x => x.Title == pageTitle))
-            {
-                page = 表單控制.Page實體列表.Find(x => x.Title == pageTitle);
-            }
-            else
-            {
-                Type CAType = Type.GetType(nameSpace + pageTitle);
-                page = (頁面繼承)Activator.CreateInstance(CAType);
-            }
-            表單控制.目前頁面 = page;
-            nav.Navigate(page);
-            表單控制.Grid指令區.Visibility = Visibility.Visible;
-        }
+
         private bool 檢查有無KeyFldValue()
         {
             bool result = false;
@@ -278,7 +240,7 @@ namespace DarbWareERP.繼承窗口
             {
                 result = true;
             }
-            
+
             return result;
         }
         /// <summary>
@@ -286,13 +248,13 @@ namespace DarbWareERP.繼承窗口
         /// </summary>
         /// <param name="是增刪修">增刪修為TRUE，儲存離開為FALSE</param>
         private void 增修共同處理(bool 是否增修)
-        {            
+        {
             新增修改中 = 是否增修;
             表單控制.命令區塊實體.是否可以離開頁面 = !是否增修;
             if (是否增修)
             {
                 表單控制.目前編修資料表 = this.Title;
-                控制項操作.用名稱尋找子代<Button>(表單控制.切換表單區實體, "btn" + Title).Foreground=表單控制.增刪修的顏色;                
+                控制項操作.用名稱尋找子代<Button>(表單控制.切換表單區實體, "btn" + Title).Foreground = 表單控制.增刪修的顏色;
             }
             else
             {
