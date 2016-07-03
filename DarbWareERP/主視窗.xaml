@@ -8,8 +8,8 @@
         xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
         xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊" 
         mc:Ignorable="d" Height="768" Width="1024"
-        Background="Gray"        WindowState="Maximized"
-        Title="{Binding Path=Content.Title,ElementName=frame,StringFormat=DarbWareERP System 2016/03/15 {0}}" Icon="Image/Icon_png/EARTH.ICO" >  
+        Background="#FF969696"        WindowState="Maximized"
+        Title="{Binding Path=Content.Title,ElementName=frame,StringFormat=DarbWareERP System 2016/07/01 {0}}" Icon="Image/Icon_png/EARTH.ICO" Closing="Window_Closing" >  
     <Grid>
         <Frame x:Name="frame" Content="Frame" Source="/DarbWareERP;component/登入頁面.xaml" NavigationUIVisibility="Hidden" />
         <Grid x:Name="buttonGrid" Visibility="Hidden">

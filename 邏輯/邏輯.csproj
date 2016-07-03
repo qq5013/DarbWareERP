@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="DataTableToList.cs" />
     <Compile Include="DbfOdbc.cs" />
+    <Compile Include="訊息相關\錯誤訊息.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlToSql.cs" />
     <Compile Include="信件.cs" />

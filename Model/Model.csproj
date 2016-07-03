@@ -89,6 +89,7 @@
     <Compile Include="unitba.cs">
       <DependentUpon>銓昱Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="參數設定.cs" />
     <Compile Include="視窗Model.cs" />
     <Compile Include="銓昱Model.Context.cs">
       <AutoGen>True</AutoGen>

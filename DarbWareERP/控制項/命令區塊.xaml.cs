@@ -31,11 +31,8 @@ namespace DarbWareERP.控制項
         private void btn返回上一層_Click(object sender, RoutedEventArgs e)
         {
             if (是否可以離開頁面)
-            {
-                Window window = Application.Current.MainWindow;
-                Frame frame = (Frame)window.FindName("frame");
-                頁面繼承 page = (頁面繼承)frame.Content;
-                page.切換頁面("DarbWareERP.", 頁面枚舉.選單頁面);
+            {                
+                表單控制.切換頁面("DarbWareERP.", "選單頁面");
                 表單控制.Grid指令區.Visibility = Visibility.Hidden;       
             }
             else
