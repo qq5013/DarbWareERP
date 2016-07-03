@@ -131,9 +131,6 @@
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項操作.cs" />
-    <Compile Include="瀏覽頁面2.xaml.cs">
-      <DependentUpon>瀏覽頁面2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="瀏覽頁面1.xaml.cs">
       <DependentUpon>瀏覽頁面1.xaml</DependentUpon>
     </Compile>
@@ -215,10 +212,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="瀏覽頁面2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="瀏覽頁面1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
