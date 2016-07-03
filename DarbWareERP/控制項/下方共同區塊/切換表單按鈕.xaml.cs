@@ -32,7 +32,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             系統別 = ((TextBlock)((WrapPanel)this.Parent).FindName("txbl系統名稱")).Text;
-            表單控制.切換頁面("DarbWareERP." + 系統別 + ".", this.Content.ToString());            
+            表單控制.目前頁面.切換頁面("DarbWareERP." + 系統別 + ".", this.Content.ToString());            
         }       
     }
 }

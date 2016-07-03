@@ -31,7 +31,8 @@ namespace DarbWareERP.B.基本資料
         protected override void 初始值設定()
         {
             KeyFldValue = "單位";
-            資料表名稱[0] = "unitba";            
+            資料表名稱[0] = "unitba";
+            瀏覽頁面 = "1";
         }
         private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
         {

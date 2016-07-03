@@ -43,7 +43,7 @@ namespace DarbWareERP.B.基本資料
             KeyFldValue = "部門代號";
             資料表名稱[0] = "dept";
             資料表名稱[1] = "dept_1";
-            
+            瀏覽頁面 = "2";
             BrowseType = "DPT";
         }
 

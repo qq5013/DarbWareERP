@@ -11,18 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DarbWareERP.繼承窗口;
 
-namespace DarbWareERP
+namespace DarbWareERP.A.系統資料
 {
     /// <summary>
-    /// 主視窗.xaml 的互動邏輯
+    /// 密碼權限表.xaml 的互動邏輯
     /// </summary>
-    public partial class 主視窗 : Window
+    public partial class 密碼權限表 : Window
     {
-        public 主視窗()
+        public 密碼權限表()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
     }
 }

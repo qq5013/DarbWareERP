@@ -334,14 +334,26 @@ namespace DarbWareERP.控制項.下方共同區塊
 
         private void btn瀏覽_Click(object sender, RoutedEventArgs e)
         {
-            表單控制.切換頁面("DarbWareERP.瀏覽系列.", "瀏覽頁面",new object[] { txbl程式名稱.Text,page.BrowseType,page.資料表名稱 });
-            
+            NavigationService nav;
+            頁面繼承 page = 表單控制.目前頁面;
+            nav = NavigationService.GetNavigationService(this);
+            if (表單控制.Page實體列表.Any(x => x.Title == txbl程式名稱.Text + "瀏覽頁面"))
+            {
+                page = 表單控制.Page實體列表.Find(x => x.Title == txbl程式名稱.Text + "瀏覽頁面");
+            }
+            else
+            {
+                Type type = Type.GetType("DarbWareERP.瀏覽頁面" + page.瀏覽頁面);
+                page = (頁面繼承)Activator.CreateInstance(type,new object[] { txbl程式名稱.Text,page.BrowseType,page.資料表名稱 });                
+            }
+            表單控制.目前頁面 = page;
+            nav.Navigate(page);
         }
 
         private void btn列印_Click(object sender, RoutedEventArgs e)
         {
             DataTable dt = new DataTable();
-            dt = (DataTable)page.CollectionViewSources[0].Source;
+           dt=(DataTable) page.CollectionViewSources[0].Source;
             Form1 form1 = new Form1(dt);
             form1.ShowDialog();
         }
