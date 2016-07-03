@@ -6,8 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="主題/WhistlerBlue.xaml"/>                
-                <ResourceDictionary Source="控制項/自訂樣式.xaml"/>
+                <!--<ResourceDictionary Source="主題/WhistlerBlue.xaml"/>-->                
+                <!--<ResourceDictionary Source="控制項/自訂樣式.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
