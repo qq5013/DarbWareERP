@@ -23,10 +23,10 @@ namespace DarbWareERP
         public 主視窗()
         {
             InitializeComponent();            
-        }
-        protected override void OnClosed(EventArgs e)
+        }        
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            
+            e.Cancel = true;
         }
     }
 }
