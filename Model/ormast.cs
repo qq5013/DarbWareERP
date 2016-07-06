@@ -16,68 +16,32 @@ using System;
     using System.Collections.Generic;
     
 using System.Xml.Serialization;
-public partial class cupdma
+public partial class ormast
 {
 
 [XmlAttribute()]
-    public string 報價單號 { get; set; }
+    public string 訂單編號 { get; set; }
+
+[XmlAttribute()]
+    public string 訂單別 { get; set; }
 
 [XmlAttribute()]
     public string 序號前置碼 { get; set; }
 
 [XmlAttribute()]
+    public string 預示單號 { get; set; }
+
+[XmlAttribute()]
+    public string 受訂日期 { get; set; }
+
+[XmlAttribute()]
+    public System.DateTime 建檔日期 { get; set; }
+
+[XmlAttribute()]
     public short 公司代碼 { get; set; }
 
 [XmlAttribute()]
-    public string 報價別 { get; set; }
-
-[XmlAttribute()]
-    public string 報價人員 { get; set; }
-
-[XmlAttribute()]
     public string 客戶代號 { get; set; }
-
-[XmlAttribute()]
-    public string 客戶名稱 { get; set; }
-
-[XmlAttribute()]
-    public string 報價日期 { get; set; }
-
-[XmlAttribute()]
-    public string 幣別 { get; set; }
-
-[XmlAttribute()]
-    public decimal 匯率 { get; set; }
-
-[XmlAttribute()]
-    public string 聯絡人 { get; set; }
-
-[XmlAttribute()]
-    public string 傳真 { get; set; }
-
-[XmlAttribute()]
-    public string 電話 { get; set; }
-
-[XmlAttribute()]
-    public decimal 最低毛利率 { get; set; }
-
-[XmlAttribute()]
-    public string 收付條件號 { get; set; }
-
-[XmlAttribute()]
-    public int 有效天數 { get; set; }
-
-[XmlAttribute()]
-    public string 頁首備註 { get; set; }
-
-[XmlAttribute()]
-    public string 報價備註 { get; set; }
-
-[XmlAttribute()]
-    public int 聯絡單id { get; set; }
-
-[XmlAttribute()]
-    public string 工作流程 { get; set; }
 
 [XmlAttribute()]
     public string 審核人員 { get; set; }
@@ -86,7 +50,82 @@ public partial class cupdma
     public string 審核日期 { get; set; }
 
 [XmlAttribute()]
+    public string 客戶訂單號 { get; set; }
+
+[XmlAttribute()]
+    public string 倉儲代號 { get; set; }
+
+[XmlAttribute()]
+    public string 轉入倉儲 { get; set; }
+
+[XmlAttribute()]
+    public string 幣別 { get; set; }
+
+[XmlAttribute()]
+    public decimal 匯率 { get; set; }
+
+[XmlAttribute()]
+    public string 稅別 { get; set; }
+
+[XmlAttribute()]
+    public string 港口代碼 { get; set; }
+
+[XmlAttribute()]
+    public byte 訂單類別碼 { get; set; }
+
+[XmlAttribute()]
+    public int 交易條件碼 { get; set; }
+
+[XmlAttribute()]
+    public string 交易方式 { get; set; }
+
+[XmlAttribute()]
+    public string 交易類別 { get; set; }
+
+[XmlAttribute()]
+    public int 運送方式碼 { get; set; }
+
+[XmlAttribute()]
+    public string 業務員編號 { get; set; }
+
+[XmlAttribute()]
+    public string 訂單備註 { get; set; }
+
+[XmlAttribute()]
+    public string 結案 { get; set; }
+
+[XmlAttribute()]
+    public string 舊單號 { get; set; }
+
+[XmlAttribute()]
+    public string 活動日期 { get; set; }
+
+[XmlAttribute()]
+    public string 收付條件號 { get; set; }
+
+[XmlAttribute()]
+    public string 注意事項 { get; set; }
+
+[XmlAttribute()]
+    public decimal 總原幣未稅 { get; set; }
+
+[XmlAttribute()]
+    public decimal 總本幣未稅 { get; set; }
+
+[XmlAttribute()]
+    public decimal 總原幣含稅 { get; set; }
+
+[XmlAttribute()]
+    public decimal 總本幣含稅 { get; set; }
+
+[XmlAttribute()]
     public string 已審核 { get; set; }
+
+[XmlAttribute()]
+    public int 聯絡單id { get; set; }
+
+[XmlAttribute()]
+    public string 工作流程 { get; set; }
 
 [XmlAttribute()]
     public System.DateTime 輸入日期 { get; set; }

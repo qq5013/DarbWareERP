@@ -9,10 +9,14 @@
         xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊" 
         mc:Ignorable="d" Height="768" Width="1024"
         Background="#FF969696"        WindowState="Maximized"
-        Title="{Binding Path=Content.Title,ElementName=frame,StringFormat=DarbWareERP System 2016/07/01 {0}}" Icon="Image/Icon_png/EARTH.ICO" Closing="Window_Closing" >  
+        Title="{Binding Path=Content.Title,ElementName=frame,StringFormat=DarbWareERP System 2016/07/01 {0}}" Icon="Image/Icon_png/EARTH.ICO" Closing="Window_Closing" >
     <Grid>
-        <Frame x:Name="frame" Content="Frame" Source="/DarbWareERP;component/登入頁面.xaml" NavigationUIVisibility="Hidden" />
-        <Grid x:Name="buttonGrid" Visibility="Hidden">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="AUTO"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="0" x:Name="frame" Content="Frame" Source="/DarbWareERP;component/登入頁面.xaml" NavigationUIVisibility="Hidden" />
+        <Grid Grid.Row="0" x:Name="buttonGrid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="259*"/>
                 <RowDefinition Height="Auto"/>
@@ -33,5 +37,8 @@
                 </Grid>
             </Border>
         </Grid>
+        <StatusBar x:Name="狀態欄" Grid.Row="1" Height="20">
+            <TextBlock x:Name="狀態欄文字敘述" Text=" qqq"/>           
+        </StatusBar>
     </Grid>
 </Window>

@@ -103,11 +103,20 @@
     <Compile Include="B.基本資料\部門表.xaml.cs">
       <DependentUpon>部門表.xaml</DependentUpon>
     </Compile>
+    <Compile Include="E.營業收款\客戶資料表.xaml.cs">
+      <DependentUpon>客戶資料表.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="E.營業收款\訂單管理.xaml.cs">
+      <DependentUpon>訂單管理.xaml</DependentUpon>
+    </Compile>
     <Compile Include="主視窗.xaml.cs">
       <DependentUpon>主視窗.xaml</DependentUpon>
     </Compile>
     <Compile Include="台銀匯率.xaml.cs">
       <DependentUpon>台銀匯率.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\下方共同區塊\下方共同區塊.xaml.cs">
+      <DependentUpon>下方共同區塊.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項\命令區塊.xaml.cs">
       <DependentUpon>命令區塊.xaml</DependentUpon>
@@ -135,9 +144,11 @@
     <Compile Include="登入頁面.xaml.cs">
       <DependentUpon>登入頁面.xaml</DependentUpon>
     </Compile>
-    <Compile Include="繼承窗口\頁面枚舉.cs" />
     <Compile Include="表單控制.cs" />
     <Compile Include="繼承窗口\頁面繼承.cs" />
+    <Compile Include="設定畫面.xaml.cs">
+      <DependentUpon>設定畫面.xaml</DependentUpon>
+    </Compile>
     <Compile Include="轉資料\轉Sliy.xaml.cs">
       <DependentUpon>轉Sliy.xaml</DependentUpon>
     </Compile>
@@ -162,6 +173,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="E.營業收款\客戶資料表.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="E.營業收款\訂單管理.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="主視窗.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,6 +190,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="主題\控制項設定.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\下方共同區塊\下方共同區塊.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,6 +238,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="登入頁面.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="設定畫面.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

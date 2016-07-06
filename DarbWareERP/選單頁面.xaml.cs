@@ -79,12 +79,14 @@ namespace DarbWareERP
         }
 
         private void 開啟視窗_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             Button btn = (Button)sender;
             List<string> 程式名稱列表 = WindowBll.GetInstance().程式名稱列表(btn.Content.ToString());
-            表單控制.切換頁面("DarbWareERP." + btn.Content + ".", 程式名稱列表[0]);
-            表單控制.Grid指令區.Visibility = Visibility.Visible;
-            表單控制.切換表單區實體.按鈕賦值();
+            if (表單控制.切換頁面("DarbWareERP." + btn.Content + ".", 程式名稱列表[0]))
+            {
+                表單控制.Grid指令區.Visibility = Visibility.Visible;
+                表單控制.切換表單區實體.按鈕賦值();
+            }
         }
         private void 沒有權限_Click(object sender, RoutedEventArgs e)
         {
@@ -93,7 +95,13 @@ namespace DarbWareERP
 
         private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
+        }
+
+        private void btn設定_Click(object sender, RoutedEventArgs e)
+        {
+            設定畫面 W = new 設定畫面();
+            W.ShowDialog();
         }
     }
 }

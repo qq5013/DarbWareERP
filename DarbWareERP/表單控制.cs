@@ -11,6 +11,7 @@ using System.Windows;
 using DarbWareERP.控制項.下方共同區塊;
 using DarbWareERP.控制項;
 using System.Windows.Navigation;
+using System.Windows.Controls.Primitives;
 
 namespace DarbWareERP
 {
@@ -48,6 +49,24 @@ namespace DarbWareERP
                 return 命令區塊實體;
             }
         }
+        public static StatusBar 狀態欄
+        {
+            get
+            {
+                Window window = Application.Current.MainWindow;
+                StatusBar 狀態欄 = (StatusBar)window.FindName("狀態欄");
+                return 狀態欄;
+            }
+        }
+        public static TextBlock 狀態欄文字敘述
+        {
+            get
+            {
+                Window window = Application.Current.MainWindow;
+                TextBlock 狀態欄 = (TextBlock)window.FindName("狀態欄文字敘述");
+                return 狀態欄;
+            }
+        }
         public static Brush 預設的顏色
         {
             get
@@ -57,15 +76,15 @@ namespace DarbWareERP
             }
         }
         public static Brush 增刪修的顏色 { get { return new SolidColorBrush(Colors.Red); } }
-
         public static 頁面繼承 目前頁面 { get; set; }
 
         private static List<頁面繼承> _Page實體列表 = new List<頁面繼承>();
         public static List<頁面繼承> Page實體列表 { get { return _Page實體列表; } set { _Page實體列表 = value; } }
         public static string 目前編修資料表 { get { return _目前編修資料表; } set { _目前編修資料表 = value; } }
         private static string _目前編修資料表 = "";
-        public static void 切換頁面(string nameSpace, string classinfo)
+        public static bool 切換頁面(string nameSpace, string classinfo)
         {
+            bool 可以切換頁面 = true;
             NavigationService nav;
             頁面繼承 page;
             nav = NavigationService.GetNavigationService(目前頁面);
@@ -79,13 +98,16 @@ namespace DarbWareERP
                 if (CAType == null)
                 {
                     MessageBox.Show("頁面不存在");
-                    return;
+                    可以切換頁面 = false;
+                    return 可以切換頁面;
                 }
                 page = (頁面繼承)Activator.CreateInstance(CAType);
                 Page實體列表.Add(page);
             }
+            page.初始值設定(); //初始值設定會重新將屬性設定一遍，不然MODEL的視窗MODEL會出錯
             表單控制.目前頁面 = page;
             nav.Navigate(page);
+            return 可以切換頁面;
         }
         public static void 切換瀏覽頁面(string nameSpace, string pageTitle, params object[] args)
         {
@@ -93,10 +115,10 @@ namespace DarbWareERP
             頁面繼承 page;
             nav = NavigationService.GetNavigationService(目前頁面);
             int location = pageTitle.IndexOf("瀏覽");
-            string classinfo = pageTitle.Substring( location);
-            if (表單控制.Page實體列表.Any(x => x.Title==pageTitle.ToString()))
+            string classinfo = pageTitle.Substring(location);
+            if (表單控制.Page實體列表.Any(x => x.Title == pageTitle.ToString()))
             {
-                page = 表單控制.Page實體列表.Find(x => x.Title==pageTitle.ToString());
+                page = 表單控制.Page實體列表.Find(x => x.Title == pageTitle.ToString());
             }
             else
             {
@@ -108,7 +130,7 @@ namespace DarbWareERP
                 }
                 page = (頁面繼承)Activator.CreateInstance(CAType, args);
                 Page實體列表.Add(page);
-            }
+            }                 
             表單控制.目前頁面 = page;
             nav.Navigate(page);
         }

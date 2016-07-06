@@ -45,7 +45,6 @@ namespace DarbWareERP.控制項.下方共同區塊
             if (page.BeforeAddNew())
             {
                 清除綁定datatable(控制項操作, page);
-
                 page.Status = EnumStatus.新增;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);

@@ -18,6 +18,7 @@ using System.Globalization;
 using 邏輯.視窗相關;
 using 邏輯;
 using System.Collections.ObjectModel;
+using System.Reflection;
 
 namespace DarbWareERP.瀏覽系列
 {
@@ -57,6 +58,7 @@ namespace DarbWareERP.瀏覽系列
             DataTable 自訂條件欄位 = 查詢LCL所在位置("LCL自訂條件欄位");
             DataTable 運算子 = 查詢LCL所在位置("LCL運算子");
             DataTable 原始 = 查詢LCL所在位置("LCL原始自訂條件");
+
             if (欄位編號列表 == null && 運算子編號列表 == null)
             {
                 欄位編號列表 = new ObservableCollection<瀏覽系列.欄位編號列表>(DataTableToList<欄位編號列表>.ConvertToModel(自訂條件欄位.Select("瀏覽類別 = '" + browsetype + "'").CopyToDataTable()));
@@ -70,25 +72,26 @@ namespace DarbWareERP.瀏覽系列
                 DataRow[] 原始編號 = 原始.Select("編號 = '" + 條件編號[no] + "'");
                 for (int i = 0; i < 原始編號.Count(); i++)
                 {
-
                     DataRow[] rows自訂條件欄位 = 自訂條件欄位.Select("瀏覽類別 = '" + browsetype + "' and 欄位編號 = '" + 原始編號[i]["欄位編號"] + "'");
                     string 欄位說明 = rows自訂條件欄位.FirstOrDefault()["欄位說明"].ToString();
                     DataRow[] rows運算子 = 運算子.Select("運算子編號 = '" + 原始編號[i]["運算子編號"] + "'");
                     string 運算子說明 = rows運算子.FirstOrDefault()["運算子說明"].ToString();
+                    string 欄位type = 尋找欄位type(欄位說明);
 
                     瀏覽下方查詢 browse = new 瀏覽下方查詢();
-                    browse.序號 = 原始編號[i]["序號"].ToString();
+                    browse.序號 = (i+1).ToString();
                     browse.欄位編號 = 原始編號[i]["欄位編號"].ToString();
                     browse.欄位說明 = 欄位說明;
                     browse.運算子編號 = 原始編號[i]["運算子編號"].ToString();
                     browse.運算子說明 = 運算子說明;
                     browse.起始值 = 原始編號[i]["值1"].ToString();
                     browse.截止值 = 原始編號[i]["值2"].ToString();
+                    browse.欄位TYPE = 欄位type;
                     browse.欄位編號列表 = 欄位編號列表;
                     browse.運算子編號列表 = 運算子編號列表;
-                    下方查詢list.Add(browse);                    
+                    下方查詢list.Add(browse);
                 }
-            }        
+            }
             dg查詢條件.DataContext = 下方查詢list;
         }
 
@@ -104,7 +107,7 @@ namespace DarbWareERP.瀏覽系列
         }
 
         private void cbx預設條件_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {            
+        {
             int no = ((ComboBox)sender).SelectedIndex;
             txt預設條件說明.Text = 條件說明[no];
             查詢區域賦值(BrowseType, no);
@@ -116,8 +119,8 @@ namespace DarbWareERP.瀏覽系列
             瀏覽 瀏覽 = new 瀏覽();
             DataSet ds = 瀏覽.瀏覽查詢(資料表名稱[0], 查詢條件);
             ds.Relations.Add("relation", ds.Tables[0].Columns["pkid"], ds.Tables[1].Columns["linkid"]);
-            //this.DataContext = ds;
             dg資料顯示1.ItemsSource = ds.Tables[0].DefaultView;
+            表單控制.狀態欄文字敘述.Text = ds.Tables[0].Rows.Count.ToString();
         }
         private string 查詢條件產生(ObservableCollection<瀏覽下方查詢> searchlist)
         {
@@ -126,12 +129,78 @@ namespace DarbWareERP.瀏覽系列
             {
                 switch (search.運算子編號)
                 {
-                    case "C":
-                        查詢條件.Append(search.欄位說明 + " not like " + "'" + search.起始值 + "'");
+                    case "A": //介於之間
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append(search.欄位說明 + " between " + "'" + search.起始值 + "' and '" + search.截止值 + "zzzzzz'");
+                                break;
+                            case "DateTime":                              
+                                查詢條件.Append(search.欄位說明 + " between " + search.起始值 + " and " + search.截止值 );
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " between " + search.起始值 + " and " + search.截止值);
+                                break;
+                        }
+                        break;
+                    case "B": //等於
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append(search.欄位說明 + " like " + "'" + search.起始值 + "%'");
+                                break;
+                            case "DateTime":
+                                查詢條件.Append(search.欄位說明 + " >= " + search.起始值 + " and " + search.欄位說明 + " < " + search.截止值);
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " = " + "'" + search.起始值 + "'");
+                                break;
+                        }
+                        break;
+                    case "C": //不等於
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append(search.欄位說明 + " not like " + "'" + search.起始值 + "%'");
+                                break;
+                            case "DateTime":
+                                查詢條件.Append(search.欄位說明 + " < " +  search.起始值 + " OR " + search.欄位說明 + " >= "  + search.截止值);
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " <> " + search.起始值 );
+                                break;
+                        }
+                        break;
+                    case "D": //大於
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append(search.欄位說明 + " > " + "'" + search.起始值 + "'");
+                                break;
+                            case "DateTime":
+                                查詢條件.Append(search.欄位說明 + " > " + search.起始值);
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " > " + search.起始值);
+                                break;
+                        }
+                        break;
+                    case "E": //大於等於
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append(search.欄位說明 + " >= " + "'" + search.起始值 + "'");
+                                break;
+                            case "DateTime":
+                                查詢條件.Append(search.欄位說明 + " >= " + search.起始值);
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " >= " + search.起始值 );
+                                break;
+                        }
                         break;
                 }
             }
-
             return 查詢條件.ToString();
         }
         private DataTable 查詢LCL所在位置(string 查詢字串)
@@ -141,7 +210,6 @@ namespace DarbWareERP.瀏覽系列
             int no = Model.視窗Model.登入暫存表.Tables[0].Rows.IndexOf(dr[0]);
             dt = Model.視窗Model.登入暫存表.Tables[1 + no];
             return dt;
-
         }
         private void cbx預設條件賦值(string browsetype)
         {
@@ -163,7 +231,7 @@ namespace DarbWareERP.瀏覽系列
                     條件編號.Add(row["編號"].ToString());
                     條件說明.Add(row["類別"].ToString());
                 }
-                cbx預設條件.DataContext = 條件編號;               
+                cbx預設條件.DataContext = 條件編號;
             }
         }
         private void 運算子SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -171,19 +239,44 @@ namespace DarbWareERP.瀏覽系列
             var comboBox = sender as ComboBox;
             if (comboBox.SelectedItem != null)
             {
-                //List<運算子編號列表> source = (List<運算子編號列表>)comboBox.ItemsSource;
                 下方查詢list[dg查詢條件.SelectedIndex].運算子說明 = 運算子編號列表[comboBox.SelectedIndex].運算子說明;
             }
         }
         private void 欄位SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var comboBox = sender as ComboBox;
+            string 欄位type = "";
             if (comboBox.SelectedItem != null)
             {
-                下方查詢list[dg查詢條件.SelectedIndex].欄位說明 = 欄位編號列表[comboBox.SelectedIndex].欄位說明; 
-                //List<欄位編號列表> source = (List<欄位編號列表>)comboBox.ItemsSource;
-                //下方查詢list[dg查詢條件.SelectedIndex].欄位說明 = source[comboBox.SelectedIndex].欄位說明;
+                下方查詢list[dg查詢條件.SelectedIndex].欄位說明 = 欄位編號列表[comboBox.SelectedIndex].欄位說明;
+                欄位type = 尋找欄位type(下方查詢list[dg查詢條件.SelectedIndex].欄位說明);
+                下方查詢list[dg查詢條件.SelectedIndex].欄位TYPE = 欄位type;
             }
-        }  
+        }
+        private string 尋找欄位type(string 要查詢欄位)
+        {
+            string result = "";
+            try
+            {
+                Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "Model");
+                for (int j = 0; j < 資料表名稱.Count(); j++)
+                {
+                    Type type = assembly.GetType(assembly.GetName().Name + "." + 資料表名稱[j]);
+                    PropertyInfo[] f = type.GetProperties();
+                    PropertyInfo ff = f.FirstOrDefault(x => x.Name == 要查詢欄位);
+                    if (ff != null)
+                    {
+                        result = ff.PropertyType.Name;
+                        break;
+                    }
+                }
+            }
+            catch
+            {
+                邏輯.訊息相關.錯誤訊息.錯誤訊息顯示(1);
+            }
+
+            return result;
+        }
     }
 }

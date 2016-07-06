@@ -24,21 +24,7 @@
                 <RowDefinition Height="259*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Border BorderThickness="3" Grid.Row="1">
-                <Border.BorderBrush>
-                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
-                </Border.BorderBrush>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" MinWidth="100"/>
-                        <ColumnDefinition Width="Auto" MinWidth="245"/>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="195"/>
-                    </Grid.ColumnDefinitions>
-                    <下方共同區塊:指令區 Grid.Column="3" Width="195"/>
-                    <下方共同區塊:導覽區 x:Name="導覽區" Grid.Column="2" VerticalAlignment="Top" Height="210"/>
-                </Grid>
-            </Border>
+            <下方共同區塊:下方共同區塊 Grid.Row="1"></下方共同區塊:下方共同區塊>
             <Grid x:Name="資料區" Grid.Row="0">
                 <Grid x:Name="grid1" DataContext="{StaticResource deptViewSource}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>

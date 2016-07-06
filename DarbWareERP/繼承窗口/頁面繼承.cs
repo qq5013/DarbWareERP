@@ -12,24 +12,12 @@ using System.Windows.Input;
 using Model;
 using System.ComponentModel;
 using 邏輯.視窗相關;
-
+using System.Reflection;
 
 namespace DarbWareERP.繼承窗口
 {
-    public class 頁面繼承 : Page, INotifyPropertyChanged
+    public class 頁面繼承 : Page
     {
-
-        public event PropertyChangedEventHandler PropertyChanged; //配合新增修改時，按鈕的顏色
-
-        public void OnPropertyChanged(string propertyName)
-        {
-
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-
-        }
         private bool _新增修改中 = false;
         private EnumStatus status = EnumStatus.一般;
         private string[] _資料表名稱;
@@ -83,19 +71,18 @@ namespace DarbWareERP.繼承窗口
             set
             {
                 _新增修改中 = value;
-                OnPropertyChanged("新增修改中");
             }
         }
         public 頁面繼承()
         {
             表單控制.目前頁面 = this;
-            資料表名稱 = new string[5];
             初始值設定();
-            目前KeyFldValue = "";
+            目前KeyFldValue = "";            
         }
-        protected virtual void 初始值設定()
+       
+        public virtual void 初始值設定()
         {
-
+            資料表名稱 = new string[5];
         }
         public virtual bool BeforeAddNew()
         {
@@ -199,7 +186,10 @@ namespace DarbWareERP.繼承窗口
         public virtual bool UpdateData(CollectionViewSource[] cv, EnumStatus status)
         {
             //資料存到資料庫
-            return true;
+            Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "邏輯");
+            Type type = assembly.GetTypes().FirstOrDefault(x => x.Name == Title + "Bll");
+            新增修改刪除 instance = (新增修改刪除)Activator.CreateInstance(type);
+            return instance.UpdateData(cv, out this._增刪修訊息, Status);
         }
         public virtual void SetControls()
         {
@@ -209,25 +199,6 @@ namespace DarbWareERP.繼承窗口
         {
             //設定新增紀錄時的預設值，觸發於新增時
         }
-
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            //在視窗中用左右鍵控制上一筆下一筆
-            base.OnKeyDown(e);
-            if (e.Key == Key.Left)
-            {
-                Button btn上一筆 = 控制項操作.用名稱尋找子代<Button>(this, "btn上一筆");
-                btn上一筆.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                this.Focus();
-            }
-            else if (e.Key == Key.Right)
-            {
-                Button btn下一筆 = 控制項操作.用名稱尋找子代<Button>(this, "btn下一筆");
-                btn下一筆.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                this.Focus();
-            }
-        }
-
         private bool 檢查有無KeyFldValue()
         {
             bool result = false;

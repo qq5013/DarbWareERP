@@ -28,8 +28,9 @@ namespace DarbWareERP.B.基本資料
         {
             InitializeComponent();            
         }
-        protected override void 初始值設定()
+        public override void 初始值設定()
         {
+            base.初始值設定();
             KeyFldValue = "單位";
             資料表名稱[0] = "unitba";            
         }
@@ -59,10 +60,5 @@ namespace DarbWareERP.B.基本資料
             txt說明.Text ="1";           
             txt單位.Focus();
         }
-        public override bool UpdateData(CollectionViewSource[] cv,EnumStatus status)
-        {
-            單位轉換表Bll 單位轉換表Bll = new 單位轉換表Bll();
-            return 單位轉換表Bll.UpdateData(cv,out this._增刪修訊息,status);
-        }        
     }
 }

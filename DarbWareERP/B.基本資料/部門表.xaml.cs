@@ -38,12 +38,12 @@ namespace DarbWareERP.B.基本資料
             MessageBox.Show("qq");
         }
 
-        protected override void 初始值設定()
+        public override void 初始值設定()
         {
-            KeyFldValue = "部門代號";
+            base.初始值設定();            
             資料表名稱[0] = "dept";
             資料表名稱[1] = "dept_1";
-            
+            KeyFldValue = "部門代號";
             BrowseType = "DPT";
         }
 

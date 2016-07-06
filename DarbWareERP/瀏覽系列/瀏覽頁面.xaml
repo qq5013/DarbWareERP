@@ -94,7 +94,6 @@
                                 <DataGridTextColumn Binding="{Binding Path= 運算子說明}" Header="運算子說明"/>
                                 <DataGridTextColumn Binding="{Binding Path=起始值}" ClipboardContentBinding="{x:Null}" Header="起始值(其他條件值)"/>
                                 <DataGridTextColumn Binding="{Binding Path=截止值}" ClipboardContentBinding="{x:Null}" Header="截止值"/>
-                                <DataGridTextColumn Binding="{Binding Path=欄位}" ClipboardContentBinding="{x:Null}" Header="欄位"/>
                                 <DataGridTextColumn Binding="{Binding Path=欄位TYPE}" ClipboardContentBinding="{x:Null}" Header="欄位TYPE"/>
                             </DataGrid.Columns>
                         </DataGrid>

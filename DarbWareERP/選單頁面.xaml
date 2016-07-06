@@ -46,6 +46,9 @@
                 <Button x:Name="button17" Content="Q.固定資產" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
                 <Button x:Name="button18" Content="R.人事薪資" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
             </WrapPanel>
+            <Button x:Name="btn設定" Height="44" Width="44" Margin="784,33,52,0" VerticalAlignment="Top" Click="btn設定_Click">
+                <Image Source="/DarbWareERP;component/Image/Icon_png/設定00.png"/>
+            </Button>
         </Grid>
     </Grid>
 </src:頁面繼承>
