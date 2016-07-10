@@ -19,6 +19,7 @@ using 邏輯.視窗相關;
 using 邏輯;
 using System.Collections.ObjectModel;
 using System.Reflection;
+using 邏輯.訊息相關;
 
 namespace DarbWareERP.瀏覽系列
 {
@@ -79,7 +80,7 @@ namespace DarbWareERP.瀏覽系列
                     string 欄位type = 尋找欄位type(欄位說明);
 
                     瀏覽下方查詢 browse = new 瀏覽下方查詢();
-                    browse.序號 = (i+1).ToString();
+                    browse.序號 = (i + 1).ToString();
                     browse.欄位編號 = 原始編號[i]["欄位編號"].ToString();
                     browse.欄位說明 = 欄位說明;
                     browse.運算子編號 = 原始編號[i]["運算子編號"].ToString();
@@ -135,8 +136,8 @@ namespace DarbWareERP.瀏覽系列
                             case "String":
                                 查詢條件.Append(search.欄位說明 + " between " + "'" + search.起始值 + "' and '" + search.截止值 + "zzzzzz'");
                                 break;
-                            case "DateTime":                              
-                                查詢條件.Append(search.欄位說明 + " between " + search.起始值 + " and " + search.截止值 );
+                            case "DateTime":
+                                查詢條件.Append(search.欄位說明 + " between " + search.起始值 + " and " + search.截止值);
                                 break;
                             default:
                                 查詢條件.Append(search.欄位說明 + " between " + search.起始值 + " and " + search.截止值);
@@ -164,10 +165,10 @@ namespace DarbWareERP.瀏覽系列
                                 查詢條件.Append(search.欄位說明 + " not like " + "'" + search.起始值 + "%'");
                                 break;
                             case "DateTime":
-                                查詢條件.Append(search.欄位說明 + " < " +  search.起始值 + " OR " + search.欄位說明 + " >= "  + search.截止值);
+                                查詢條件.Append(search.欄位說明 + " < " + search.起始值 + " OR " + search.欄位說明 + " >= " + search.截止值);
                                 break;
                             default:
-                                查詢條件.Append(search.欄位說明 + " <> " + search.起始值 );
+                                查詢條件.Append(search.欄位說明 + " <> " + search.起始值);
                                 break;
                         }
                         break;
@@ -195,9 +196,152 @@ namespace DarbWareERP.瀏覽系列
                                 查詢條件.Append(search.欄位說明 + " >= " + search.起始值);
                                 break;
                             default:
-                                查詢條件.Append(search.欄位說明 + " >= " + search.起始值 );
+                                查詢條件.Append(search.欄位說明 + " >= " + search.起始值);
                                 break;
                         }
+                        break;
+                    case "F": //小於
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append(search.欄位說明 + " < " + "'" + search.起始值 + "'");
+                                break;
+                            case "DateTime":
+                                查詢條件.Append(search.欄位說明 + " < " + search.起始值);
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " < " + search.起始值);
+                                break;
+                        }
+                        break;
+                    case "G": //小於等於
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append(search.欄位說明 + " <= " + "'" + search.起始值 + "'");
+                                break;
+                            case "DateTime":
+                                查詢條件.Append(search.欄位說明 + " <= " + search.起始值);
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " <= " + search.起始值);
+                                break;
+                        }
+                        break;
+                    case "H": //包含
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append(search.欄位說明 + " like " + "'%" + search.起始值 + "%'");
+                                break;
+                            case "DateTime":
+                                IFormatProvider culture = new CultureInfo("zh-TW", true);
+                                DateTime time;
+                                if (DateTime.TryParseExact(search.起始值, "yyyyMMdd", culture, DateTimeStyles.None, out time))
+                                {
+                                    time = time.AddDays(1);
+                                    查詢條件.Append(search.欄位說明 + " >= " + search.起始值 + " and " + search.欄位說明 + " < " + time.ToShortDateString());
+                                }
+                                else
+                                {
+                                    錯誤訊息.錯誤訊息顯示(2);
+                                }
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " = " + search.起始值);
+                                break;
+                        }
+                        break;
+                    case "I": //不含
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append("Not " + search.欄位說明 + " like " + "'%" + search.起始值 + "%'");
+                                break;
+                            case "DateTime":
+                                IFormatProvider culture = new CultureInfo("zh-TW", true);
+                                DateTime time;
+                                if (DateTime.TryParseExact(search.起始值, "yyyyMMdd", culture, DateTimeStyles.None, out time))
+                                {
+                                    time = time.AddDays(1);
+                                    查詢條件.Append(search.欄位說明 + " < " + search.起始值 + " and " + search.欄位說明 + " > " + time.ToShortDateString());
+                                }
+                                else
+                                {
+                                    錯誤訊息.錯誤訊息顯示(2);
+                                }
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " <> " + search.起始值);
+                                break;
+                        }
+                        break;
+                    case "J": //位於其中
+                        string[] 分割後字串 = search.起始值.Split(',');
+                        int 總數 = 分割後字串.Count();
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                string 條件="";
+                                for (int i = 0; i <總數; i++)
+                                {
+                                    條件 = 條件 + search.欄位說明 + " like " + "'%" + 分割後字串[i] + "%'";
+                                    if (i != 總數 - 1)
+                                    {
+                                        條件 = 條件 + " or ";
+                                    }
+                                }
+                                查詢條件.Append(條件);
+                                break;
+                            case "DateTime":
+                                string 日期欄位的條件 = "";
+                                for (int i = 0; i < 總數; i++)
+                                {
+                                    日期欄位的條件 = 日期欄位的條件 + 分割後字串[i].Trim();
+                                    if (i != 總數 - 1)
+                                    {
+                                        日期欄位的條件 = 日期欄位的條件 + ",";
+                                    }
+                                }
+                                日期欄位的條件 = "convert(nchar(10),"+search.欄位說明+",111" + " In (" + 日期欄位的條件 + ")";
+                                查詢條件.Append(日期欄位的條件);
+                                break;
+                            default:
+                                string 數字欄位的條件 = "";
+                                for (int i = 0; i < 總數; i++)
+                                {
+                                    數字欄位的條件 = 數字欄位的條件 + 分割後字串[i].Trim();
+                                    if (i != 總數 - 1)
+                                    {
+                                        數字欄位的條件 = 數字欄位的條件 + ",";
+                                    }
+                                }
+                                數字欄位的條件 = search.欄位說明 + " In (" + 數字欄位的條件 + ")";
+                                查詢條件.Append(數字欄位的條件);
+                                break;
+                        }
+                        break;
+                    case "K": //等於空白
+                        switch (search.欄位TYPE)
+                        {
+                            case "String":
+                                查詢條件.Append("LEN(RTRIM(LTRIM(" + search.欄位說明 + ")))=0");
+                                break;
+                            case "DateTime":
+                                break;
+                            default:
+                                查詢條件.Append(search.欄位說明 + " = 0");
+                                break;
+                        }
+                        break;
+                    case "L": //等於NULL               
+                        查詢條件.Append(search.欄位說明 + " IS NULL");
+                        break;
+                    case "M": //考慮本條件                       
+                        MessageBox.Show("還未新增");
+                        break;
+                    case "N": //不考慮本條件                       
+                        MessageBox.Show("還未新增");
                         break;
                 }
             }

@@ -39,7 +39,8 @@ namespace 邏輯.訊息相關
         private static List<錯誤訊息> _錯誤訊息表 = new List<錯誤訊息>
         {
             new 錯誤訊息 {錯誤代碼=0,中文描述="帳號或密碼錯誤" , 英文描述="ID or PassWord is wrong",訊息選項= MessageBoxButton.OK,訊息圖示=MessageBoxImage.Exclamation},
-            new 錯誤訊息 {錯誤代碼=1,中文描述="欄位TYPE錯誤" , 英文描述="FIELD TYPE is wrong",訊息選項= MessageBoxButton.OK,訊息圖示=MessageBoxImage.Error}
+            new 錯誤訊息 {錯誤代碼=1,中文描述="欄位TYPE錯誤" , 英文描述="FIELD TYPE is wrong",訊息選項= MessageBoxButton.OK,訊息圖示=MessageBoxImage.Error},
+            new 錯誤訊息 {錯誤代碼=2,中文描述="日期格式輸入錯誤" , 英文描述="Date TYPE is wrong",訊息選項= MessageBoxButton.OK,訊息圖示=MessageBoxImage.Exclamation}
         };
 
 
