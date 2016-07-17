@@ -23,8 +23,7 @@ namespace DarbWareERP.繼承窗口
         private string[] _資料表名稱;
         protected string _增刪修訊息;
         private string _目前KeyFldValue;
-        private string keyFldValue;
-        private string browseType = "";
+        private string keyFldValue;        
         public string Pkid { get; set; }
         public string KeyFldValue
         {
@@ -56,7 +55,8 @@ namespace DarbWareERP.繼承窗口
                 Model.視窗Model.資料表名稱 = value;
             }
         }
-        public string BrowseType { get { return browseType; } set { browseType = value; } }
+        public string 瀏覽代碼 { get; set; }
+        public string 明細瀏覽代碼 { get; set; }
         public CollectionViewSource[] CollectionViewSources { get { return collectionViesSources; } set { collectionViesSources = value; } }
         private CollectionViewSource[] collectionViesSources = new CollectionViewSource[5];
         public EnumStatus Status { get { return status; } set { status = value; } } //0瀏覽模式,1新增模式,2修改模式，控制控制項的readonly、enable等         
@@ -114,7 +114,7 @@ namespace DarbWareERP.繼承窗口
             }
             else
             {
-                新增修改刪除 page = new 新增修改刪除();
+                新增修改刪除Bll page = new 新增修改刪除Bll();
                 return page.取得放行碼(Pkid);
             }
         }
@@ -141,7 +141,7 @@ namespace DarbWareERP.繼承窗口
         {
             if (視窗Model.放行碼 > 0)
             {
-                新增修改刪除 page = new 新增修改刪除();
+                新增修改刪除Bll page = new 新增修改刪除Bll();
                 page.刪除放行碼();
             }
             增修共同處理(false);
@@ -167,19 +167,19 @@ namespace DarbWareERP.繼承窗口
                 MessageBox.Show("請先選擇一筆資料", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
-            新增修改刪除 page = new 新增修改刪除();
+            新增修改刪除Bll page = new 新增修改刪除Bll();
             return page.取得放行碼(Pkid);
         }
         public virtual void DeleteData(string pkid)
         {
-            新增修改刪除 page = new 新增修改刪除();
+            新增修改刪除Bll page = new 新增修改刪除Bll();
             page.刪除(pkid);
         }
         public virtual void AfterDelete()
         {
             if (視窗Model.放行碼 > 0)
             {
-                新增修改刪除 page = new 新增修改刪除();
+                新增修改刪除Bll page = new 新增修改刪除Bll();
                 page.刪除放行碼();
             }
         }
@@ -188,7 +188,7 @@ namespace DarbWareERP.繼承窗口
             //資料存到資料庫
             Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "邏輯");
             Type type = assembly.GetTypes().FirstOrDefault(x => x.Name == Title + "Bll");
-            新增修改刪除 instance = (新增修改刪除)Activator.CreateInstance(type);
+            新增修改刪除Bll instance = (新增修改刪除Bll)Activator.CreateInstance(type);
             return instance.UpdateData(cv, out this._增刪修訊息, Status);
         }
         public virtual void SetControls()

@@ -333,7 +333,7 @@ namespace DarbWareERP.控制項.下方共同區塊
 
         private void btn瀏覽_Click(object sender, RoutedEventArgs e)
         {
-            表單控制.切換瀏覽頁面("DarbWareERP.瀏覽系列.",txbl程式名稱.Text+"瀏覽頁面",new object[] { txbl程式名稱.Text,page.BrowseType,page.資料表名稱 });
+            表單控制.切換瀏覽頁面("DarbWareERP.瀏覽系列.",txbl程式名稱.Text+"瀏覽頁面",new object[] { txbl程式名稱.Text,page.瀏覽代碼,page.資料表名稱 });
             
         }
 

@@ -8,7 +8,7 @@ using System.Data;
 
 namespace 邏輯.視窗相關
 {
-    public class 瀏覽
+    public class 瀏覽Bll
     {
         public DataSet 瀏覽查詢(string dataevent, string 查詢條件)
         {

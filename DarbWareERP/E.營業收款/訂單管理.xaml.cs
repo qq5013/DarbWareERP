@@ -31,7 +31,7 @@ namespace DarbWareERP.E.營業收款
             KeyFldValue = "訂單編號";
             資料表名稱[0] = "ormast";
             資料表名稱[1] = "ordetl";
-            BrowseType = "E05B";
+            瀏覽代碼 = "E05B";
         }
     }
 }

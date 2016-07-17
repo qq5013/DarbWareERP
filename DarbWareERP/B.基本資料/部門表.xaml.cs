@@ -44,7 +44,7 @@ namespace DarbWareERP.B.基本資料
             資料表名稱[0] = "dept";
             資料表名稱[1] = "dept_1";
             KeyFldValue = "部門代號";
-            BrowseType = "DPT";
+            瀏覽代碼 = "DPT";
         }
 
         private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)

@@ -45,7 +45,9 @@
                 </Setter.Value>
             </Setter>
             <EventSetter Event="SelectionChanged" Handler="欄位SelectionChanged"/>
-        </Style>
+        </Style>       
+        <CollectionViewSource x:Key="browseViewSource0" />
+        <CollectionViewSource x:Key="browseViewSource1" />
     </src:頁面繼承.Resources>
     <Grid>
         <Grid >
@@ -142,8 +144,8 @@
                     </Grid>
                 </Grid>
             </Border>
-            <DataGrid x:Name="dg資料顯示1" Grid.Row="0" Margin="3" ItemsSource="{Binding Path=NewDataSet.Tables[0]}" AutoGenerateColumns="True"/>
-            <DataGrid x:Name="dg資料顯示2" Grid.Row="2" Margin="3" ItemsSource="{Binding ElementName=dg資料顯示1,Path=SelectedItem.relation}" />
+            <DataGrid x:Name="dg資料顯示1" Grid.Row="0" Margin="3" DataContext="{StaticResource browseViewSource0}" ItemsSource="{Binding }" AutoGenerateColumns="True" SelectionChanged="dg資料顯示1_SelectionChanged"/>
+            <DataGrid x:Name="dg資料顯示2" Grid.Row="2" Margin="3" DataContext="{StaticResource browseViewSource1}" ItemsSource="{Binding }" />
         </Grid>
     </Grid>
 </src:頁面繼承>

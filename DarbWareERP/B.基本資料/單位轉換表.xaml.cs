@@ -32,7 +32,8 @@ namespace DarbWareERP.B.基本資料
         {
             base.初始值設定();
             KeyFldValue = "單位";
-            資料表名稱[0] = "unitba";            
+            資料表名稱[0] = "unitba";
+            
         }
         private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
         {
@@ -60,5 +61,6 @@ namespace DarbWareERP.B.基本資料
             txt說明.Text ="1";           
             txt單位.Focus();
         }
+        
     }
 }

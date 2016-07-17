@@ -52,7 +52,7 @@ namespace 數據庫連線.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.228")]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
         public string DataSource {
             get {
                 return ((string)(this["DataSource"]));

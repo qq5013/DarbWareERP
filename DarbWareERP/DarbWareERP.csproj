@@ -115,6 +115,7 @@
     <Compile Include="台銀匯率.xaml.cs">
       <DependentUpon>台銀匯率.xaml</DependentUpon>
     </Compile>
+    <Compile Include="命令\右鍵選單.cs" />
     <Compile Include="控制項\下方共同區塊\下方共同區塊.xaml.cs">
       <DependentUpon>下方共同區塊.xaml</DependentUpon>
     </Compile>
@@ -137,6 +138,7 @@
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項操作.cs" />
+    <Compile Include="瀏覽系列\瀏覽.cs" />
     <Compile Include="瀏覽系列\瀏覽下方查詢.cs" />
     <Compile Include="瀏覽系列\瀏覽頁面.xaml.cs">
       <DependentUpon>瀏覽頁面.xaml</DependentUpon>

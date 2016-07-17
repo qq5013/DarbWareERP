@@ -8,7 +8,7 @@ using Model;
 
 namespace 邏輯.視窗相關.B.基本資料
 {
-    public class 部門表Bll :新增修改刪除
+    public class 部門表Bll :新增修改刪除Bll
     {
         protected override void 表1設定(DataTable dt)
         {            
