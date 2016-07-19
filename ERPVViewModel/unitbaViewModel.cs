@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
-{    
-    public enum EnumStatus
+namespace ViewModel
+{
+    public class unitbaViewModel
     {
-        一般, 新增, 修改,複製
     }
 }

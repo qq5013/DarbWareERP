@@ -6,15 +6,14 @@
       xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
       xmlns:src ="clr-namespace:DarbWareERP.繼承窗口"
        xmlns:控制項="clr-namespace:DarbWareERP.控制項" 
-    xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"
-    xmlns:Model="clr-namespace:Model;assembly=Model"
-    xmlns:rule ="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯"
+    xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"    
+    xmlns:rule ="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯Bll"
       mc:Ignorable="d"       
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="業務資料表" KeyFldValue="業務員編號"  Loaded="頁面繼承_Loaded">
-    <Page.Resources>
-        <CollectionViewSource x:Key="salesmenViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:salesmen}, CreateList=True}"/>
-    </Page.Resources>
+    <!--<Page.Resources>-->
+        <!--<CollectionViewSource x:Key="salesmenViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:salesmen}, CreateList=True}"/>
+    </Page.Resources>-->
     <Grid>               
         <Grid>
             <Grid.RowDefinitions>
@@ -36,7 +35,7 @@
                     <下方共同區塊:導覽區 x:Name="導覽區" Grid.Column="2" VerticalAlignment="Top" Height="210"/>
                 </Grid>
             </Border>
-            <Grid x:Name="grid1" DataContext="{StaticResource salesmenViewSource}" HorizontalAlignment="Left" Margin="37,39,0,0" VerticalAlignment="Top" Grid.Row="0">
+            <Grid x:Name="grid1"  HorizontalAlignment="Left" Margin="37,39,0,0" VerticalAlignment="Top" Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
@@ -62,7 +61,7 @@
                     <TextBox.Text>
                         <Binding Path="業務員編號">
                             <Binding.ValidationRules>
-                                <rule:主索引驗證 cvs="{StaticResource salesmenViewSource}" Table="salesmen"></rule:主索引驗證>
+                                <rule:主索引驗證  Table="salesmen"></rule:主索引驗證>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>

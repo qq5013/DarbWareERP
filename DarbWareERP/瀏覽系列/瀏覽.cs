@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using 邏輯Bll;
+using 邏輯Bll.視窗相關;
 using 邏輯Bll.訊息相關;
 
 namespace DarbWareERP.瀏覽系列
@@ -129,9 +130,9 @@ namespace DarbWareERP.瀏覽系列
         public DataTable 查詢LCL所在位置(string 查詢字串)
         {
             DataTable dt;
-            DataRow[] dr = Model.視窗Model.登入暫存表.Tables[0].Select("資料表別名 = '" + 查詢字串 + "'");
-            int no = Model.視窗Model.登入暫存表.Tables[0].Rows.IndexOf(dr[0]);
-            dt = Model.視窗Model.登入暫存表.Tables[1 + no];
+            DataRow[] dr = 視窗Bll.登入暫存表.Tables[0].Select("資料表別名 = '" + 查詢字串 + "'");
+            int no = 視窗Bll.登入暫存表.Tables[0].Rows.IndexOf(dr[0]);
+            dt = 視窗Bll.登入暫存表.Tables[1 + no];
             return dt;
         }
         public void cbx預設條件賦值(string browsetype, ComboBox cbx)
@@ -139,7 +140,7 @@ namespace DarbWareERP.瀏覽系列
             DataTable 自訂條件別 = 查詢LCL所在位置("LCL自訂條件別");
             if (browsetype == "" || browsetype==null)
             {
-                DataRow[] dr權限 = Model.視窗Model.權限表.Select("程式名稱 = '" + 程式名稱 + "'");
+                DataRow[] dr權限 = 視窗Bll.權限表.Select("程式名稱 = '" + 程式名稱 + "'");
                 string 編號 = dr權限[0]["序號"].ToString();
                 編號 = 編號.Substring(0, 編號.IndexOf("-")) + 編號.Substring(編號.IndexOf("-") + 1) + "B";
                 cbx.ItemsSource = 自訂條件別.Select("編號 LIKE '%" + 編號 + "%'");
@@ -177,7 +178,7 @@ namespace DarbWareERP.瀏覽系列
             }
             catch
             {
-                邏輯Bll.訊息相關.錯誤訊息.錯誤訊息顯示(1);
+                邏輯Bll.訊息相關.錯誤訊息Bll.錯誤訊息顯示(1);
             }
             return result;
         }
@@ -302,7 +303,7 @@ namespace DarbWareERP.瀏覽系列
                                 }
                                 else
                                 {
-                                    錯誤訊息.錯誤訊息顯示(2);
+                                    錯誤訊息Bll.錯誤訊息顯示(2);
                                 }
                                 break;
                             default:
@@ -326,7 +327,7 @@ namespace DarbWareERP.瀏覽系列
                                 }
                                 else
                                 {
-                                    錯誤訊息.錯誤訊息顯示(2);
+                                    錯誤訊息Bll.錯誤訊息顯示(2);
                                 }
                                 break;
                             default:

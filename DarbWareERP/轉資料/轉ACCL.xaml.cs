@@ -28,9 +28,9 @@ namespace DarbWareERP.轉資料
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            轉傳票Bll 轉資料 = new 轉傳票Bll();
-            string result= 轉資料.轉Accl();
-            MessageBox.Show(result);
+            //轉傳票Bll 轉資料 = new 轉傳票Bll();
+            //string result= 轉資料.轉Accl();
+            //MessageBox.Show(result);
         }
     }
 }

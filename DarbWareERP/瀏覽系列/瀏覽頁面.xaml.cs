@@ -94,7 +94,7 @@ namespace DarbWareERP.瀏覽系列
                 CollectionViewSources[i].Source = listq;
                 if (i == 1)
                 {
-                    CollectionViewSources[1].Source = new ObservableCollection<Model.ordetl>(listq);
+                    //CollectionViewSources[1].Source = new ObservableCollection<Model.ordetl>(listq);
                 }
             }
         }

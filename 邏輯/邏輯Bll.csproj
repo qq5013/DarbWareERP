@@ -50,7 +50,10 @@
   <ItemGroup>
     <Compile Include="DataTableToList.cs" />
     <Compile Include="DbfOdbc.cs" />
-    <Compile Include="訊息相關\錯誤訊息.cs" />
+    <Compile Include="視窗相關\新增修改刪除Enum.cs" />
+    <Compile Include="視窗相關\視窗Bll.cs" />
+    <Compile Include="訊息相關\參數設定Bll.cs" />
+    <Compile Include="訊息相關\錯誤訊息Bll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlToSql.cs" />
     <Compile Include="信件.cs" />
@@ -65,7 +68,6 @@
     <Compile Include="視窗相關\導覽區Bll.cs" />
     <Compile Include="視窗相關\瀏覽Bll.cs" />
     <Compile Include="資料驗證\主索引驗證.cs" />
-    <Compile Include="轉資料Dal.cs" />
     <Compile Include="轉資料\轉傳票Bll.cs" />
     <Compile Include="電子賀卡Bll.cs" />
   </ItemGroup>

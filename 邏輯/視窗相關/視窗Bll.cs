@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Model
+namespace 邏輯Bll.視窗相關
 {
-    public class 視窗Model
+    public class 視窗Bll
     {                             
         public static bool 是否可以儲存 { get { return _是否可以儲存; } set { _是否可以儲存 = value; } }
         private static bool _是否可以儲存 = true;

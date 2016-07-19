@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using 數據庫連線;
+using 數據庫連線Dal;
 using System.Data;
 
 namespace 邏輯Bll

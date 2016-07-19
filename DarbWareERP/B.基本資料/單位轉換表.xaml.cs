@@ -1,5 +1,4 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,9 +42,9 @@ namespace DarbWareERP.B.基本資料
         public override void SetControls()
         {
             base.SetControls();
-            txt單位.IsReadOnly = Status == EnumStatus.一般;
-            txt小數位數.IsReadOnly = Status == EnumStatus.一般;
-            txt說明.IsReadOnly = Status == EnumStatus.一般;
+            txt單位.IsReadOnly = Status == 增刪修Status.一般;
+            txt小數位數.IsReadOnly = Status == 增刪修Status.一般;
+            txt說明.IsReadOnly = Status == 增刪修Status.一般;
         }
         public override void SetDefaultValue()
         {

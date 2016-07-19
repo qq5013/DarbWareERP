@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using 數據庫連線;
+using 數據庫連線Dal;
 using System.Data;
 using System.Windows.Data;
-using Model;
 using System.Windows;
 
 namespace 邏輯Bll.視窗相關

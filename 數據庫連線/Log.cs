@@ -21,7 +21,7 @@ namespace 數據庫連線Dal
             }
             set
             {
-                Model.視窗Model.權限表 = value;
+                //Model.視窗Model.權限表 = value;
                 _權限表 = value;
             }
         } //登入成功時賦值

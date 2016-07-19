@@ -5,18 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
       xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
-      xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"
-      xmlns:Model="clr-namespace:Model;assembly=Model"
-      xmlns:rule="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯"
+      xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"      
+      xmlns:rule="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯Bll"
       xmlns:控制項="clr-namespace:DarbWareERP.控制項" x:Class="DarbWareERP.B.基本資料.部門表"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="部門表" Loaded="頁面繼承_Loaded">
 
-    <src:頁面繼承.Resources>
-        <CollectionViewSource x:Key="deptViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:dept}, CreateList=True}"/>
+    <!--<src:頁面繼承.Resources>-->
+        <!--<CollectionViewSource x:Key="deptViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:dept}, CreateList=True}"/>
         <CollectionViewSource x:Key="dept_1ViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:dept_1}, CreateList=True}"/>
-    </src:頁面繼承.Resources>
+    </src:頁面繼承.Resources>-->
 
     <Grid>
         <Grid DataContext="{StaticResource dept_1ViewSource}">

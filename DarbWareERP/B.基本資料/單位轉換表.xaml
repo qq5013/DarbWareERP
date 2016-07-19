@@ -6,17 +6,13 @@
       xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
       xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
       xmlns:控制項="clr-namespace:DarbWareERP.控制項"     
-    xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊"    
-    xmlns:Model="clr-namespace:Model;assembly=Model"
-    xmlns:rule ="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯"
+    xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊"        
+    xmlns:rule ="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯Bll"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"          
       Title="單位轉換表" Loaded="頁面繼承_Loaded">
 
-    <Page.Resources>
-        <CollectionViewSource x:Key="unitbaViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:unitba}, CreateList=True}"/>        
-    </Page.Resources>
-    <Grid DataContext="{StaticResource unitbaViewSource}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="259*"/>
             <RowDefinition Height="Auto"/>
@@ -37,7 +33,7 @@
                 </下方共同區塊:導覽區>
             </Grid>
         </Border>
-        <Grid x:Name="資料區" DataContext="{StaticResource unitbaViewSource}" Grid.Row="0" HorizontalAlignment="Left" Margin="40,52,0,0" VerticalAlignment="Top">
+        <Grid x:Name="資料區" Grid.Row="0" HorizontalAlignment="Left" Margin="40,52,0,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -57,7 +53,7 @@
                 <TextBox.Text>
                     <Binding Path="單位">
                         <Binding.ValidationRules>
-                            <rule:主索引驗證 cvs="{StaticResource unitbaViewSource}" Table="unitba"></rule:主索引驗證>
+                            <rule:主索引驗證 Table="unitba"></rule:主索引驗證>                            
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using 數據庫連線;
+using 數據庫連線Dal;
 using System.Windows.Data;
 using System.Windows;
 

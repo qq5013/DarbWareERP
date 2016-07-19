@@ -70,7 +70,7 @@ namespace DarbWareERP
             }
             else
             {
-                錯誤訊息.錯誤訊息顯示(0);
+                錯誤訊息Bll.錯誤訊息顯示(0);
                 pwd密碼.Password = "";
             }
             btn登入.IsEnabled = true;

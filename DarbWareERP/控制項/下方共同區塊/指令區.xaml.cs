@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
-using Model;
 using 邏輯Bll.視窗相關;
 using 報表;
 
@@ -45,7 +44,7 @@ namespace DarbWareERP.控制項.下方共同區塊
             if (page.BeforeAddNew())
             {
                 清除綁定datatable(控制項操作, page);
-                page.Status = EnumStatus.新增;
+                page.Status = 增刪修Status.新增;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
                 page.SetControls();
@@ -72,7 +71,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                     MessageBox.Show("資料已刪除，不得修改或刪除", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
-                page.Status = EnumStatus.修改;
+                page.Status = 增刪修Status.修改;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
                 page.SetControls();
@@ -91,7 +90,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         {
             if (page.BeforeCopy())
             {
-                page.Status = EnumStatus.複製;
+                page.Status = 增刪修Status.複製;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
                 page.SetControls();
@@ -141,7 +140,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         {
             if (page.BeforeEndEdit())
             {
-                EnumStatus PrevTableStatus = page.Status;
+                增刪修Status PrevTableStatus = page.Status;
                 page.SetValueEndEdit();
                 foreach (CollectionViewSource cv in page.CollectionViewSources)
                 {
@@ -150,16 +149,16 @@ namespace DarbWareERP.控制項.下方共同區塊
                         BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
                         switch (page.Status)
                         {
-                            case EnumStatus.一般:
+                            case 增刪修Status.一般:
                                 MessageBox.Show("儲存出錯，Status要設定為新增或修改");
                                 break;
-                            case EnumStatus.新增:
+                            case 增刪修Status.新增:
                                 collectionview.CommitNew();
                                 break;
-                            case EnumStatus.修改:
+                            case 增刪修Status.修改:
                                 collectionview.CommitEdit();
                                 break;
-                            case EnumStatus.複製:
+                            case 增刪修Status.複製:
                                 collectionview.CommitEdit();
                                 break;
                         }
@@ -173,7 +172,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                 {
                     if (page.UpdateData(page.CollectionViewSources, page.Status))
                     {
-                        page.Status = EnumStatus.一般;
+                        page.Status = 增刪修Status.一般;
                         page.SetControls();
                         page.AfterEndEdit();
                         指令區按鈕顯示(false);
@@ -204,23 +203,23 @@ namespace DarbWareERP.控制項.下方共同區塊
                         BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
                         switch (page.Status)
                         {
-                            case EnumStatus.一般:
+                            case 增刪修Status.一般:
                                 MessageBox.Show("取消出錯，Status要設定為新增或修改");
                                 break;
-                            case EnumStatus.新增:
+                            case 增刪修Status.新增:
                                 collectionview.CancelNew();
                                 break;
-                            case EnumStatus.修改:
+                            case 增刪修Status.修改:
                                 collectionview.CancelEdit();
 
                                 break;
-                            case EnumStatus.複製:
+                            case 增刪修Status.複製:
                                 collectionview.CancelEdit();
                                 break;
                         }
                     }
                 }
-                page.Status = EnumStatus.一般;
+                page.Status = 增刪修Status.一般;
                 指令區按鈕顯示(false);
                 導覽區Enable(true);
                 page.SetControls();

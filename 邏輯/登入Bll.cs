@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using 數據庫連線;
+using 數據庫連線Dal;
+using 邏輯Bll.視窗相關;
 
 namespace 邏輯Bll
 {
@@ -35,7 +36,7 @@ namespace 邏輯Bll
                 Log.使用者名稱 = Log.權限表.Rows[0]["使用者姓名"].ToString().Trim();
                 可以登入 = true;
                 string param1 = "VCLST";
-                Model.視窗Model.登入暫存表 =  Log.Log_Sys_Exec("MENUSECR.SCX", "DARB_OPEN_DBF",ref param1, "0", "C");
+                視窗Bll.登入暫存表 =  Log.Log_Sys_Exec("MENUSECR.SCX", "DARB_OPEN_DBF",ref param1, "0", "C");
             }
             return 可以登入;
         }      

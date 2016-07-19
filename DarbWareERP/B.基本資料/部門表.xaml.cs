@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
-using Model;
 using 邏輯Bll.視窗相關;
 using 邏輯Bll.視窗相關.B.基本資料;
 using System.Data;
@@ -60,11 +59,11 @@ namespace DarbWareERP.B.基本資料
             {
                 if (c is TextBox)
                 {
-                    (c as TextBox).IsReadOnly = Status == EnumStatus.一般;
+                    (c as TextBox).IsReadOnly = Status == 增刪修Status.一般;
                 }
             }
             txtpkid.IsReadOnly = true;
-            dept_1DataGrid.IsReadOnly = Status == EnumStatus.一般;
+            dept_1DataGrid.IsReadOnly = Status == 增刪修Status.一般;
         }
         public override void SetDefaultValue()
         {
@@ -94,10 +93,12 @@ namespace DarbWareERP.B.基本資料
                 dt.Delete(0);
             }
         }
-        public override bool UpdateData(CollectionViewSource[] cv, EnumStatus status)
+        public override bool UpdateData(CollectionViewSource[] cv, 增刪修Status status)
         {
-            部門表Bll dept = new 部門表Bll();
-            return dept.UpdateData(cv, out this._增刪修訊息, status);
+            bool result=false;
+            //部門表Bll dept = new 部門表Bll();
+            //result = dept.UpdateData(cv, out this._增刪修訊息, status);
+            return result;
         }
 
         private void dept_1DataGrid_ContextMenuOpening(object sender, ContextMenuEventArgs e)

@@ -69,7 +69,6 @@
     <Compile Include="dept_1.cs">
       <DependentUpon>銓昱Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Enum.cs" />
     <Compile Include="ordetl.cs">
       <DependentUpon>銓昱Model.tt</DependentUpon>
     </Compile>
@@ -95,8 +94,6 @@
     <Compile Include="unitba.cs">
       <DependentUpon>銓昱Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="參數設定.cs" />
-    <Compile Include="視窗Model.cs" />
     <Compile Include="銓昱Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

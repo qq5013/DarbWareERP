@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "報表", "報表\報表.csproj", "{951DE9D8-9067-4AC5-AA27-B3E00BB81E3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERPVViewModel", "ERPVViewModel\ERPVViewModel.csproj", "{B2EBDF75-DF6E-4D29-BB00-04AB2EEAB6EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ERPVViewModel\ViewModel.csproj", "{B2EBDF75-DF6E-4D29-BB00-04AB2EEAB6EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +28,7 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9E9E613C-EE1E-4CB7-BBC3-A806EF357166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9E9E613C-EE1E-4CB7-BBC3-A806EF357166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E9E613C-EE1E-4CB7-BBC3-A806EF357166}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{9E9E613C-EE1E-4CB7-BBC3-A806EF357166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E9E613C-EE1E-4CB7-BBC3-A806EF357166}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2F31B07A-2111-4CE7-854B-6EC399619C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

@@ -9,7 +9,6 @@ using DarbWareERP;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-using Model;
 using System.ComponentModel;
 using 邏輯Bll.視窗相關;
 using System.Reflection;
@@ -19,7 +18,7 @@ namespace DarbWareERP.繼承窗口
     public class 頁面繼承 : Page
     {
         private bool _新增修改中 = false;
-        private EnumStatus status = EnumStatus.一般;
+        private 增刪修Status status = 增刪修Status.一般;
         private string[] _資料表名稱;
         protected string _增刪修訊息;
         private string _目前KeyFldValue;
@@ -31,7 +30,7 @@ namespace DarbWareERP.繼承窗口
             set
             {
                 keyFldValue = value;
-                Model.視窗Model.KeyFldValue = value;
+                視窗Bll.KeyFldValue = value;
             }
         }
         public string 目前KeyFldValue
@@ -43,7 +42,7 @@ namespace DarbWareERP.繼承窗口
             set
             {
                 _目前KeyFldValue = value;
-                Model.視窗Model.目前KeyFldValue = value;
+                視窗Bll.目前KeyFldValue = value;
             }
         }
         public string[] 資料表名稱
@@ -52,14 +51,14 @@ namespace DarbWareERP.繼承窗口
             set
             {
                 _資料表名稱 = value;
-                Model.視窗Model.資料表名稱 = value;
+                視窗Bll.資料表名稱 = value;
             }
         }
         public string 瀏覽代碼 { get; set; }
         public string 明細瀏覽代碼 { get; set; }
         public CollectionViewSource[] CollectionViewSources { get { return collectionViesSources; } set { collectionViesSources = value; } }
         private CollectionViewSource[] collectionViesSources = new CollectionViewSource[5];
-        public EnumStatus Status { get { return status; } set { status = value; } } //0瀏覽模式,1新增模式,2修改模式，控制控制項的readonly、enable等         
+        public 增刪修Status Status { get { return status; } set { status = value; } } //0瀏覽模式,1新增模式,2修改模式，控制控制項的readonly、enable等         
         public 控制項操作 控制項操作 = new 控制項操作();
         public string 增刪修訊息 { get { return _增刪修訊息; } set { _增刪修訊息 = value; } }
         public bool 新增修改中
@@ -134,12 +133,12 @@ namespace DarbWareERP.繼承窗口
         }
         public virtual bool BeforeCancelEdit()
         {
-            視窗Model.是否可以儲存 = true;
+            視窗Bll.是否可以儲存 = true;
             return true;
         }
         public virtual void AfterCancelEdit()
         {
-            if (視窗Model.放行碼 > 0)
+            if (視窗Bll.放行碼 > 0)
             {
                 新增修改刪除Bll page = new 新增修改刪除Bll();
                 page.刪除放行碼();
@@ -149,7 +148,7 @@ namespace DarbWareERP.繼承窗口
         public virtual bool BeforeEndEdit()
         {
             //資料驗證
-            return 視窗Model.是否可以儲存;
+            return 視窗Bll.是否可以儲存;
         }
         public virtual void SetValueEndEdit()
         {
@@ -177,13 +176,13 @@ namespace DarbWareERP.繼承窗口
         }
         public virtual void AfterDelete()
         {
-            if (視窗Model.放行碼 > 0)
+            if (視窗Bll.放行碼 > 0)
             {
-                新增修改刪除Bll page = new 新增修改刪除Bll();
-                page.刪除放行碼();
+                //新增修改刪除Bll page = new 新增修改刪除Bll();
+                //page.刪除放行碼();
             }
         }
-        public virtual bool UpdateData(CollectionViewSource[] cv, EnumStatus status)
+        public virtual bool UpdateData(CollectionViewSource[] cv, 增刪修Status status)
         {
             //資料存到資料庫
             Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "邏輯");
