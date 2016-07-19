@@ -9,7 +9,7 @@
         xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊" 
         mc:Ignorable="d" Height="768" Width="1024"
         Background="#FF969696"        WindowState="Maximized"
-        Title="{Binding Path=Content.Title,ElementName=frame,StringFormat=DarbWareERP System 2016/07/01 {0}}" Icon="Image/Icon_png/EARTH.ICO" Closing="Window_Closing" >
+        Title="{Binding Path=Content.Title,ElementName=frame,StringFormat=DarbWareERP System 2016/07/01 {0}}" Icon="Image/NewIcon/齒輪ICO.ico" Closing="Window_Closing" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
