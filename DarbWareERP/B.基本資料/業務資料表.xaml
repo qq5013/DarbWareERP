@@ -8,7 +8,7 @@
        xmlns:控制項="clr-namespace:DarbWareERP.控制項" 
     xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"
     xmlns:Model="clr-namespace:Model;assembly=Model"
-    xmlns:rule ="clr-namespace:邏輯.資料驗證;assembly=邏輯"
+    xmlns:rule ="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯"
       mc:Ignorable="d"       
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="業務資料表" KeyFldValue="業務員編號"  Loaded="頁面繼承_Loaded">

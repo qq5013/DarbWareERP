@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using 數據庫連線;
 
-namespace 邏輯
+namespace 邏輯Bll
 {
     public class 自動抓取幣別
     {

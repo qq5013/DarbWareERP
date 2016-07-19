@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace 邏輯
+namespace 邏輯Bll
 {
     public class 信件
     {

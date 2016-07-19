@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
 using System.Data;
 using System.Globalization;
-using 邏輯.視窗相關;
-using 邏輯;
+using 邏輯Bll.視窗相關;
+using 邏輯Bll;
 using System.Collections.ObjectModel;
 using System.Reflection;
-using 邏輯.訊息相關;
+using 邏輯Bll.訊息相關;
 
 namespace DarbWareERP.瀏覽系列
 {

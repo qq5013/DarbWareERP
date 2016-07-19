@@ -7,7 +7,7 @@
       xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
       xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"
       xmlns:Model="clr-namespace:Model;assembly=Model"
-      xmlns:rule="clr-namespace:邏輯.資料驗證;assembly=邏輯"
+      xmlns:rule="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯"
       xmlns:控制項="clr-namespace:DarbWareERP.控制項" x:Class="DarbWareERP.B.基本資料.部門表"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"

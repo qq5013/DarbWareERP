@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace 邏輯.訊息相關
+namespace 邏輯Bll.訊息相關
 {
     public class 錯誤訊息
     {

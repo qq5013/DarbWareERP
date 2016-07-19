@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Data;
 
-namespace 邏輯
+namespace 邏輯Bll
 {
     public class 抓台銀匯率
     {

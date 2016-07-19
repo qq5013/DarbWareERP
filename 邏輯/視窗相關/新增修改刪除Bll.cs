@@ -12,7 +12,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Reflection;
 
-namespace 邏輯.視窗相關
+namespace 邏輯Bll.視窗相關
 {
     public delegate bool 新增修改刪除Delegate(CollectionViewSource[] cv, out string result);
     public class 新增修改刪除Bll

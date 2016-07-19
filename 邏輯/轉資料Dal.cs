@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace 數據庫連線Dal
+namespace 數據庫連線
 {
 
     public class 轉資料Dal

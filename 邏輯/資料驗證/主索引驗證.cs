@@ -10,7 +10,7 @@ using 數據庫連線;
 using System.Data;
 using System.Windows;
 
-namespace 邏輯.資料驗證
+namespace 邏輯Bll.資料驗證
 {
     public class 主索引驗證 : ValidationRule
     {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace 邏輯
+namespace 邏輯Bll
 {
     public class XmlToSql<T>
     {

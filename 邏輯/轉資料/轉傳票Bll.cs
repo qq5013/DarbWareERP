@@ -10,7 +10,7 @@ using Model;
 using 數據庫連線;
 using System.Reflection;
 
-namespace 邏輯.轉資料
+namespace 邏輯Bll.轉資料
 {
     public class 轉傳票Bll
     {

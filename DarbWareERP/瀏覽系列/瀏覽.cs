@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using 邏輯;
-using 邏輯.訊息相關;
+using 邏輯Bll;
+using 邏輯Bll.訊息相關;
 
 namespace DarbWareERP.瀏覽系列
 {
@@ -177,7 +177,7 @@ namespace DarbWareERP.瀏覽系列
             }
             catch
             {
-                邏輯.訊息相關.錯誤訊息.錯誤訊息顯示(1);
+                邏輯Bll.訊息相關.錯誤訊息.錯誤訊息顯示(1);
             }
             return result;
         }

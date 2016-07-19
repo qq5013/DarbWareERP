@@ -7,8 +7,8 @@
     <ProjectGuid>{2F31B07A-2111-4CE7-854B-6EC399619C55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>邏輯</RootNamespace>
-    <AssemblyName>邏輯</AssemblyName>
+    <RootNamespace>邏輯Bll</RootNamespace>
+    <AssemblyName>邏輯Bll</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -65,17 +65,14 @@
     <Compile Include="視窗相關\導覽區Bll.cs" />
     <Compile Include="視窗相關\瀏覽Bll.cs" />
     <Compile Include="資料驗證\主索引驗證.cs" />
+    <Compile Include="轉資料Dal.cs" />
     <Compile Include="轉資料\轉傳票Bll.cs" />
     <Compile Include="電子賀卡Bll.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{a5d42071-97fd-4447-a969-b7895289feb1}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\數據庫連線\數據庫連線.csproj">
+    <ProjectReference Include="..\數據庫連線\數據庫連線Dal.csproj">
       <Project>{8c4809e3-0a72-473f-b20d-00c18e39ec5e}</Project>
-      <Name>數據庫連線</Name>
+      <Name>數據庫連線Dal</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>

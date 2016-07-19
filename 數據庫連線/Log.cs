@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
-namespace 數據庫連線
+namespace 數據庫連線Dal
 {
     public static class Log
     {

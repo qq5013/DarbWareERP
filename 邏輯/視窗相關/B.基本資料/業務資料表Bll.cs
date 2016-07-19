@@ -9,7 +9,7 @@ using System.Data;
 using 數據庫連線;
 using System.Windows;
 
-namespace 邏輯.視窗相關.B.基本資料
+namespace 邏輯Bll.視窗相關.B.基本資料
 {
     public class 業務資料表Bll 
     {

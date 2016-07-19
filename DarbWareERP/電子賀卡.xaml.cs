@@ -13,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using 邏輯;
+using 邏輯Bll;
 using System.Data;
 using System.Net;
 using System.Net.Mail;

@@ -5,12 +5,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
 using 數據庫連線;
 using System.Windows.Data;
 using System.Windows;
 
-namespace 邏輯
+namespace 邏輯Bll
 {
     public class DataTableToList<T> where T : new()
     {      

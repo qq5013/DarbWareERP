@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using 數據庫連線;
 
-namespace 邏輯.視窗相關
+namespace 邏輯Bll.視窗相關
 {
     public class WindowBll
     {

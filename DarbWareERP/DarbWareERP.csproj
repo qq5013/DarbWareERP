@@ -441,17 +441,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{a5d42071-97fd-4447-a969-b7895289feb1}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\報表\報表.csproj">
       <Project>{951de9d8-9067-4ac5-aa27-b3e00bb81e3f}</Project>
       <Name>報表</Name>
     </ProjectReference>
-    <ProjectReference Include="..\邏輯\邏輯.csproj">
+    <ProjectReference Include="..\邏輯\邏輯Bll.csproj">
       <Project>{2f31b07a-2111-4ce7-854b-6ec399619c55}</Project>
-      <Name>邏輯</Name>
+      <Name>邏輯Bll</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>

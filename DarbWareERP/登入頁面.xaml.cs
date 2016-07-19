@@ -12,10 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using 邏輯;
+using 邏輯Bll;
 using DarbWareERP.繼承窗口;
 using System.ComponentModel;
-using 邏輯.訊息相關;
+using 邏輯Bll.訊息相關;
 
 namespace DarbWareERP
 {

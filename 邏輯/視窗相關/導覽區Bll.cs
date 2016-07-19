@@ -9,7 +9,7 @@ using System.Windows.Data;
 using Model;
 using System.Windows;
 
-namespace 邏輯.視窗相關
+namespace 邏輯Bll.視窗相關
 {
     public delegate void 導覽區指令Delegate(string 程式名稱, CollectionViewSource[] cv, string 資料表名稱, string keyfldvalue);
     public class 導覽區Bll

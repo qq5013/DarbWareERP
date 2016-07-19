@@ -11,7 +11,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using Model;
 using System.ComponentModel;
-using 邏輯.視窗相關;
+using 邏輯Bll.視窗相關;
 using System.Reflection;
 
 namespace DarbWareERP.繼承窗口

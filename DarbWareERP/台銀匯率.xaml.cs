@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using 邏輯;
+using 邏輯Bll;
 using System.Data;
 using System.Xml;
 using System.Xml.Linq;

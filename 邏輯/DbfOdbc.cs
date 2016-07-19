@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 邏輯
+namespace 邏輯Bll
 {
     public class DbfOdbc
     {
