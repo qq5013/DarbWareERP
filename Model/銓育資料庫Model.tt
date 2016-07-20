@@ -2,7 +2,7 @@
 <#@ include file="EF6.Utility.CS.ttinclude"#><#@ 
  output extension=".cs"#><#
 
-const string inputFile = @"銓昱Model.edmx";
+const string inputFile = @"銓育資料庫Model.edmx";
 var textTransform = DynamicTextTransformation.Create(this);
 var code = new CodeGenerationTools(this);
 var ef = new MetadataTools(this);
@@ -20,13 +20,20 @@ WriteHeader(codeStringGenerator, fileManager);
 
 foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection))
 {
-    fileManager.StartNewFile(entity.Name + ".cs");
+    fileManager.StartNewFile(entity.Name.ToString().Substring(0,1).ToUpper()+entity.Name.ToString().Substring(1)+"Model" + ".cs");
     BeginNamespace(code);
 #>
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
-using System.Xml.Serialization;
-<#=codeStringGenerator.EntityClassOpening(entity)#>
+<#=codeStringGenerator.EntityClassOpening(entity)#> 
 {
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected void OnPropertyChanged(string propertyname)
+    {
+        if (PropertyChanged != null)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+        }
+    }
 <#
     var propertiesWithDefaultValues = typeMapper.GetPropertiesWithDefaultValues(entity);
     var collectionNavigationProperties = typeMapper.GetCollectionNavigationProperties(entity);
@@ -36,7 +43,7 @@ using System.Xml.Serialization;
     {
 #>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public <#=code.Escape(entity)#>()
+    public <#=code.Escape(entity)#>() 
     {
 <#
         foreach (var edmProperty in propertiesWithDefaultValues)
@@ -71,7 +78,7 @@ using System.Xml.Serialization;
         foreach (var edmProperty in simpleProperties)
         {
 #>
-[XmlAttribute()]
+    [XmlAttribute()]
     <#=codeStringGenerator.Property(edmProperty)#>
 <#
         }
@@ -287,7 +294,8 @@ public class CodeStringGenerator
     {
         return string.Format(
             CultureInfo.InvariantCulture,
-            "{0} {1} {2} {{ {3}get; {4}set; }}",
+            "{0} {1} {2} {{ {3}get{{ return _{2}; }} {4}set{{ _{2}=value;	OnPropertyChanged(\"{2}\");}} }}" 
+			+ Environment.NewLine +"	private {1} _{2} ;",
             Accessibility.ForProperty(edmProperty),
             _typeMapper.GetTypeName(edmProperty.TypeUsage),
             _code.Escape(edmProperty),
@@ -317,11 +325,12 @@ public class CodeStringGenerator
     {
         return string.Format(
             CultureInfo.InvariantCulture,
-            "{0} {1}partial class {2}{3}",
+            "{0} {1}partial class {2}{3}{4}",
             Accessibility.ForType(entity),
             _code.SpaceAfter(_code.AbstractOption(entity)),
-            _code.Escape(entity),
-            _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)));
+            _code.Escape(entity).ToString().Substring(0,1).ToUpper()+_code.Escape(entity).ToString().Substring(1)+"Model",
+            _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)),
+			" : INotifyPropertyChanged");
     }
     
     public string EnumOpening(SimpleType enumType)
@@ -427,10 +436,12 @@ public class CodeStringGenerator
         return inHeader == string.IsNullOrEmpty(_code.VsNamespaceSuggestion())
             ? string.Format(
                 CultureInfo.InvariantCulture,
-                "{0}using System;{1}" +
-                "{2}",
+                "{0}using System;{1}{2}{3}" +
+                "{4}",				
                 inHeader ? Environment.NewLine : "",
-                includeCollections ? (Environment.NewLine + "using System.Collections.Generic;") : "",
+                includeCollections ? (Environment.NewLine + "using System.Collections.Generic;") : "",		
+				Environment.NewLine + "using System.Xml.Serialization;",
+				Environment.NewLine + "using System.ComponentModel;",	
                 inHeader ? "" : Environment.NewLine)
             : "";
     }

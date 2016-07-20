@@ -340,7 +340,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         {
             DataTable dt = new DataTable();
             dt = (DataTable)page.CollectionViewSources[0].Source;
-            Form1 form1 = new Form1(dt);
+            Form1 form1 = new Form1();
             form1.ShowDialog();
         }
     }

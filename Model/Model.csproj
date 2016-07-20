@@ -54,85 +54,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="accl.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cupdma.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cupdt.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="dept.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="dept_1.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ordetl.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ormast.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="salesmen.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
+    <Compile Include="UnitbaModel.cs">
+      <DependentUpon>銓育資料庫Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="sliy.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sliym.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sliyyear.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sliyyearm.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="unitba.cs">
-      <DependentUpon>銓昱Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="銓昱Model.Context.cs">
+    <Compile Include="銓育資料庫Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>銓昱Model.Context.tt</DependentUpon>
+      <DependentUpon>銓育資料庫Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="銓昱Model.cs">
+    <Compile Include="銓育資料庫Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>銓昱Model.tt</DependentUpon>
+      <DependentUpon>銓育資料庫Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="銓昱Model.Designer.cs">
+    <Compile Include="銓育資料庫Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>銓昱Model.edmx</DependentUpon>
+      <DependentUpon>銓育資料庫Model.edmx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="銓昱Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>銓昱Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <None Include="銓昱Model.edmx.diagram">
-      <DependentUpon>銓昱Model.edmx</DependentUpon>
+    <EntityDeploy Include="銓育資料庫Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>銓育資料庫Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="銓育資料庫Model.edmx.diagram">
+      <DependentUpon>銓育資料庫Model.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="銓昱Model.Context.tt">
+    <Content Include="銓育資料庫Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>銓昱Model.edmx</DependentUpon>
-      <LastGenOutput>銓昱Model.Context.cs</LastGenOutput>
+      <DependentUpon>銓育資料庫Model.edmx</DependentUpon>
+      <LastGenOutput>銓育資料庫Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="銓昱Model.tt">
+    <Content Include="銓育資料庫Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>銓昱Model.edmx</DependentUpon>
-      <LastGenOutput>銓昱Model.cs</LastGenOutput>
+      <DependentUpon>銓育資料庫Model.edmx</DependentUpon>
+      <LastGenOutput>銓育資料庫Model.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
