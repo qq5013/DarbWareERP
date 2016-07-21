@@ -13,7 +13,7 @@
     <src:頁面繼承.Resources>
         <cm:BackgroundWorker x:Key="backgroundWorker" WorkerReportsProgress="True" WorkerSupportsCancellation="True"
                              DoWork="BackgroundWorker_DoWork"
-                             RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted" ProgressChanged="BackgroundWorker_ProgressChanged">                       
+                             RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted" ProgressChanged="BackgroundWorker_ProgressChanged">
         </cm:BackgroundWorker>
     </src:頁面繼承.Resources>
     <Grid>
@@ -21,9 +21,9 @@
             <Grid.Background>
                 <ImageBrush ImageSource="Image/Icon_png/登入底圖.png" Stretch="Uniform"/>
             </Grid.Background>
-            <Label x:Name="label" Content="使用者帳號" HorizontalAlignment="Left" Margin="72,198,0,0" VerticalAlignment="Top" FontSize="21.333"/>
-            <Label x:Name="label1" Content="使用者密碼" HorizontalAlignment="Left" Margin="72,246,0,0" VerticalAlignment="Top" FontSize="21.333"/>
-            <TextBox x:Name="txt帳號" Margin="217,197,0,0" TextWrapping="Wrap" FontSize="21.333" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" TabIndex="1" KeyDown="txt帳號_KeyDown">
+            <Label x:Name="label" Content="使用者帳號" HorizontalAlignment="Left" Margin="72,212,0,0" VerticalAlignment="Top" FontSize="21.333"/>
+            <Label x:Name="label1" Content="使用者密碼" HorizontalAlignment="Left" Margin="72,260,0,0" VerticalAlignment="Top" FontSize="21.333"/>
+            <TextBox x:Name="txt帳號" Margin="217,211,0,0" TextWrapping="Wrap" FontSize="21.333" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" TabIndex="1" KeyDown="txt帳號_KeyDown">
                 <TextBox.InputScope>
                     <InputScope>
                         <InputScope.Names>
@@ -32,7 +32,7 @@
                     </InputScope>
                 </TextBox.InputScope>
             </TextBox>
-            <PasswordBox x:Name="pwd密碼" HorizontalAlignment="Left" Margin="217,242,0,0" FontSize="18.667" VerticalAlignment="Top" Width="170" Height="34"  TabIndex="2" KeyDown="pwd密碼_KeyDown"/>
+            <PasswordBox x:Name="pwd密碼" HorizontalAlignment="Left" Margin="217,256,0,0" FontSize="18.667" VerticalAlignment="Top" Width="170" Height="34"  TabIndex="2" KeyDown="pwd密碼_KeyDown"/>
             <Button x:Name="btn登入" Margin="129,332,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45" Click="btn登入_Click" TabIndex="3">
                 <Image Source="Image/icon_png/進入系統00.png"/>
             </Button>
@@ -43,7 +43,7 @@
                 <Label x:Name="label2" Content="Darbware" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C"/>
                 <Label x:Name="label3" Content="V-ERP System" Margin="39,42,-45,-11.8" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C" Height="68"/>
             </Grid>
-            <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="102,177,0,0" VerticalAlignment="Top" Height="21" Width="33"/>
+            <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="102,177,0,0" VerticalAlignment="Top" Height="30" Width="56"/>
         </Grid>
     </Grid>
 </src:頁面繼承>

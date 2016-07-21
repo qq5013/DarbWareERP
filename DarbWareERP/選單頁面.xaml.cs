@@ -93,10 +93,10 @@ namespace DarbWareERP
             MessageBox.Show("沒有權限，不行進入程式", "訊息", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
-        {
+        //private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
         private void btn設定_Click(object sender, RoutedEventArgs e)
         {

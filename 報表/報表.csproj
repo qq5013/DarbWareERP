@@ -69,6 +69,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="單位轉換表.rdlc" />
+    <None Include="Properties\DataSources\ViewModel.test.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -83,6 +85,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ERPVViewModel\ViewModel.csproj">
+      <Project>{b2ebdf75-df6e-4d29-bb00-04ab2eeab6ee}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{a5d42071-97fd-4447-a969-b7895289feb1}</Project>
       <Name>Model</Name>

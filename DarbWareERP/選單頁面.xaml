@@ -14,9 +14,9 @@
                 <ImageBrush ImageSource="Image/Icon_png/選單頁底圖.png"/>
             </Grid.Background>
             <Label x:Name="label2" Content="Darbware" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="64" FontWeight="Bold" Foreground="#FFE6B43C" Margin="0,15,0,0"/>
-            <Button x:Name="btn電子賀卡" Content="電子賀卡" Margin="10,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn電子賀卡_Click"/>
-            <Button x:Name="btn台銀匯率" Content="台銀匯率" Margin="105,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn台銀匯率_Click"/>
-            <Button x:Name="btn返回登入視窗" HorizontalAlignment="Center" Margin="668,576,52,25" VerticalAlignment="Center" Width="160" Height="55
+            <Button x:Name="btn電子賀卡" Content="電子賀卡" Margin="10,447,0,0"  FontSize="12" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn電子賀卡_Click"/>
+            <Button x:Name="btn台銀匯率" Content="台銀匯率" Margin="105,447,0,0" FontSize="12" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn台銀匯率_Click"/>
+            <Button x:Name="btn返回登入視窗" HorizontalAlignment="Center"  Margin="668,576,52,25" VerticalAlignment="Center" Width="160" Height="55
                     " FontSize="16" Click="btn返回登入視窗_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Image/Icon_png/取消00.png" Stretch="None"/>
@@ -24,27 +24,27 @@
 
                 </StackPanel>
             </Button>
-            <Button x:Name="btn轉ACCL" Content="轉ACCL" Margin="200,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn轉ACCL_Click" />
-            <Button x:Name="btn轉sliy" Content="轉Sliy" Margin="295,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn轉sliy_Click"  />
+            <Button x:Name="btn轉ACCL" Content="轉ACCL" FontSize="12" Margin="200,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn轉ACCL_Click" />
+            <Button x:Name="btn轉sliy" Content="轉Sliy" FontSize="12" Margin="295,447,0,0" HorizontalAlignment="Left" Width="90" Height="40" VerticalAlignment="Top" Click="btn轉sliy_Click"  />
             <WrapPanel Name="WrapPanel" Height="104" Margin="0,102,0,0" VerticalAlignment="Top" Orientation="Vertical" >
-                <Button x:Name="button1" Content="A.系統資料" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button2" Content="B.基本資料" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button3" Content="C.總務管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button4" Content="D.工程資料" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button5" Content="E.營業收款" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button6" Content="F.生產管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button7" Content="G.採購付款" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button8" Content="H.庫存管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button9" Content="I.帳款管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button10" Content="J.品質管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button11" Content="K.成本管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button12" Content="L.聯絡傳訊" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button13" Content="M.主管資訊" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button14" Content="N.總帳管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button15" Content="O.銀行票據" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button16" Content="P.發票管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button17" Content="Q.固定資產" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
-                <Button x:Name="button18" Content="R.人事薪資" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button1" Content="A.系統資料" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button2" Content="B.基本資料" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button3" Content="C.總務管理" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button4" Content="D.工程資料" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button5" Content="E.營業收款" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button6" Content="F.生產管理" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button7" Content="G.採購付款" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button8" Content="H.庫存管理" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button9" Content="I.帳款管理" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button10" Content="J.品質管理" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button11" Content="K.成本管理" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button12" Content="L.聯絡傳訊" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button13" Content="M.主管資訊" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button14" Content="N.總帳管理" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button15" Content="O.銀行票據" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button16" Content="P.發票管理" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button17" Content="Q.固定資產" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
+                <Button x:Name="button18" Content="R.人事薪資" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="40" Margin="3"/>
             </WrapPanel>
             <Button x:Name="btn設定" Height="44" Width="44" Margin="784,33,52,0" VerticalAlignment="Top" Click="btn設定_Click">
                 <Image Source="/DarbWareERP;component/Image/Icon_png/設定00.png"/>

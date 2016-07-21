@@ -17,7 +17,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="10*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="txbl程式名稱" Grid.Row="0" Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType=src:頁面繼承}}"></TextBlock>
+                <TextBlock x:Name="txbl程式名稱" FontSize="12" Grid.Row="0" Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType=src:頁面繼承}}"></TextBlock>
                 <WrapPanel x:Name="wrappanel指令區" Grid.Row="1">
                     <Button x:Name="btn新增" Width="44" Height="44" Margin="2" IsTabStop="False" Click="btn新增_Click" IsEnabledChanged="btn新增_IsEnabledChanged">
                         <Image Source="/DarbWareERP;component/Image/Icon_png/新增00.png"></Image>

@@ -21,8 +21,7 @@ namespace DarbWareERP.B.基本資料
     /// 單位轉換表.xaml 的互動邏輯
     /// </summary>
     public partial class 單位轉換表 : 繼承窗口.頁面繼承
-    {
-        
+    {        
         public 單位轉換表()
         {
             InitializeComponent();            
@@ -31,13 +30,12 @@ namespace DarbWareERP.B.基本資料
         {
             base.初始值設定();
             KeyFldValue = "單位";
-            資料表名稱[0] = "unitba";
-            
-        }
-        private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
+            資料表名稱[0] = "unitba";            
+        }       
+        protected override void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
         {
-            CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewSource")));
-            SetControls();
+            base.頁面繼承_Loaded(sender,e);
+            CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewModelViewSource")));            
         }
         public override void SetControls()
         {
@@ -48,17 +46,17 @@ namespace DarbWareERP.B.基本資料
         }
         public override void SetDefaultValue()
         {
-            base.SetDefaultValue();
-            //要先focus後才可以設值，不然會被判定為null
-            foreach (Control c in 資料區.Children)
-            {
-                c.Focus();
-            }
-            txtpkid.Text = "";
-            txt單位.Text = "+++";
-            txt小數位數.Text = "0";
-            txt說明.Text ="1";           
-            txt單位.Focus();
+            //base.SetDefaultValue();
+            ////要先focus後才可以設值，不然會被判定為null
+            //foreach (Control c in 資料區.Children)
+            //{
+            //    c.Focus();
+            //}
+            //txtpkid.Text = "";
+            //txt單位.Text = "+++";
+            //txt小數位數.Text = "0";
+            //txt說明.Text ="1";           
+            //txt單位.Focus();
         }
         
     }

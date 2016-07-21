@@ -46,12 +46,12 @@ namespace DarbWareERP.B.基本資料
             瀏覽代碼 = "DPT";
         }
 
-        private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
-        {
-            CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("deptViewSource")));
-            CollectionViewSources[1] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("dept_1ViewSource")));
-            SetControls();
-        }
+        //private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("deptViewSource")));
+        //    CollectionViewSources[1] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("dept_1ViewSource")));
+        //    SetControls();
+        //}
         public override void SetControls()
         {
             base.SetControls();

@@ -65,7 +65,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                 page.目前KeyFldValue = txt查詢.Text;
             }
             
-            callback(page.Title.ToString(), cv, page.資料表名稱[0].ToUpper(), page.目前KeyFldValue);
+            callback(page.Title.ToString(), cv, page.資料表名稱, page.目前KeyFldValue);
             page.目前KeyFldValue = txtkey.Text;
             page.Pkid = txtpkid.Text;
         }

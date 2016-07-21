@@ -54,10 +54,10 @@ namespace DarbWareERP.瀏覽系列
             CollectionViewSources[1] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("browseViewSource1")));
         }
 
-        private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
-        {
+        //private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
         private void btn返回_Click(object sender, RoutedEventArgs e)
         {
             表單控制.切換頁面("DarbwarERP.", txbl程式名稱.Text);

@@ -22,7 +22,7 @@ namespace DarbWareERP.繼承窗口
         private string[] _資料表名稱;
         protected string _增刪修訊息;
         private string _目前KeyFldValue;
-        private string keyFldValue;        
+        private string keyFldValue;
         public string Pkid { get; set; }
         public string KeyFldValue
         {
@@ -76,9 +76,21 @@ namespace DarbWareERP.繼承窗口
         {
             表單控制.目前頁面 = this;
             初始值設定();
-            目前KeyFldValue = "";            
+            目前KeyFldValue = "";
+            this.Loaded += 頁面繼承_Loaded;
+            this.Style = Application.Current.FindResource("pageStyle") as Style;
         }
-       
+
+        protected virtual void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBox txtpkid = 控制項操作.用名稱尋找子代<TextBox>(this, "txtpkid");
+            if (txtpkid != null)
+            {
+                txtpkid.IsReadOnly = true;
+            }
+            SetControls();
+        }
+
         public virtual void 初始值設定()
         {
             資料表名稱 = new string[5];
@@ -185,13 +197,14 @@ namespace DarbWareERP.繼承窗口
         public virtual bool UpdateData(CollectionViewSource[] cv, 增刪修Status status)
         {
             //資料存到資料庫
-            Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "邏輯");
+            Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "邏輯Bll");
             Type type = assembly.GetTypes().FirstOrDefault(x => x.Name == Title + "Bll");
             新增修改刪除Bll instance = (新增修改刪除Bll)Activator.CreateInstance(type);
             return instance.UpdateData(cv, out this._增刪修訊息, Status);
         }
         public virtual void SetControls()
         {
+
             //設定所有控制項的ReadOnly或Enabled屬性
         }
         public virtual void SetDefaultValue()
