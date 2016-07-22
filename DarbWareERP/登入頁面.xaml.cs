@@ -12,10 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using 邏輯Bll;
 using DarbWareERP.繼承窗口;
 using System.ComponentModel;
-using 邏輯Bll.訊息相關;
+using ViewModel;
+
 
 namespace DarbWareERP
 {
@@ -24,15 +24,15 @@ namespace DarbWareERP
     /// </summary>
     public partial class 登入頁面 : 頁面繼承
     {
-        登入Bll 登入Bll;
+        登入ViewModel 登入viewmodel;
         BackgroundWorker backgroundWorker;
         public 登入頁面()
         {
             InitializeComponent();
             表單控制.目前頁面 = this;
-            登入Bll = new 登入Bll();
+            登入viewmodel = new 登入ViewModel();
             txt帳號.Focus();
-            label4.Content = 登入Bll.資料庫;
+            label4.Content = 登入viewmodel.資料庫;
             backgroundWorker = (BackgroundWorker)this.FindResource("backgroundWorker");
         }
 
@@ -55,7 +55,7 @@ namespace DarbWareERP
             string[] argument = (string[])e.Argument;
             try
             {                
-                e.Result = 登入Bll.登入(argument[0], argument[1]);                
+                e.Result = 登入viewmodel.登入(argument[0], argument[1]);                
             }
             catch (Exception ex)
             {
@@ -70,7 +70,7 @@ namespace DarbWareERP
             }
             else
             {
-                錯誤訊息Bll.錯誤訊息顯示(0);
+                錯誤訊息ViewModel.錯誤訊息顯示(0);
                 pwd密碼.Password = "";
             }
             btn登入.IsEnabled = true;

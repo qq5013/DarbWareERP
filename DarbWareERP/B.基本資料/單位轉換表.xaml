@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
       xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
       xmlns:控制項="clr-namespace:DarbWareERP.控制項"     
-    xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊"        
-    xmlns:rule ="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯Bll"
+      xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊"     
       xmlns:ViewModel="clr-namespace:ViewModel;assembly=ViewModel" x:Class="DarbWareERP.B.基本資料.單位轉換表"
+      xmlns:rule ="clr-namespace:ViewModel.資料驗證;assembly=ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"          
       Title="單位轉換表" >
@@ -47,16 +47,21 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="pkid:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="txtpkid" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding pkid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="小數位數:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="txt小數位數" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding 小數位數, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="單位:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="txt單位" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding 單位, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="說明:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-            <TextBox x:Name="txt說明" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding 說明, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="單位:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="txt單位" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+                <Binding Path="單位">
+                    <Binding.ValidationRules>
+                        <rule:主索引驗證ViewModel Cvs="{StaticResource unitbaViewModelViewSource}" Table="unitba"></rule:主索引驗證ViewModel>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <Label Content="說明:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="txt說明" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding 說明, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="小數位數:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="txt小數位數" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding 小數位數, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="pkid:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtpkid" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding pkid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
     </Grid>
 </src:頁面繼承>

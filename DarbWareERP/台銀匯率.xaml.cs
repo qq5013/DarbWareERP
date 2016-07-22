@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using 邏輯Bll;
 using System.Data;
 using System.Xml;
 using System.Xml.Linq;
@@ -24,8 +23,8 @@ namespace DarbWareERP
 
         private void btn抓匯率_Click(object sender, RoutedEventArgs e)
         {
-            抓台銀匯率 exchange = new 抓台銀匯率();
-            dataGrid.ItemsSource = exchange.匯率().DefaultView;
+            //抓台銀匯率 exchange = new 抓台銀匯率();
+            //dataGrid.ItemsSource = exchange.匯率().DefaultView;
         }
 
         private void btn插入資料庫_Click(object sender, RoutedEventArgs e)
@@ -37,19 +36,20 @@ namespace DarbWareERP
 
         private void 資料庫抓幣別(out string 訊息)
         {
-            自動抓取幣別 bcurren = new 自動抓取幣別();
-            DataSet ds = bcurren.Sql幣別表();
-            DataTable 資料庫的幣別 = ds.Tables[0];
-            DataTable 台銀匯率 = ((DataView)dataGrid.ItemsSource).Table;
-            DataTable 上傳明細 = 明細datatable();
-            DataTable 主檔 = 主檔datatable();
-            訊息 = 匯入明細資料(資料庫的幣別, 台銀匯率, 上傳明細);
-            dataGrid1.ItemsSource = 上傳明細.DefaultView;
-            XDocument 上傳明細表 = 寫成XML(上傳明細, "匯率明細");
-            主檔資料設定(主檔);
-            XDocument 上傳主檔 = 寫成XML(主檔, "匯率主檔");            
-            string 傳回訊息 = 訊息 + bcurren.上傳幣別表(上傳主檔.Document.ToString(),上傳明細表.Document.ToString());
-            MessageBox.Show(傳回訊息);
+            訊息 = "";  //先替代
+            //自動抓取幣別 bcurren = new 自動抓取幣別();
+            //DataSet ds = bcurren.Sql幣別表();
+            //DataTable 資料庫的幣別 = ds.Tables[0];
+            //DataTable 台銀匯率 = ((DataView)dataGrid.ItemsSource).Table;
+            //DataTable 上傳明細 = 明細datatable();
+            //DataTable 主檔 = 主檔datatable();
+            //訊息 = 匯入明細資料(資料庫的幣別, 台銀匯率, 上傳明細);
+            //dataGrid1.ItemsSource = 上傳明細.DefaultView;
+            //XDocument 上傳明細表 = 寫成XML(上傳明細, "匯率明細");
+            //主檔資料設定(主檔);
+            //XDocument 上傳主檔 = 寫成XML(主檔, "匯率主檔");
+            //string 傳回訊息 = 訊息 + bcurren.上傳幣別表(上傳主檔.Document.ToString(), 上傳明細表.Document.ToString());
+            //MessageBox.Show(傳回訊息);
         }
 
         private void 主檔資料設定(DataTable 主檔)

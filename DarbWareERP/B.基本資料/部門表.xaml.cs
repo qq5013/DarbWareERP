@@ -13,8 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
-using 邏輯Bll.視窗相關;
-using 邏輯Bll.視窗相關.B.基本資料;
+using ViewModel;
 using System.Data;
 
 namespace DarbWareERP.B.基本資料

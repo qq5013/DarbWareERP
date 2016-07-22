@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace 邏輯Bll.訊息相關
 {
-    public static class 參數設定Bll
+    public static class 語言設定Bll
     {
-        public static _語言版本 語言 = _語言版本.中文;
-        public enum _語言版本
+        public static 語言版本enum 語言 = 語言版本enum.中文;
+        public enum 語言版本enum
         {
             中文=1,
             英文=2

@@ -157,8 +157,6 @@
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項操作.cs" />
-    <Compile Include="瀏覽系列\瀏覽.cs" />
-    <Compile Include="瀏覽系列\瀏覽下方查詢.cs" />
     <Compile Include="瀏覽系列\瀏覽頁面.xaml.cs">
       <DependentUpon>瀏覽頁面.xaml</DependentUpon>
     </Compile>
@@ -448,10 +446,6 @@
     <ProjectReference Include="..\報表\報表.csproj">
       <Project>{951de9d8-9067-4ac5-aa27-b3e00bb81e3f}</Project>
       <Name>報表</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\邏輯\邏輯Bll.csproj">
-      <Project>{2f31b07a-2111-4ce7-854b-6ec399619c55}</Project>
-      <Name>邏輯Bll</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

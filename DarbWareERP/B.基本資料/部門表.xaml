@@ -5,8 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
       xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
-      xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"      
-      xmlns:rule="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯Bll"
+      xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"            
       xmlns:控制項="clr-namespace:DarbWareERP.控制項" x:Class="DarbWareERP.B.基本資料.部門表"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
@@ -18,14 +17,14 @@
     </src:頁面繼承.Resources>-->
 
     <Grid>
-        <Grid DataContext="{StaticResource dept_1ViewSource}">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="259*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <下方共同區塊:下方共同區塊 Grid.Row="1"></下方共同區塊:下方共同區塊>
             <Grid x:Name="資料區" Grid.Row="0">
-                <Grid x:Name="grid1" DataContext="{StaticResource deptViewSource}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+                <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -47,11 +46,11 @@
                     <TextBox x:Name="負責主管TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding 負責主管, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                     <Label Content="部門代號:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                     <TextBox x:Name="txt部門代號" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
-                        <Binding Path="部門代號">
-                            <Binding.ValidationRules>
+                        <!--<Binding Path="部門代號">-->
+                            <!--<Binding.ValidationRules>
                                 <rule:主索引驗證 cvs="{StaticResource deptViewSource}" Table="dept"/>
                             </Binding.ValidationRules>
-                        </Binding>
+                        </Binding>-->
                     </TextBox>
                     <Label Content="部門名稱:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
                     <TextBox x:Name="部門名稱TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding 部門名稱, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>

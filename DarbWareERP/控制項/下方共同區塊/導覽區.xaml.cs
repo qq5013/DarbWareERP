@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
-using 邏輯Bll.視窗相關;
+using ViewModel;
 
 namespace DarbWareERP.控制項.下方共同區塊
 {
@@ -22,7 +22,7 @@ namespace DarbWareERP.控制項.下方共同區塊
     /// </summary>
     public partial class 導覽區 : UserControl
     {
-        導覽區Bll 導覽區bll;
+        導覽區ViewModel 導覽區ViewModel;
         控制項操作 控制項操作;
         頁面繼承 page;
         CollectionViewSource[] cv;
@@ -42,7 +42,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         {
             rbtn鑑值.IsChecked = true;
             rbtn瀏覽頁面.IsChecked = true;
-            導覽區bll = new 導覽區Bll();
+            導覽區ViewModel = new 導覽區ViewModel();
             控制項操作 = new 控制項操作();
             page = 控制項操作.尋找父代<頁面繼承>(this);
         }
@@ -71,34 +71,34 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
         private void btn檔首_Click(object sender, RoutedEventArgs e)
         {
-            導覽區指令(導覽區bll.檔首);
+            導覽區指令(導覽區ViewModel.檔首);
         }
 
         private void btn上一筆_Click(object sender, RoutedEventArgs e)
         {
-            導覽區指令(導覽區bll.上一筆);
+            導覽區指令(導覽區ViewModel.上一筆);
         }
 
         private void btn重新整理_Click(object sender, RoutedEventArgs e)
         {
-            導覽區指令(導覽區bll.重新整理);
+            導覽區指令(導覽區ViewModel.重新整理);
         }
 
         private void btn下一筆_Click(object sender, RoutedEventArgs e)
         {
-            導覽區指令(導覽區bll.下一筆);
+            導覽區指令(導覽區ViewModel.下一筆);
         }
 
         private void btn檔尾_Click(object sender, RoutedEventArgs e)
         {
-            導覽區指令(導覽區bll.檔尾);
+            導覽區指令(導覽區ViewModel.檔尾);
         }
 
         private void txt查詢_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                導覽區指令(導覽區bll.查詢, 導覽區指令Enum.查詢);
+                導覽區指令(導覽區ViewModel.查詢, 導覽區指令Enum.查詢);
                 txt查詢.Text = "";
             }
         }

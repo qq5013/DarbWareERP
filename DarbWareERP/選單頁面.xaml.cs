@@ -14,8 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
 using DarbWareERP.控制項;
-using 邏輯Bll.視窗相關;
 using DarbWareERP.B.基本資料;
+using ViewModel;
 
 namespace DarbWareERP
 {
@@ -27,7 +27,7 @@ namespace DarbWareERP
         public 選單頁面()
         {
             InitializeComponent();
-            List<string> 選單列表 = WindowBll.GetInstance().選單按鈕名稱列表();
+            List<string> 選單列表 = 選單ViewModel.GetInstance().選單按鈕名稱列表();
             DependencyObject doj = VisualTreeHelper.GetChild(WrapPanel, 0);
             int 按鈕數 = VisualTreeHelper.GetChildrenCount(WrapPanel);
 
@@ -81,7 +81,7 @@ namespace DarbWareERP
         private void 開啟視窗_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            List<string> 程式名稱列表 = WindowBll.GetInstance().程式名稱列表(btn.Content.ToString());
+            List<string> 程式名稱列表 = 選單ViewModel.GetInstance().程式名稱列表(btn.Content.ToString());
             if (表單控制.切換頁面("DarbWareERP." + btn.Content + ".", 程式名稱列表[0]))
             {
                 表單控制.Grid指令區.Visibility = Visibility.Visible;

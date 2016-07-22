@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-namespace DarbWareERP.瀏覽系列
+namespace Model
 {
-    public class 瀏覽下方查詢 : INotifyPropertyChanged
+    public class 瀏覽Model : INotifyPropertyChanged
     {
         public string 序號 { get; set; }
         private string _欄位編號;

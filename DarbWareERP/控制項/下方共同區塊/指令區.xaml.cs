@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
-using 邏輯Bll.視窗相關;
+using ViewModel;
 using 報表;
 
 namespace DarbWareERP.控制項.下方共同區塊

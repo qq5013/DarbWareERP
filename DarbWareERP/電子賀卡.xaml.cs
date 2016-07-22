@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using 邏輯Bll;
 using System.Data;
 using System.Net;
 using System.Net.Mail;
@@ -33,23 +32,23 @@ namespace DarbWareERP
 
         private void btn查詢_Click(object sender, RoutedEventArgs e)
         {
-            電子賀卡Bll 電子賀卡Bll = new 電子賀卡Bll();
-            DataSet ds = 電子賀卡Bll.客戶查詢();
-            ds.Tables[0].Columns.Add("是否寄信", typeof(bool)).SetOrdinal(0);
-            dataGrid.ItemsSource = ds.Tables[0].DefaultView;
+            //電子賀卡Bll 電子賀卡Bll = new 電子賀卡Bll();
+            //DataSet ds = 電子賀卡Bll.客戶查詢();
+            //ds.Tables[0].Columns.Add("是否寄信", typeof(bool)).SetOrdinal(0);
+            //dataGrid.ItemsSource = ds.Tables[0].DefaultView;
         }
 
         private void btn寄信_Click(object sender, RoutedEventArgs e)
         {
-            信件 mail = new 信件("momo16542@gmail.com");
-            if (mail.寄信("ry.xware@msa.hinet.net", "s", "ad"))
-            {
-                MessageBox.Show("信件已寄出");
-            }
-            else
-            {
-                MessageBox.Show("失敗");
-            }
+            //信件 mail = new 信件("momo16542@gmail.com");
+            //if (mail.寄信("ry.xware@msa.hinet.net", "s", "ad"))
+            //{
+            //    MessageBox.Show("信件已寄出");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("失敗");
+            //}
         }
 
         private void button_Click(object sender, RoutedEventArgs e)

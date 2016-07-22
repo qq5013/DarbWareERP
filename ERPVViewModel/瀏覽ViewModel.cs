@@ -2,21 +2,52 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Data;
 using 邏輯Bll;
 using 邏輯Bll.視窗相關;
-using 邏輯Bll.訊息相關;
+using Model;
+using System.Windows.Controls;
+using System.Globalization;
 
-namespace DarbWareERP.瀏覽系列
+namespace ViewModel
 {
-    class 瀏覽
+    public class 瀏覽ViewModel
     {
+        public DataSet 瀏覽查詢(string[] 資料表名稱, string 查詢條件, CollectionViewSource[] collectionViewSources)
+        {
+            string dataevent = 資料表名稱[0];
+            瀏覽Bll 瀏覽bll = new 瀏覽Bll();
+            DataSet ds = 瀏覽bll.瀏覽查詢(dataevent, 查詢條件);
+            for (int i = 0; i < 資料表名稱.Count(); i++)
+            {
+                Assembly[] AssembliesLoaded = AppDomain.CurrentDomain.GetAssemblies();
+                Type trgType = AssembliesLoaded.Select(assembly => assembly.GetType("Model." + 資料表名稱[i]))
+                    .Where(type => type != null)
+                    .FirstOrDefault();
+                //List<T> list = (List<T>)DataTableToList<T>.ConvertToModel(dt);
+                if (trgType == null)
+                {
+                    break;
+                }
+                Type generic = typeof(List<>);
+                Type constructor = generic.MakeGenericType(trgType);
+                dynamic listq = Activator.CreateInstance(constructor);
+                Type datatabletolistType = typeof(DataTableToList<>).MakeGenericType(trgType);
+                MethodInfo minfo = datatabletolistType.GetMethod("ConvertToModel");
+                listq = minfo.Invoke(null, new object[] { ds.Tables[i] });
+                collectionViewSources[i].Source = listq;
+                if (i == 1)
+                {
+                    //CollectionViewSources[1].Source = new ObservableCollection<Model.ordetl>(listq);
+                }
+            }
+            return ds;
+        }
         string[] 資料表名稱;
         public string 程式名稱 { get; set; }
         List<string> 條件編號 = null;
@@ -32,19 +63,20 @@ namespace DarbWareERP.瀏覽系列
         {
             get; set;
         }
-        private ObservableCollection<瀏覽下方查詢> _下方查詢list = new ObservableCollection<瀏覽下方查詢>();
-        public ObservableCollection<瀏覽下方查詢> 下方查詢list
+        private ObservableCollection<瀏覽Model> _下方查詢list = new ObservableCollection<瀏覽Model>();
+        public ObservableCollection<瀏覽Model> 下方查詢list
         {
             get
             {
-                return _下方查詢list;
+                return  _下方查詢list;
             }
             set
             {
                 _下方查詢list = value;
             }
         }
-        public 瀏覽(string[] 資料表名稱)
+        public 瀏覽Model 瀏覽model { get; set; }
+        public 瀏覽ViewModel(string[] 資料表名稱)
         {
             this.資料表名稱 = 資料表名稱;
         }
@@ -59,26 +91,26 @@ namespace DarbWareERP.瀏覽系列
                 DataRow[] drs = 自訂條件欄位.Select("瀏覽類別 = '" + browsetype + "'");
                 if (drs.Count() != 0)
                 {
-                    欄位編號列表 = new ObservableCollection<瀏覽系列.欄位編號列表>(DataTableToList<欄位編號列表>.ConvertToModel(drs.CopyToDataTable()));
+                    欄位編號列表 = new ObservableCollection<欄位編號列表>(DataTableToList<欄位編號列表>.ConvertToModel(drs.CopyToDataTable()));
                 }
                 else
                 {
-                    List<瀏覽系列.欄位編號列表> 欄位編號列表list = new List<瀏覽系列.欄位編號列表>();
+                    List<欄位編號列表> 欄位編號列表list = new List<欄位編號列表>();
                     Assembly[] AssembliesLoaded = AppDomain.CurrentDomain.GetAssemblies();
                     Type trgType = AssembliesLoaded.Select(assembly => assembly.GetType("Model." + this.資料表名稱[0]))
                         .Where(type => type != null)
                         .FirstOrDefault();
-                    PropertyInfo[] pis= trgType.GetProperties();                    
+                    PropertyInfo[] pis = trgType.GetProperties();
                     for (int i = 0; i < pis.Count(); i++)
                     {
-                        瀏覽系列.欄位編號列表 m = new 瀏覽系列.欄位編號列表();
+                        欄位編號列表 m = new 欄位編號列表();
                         m.欄位編號 = i + 1;
                         m.欄位說明 = pis[i].Name;
                         欄位編號列表list.Add(m);
                     }
-                    欄位編號列表 = new ObservableCollection<瀏覽系列.欄位編號列表>(欄位編號列表list);
+                    欄位編號列表 = new ObservableCollection<欄位編號列表>(欄位編號列表list);
                 }
-                運算子編號列表 = new ObservableCollection<瀏覽系列.運算子編號列表>(DataTableToList<運算子編號列表>.ConvertToModel(運算子));
+                運算子編號列表 = new ObservableCollection<運算子編號列表>(DataTableToList<運算子編號列表>.ConvertToModel(運算子));
                 欄位Column.ItemsSource = 欄位編號列表;
                 運算子Column.ItemsSource = 運算子編號列表;
                 //ItemSource只能設定一次不然會前面的筆數會出錯
@@ -94,7 +126,7 @@ namespace DarbWareERP.瀏覽系列
                     string 運算子說明 = rows運算子.FirstOrDefault()["運算子說明"].ToString();
                     string 欄位type = 尋找欄位type(欄位說明);
 
-                    瀏覽下方查詢 browse = new 瀏覽下方查詢();
+                    瀏覽Model browse = new 瀏覽Model();
                     browse.序號 = (i + 1).ToString();
                     browse.欄位編號 = 原始編號[i]["欄位編號"].ToString();
                     browse.欄位說明 = 欄位說明;
@@ -112,7 +144,7 @@ namespace DarbWareERP.瀏覽系列
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    瀏覽下方查詢 browse = new 瀏覽下方查詢();
+                    瀏覽Model browse = new 瀏覽Model();
                     browse.序號 = (i + 1).ToString();
                     browse.欄位編號 = 欄位編號列表[0].欄位編號.ToString();
                     browse.欄位說明 = 欄位編號列表[0].欄位說明;
@@ -130,17 +162,17 @@ namespace DarbWareERP.瀏覽系列
         public DataTable 查詢LCL所在位置(string 查詢字串)
         {
             DataTable dt;
-            DataRow[] dr = 視窗Bll.登入暫存表.Tables[0].Select("資料表別名 = '" + 查詢字串 + "'");
-            int no = 視窗Bll.登入暫存表.Tables[0].Rows.IndexOf(dr[0]);
-            dt = 視窗Bll.登入暫存表.Tables[1 + no];
+            DataRow[] dr = 使用者ViewModel.GetInstance().登入暫存表.Tables[0].Select("資料表別名 = '" + 查詢字串 + "'");
+            int no = 使用者ViewModel.GetInstance().登入暫存表.Tables[0].Rows.IndexOf(dr[0]);
+            dt = 使用者ViewModel.GetInstance().登入暫存表.Tables[1 + no];
             return dt;
         }
         public void cbx預設條件賦值(string browsetype, ComboBox cbx)
         {
             DataTable 自訂條件別 = 查詢LCL所在位置("LCL自訂條件別");
-            if (browsetype == "" || browsetype==null)
+            if (browsetype == "" || browsetype == null)
             {
-                DataRow[] dr權限 = 視窗Bll.權限表.Select("程式名稱 = '" + 程式名稱 + "'");
+                DataRow[] dr權限 = 使用者ViewModel.GetInstance().權限表.Select("程式名稱 = '" + 程式名稱 + "'");
                 string 編號 = dr權限[0]["序號"].ToString();
                 編號 = 編號.Substring(0, 編號.IndexOf("-")) + 編號.Substring(編號.IndexOf("-") + 1) + "B";
                 cbx.ItemsSource = 自訂條件別.Select("編號 LIKE '%" + 編號 + "%'");
@@ -156,7 +188,7 @@ namespace DarbWareERP.瀏覽系列
                     條件說明.Add(row["類別"].ToString());
                 }
                 cbx.DataContext = 條件編號;
-            }            
+            }
         }
         public string 尋找欄位type(string 要查詢欄位)
         {
@@ -178,11 +210,11 @@ namespace DarbWareERP.瀏覽系列
             }
             catch
             {
-                邏輯Bll.訊息相關.錯誤訊息Bll.錯誤訊息顯示(1);
+                錯誤訊息ViewModel.錯誤訊息顯示(1);
             }
             return result;
         }
-        public string 查詢條件產生(ObservableCollection<瀏覽下方查詢> searchlist)
+        public string 查詢條件產生(ObservableCollection<瀏覽Model> searchlist)
         {
             StringBuilder 查詢條件 = new StringBuilder();
             foreach (var search in searchlist)
@@ -303,7 +335,7 @@ namespace DarbWareERP.瀏覽系列
                                 }
                                 else
                                 {
-                                    錯誤訊息Bll.錯誤訊息顯示(2);
+                                    錯誤訊息ViewModel.錯誤訊息顯示(2);
                                 }
                                 break;
                             default:
@@ -327,7 +359,7 @@ namespace DarbWareERP.瀏覽系列
                                 }
                                 else
                                 {
-                                    錯誤訊息Bll.錯誤訊息顯示(2);
+                                    錯誤訊息ViewModel.錯誤訊息顯示(2);
                                 }
                                 break;
                             default:

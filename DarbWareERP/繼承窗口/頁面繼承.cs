@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.ComponentModel;
-using 邏輯Bll.視窗相關;
+using ViewModel;
 using System.Reflection;
 
 namespace DarbWareERP.繼承窗口
@@ -30,7 +30,7 @@ namespace DarbWareERP.繼承窗口
             set
             {
                 keyFldValue = value;
-                視窗Bll.KeyFldValue = value;
+                //視窗Bll.KeyFldValue = value;
             }
         }
         public string 目前KeyFldValue
@@ -42,7 +42,7 @@ namespace DarbWareERP.繼承窗口
             set
             {
                 _目前KeyFldValue = value;
-                視窗Bll.目前KeyFldValue = value;
+                //視窗Bll.目前KeyFldValue = value;
             }
         }
         public string[] 資料表名稱
@@ -51,7 +51,7 @@ namespace DarbWareERP.繼承窗口
             set
             {
                 _資料表名稱 = value;
-                視窗Bll.資料表名稱 = value;
+                //視窗Bll.資料表名稱 = value;
             }
         }
         public string 瀏覽代碼 { get; set; }
@@ -76,7 +76,7 @@ namespace DarbWareERP.繼承窗口
         {
             表單控制.目前頁面 = this;
             初始值設定();
-            目前KeyFldValue = "";
+            目前KeyFldValue = "";            
             this.Loaded += 頁面繼承_Loaded;
             this.Style = Application.Current.FindResource("pageStyle") as Style;
         }
@@ -125,7 +125,7 @@ namespace DarbWareERP.繼承窗口
             }
             else
             {
-                新增修改刪除Bll page = new 新增修改刪除Bll();
+                增刪修ViewModel page = new 增刪修ViewModel();
                 return page.取得放行碼(Pkid);
             }
         }
@@ -145,22 +145,24 @@ namespace DarbWareERP.繼承窗口
         }
         public virtual bool BeforeCancelEdit()
         {
-            視窗Bll.是否可以儲存 = true;
+            //視窗ViewModel.是否可以儲存 = true;
             return true;
         }
         public virtual void AfterCancelEdit()
         {
-            if (視窗Bll.放行碼 > 0)
-            {
-                新增修改刪除Bll page = new 新增修改刪除Bll();
-                page.刪除放行碼();
-            }
-            增修共同處理(false);
+            //if (視窗ViewModel.放行碼 > 0)
+            //{
+            //    增刪修ViewModel page = new 增刪修ViewModel();
+            //    page.刪除放行碼();
+            //}
+            //增修共同處理(false);
         }
         public virtual bool BeforeEndEdit()
         {
             //資料驗證
-            return 視窗Bll.是否可以儲存;
+            //bool result = 視窗ViewModel.是否可以儲存;
+            bool result = true;
+            return result;
         }
         public virtual void SetValueEndEdit()
         {
@@ -178,28 +180,28 @@ namespace DarbWareERP.繼承窗口
                 MessageBox.Show("請先選擇一筆資料", "注意", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
-            新增修改刪除Bll page = new 新增修改刪除Bll();
+            增刪修ViewModel page = new 增刪修ViewModel();
             return page.取得放行碼(Pkid);
         }
         public virtual void DeleteData(string pkid)
         {
-            新增修改刪除Bll page = new 新增修改刪除Bll();
+            增刪修ViewModel page = new 增刪修ViewModel();
             page.刪除(pkid);
         }
         public virtual void AfterDelete()
         {
-            if (視窗Bll.放行碼 > 0)
-            {
-                //新增修改刪除Bll page = new 新增修改刪除Bll();
-                //page.刪除放行碼();
-            }
+            //if (視窗ViewModel.放行碼 > 0)
+            //{
+            //    //新增修改刪除Bll page = new 新增修改刪除Bll();
+            //    //page.刪除放行碼();
+            //}
         }
         public virtual bool UpdateData(CollectionViewSource[] cv, 增刪修Status status)
         {
             //資料存到資料庫
             Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "邏輯Bll");
             Type type = assembly.GetTypes().FirstOrDefault(x => x.Name == Title + "Bll");
-            新增修改刪除Bll instance = (新增修改刪除Bll)Activator.CreateInstance(type);
+            增刪修ViewModel instance = (增刪修ViewModel)Activator.CreateInstance(type);
             return instance.UpdateData(cv, out this._增刪修訊息, Status);
         }
         public virtual void SetControls()

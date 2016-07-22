@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
       xmlns:src ="clr-namespace:DarbWareERP.繼承窗口"
        xmlns:控制項="clr-namespace:DarbWareERP.控制項" 
-    xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"    
-    xmlns:rule ="clr-namespace:邏輯Bll.資料驗證;assembly=邏輯Bll"
+    xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"        
       mc:Ignorable="d"       
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="業務資料表" KeyFldValue="業務員編號"  Loaded="頁面繼承_Loaded">
@@ -58,13 +57,13 @@
                 <TextBox x:Name="txt部門代號" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding 部門代號, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                 <Label Content="業務員編號:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
                 <TextBox x:Name="txt業務員編號" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" VerticalAlignment="Center" Width="120">
-                    <TextBox.Text>
-                        <Binding Path="業務員編號">
+                    <!--<TextBox.Text>-->
+                        <!--<Binding Path="業務員編號">
                             <Binding.ValidationRules>
                                 <rule:主索引驗證  Table="salesmen"></rule:主索引驗證>
                             </Binding.ValidationRules>
                         </Binding>
-                    </TextBox.Text>
+                    </TextBox.Text>-->
                 </TextBox>
                 <Label Content="離職日期:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
                 <TextBox x:Name="txt離職日期" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding 離職日期, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>

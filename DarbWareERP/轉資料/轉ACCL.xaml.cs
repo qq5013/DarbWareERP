@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
-using 邏輯Bll.轉資料;
 
 namespace DarbWareERP.轉資料
 {

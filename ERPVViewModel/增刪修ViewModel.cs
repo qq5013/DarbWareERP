@@ -2,59 +2,56 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
-using 數據庫連線Dal;
-using System.IO;
-using System.Xml.Linq;
-using System.Reflection;
+using 邏輯Bll;
 
-namespace 邏輯Bll.視窗相關
+namespace ViewModel
 {
     public delegate bool 新增修改刪除Delegate(CollectionViewSource[] cv, out string result);
-    public class 新增修改刪除Bll
+    public class 增刪修ViewModel
     {
-        //public bool UpdateData(CollectionViewSource[] cv, out string result, 增刪修Status status)
-        //{
-        //    新增修改刪除Delegate dele;
-        //    bool value = true;
-        //    dele = (新增修改刪除Delegate)Delegate.CreateDelegate(typeof(新增修改刪除Delegate), this, status.ToString());
-        //    value = dele(cv, out result);
-        //    return value;
-        //}
+        public bool UpdateData(CollectionViewSource[] cv, out string result, 增刪修Status status)
+        {
+            新增修改刪除Delegate dele;
+            bool value = true;
+            dele = (新增修改刪除Delegate)Delegate.CreateDelegate(typeof(新增修改刪除Delegate), this, status.ToString());
+            value = dele(cv, out result);
+            return value;
+        }
         private void 反射製作上傳資料(CollectionViewSource[] cv, string[] stringList, 新增修改 新增修改)
         {
-            for (int i = 0; i < cv.Count(); i++)
-            {
-                if (cv[i] != null)
-                {
-                    DataTable dt = (DataTable)cv[i].Source;
-                    表設定((i + 1).ToString(), dt, 新增修改);
-                    Assembly[] AssembliesLoaded = AppDomain.CurrentDomain.GetAssemblies();
-                    Type trgType = AssembliesLoaded.Select(assembly => assembly.GetType("Model." /*+ 視窗Bll.資料表名稱[i]*/))
-                        .Where(type => type != null)
-                        .FirstOrDefault();
-                    //List<T> list = (List<T>)DataTableToList<T>.ConvertToModel(dt);
-                    Type generic = typeof(List<>);
-                    Type constructor = generic.MakeGenericType(trgType);
-                    dynamic listq = Activator.CreateInstance(constructor);
-                    Type datatabletolistType = typeof(DataTableToList<>).MakeGenericType(trgType);
-                    MethodInfo minfo = datatabletolistType.GetMethod("ConvertToModel");
-                    listq = minfo.Invoke(null, new object[] { dt });
+            //for (int i = 0; i < cv.Count(); i++)
+            //{
+            //    if (cv[i] != null)
+            //    {
+            //        DataTable dt = (DataTable)cv[i].Source;
+            //        表設定((i + 1).ToString(), dt, 新增修改);
+            //        Assembly[] AssembliesLoaded = AppDomain.CurrentDomain.GetAssemblies();
+            //        Type trgType = AssembliesLoaded.Select(assembly => assembly.GetType("Model." + 視窗ViewModel.資料表名稱[i]))
+            //            .Where(type => type != null)
+            //            .FirstOrDefault();
+            //        //List<T> list = (List<T>)DataTableToList<T>.ConvertToModel(dt);
+            //        Type generic = typeof(List<>);
+            //        Type constructor = generic.MakeGenericType(trgType);
+            //        dynamic listq = Activator.CreateInstance(constructor);
+            //        Type datatabletolistType = typeof(DataTableToList<>).MakeGenericType(trgType);
+            //        MethodInfo minfo = datatabletolistType.GetMethod("ConvertToModel");
+            //        listq = minfo.Invoke(null, new object[] { dt });
 
-                    //string 上傳資料 = XmlToSql<T>.WriteXml(list);
-                    Type writexml = typeof(XmlToSql<>).MakeGenericType(trgType);
-                    MethodInfo xmltosql = writexml.GetMethod("WriteXml");
-                    string 上傳用資料 = (string)xmltosql.Invoke(null, new object[] { listq });
-                    stringList[i] = 上傳用資料;
-                }
-                else
-                {
-                    break;
-                }
-            }
+            //        //string 上傳資料 = XmlToSql<T>.WriteXml(list);
+            //        Type writexml = typeof(XmlToSql<>).MakeGenericType(trgType);
+            //        MethodInfo xmltosql = writexml.GetMethod("WriteXml");
+            //        string 上傳用資料 = (string)xmltosql.Invoke(null, new object[] { listq });
+            //        stringList[i] = 上傳用資料;
+            //    }
+            //    else
+            //    {
+            //        break;
+            //    }
+            //}
         }
         private bool 新增(CollectionViewSource[] cv, out string result)
         {
@@ -158,7 +155,7 @@ namespace 邏輯Bll.視窗相關
             上傳表.Columns.Add("srvdbid");
             上傳表.Columns.Add("pkid");
             DataRow dr = 上傳表.NewRow();
-            dr["srvdbid"] = Log.srvdbid;
+            //dr["srvdbid"] = Log.srvdbid;
             dr["pkid"] = pkid;
             上傳表.Rows.Add(dr);
             上傳表.TableName = "tmpdata";
@@ -234,12 +231,12 @@ namespace 邏輯Bll.視窗相關
             dr["放行pkid"] = 放行pkid;
             dr["dataevent"] = dataevent;
             dr["輸入日期"] = "";
-            dr["輸入人員"] = Log.使用者名稱;
+            //dr["輸入人員"] = Log.使用者名稱;
             dr["輸入地點"] = Environment.MachineName;
             dr["增刪修"] = "";
             dr["選擇"] = "";
             dr["管制碼"] = 0;
-            dr["srvdbid"] = Log.srvdbid;
+            //dr["srvdbid"] = Log.srvdbid;
             dr["pkid"] = 0;
             dr["logid"] = 0;
             dr["linkid"] = 0;
@@ -280,7 +277,7 @@ namespace 邏輯Bll.視窗相關
             {
                 for (int i = 0; i < rowCount; i++)
                 {
-                    dt.Rows[i]["輸入人員"] = Log.使用者名稱;
+                    //dt.Rows[i]["輸入人員"] = Log.使用者名稱;
                     dt.Rows[i]["輸入日期"] = DateTime.Now;
                     dt.Rows[i]["輸入地點"] = Environment.MachineName;
                     dt.Rows[i]["增刪修"] = 新增修改;
@@ -291,3 +288,4 @@ namespace 邏輯Bll.視窗相關
         protected enum 新增修改 { A, E }
     }
 }
+

@@ -1,30 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using 數據庫連線Dal;
+using 邏輯Bll.視窗相關;
 
-namespace 邏輯Bll.視窗相關
+namespace ViewModel
 {
-    public class WindowBll
+    public class 選單ViewModel
     {
-        private static WindowBll windowbll;
-        private static DataTable 權限表 = Log.權限表;
-        public  string 系統名稱 { get; private set; }
-        private WindowBll()
+        private static 選單ViewModel 選單viewmodel;
+        private static DataTable 權限表 = 選單Bll.權限表;
+        public string 系統名稱 { get; private set; }
+        private 選單ViewModel()
         {
 
         }
-        public static WindowBll GetInstance()
+        public static 選單ViewModel GetInstance()
         {
-            if (windowbll == null)
+            if (選單viewmodel == null)
             {
-                windowbll = new WindowBll();
+                選單viewmodel = new 選單ViewModel();
             }
-            權限表 = Log.權限表;
-            return windowbll;
+            return 選單viewmodel;
         }
         public List<string> 選單按鈕名稱列表()
         {
@@ -52,6 +51,6 @@ namespace 邏輯Bll.視窗相關
                 程式名稱列表.Add(qq);
             }
             return 程式名稱列表;
-        }       
+        }
     }
 }

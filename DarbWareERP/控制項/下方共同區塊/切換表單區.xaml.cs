@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using 邏輯Bll.視窗相關;
+using ViewModel;
+
 
 namespace DarbWareERP.控制項.下方共同區塊
 {
@@ -27,8 +28,8 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
         public void 按鈕賦值()
         {
-            txbl系統名稱.Text = WindowBll.GetInstance().系統名稱;
-            List<string> 按鈕列表 = WindowBll.GetInstance().程式名稱列表(txbl系統名稱.Text);
+            txbl系統名稱.Text = 選單ViewModel.GetInstance().系統名稱;
+            List<string> 按鈕列表 = 選單ViewModel.GetInstance().程式名稱列表(txbl系統名稱.Text);
             int 按鈕數 = VisualTreeHelper.GetChildrenCount(WrapPanel);
             for (int i = 0; i < 按鈕數; i++)
             {
