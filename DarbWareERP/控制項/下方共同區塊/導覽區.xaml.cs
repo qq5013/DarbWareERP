@@ -71,7 +71,8 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
         private void btn檔首_Click(object sender, RoutedEventArgs e)
         {
-            導覽區指令(導覽區ViewModel.檔首);
+            //導覽區指令(導覽區ViewModel.檔首);
+            導覽區ViewModel.檔首(page.Title.ToString(), page.resource, page.資料表名稱, page.目前KeyFldValue);
         }
 
         private void btn上一筆_Click(object sender, RoutedEventArgs e)

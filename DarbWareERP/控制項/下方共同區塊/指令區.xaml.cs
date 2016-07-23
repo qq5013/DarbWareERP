@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Data;
 using ViewModel;
 using 報表;
+using System.Collections.ObjectModel;
 
 namespace DarbWareERP.控制項.下方共同區塊
 {
@@ -43,17 +44,20 @@ namespace DarbWareERP.控制項.下方共同區塊
         {
             if (page.BeforeAddNew())
             {
-                清除綁定datatable(控制項操作, page);
                 page.Status = 增刪修Status.新增;
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
                 page.SetControls();
+                導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 foreach (CollectionViewSource cv in page.CollectionViewSources)
                 {
                     if (cv != null)
-                    {
-                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
-                        collectionview.Refresh();
+                    {                        
+                        ListCollectionView collectionview = (ListCollectionView)cv.View;
+                        while (collectionview.Count != 0)
+                        {
+                            collectionview.Remove(collectionview.CurrentItem);
+                        }
                         collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
                     }
                 }
@@ -123,18 +127,6 @@ namespace DarbWareERP.控制項.下方共同區塊
             }
             page.AfterDelete();
         }
-        private void 清除綁定datatable(控制項操作 控制項操作, 頁面繼承 page)
-        {
-            導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            foreach (CollectionViewSource cv in page.CollectionViewSources)
-            {
-                if (cv != null)
-                {
-                    DataTable dt = (DataTable)cv.Source;
-                    dt.Rows.Clear();
-                }
-            }
-        }
 
         private void btn儲存_Click(object sender, RoutedEventArgs e)
         {
@@ -200,7 +192,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                 {
                     if (cv != null)
                     {
-                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
+                        ListCollectionView collectionview = (ListCollectionView)cv.View;
                         switch (page.Status)
                         {
                             case 增刪修Status.一般:
@@ -217,6 +209,10 @@ namespace DarbWareERP.控制項.下方共同區塊
                                 collectionview.CancelEdit();
                                 break;
                         }
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
                 page.Status = 增刪修Status.一般;
@@ -332,8 +328,8 @@ namespace DarbWareERP.控制項.下方共同區塊
 
         private void btn瀏覽_Click(object sender, RoutedEventArgs e)
         {
-            表單控制.切換瀏覽頁面("DarbWareERP.瀏覽系列.",txbl程式名稱.Text+"瀏覽頁面",new object[] { txbl程式名稱.Text,page.瀏覽代碼,page.資料表名稱 });
-            
+            表單控制.切換瀏覽頁面("DarbWareERP.瀏覽系列.", txbl程式名稱.Text + "瀏覽頁面", new object[] { txbl程式名稱.Text, page.瀏覽代碼, page.資料表名稱 });
+
         }
 
         private void btn列印_Click(object sender, RoutedEventArgs e)

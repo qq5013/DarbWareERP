@@ -7,12 +7,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using 邏輯Bll;
+using 邏輯Bll.視窗相關;
 
 namespace ViewModel
 {
     public delegate bool 新增修改刪除Delegate(CollectionViewSource[] cv, out string result);
     public class 增刪修ViewModel
     {
+        public string 資料表名稱1 { get; set; }
+        public string 資料表名稱2 { get; set; }
+        public string 資料表名稱3 { get; set; }
+        public string 資料表名稱4 { get; set; }
+        public string 資料表名稱5 { get; set; }
+        public int 放行碼 { get; set; }
+        public 增刪修ViewModel(string[] 資料表名稱)
+        {
+            if (資料表名稱[0] != null) { 資料表名稱1 = 資料表名稱[0]; }
+            if (資料表名稱[1] != null) { 資料表名稱2 = 資料表名稱[1]; }
+            if (資料表名稱[2] != null) { 資料表名稱3 = 資料表名稱[2]; }
+            if (資料表名稱[3] != null) { 資料表名稱4 = 資料表名稱[3]; }
+            if (資料表名稱[4] != null) { 資料表名稱5 = 資料表名稱[4]; }
+        }
         public bool UpdateData(CollectionViewSource[] cv, out string result, 增刪修Status status)
         {
             新增修改刪除Delegate dele;
@@ -197,14 +212,12 @@ namespace ViewModel
         }
         public void 刪除放行碼()
         {
-            //if (視窗Model.放行碼 != 0)
-            //{
-            //    string 資料表名稱大寫 = Model.視窗Model.資料表名稱[0].ToUpper();
-            //    string 資料表名稱小寫 = Model.視窗Model.資料表名稱[0].ToLower();
-            //    string param1 = "";
-            //    string result = Log.Log_Sys_Input("PERMIT-X", 資料表名稱大寫, "Cancel Permit", param1, 資料表名稱小寫, LP_PERMITCODE: 視窗Model.放行碼.ToString());
-            //    視窗Model.放行碼 = 0;
-            //}
+            if (放行碼 != 0)
+            {                            
+                增刪修Bll 增刪修bll = new 增刪修Bll();
+                增刪修bll.刪除放行碼(資料表名稱1, 放行碼);                
+                放行碼 = 0;
+            }
         }
         private DataTable 刪修放行表(string 放行碼, string 資料表名稱, string 放行pkid, string dataevent)
         {

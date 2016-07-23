@@ -7,7 +7,7 @@
       xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="選單頁面" Loaded="頁面繼承_Loaded">
+      Title="選單頁面">
     <Grid>
         <Grid Height="655" Margin="68,38,69.6,45.4" Width="880" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.Background>

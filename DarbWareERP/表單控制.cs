@@ -103,7 +103,7 @@ namespace DarbWareERP
                 page = (頁面繼承)Activator.CreateInstance(CAType);
                 Page實體列表.Add(page);
             }
-            page.初始值設定(); //初始值設定會重新將屬性設定一遍，不然MODEL的視窗MODEL會出錯
+            page.初始值設定();
             表單控制.目前頁面 = page;
             nav.Navigate(page);
             return 可以切換頁面;

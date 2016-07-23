@@ -11,7 +11,7 @@
       xmlns:rule ="clr-namespace:ViewModel.資料驗證;assembly=ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"          
-      Title="單位轉換表" >
+      Title="單位轉換表">
 
     <src:頁面繼承.Resources>
         <CollectionViewSource x:Key="unitbaViewModelViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModel:UnitbaViewModel}, CreateList=True}"/>
