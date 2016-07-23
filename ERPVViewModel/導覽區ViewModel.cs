@@ -40,24 +40,7 @@ namespace ViewModel
                     }
                 }
             }
-        }
-        public void 檔首(string 程式名稱,object[] cv, string[] 資料表名稱, string keyfldvalue)
-        {
-            string LP_p1 = 資料表名稱[0].ToUpper();
-            DataSet ds = 導覽區Bll.導覽(程式名稱, 資料表名稱, keyfldvalue, "TOP");
-            for (int i = 0; i < cv.Count(); i++)
-            {
-                cv[i] = 製作ObservableCollection(ds.Tables[i], 資料表名稱[i]);
-                //if (cv[i] != null)
-                //{
-                   
-                //}
-                //else
-                //{
-                //    break;
-                //}
-            }
-        }
+        }        
         public void 檔首(string 程式名稱, CollectionViewSource[] cv, string[] 資料表名稱, string keyfldvalue)
         {
             string LP_p1 = 資料表名稱[0].ToUpper();

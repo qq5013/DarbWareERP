@@ -30,10 +30,12 @@ namespace DarbWareERP.B.基本資料
             base.初始值設定();
             KeyFldValue = "單位";
             資料表名稱[0] = "unitba";            
-        }       
+        }
+       
         protected override void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
-        {            
-            CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewModelViewSource")));            
+        {
+            base.頁面繼承_Loaded(sender, e);
+            CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("unitbaViewModelViewSource")));
         }
         public override void SetControls()
         {

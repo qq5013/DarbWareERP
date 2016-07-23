@@ -22,7 +22,10 @@ namespace DarbWareERP.繼承窗口
         public string Pkid { get; set; }
         public string KeyFldValue { get; set; }
         public string 目前KeyFldValue { get; set; }
-        public string[] 資料表名稱 { get { return _資料表名稱; } }
+        public string[] 資料表名稱
+        {
+            get { return _資料表名稱; }
+        }
         private string[] _資料表名稱 = new string[5];
         public string 瀏覽代碼 { get; set; }
         public string 明細瀏覽代碼 { get; set; }
@@ -33,7 +36,6 @@ namespace DarbWareERP.繼承窗口
         public 增刪修ViewModel 增刪修viewmodel { get; set; }
         public string 增刪修訊息 { get { return _增刪修訊息; } set { _增刪修訊息 = value; } }
         public bool 新增修改中 { get; set; }
-        public object[] resource = new object[5];
         public 頁面繼承()
         {
             表單控制.目前頁面 = this;
@@ -41,17 +43,16 @@ namespace DarbWareERP.繼承窗口
             目前KeyFldValue = "";
             增刪修viewmodel = new 增刪修ViewModel(資料表名稱);
             this.Style = Application.Current.FindResource("pageStyle") as Style;
-            this.Loaded += 頁面繼承_Loaded;
+           this.Loaded += 頁面繼承_Loaded;
         }
         protected virtual void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Loaded -= 頁面繼承_Loaded;
             TextBox txtpkid = 控制項操作.用名稱尋找子代<TextBox>(this, "txtpkid");
             if (txtpkid != null)
             {
                 txtpkid.IsReadOnly = true;
             }
-            SetControls();
+            SetControls();            
         }
         public virtual void 初始值設定()
         {

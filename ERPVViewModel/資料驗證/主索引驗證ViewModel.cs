@@ -15,19 +15,19 @@ namespace ViewModel.資料驗證
     public class 主索引驗證ViewModel : ValidationRule
     {
         主索引驗證Bll 主索引驗證bll = new 主索引驗證Bll();
-
-        public CollectionViewSource Cvs { get; set; }
-
-        public string Table { get; set; }
-        string ControlSource;
-        string chkField;/*{ get { return 視窗ViewModel.KeyFldValue; } }*/
+        public CollectionViewSource Cvs { get; set; } //在XAML設定
+        public string Table { get; set; } //在XAML設定
+        public string DataEvent { get; set; }
+        string chkField;
         string returnValue = "";
         string addedit;
         //int srvdbid;
         int pkid;
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            ControlSource = ((BindingListCollectionView)Cvs.View).ToString();
+            
+            ListCollectionView listCollectionView = (ListCollectionView)Cvs.View;
+            
             DataTable dt = (DataTable)Cvs.Source;
             try
             {
@@ -41,7 +41,7 @@ namespace ViewModel.資料驗證
                 {
                     addedit = "E";
                 }
-                主索引驗證bll.主索引檢查(ControlSource, ref returnValue, value.ToString(), Table, chkField, addedit, pkid.ToString());
+                主索引驗證bll.主索引檢查(DataEvent, ref returnValue, value.ToString(), Table, chkField, addedit, pkid.ToString());
                 if (returnValue == "Y")
                 {
                     //視窗ViewModel.是否可以儲存 = false;

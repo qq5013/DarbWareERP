@@ -28,7 +28,7 @@ using System.Windows;
 //NeutralResourceLanguage 屬性。在下一行中更新 "en-US"，
 //以符合專案檔中的 UICulture 設定。
 
-//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
+[assembly: NeutralResourcesLanguage("zh-TW", UltimateResourceFallbackLocation.Satellite)]
 
 
 [assembly: ThemeInfo(
