@@ -15,10 +15,10 @@ namespace ViewModel.資料驗證
     public class 主索引驗證ViewModel : ValidationRule
     {
         主索引驗證Bll 主索引驗證bll = new 主索引驗證Bll();
-        public CollectionViewSource Cvs { get; set; } //在XAML設定
+        public CollectionViewSource Cvs { get; set; } //在XAML設定        
         public string Table { get; set; } //在XAML設定
-        public string DataEvent { get; set; }
-        string chkField;
+        public string CheckField;
+        string DataEvent;        
         string returnValue = "";
         string addedit;
         //int srvdbid;
@@ -27,7 +27,7 @@ namespace ViewModel.資料驗證
         {
             
             ListCollectionView listCollectionView = (ListCollectionView)Cvs.View;
-            
+            DataEvent = listCollectionView.SourceCollection.GetType().GenericTypeArguments[0].Name;
             DataTable dt = (DataTable)Cvs.Source;
             try
             {
