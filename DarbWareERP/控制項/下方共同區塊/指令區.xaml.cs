@@ -61,7 +61,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                         collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
                     }
                 }
-                page.SetDefaultValue();
+                page.SetTextBoxOrdetl();
                 page.AfterAddNew();
             }
         }
@@ -120,7 +120,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                 }
                 if (MessageBox.Show("是否刪除此筆資料", "刪除", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {
-                    page.DeleteData(page.Pkid);
+                    page.DeleteData();
                     MessageBox.Show("刪除成功", "訊息", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
@@ -138,7 +138,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                 {
                     if (cv != null)
                     {
-                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
+                        ListCollectionView collectionview = (ListCollectionView)cv.View;
                         switch (page.Status)
                         {
                             case 增刪修Status.一般:
@@ -162,18 +162,19 @@ namespace DarbWareERP.控制項.下方共同區塊
                 }
                 try
                 {
-                    if (page.UpdateData(page.CollectionViewSources, page.Status))
+                    if (page.UpdateData())
                     {
                         page.Status = 增刪修Status.一般;
                         page.SetControls();
                         page.AfterEndEdit();
                         指令區按鈕顯示(false);
                         導覽區Enable(true);
+                       
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "操作錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(ex.Message, "系統錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
                     page.Status = PrevTableStatus;
                 }
                 MessageBox.Show(page.增刪修訊息);

@@ -44,19 +44,9 @@ namespace DarbWareERP.B.基本資料
             txt小數位數.IsReadOnly = Status == 增刪修Status.一般;
             txt說明.IsReadOnly = Status == 增刪修Status.一般;
         }
-        public override void SetDefaultValue()
-        {
-            //base.SetDefaultValue();
-            ////要先focus後才可以設值，不然會被判定為null
-            //foreach (Control c in 資料區.Children)
-            //{
-            //    c.Focus();
-            //}
-            //txtpkid.Text = "";
-            //txt單位.Text = "+++";
-            //txt小數位數.Text = "0";
-            //txt說明.Text ="1";           
-            //txt單位.Focus();
+        public override void SetTextBoxOrdetl()
+        {            
+            txt單位.Focus();
         }
         
     }

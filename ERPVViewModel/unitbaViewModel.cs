@@ -15,8 +15,28 @@ namespace ViewModel
         {
             unitbaModel = new UnitbaModel();
         }
-        public string 單位 { get { return unitbaModel.單位; } set { unitbaModel.單位 = value; } }
-        public string 說明 { get { return unitbaModel.說明; } set { unitbaModel.說明 = value; } }
+        public string 單位
+        {
+            get
+            {                
+                if (unitbaModel.單位 == null)
+                { unitbaModel.單位 = ""; }                
+                return unitbaModel.單位;
+            }
+            set { unitbaModel.單位 = value; }
+        }
+        public string 說明
+        {
+            get
+            {                
+                if (unitbaModel.說明 == null)
+                {
+                    unitbaModel.說明 = "";
+                }                
+                return unitbaModel.說明;
+            }
+            set { unitbaModel.說明 = value; }
+        }
         public byte 小數位數 { get { return unitbaModel.小數位數; } set { unitbaModel.小數位數 = value; } }
         public System.DateTime 輸入日期 { get { return unitbaModel.輸入日期; } set { unitbaModel.輸入日期 = value; } }
         public string 輸入人員 { get { return unitbaModel.輸入人員; } set { unitbaModel.輸入人員 = value; } }

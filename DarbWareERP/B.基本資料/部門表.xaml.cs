@@ -64,9 +64,9 @@ namespace DarbWareERP.B.基本資料
             txtpkid.IsReadOnly = true;
             dept_1DataGrid.IsReadOnly = Status == 增刪修Status.一般;
         }
-        public override void SetDefaultValue()
+        public override void SetTextBoxOrdetl()
         {
-            base.SetDefaultValue();
+            base.SetTextBoxOrdetl();
             foreach (Control c in grid1.Children)
             {
                 if (c is TextBox)
@@ -92,7 +92,7 @@ namespace DarbWareERP.B.基本資料
                 dt.Delete(0);
             }
         }
-        public override bool UpdateData(CollectionViewSource[] cv, 增刪修Status status)
+        public override bool UpdateData()
         {
             bool result=false;
             //部門表Bll dept = new 部門表Bll();

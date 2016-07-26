@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitbaViewModel.cs" />
-    <Compile Include="使用者ViewModel.cs" />
     <Compile Include="增刪修Enum.cs" />
     <Compile Include="增刪修ViewModel.cs" />
     <Compile Include="導覽區ViewModel.cs" />

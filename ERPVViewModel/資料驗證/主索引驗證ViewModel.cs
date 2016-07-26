@@ -15,38 +15,43 @@ namespace ViewModel.資料驗證
     public class 主索引驗證ViewModel : ValidationRule
     {
         主索引驗證Bll 主索引驗證bll = new 主索引驗證Bll();
-        public CollectionViewSource Cvs { get; set; } //在XAML設定        
+        public CollectionViewSource Cvs { get; set; } //在XAML設定
+        public 增刪修ViewModel 增刪修 { get; set; }//在XAML設定
         public string Table { get; set; } //在XAML設定
-        public string CheckField;
-        string DataEvent;        
-        string returnValue = "";
-        string addedit;
-        //int srvdbid;
-        int pkid;
+        public string CheckField { get; set; }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            
+            string DataEvent;
+            string returnValue = "";
+            string addedit = "";
+            string pkid = "";
             ListCollectionView listCollectionView = (ListCollectionView)Cvs.View;
             DataEvent = listCollectionView.SourceCollection.GetType().GenericTypeArguments[0].Name;
-            DataTable dt = (DataTable)Cvs.Source;
             try
             {
-                if (dt.Rows.Count == 0)
+                if (listCollectionView.IsAddingNew)
                 {
                     addedit = "A";
                     //srvdbid = 主索引驗證bll.Srvdbid;
-                    pkid = 0;
+                    pkid = "0";
+                }
+                else if (listCollectionView.IsEditingItem)
+                {
+                    addedit = "E";
+                    pkid = 增刪修.Pkid;
+                }
+
+                主索引驗證bll.主索引檢查(DataEvent, ref returnValue, value.ToString(), Table, CheckField, addedit, pkid);
+                if (returnValue == "Y")
+                {
+                    //視窗ViewModel.是否可以儲存 = false;                    
+                    增刪修.可以儲存 = false;
+                    return new ValidationResult(false, "資料重複");
                 }
                 else
                 {
-                    addedit = "E";
-                }
-                主索引驗證bll.主索引檢查(DataEvent, ref returnValue, value.ToString(), Table, chkField, addedit, pkid.ToString());
-                if (returnValue == "Y")
-                {
-                    //視窗ViewModel.是否可以儲存 = false;
-                    MessageBox.Show("資料不得重複", "輸入錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return new ValidationResult(false, "不合法的輸入");
+                    增刪修.可以儲存 = true;
+                    return new ValidationResult(true, null);
                 }
             }
             catch
@@ -54,7 +59,7 @@ namespace ViewModel.資料驗證
                 return new ValidationResult(false, "不合法的輸入");
             }
             //視窗ViewModel.是否可以儲存 = true;
-            return new ValidationResult(true, null);
+            
         }
     }
 }

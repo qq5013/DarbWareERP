@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using 邏輯Bll.登入;
 using 邏輯Bll.視窗相關;
 
 namespace ViewModel
@@ -28,7 +29,7 @@ namespace ViewModel
         public List<string> 選單按鈕名稱列表()
         {
             List<string> 選單 = new List<string>();
-            var qry = (from a in 使用者ViewModel.GetInstance().權限表.AsEnumerable()
+            var qry = (from a in 使用者Bll.GetInstance().權限表.AsEnumerable()
                        select a.Field<string>("按鈕名稱")).Distinct();
             foreach (var qq in qry)
             {
@@ -43,7 +44,7 @@ namespace ViewModel
         {
             this.系統名稱 = 系統名;
             List<string> 程式名稱列表 = new List<string>();
-            var qry = from a in 使用者ViewModel.GetInstance().權限表.AsEnumerable()
+            var qry = from a in 使用者Bll.GetInstance().權限表.AsEnumerable()
                       where a.Field<string>("按鈕名稱") == 系統名稱
                       select a.Field<string>("程式名稱");
             foreach (var qq in qry)

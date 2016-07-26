@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using 數據庫連線Dal;
 using 邏輯Bll.視窗相關;
 
-namespace 邏輯Bll
+namespace 邏輯Bll.登入
 {
     public class 登入Bll
     {
@@ -18,7 +18,7 @@ namespace 邏輯Bll
                 return Log.資料庫;
             }
         }
-        public bool 登入(string 帳號, string 密碼,ref DataSet 登入暫存表,ref DataTable 權限表)
+        public bool 登入(string 帳號, string 密碼)
         {
             int logbookid = 0;
             bool 可以登入 = false;
@@ -34,11 +34,13 @@ namespace 邏輯Bll
             Log.使用者代號 = 帳號;
             if (Log.LogBookId > 0)
             {
-                Log.使用者名稱 = Log.權限表.Rows[0]["使用者姓名"].ToString().Trim();
                 可以登入 = true;
                 string param1 = "VCLST";
-                登入暫存表 = Log.Log_Sys_Exec("MENUSECR.SCX", "DARB_OPEN_DBF", ref param1, "0", "C");
-                權限表 = Log.權限表;
+                Log.使用者名稱 = Log.權限表.Rows[0]["使用者姓名"].ToString().Trim();
+                使用者Bll.GetInstance().使用者名稱 = Log.使用者名稱;
+                使用者Bll.GetInstance().登入暫存表 = Log.Log_Sys_Exec("MENUSECR.SCX", "DARB_OPEN_DBF", ref param1, "0", "C");
+                使用者Bll.GetInstance().權限表 = Log.權限表;
+                
             }
             return 可以登入;
         }

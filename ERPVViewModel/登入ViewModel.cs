@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using 邏輯Bll;
+using 邏輯Bll.登入;
 
 namespace ViewModel
 {
@@ -21,11 +22,7 @@ namespace ViewModel
         }
         public bool 登入(string 帳號, string 密碼)
         {
-            DataSet 登入暫存表 = null;
-            DataTable 權限表 = null;
-            bool result = 登入Bll.登入(帳號, 密碼, ref 登入暫存表,ref 權限表);
-            使用者ViewModel.GetInstance().登入暫存表 = 登入暫存表;
-            使用者ViewModel.GetInstance().權限表 = 權限表;
+            bool result = 登入Bll.登入(帳號, 密碼);
             return result;
         }
     }

@@ -13,6 +13,7 @@ using 邏輯Bll.視窗相關;
 using Model;
 using System.Windows.Controls;
 using System.Globalization;
+using 邏輯Bll.登入;
 
 namespace ViewModel
 {
@@ -162,9 +163,9 @@ namespace ViewModel
         public DataTable 查詢LCL所在位置(string 查詢字串)
         {
             DataTable dt;
-            DataRow[] dr = 使用者ViewModel.GetInstance().登入暫存表.Tables[0].Select("資料表別名 = '" + 查詢字串 + "'");
-            int no = 使用者ViewModel.GetInstance().登入暫存表.Tables[0].Rows.IndexOf(dr[0]);
-            dt = 使用者ViewModel.GetInstance().登入暫存表.Tables[1 + no];
+            DataRow[] dr = 使用者Bll.GetInstance().登入暫存表.Tables[0].Select("資料表別名 = '" + 查詢字串 + "'");
+            int no = 使用者Bll.GetInstance().登入暫存表.Tables[0].Rows.IndexOf(dr[0]);
+            dt = 使用者Bll.GetInstance().登入暫存表.Tables[1 + no];
             return dt;
         }
         public void cbx預設條件賦值(string browsetype, ComboBox cbx)
@@ -172,7 +173,7 @@ namespace ViewModel
             DataTable 自訂條件別 = 查詢LCL所在位置("LCL自訂條件別");
             if (browsetype == "" || browsetype == null)
             {
-                DataRow[] dr權限 = 使用者ViewModel.GetInstance().權限表.Select("程式名稱 = '" + 程式名稱 + "'");
+                DataRow[] dr權限 = 使用者Bll.GetInstance().權限表.Select("程式名稱 = '" + 程式名稱 + "'");
                 string 編號 = dr權限[0]["序號"].ToString();
                 編號 = 編號.Substring(0, 編號.IndexOf("-")) + 編號.Substring(編號.IndexOf("-") + 1) + "B";
                 cbx.ItemsSource = 自訂條件別.Select("編號 LIKE '%" + 編號 + "%'");
