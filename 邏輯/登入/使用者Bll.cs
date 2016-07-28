@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using 數據庫連線Dal;
 
 namespace 邏輯Bll.登入
 {
@@ -25,5 +26,6 @@ namespace 邏輯Bll.登入
         public DataTable 權限表 { get; set; }
         public DataSet 登入暫存表 { get; set; }
         public string 使用者名稱 { get; set; }
+        public int Srvdbid { get { return Log.Srvdbid; } }
     }
 }

@@ -40,25 +40,6 @@ namespace 邏輯Bll
             //xd.Root.Element(t.Name).Name = "tmpdata";
             xd.Save(資料夾路徑 + t.Name + ".xml");
             return xd.Document.ToString();
-        }
-        public static string 一般DataTable轉XML(string 路徑,DataTable dt)
-        {
-            foreach (DataColumn dc in dt.Columns)
-            {
-                dc.ColumnMapping = MappingType.Attribute;
-            }
-            string 資料夾路徑 = @"c:/TEMPS/XML/" + 路徑 ;
-            if (dt.DataSet == null)
-            {
-                DataSet ds = new DataSet("VFPData");
-                ds.Tables.Add(dt);
-            }
-            TextWriter Filestream = new StreamWriter(資料夾路徑);           
-            dt.WriteXml(Filestream);
-            Filestream.Close();
-            Filestream.Dispose();
-            XDocument xd = XDocument.Load(資料夾路徑);
-            return xd.Document.ToString();
-        }
+        }              
     }
 }

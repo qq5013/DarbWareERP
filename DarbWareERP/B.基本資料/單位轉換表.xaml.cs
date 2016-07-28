@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ViewModel;
+using ViewModel.增刪修;
 
 namespace DarbWareERP.B.基本資料
 {
@@ -24,12 +25,13 @@ namespace DarbWareERP.B.基本資料
         public 單位轉換表()
         {
             InitializeComponent();            
+
         }
         public override void 初始值設定()
         {
             base.初始值設定();
             KeyFldValue = "單位";
-            資料表名稱[0] = "unitba";            
+            資料表名稱[0] = "unitba";                        
         }
        
         protected override void 頁面繼承_Loaded(object sender, RoutedEventArgs e)

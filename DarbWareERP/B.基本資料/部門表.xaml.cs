@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
 using ViewModel;
 using System.Data;
+using ViewModel.增刪修;
 
 namespace DarbWareERP.B.基本資料
 {

@@ -14,7 +14,7 @@ namespace Model
     using System.Xml.Serialization;
     using System.ComponentModel;
     
-    public partial class UnitbaModel : INotifyPropertyChanged 
+    public partial class UnitbaModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyname)
@@ -23,7 +23,7 @@ namespace Model
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
             }
-        }
+        }       
         [XmlAttribute()]
         public string 單位 { get{ return _單位; } set{ _單位=value;	OnPropertyChanged("單位");} }
     	private string _單位 ;

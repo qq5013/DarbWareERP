@@ -17,6 +17,7 @@ using System.Data;
 using ViewModel;
 using 報表;
 using System.Collections.ObjectModel;
+using ViewModel.增刪修;
 
 namespace DarbWareERP.控制項.下方共同區塊
 {
@@ -67,7 +68,6 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
         private void btn修改_Click(object sender, RoutedEventArgs e)
         {
-
             if (page.BeforeEdit())
             {
                 if (!確認資料是否存在())
@@ -83,8 +83,8 @@ namespace DarbWareERP.控制項.下方共同區塊
                 {
                     if (cv != null)
                     {
-                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
-                        collectionview.EditItem(collectionview.CurrentItem);
+                        ListCollectionView collectionview = (ListCollectionView)cv.View;
+                        collectionview.EditItem(collectionview.CurrentItem);                        
                     }
                 }
                 page.AfterEdit();
@@ -177,6 +177,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                     MessageBox.Show(ex.Message, "系統錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
                     page.Status = PrevTableStatus;
                 }
+                導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 MessageBox.Show(page.增刪修訊息);
             }
             else
@@ -202,10 +203,10 @@ namespace DarbWareERP.控制項.下方共同區塊
                             case 增刪修Status.新增:
                                 collectionview.CancelNew();
                                 break;
-                            case 增刪修Status.修改:
-                                collectionview.CancelEdit();
+                            //case 增刪修Status.修改:
+                            //    collectionview.CancelEdit();
 
-                                break;
+                            //    break;
                             case 增刪修Status.複製:
                                 collectionview.CancelEdit();
                                 break;

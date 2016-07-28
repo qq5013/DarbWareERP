@@ -10,7 +10,7 @@ namespace 數據庫連線Dal
 
         public static string 使用者代號 { get; set; }
         public static string 使用者名稱 { get; set; }
-        public static int srvdbid { get { return 1; } }
+        public static int Srvdbid { get { return 1; } }
         public static int LogBookId { get; set; }
         private static DataTable _權限表 = new DataTable(); //配合usercontrol，設計
         public static DataTable 權限表
@@ -70,7 +70,7 @@ namespace 數據庫連線Dal
             cmd.Parameters.AddWithValue("@inputstaff", 使用者名稱);
             cmd.Parameters.AddWithValue("@localtime", DateTime.Now);
             cmd.Parameters.AddWithValue("@inputplace", Environment.MachineName);
-            cmd.Parameters.AddWithValue("@srvdbid", srvdbid);
+            cmd.Parameters.AddWithValue("@srvdbid", Srvdbid);
             cmd.Parameters.Add(new SqlParameter("@log_sys_pkid", SqlDbType.Int)).Value = 0;
             cmd.Parameters["@log_sys_pkid"].Direction = ParameterDirection.Output;
             SqlParameter L_RESULT = cmd.Parameters.Add("@result", SqlDbType.NChar, 254);
@@ -137,7 +137,7 @@ namespace 數據庫連線Dal
             cmd.Connection = conn;
             cmd.CommandText = "DARB_LOG_LOGON";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@srvdbid", srvdbid);
+            cmd.Parameters.AddWithValue("@srvdbid", Srvdbid);
             cmd.Parameters.AddWithValue("@inputstaff", user);
             cmd.Parameters.AddWithValue("@localtime", DateTime.Now);
             cmd.Parameters.AddWithValue("@inputplace", Environment.MachineName);
@@ -181,7 +181,7 @@ namespace 數據庫連線Dal
             cmd.Parameters.AddWithValue("@inputstaff", 使用者名稱);
             cmd.Parameters.AddWithValue("@localtime", DateTime.Now);
             cmd.Parameters.AddWithValue("@inputplace", Environment.MachineName);
-            cmd.Parameters.AddWithValue("@srvdbid", srvdbid);
+            cmd.Parameters.AddWithValue("@srvdbid", Srvdbid);
             cmd.Parameters.AddWithValue("@logbookid", LogBookId);
             cmd.Parameters.AddWithValue("@permitcode", LP_PERMITCODE);
             SqlParameter L_RESULT = cmd.Parameters.Add("@result", SqlDbType.NChar, 254);

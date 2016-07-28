@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.ComponentModel;
 using ViewModel;
 using System.Reflection;
+using ViewModel.增刪修;
 
 namespace DarbWareERP.繼承窗口
 {
@@ -24,9 +25,8 @@ namespace DarbWareERP.繼承窗口
         public string 目前KeyFldValue { get; set; }
         public string[] 資料表名稱
         {
-            get { return _資料表名稱; }
-        }
-        private string[] _資料表名稱;
+            get { return 增刪修viewmodel.資料表名稱; }
+        }       
 
         public string 瀏覽代碼 { get; set; }
         public string 明細瀏覽代碼 { get; set; }
@@ -34,8 +34,7 @@ namespace DarbWareERP.繼承窗口
         private CollectionViewSource[] collectionViesSources = new CollectionViewSource[5];
         public 增刪修Status Status { get { return status; } set { status = value; } } //0瀏覽模式,1新增模式,2修改模式，控制控制項的readonly、enable等         
         public 控制項操作 控制項操作 = new 控制項操作();
-       
-        增刪修ViewModel 增刪修viewmodel { get { return (增刪修ViewModel)this.TryFindResource("增刪修ViewModel"); } }
+        增刪修ViewModel 增刪修viewmodel = new 增刪修ViewModel();
         //在xaml中設定成statistic resource，配合主索引驗證
         public string 增刪修訊息 { get { return _增刪修訊息; } set { _增刪修訊息 = value; } }
         public bool 新增修改中 { get; set; }
@@ -44,7 +43,7 @@ namespace DarbWareERP.繼承窗口
             表單控制.目前頁面 = this;            
             初始值設定();
             目前KeyFldValue = "";
-            this.Style = Application.Current.FindResource("pageStyle") as Style;
+            this.Style = Application.Current.FindResource("頁面繼承Style") as Style;
             this.Loaded += 頁面繼承_Loaded;
         }
         protected virtual void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
@@ -58,7 +57,7 @@ namespace DarbWareERP.繼承窗口
         }
         public virtual void 初始值設定()
         {
-            _資料表名稱 = new string[5];
+            
         }
         public virtual bool BeforeAddNew()
         {
@@ -120,7 +119,7 @@ namespace DarbWareERP.繼承窗口
         }
         public virtual bool BeforeEndEdit()
         {
-            //資料驗證
+            //資料驗證                          
             bool result = 增刪修viewmodel.可以儲存;
             return result;
         }

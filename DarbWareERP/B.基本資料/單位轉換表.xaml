@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
       xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
       xmlns:控制項="clr-namespace:DarbWareERP.控制項"     
-      xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊"     
+      xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊"    
       xmlns:ViewModel="clr-namespace:ViewModel;assembly=ViewModel" x:Class="DarbWareERP.B.基本資料.單位轉換表"
       xmlns:rule ="clr-namespace:ViewModel.資料驗證;assembly=ViewModel"
       mc:Ignorable="d" 
@@ -14,8 +14,7 @@
       Title="單位轉換表">
 
     <src:頁面繼承.Resources>
-        <CollectionViewSource x:Key="unitbaViewModelViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModel:UnitbaViewModel}, CreateList=True}"/>
-        <ViewModel:增刪修ViewModel x:Key="增刪修ViewModel"></ViewModel:增刪修ViewModel> 
+        <CollectionViewSource x:Key="unitbaViewModelViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModel:UnitbaViewModel},CreateList=True}"/>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="Validation.ErrorTemplate">
                 <Setter.Value>
@@ -27,7 +26,7 @@
                                     <TextBlock Foreground="White" FontWeight="Heavy" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center"
                                                TextAlignment="Center"
                                                ToolTip="{Binding ElementName=ErrorAdorner,Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">X</TextBlock>
-                                </Grid>
+                                </Grid>                                
                                 <TextBlock Foreground="Red" FontSize="12" FontWeight="Light"  Margin="2,0,0,0" 
                                            Text="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"></TextBlock>
                             </StackPanel>
@@ -39,7 +38,7 @@
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="True">
                     <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},Path=(Validation.Errors)[0].ErrorContent}"/>
-                </Trigger>
+                </Trigger>                
             </Style.Triggers>
         </Style>
     </src:頁面繼承.Resources>
@@ -64,7 +63,7 @@
                 <下方共同區塊:導覽區 x:Name="導覽區" Grid.Column="2" VerticalAlignment="Top" Height="210"/>
             </Grid>
         </Border>
-        <Grid x:Name="grid1" DataContext="{StaticResource unitbaViewModelViewSource}" HorizontalAlignment="Left" Margin="106,77,0,0" VerticalAlignment="Top">
+        <Grid x:Name="grid資料區" DataContext="{StaticResource unitbaViewModelViewSource}" HorizontalAlignment="Left" Margin="106,77,0,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -79,7 +78,7 @@
             <TextBox x:Name="txt單位" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
                 <Binding Path="單位" NotifyOnValidationError="True" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <rule:主索引驗證ViewModel Cvs="{StaticResource unitbaViewModelViewSource}" 增刪修="{StaticResource 增刪修ViewModel}" Table="unitba" CheckField="單位"/>
+                        <rule:主索引驗證ViewModel x:Name="索引驗證" Cvs="{StaticResource unitbaViewModelViewSource}" Table="unitba" CheckField="單位"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox>

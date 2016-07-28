@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewModel
+namespace ViewModel.增刪修
 {
     public enum 增刪修Status
     {
