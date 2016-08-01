@@ -81,9 +81,8 @@ namespace DarbWareERP
         public static List<頁面繼承> Page實體列表 { get { return _Page實體列表; } set { _Page實體列表 = value; } }
         public static string 目前編修資料表 { get { return _目前編修資料表; } set { _目前編修資料表 = value; } }
         private static string _目前編修資料表 = "";
-        public static bool 切換頁面(string nameSpace, string classinfo)
-        {
-            bool 可以切換頁面 = true;
+        public static 頁面繼承 切換頁面(string nameSpace, string classinfo)
+        {            
             NavigationService nav;
             頁面繼承 page;
             nav = NavigationService.GetNavigationService(目前頁面);
@@ -93,41 +92,33 @@ namespace DarbWareERP
             }
             else
             {
-                Type CAType = Type.GetType(nameSpace + classinfo);
-                if (CAType == null)
-                {
-                    MessageBox.Show("頁面不存在");
-                    可以切換頁面 = false;
-                    return 可以切換頁面;
-                }
+                Type CAType = Type.GetType(nameSpace + classinfo);                
                 page = (頁面繼承)Activator.CreateInstance(CAType);
                 Page實體列表.Add(page);
             }
-            page.初始值設定();
             表單控制.目前頁面 = page;
-            nav.Navigate(page);
-            return 可以切換頁面;
-        }
-        public static void 切換瀏覽頁面(string nameSpace, string pageTitle, params object[] args)
-        {
+            nav.Navigate(page);            
+            return page;
+        }        
+        public static void 切換瀏覽頁面( 瀏覽系列.瀏覽類型Enum 瀏覽類型,string title,string 瀏覽代碼,string[] 資料表名稱)
+        {            
             NavigationService nav;
-            頁面繼承 page;
-            nav = NavigationService.GetNavigationService(目前頁面);
-            int location = pageTitle.IndexOf("瀏覽");
-            string classinfo = pageTitle.Substring(location);
-            if (表單控制.Page實體列表.Any(x => x.Title == pageTitle.ToString()))
+            頁面繼承 page=null;
+            nav = NavigationService.GetNavigationService(目前頁面);            
+            if (表單控制.Page實體列表.Any(x => x.Title == title+"瀏覽頁面"))
             {
-                page = 表單控制.Page實體列表.Find(x => x.Title == pageTitle.ToString());
+                page = 表單控制.Page實體列表.Find(x => x.Title == title);
             }
             else
             {
-                Type CAType = Type.GetType(nameSpace + classinfo);
-                if (CAType == null)
+                if (瀏覽類型== 瀏覽系列.瀏覽類型Enum.AForm)
                 {
-                    MessageBox.Show("頁面不存在");
-                    return;
+                    page = new 瀏覽系列.AForm瀏覽頁面(title, 瀏覽代碼, 資料表名稱);
+                }                                
+                if(瀏覽類型 == 瀏覽系列.瀏覽類型Enum.BForm)
+                {
+                    page = new 瀏覽系列.BForm瀏覽頁面(title, 瀏覽代碼, 資料表名稱);
                 }
-                page = (頁面繼承)Activator.CreateInstance(CAType, args);
                 Page實體列表.Add(page);
             }                 
             表單控制.目前頁面 = page;

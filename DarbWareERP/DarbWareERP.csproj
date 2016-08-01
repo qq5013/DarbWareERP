@@ -135,6 +135,9 @@
       <DependentUpon>台銀匯率.xaml</DependentUpon>
     </Compile>
     <Compile Include="命令\右鍵選單.cs" />
+    <Compile Include="控制項\DataGrid.xaml.cs">
+      <DependentUpon>DataGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="控制項\下方共同區塊\下方共同區塊.xaml.cs">
       <DependentUpon>下方共同區塊.xaml</DependentUpon>
     </Compile>
@@ -157,9 +160,13 @@
       <DependentUpon>返回選單按鈕.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項操作.cs" />
-    <Compile Include="瀏覽系列\瀏覽頁面.xaml.cs">
-      <DependentUpon>瀏覽頁面.xaml</DependentUpon>
+    <Compile Include="瀏覽系列\AForm瀏覽頁面.xaml.cs">
+      <DependentUpon>AForm瀏覽頁面.xaml</DependentUpon>
     </Compile>
+    <Compile Include="瀏覽系列\BForm瀏覽頁面.xaml.cs">
+      <DependentUpon>BForm瀏覽頁面.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="瀏覽系列\瀏覽類型Enum.cs" />
     <Compile Include="登入頁面.xaml.cs">
       <DependentUpon>登入頁面.xaml</DependentUpon>
     </Compile>
@@ -212,6 +219,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="控制項\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="控制項\下方共同區塊\下方共同區塊.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -252,7 +263,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="瀏覽系列\瀏覽頁面.xaml">
+    <Page Include="瀏覽系列\AForm瀏覽頁面.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="瀏覽系列\BForm瀏覽頁面.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

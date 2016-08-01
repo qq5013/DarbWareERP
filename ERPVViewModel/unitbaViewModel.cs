@@ -9,8 +9,8 @@ using Model;
 namespace ViewModel
 {
     public class UnitbaViewModel
-    {
-        public UnitbaModel unitbaModel { get; set; }
+    {        
+        private UnitbaModel unitbaModel { get; set; }
         public UnitbaViewModel()
         {
             unitbaModel = new UnitbaModel();

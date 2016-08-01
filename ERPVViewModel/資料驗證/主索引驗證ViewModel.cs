@@ -19,7 +19,7 @@ namespace ViewModel.資料驗證
         主索引驗證Bll 主索引驗證bll = new 主索引驗證Bll();
         public CollectionViewSource Cvs { get; set; } //在XAML設定        
         public string Table { get; set; } //在XAML設定        
-        public string CheckField { get; set; }
+        public string CheckField { get; set; }        
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
 

@@ -25,8 +25,7 @@ namespace DarbWareERP.控制項.下方共同區塊
     /// 指令區.xaml 的互動邏輯
     /// </summary>
     public partial class 指令區 : UserControl
-    {
-        控制項操作 控制項操作;
+    {        
         頁面繼承 page;
         導覽區 導覽區;
         WrapPanel wrap;
@@ -53,7 +52,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                 foreach (CollectionViewSource cv in page.CollectionViewSources)
                 {
                     if (cv != null)
-                    {                        
+                    {
                         ListCollectionView collectionview = (ListCollectionView)cv.View;
                         while (collectionview.Count != 0)
                         {
@@ -84,7 +83,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                     if (cv != null)
                     {
                         ListCollectionView collectionview = (ListCollectionView)cv.View;
-                        collectionview.EditItem(collectionview.CurrentItem);                        
+                        collectionview.EditItem(collectionview.CurrentItem);
                     }
                 }
                 page.AfterEdit();
@@ -102,10 +101,16 @@ namespace DarbWareERP.控制項.下方共同區塊
                 {
                     if (cv != null)
                     {
-                        BindingListCollectionView collectionview = (BindingListCollectionView)cv.View;
-                        collectionview.EditItem(collectionview.CurrentItem);
+                        ListCollectionView collectionview = (ListCollectionView)cv.View;
+                        object obj = cv.View.CurrentItem;
+                        while (collectionview.Count != 0)
+                        {
+                            collectionview.Remove(collectionview.CurrentItem);
+                        }
+                        collectionview.AddNewItem(obj);
                     }
                 }
+                page.SetTextBoxOrdetl();
                 page.AfterCopy();
             }
         }
@@ -147,12 +152,6 @@ namespace DarbWareERP.控制項.下方共同區塊
                             case 增刪修Status.新增:
                                 collectionview.CommitNew();
                                 break;
-                            case 增刪修Status.修改:
-                                collectionview.CommitEdit();
-                                break;
-                            case 增刪修Status.複製:
-                                collectionview.CommitEdit();
-                                break;
                         }
                     }
                     else
@@ -169,7 +168,6 @@ namespace DarbWareERP.控制項.下方共同區塊
                         page.AfterEndEdit();
                         指令區按鈕顯示(false);
                         導覽區Enable(true);
-                       
                     }
                 }
                 catch (Exception ex)
@@ -177,7 +175,7 @@ namespace DarbWareERP.控制項.下方共同區塊
                     MessageBox.Show(ex.Message, "系統錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
                     page.Status = PrevTableStatus;
                 }
-                導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                導覽區.查詢();
                 MessageBox.Show(page.增刪修訊息);
             }
             else
@@ -202,13 +200,6 @@ namespace DarbWareERP.控制項.下方共同區塊
                                 break;
                             case 增刪修Status.新增:
                                 collectionview.CancelNew();
-                                break;
-                            //case 增刪修Status.修改:
-                            //    collectionview.CancelEdit();
-
-                            //    break;
-                            case 增刪修Status.複製:
-                                collectionview.CancelEdit();
                                 break;
                         }
                     }
@@ -310,8 +301,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            控制項操作 = new 控制項操作();
+        {            
             page = 控制項操作.尋找父代<頁面繼承>(this);
             導覽區 = 控制項操作.用名稱尋找子代<導覽區>(page, "導覽區");
             wrap = 控制項操作.用名稱尋找子代<WrapPanel>(this, "wrappanel指令區");
@@ -330,16 +320,14 @@ namespace DarbWareERP.控制項.下方共同區塊
 
         private void btn瀏覽_Click(object sender, RoutedEventArgs e)
         {
-            表單控制.切換瀏覽頁面("DarbWareERP.瀏覽系列.", txbl程式名稱.Text + "瀏覽頁面", new object[] { txbl程式名稱.Text, page.瀏覽代碼, page.資料表名稱 });
-
+            表單控制.切換瀏覽頁面(page.瀏覽類型, txbl程式名稱.Text, page.瀏覽代碼, page.資料表名稱);
         }
 
         private void btn列印_Click(object sender, RoutedEventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt = (DataTable)page.CollectionViewSources[0].Source;
-            Form1 form1 = new Form1();
-            form1.ShowDialog();
+
+            預覽報表 report = new 預覽報表(page.CollectionViewSources[0].Source);
+            report.ShowDialog();
         }
     }
 }

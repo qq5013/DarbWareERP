@@ -9,9 +9,9 @@ using System.Windows.Media;
 
 namespace DarbWareERP
 {
-    public class 控制項操作
+    public static class 控制項操作
     {       
-        public T 用名稱尋找子代<T>(DependencyObject depObj, string childName) where T : DependencyObject
+        public static T 用名稱尋找子代<T>(DependencyObject depObj, string childName) where T : DependencyObject
         {
 
             if (depObj == null) return null;
@@ -30,7 +30,7 @@ namespace DarbWareERP
             }
             return null;
         }
-        public T 尋找父代<T>(DependencyObject i_dp) where T : DependencyObject
+        public static T 尋找父代<T>(DependencyObject i_dp) where T : DependencyObject
         {
             DependencyObject dobj = (DependencyObject)VisualTreeHelper.GetParent(i_dp);
             if (dobj != null)

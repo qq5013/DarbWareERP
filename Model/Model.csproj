@@ -58,7 +58,6 @@
     <Compile Include="UnitbaModel.cs">
       <DependentUpon>銓育資料庫Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="瀏覽Model.cs" />
     <Compile Include="銓育資料庫Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

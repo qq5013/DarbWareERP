@@ -152,7 +152,7 @@ namespace ViewModel
             Type obser = typeof(ObservableCollection<>);
             Type obserconstructor = obser.MakeGenericType(trgType);
             var observableCollection = Activator.CreateInstance(constructor, listq);
-            return observableCollection;
+            return observableCollection;            
         }
     }
 }

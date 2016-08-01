@@ -21,8 +21,7 @@ namespace DarbWareERP.控制項.下方共同區塊
     /// </summary>
     public partial class 切換表單按鈕 : Button
     {
-        private string 系統別;
-        private 控制項操作 控制項操作 = new 控制項操作();
+        private string 系統別;        
         public 切換表單按鈕()
         {
             InitializeComponent();

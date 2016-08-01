@@ -15,19 +15,21 @@ using System.Windows.Controls;
 using System.Globalization;
 using 邏輯Bll.登入;
 
-namespace ViewModel
+
+namespace ViewModel.瀏覽
 {
     public class 瀏覽ViewModel
     {
-        public DataSet 瀏覽查詢(string[] 資料表名稱, string 查詢條件, CollectionViewSource[] collectionViewSources)
+        public void 瀏覽查詢(string[] 資料表名稱, string 查詢條件, CollectionViewSource[] collectionViewSources)
         {
             string dataevent = 資料表名稱[0];
             瀏覽Bll 瀏覽bll = new 瀏覽Bll();
             DataSet ds = 瀏覽bll.瀏覽查詢(dataevent, 查詢條件);
-            for (int i = 0; i < 資料表名稱.Count(); i++)
+            for (int i = 0; i < ds.Tables.Count; i++)
             {
+                string model = "Model." + 資料表名稱[i].Substring(0, 1).ToUpper() + 資料表名稱[i].Substring(1).ToLower() + "Model";
                 Assembly[] AssembliesLoaded = AppDomain.CurrentDomain.GetAssemblies();
-                Type trgType = AssembliesLoaded.Select(assembly => assembly.GetType("Model." + 資料表名稱[i]))
+                Type trgType = AssembliesLoaded.Select(assembly => assembly.GetType(model))
                     .Where(type => type != null)
                     .FirstOrDefault();
                 //List<T> list = (List<T>)DataTableToList<T>.ConvertToModel(dt);
@@ -41,13 +43,8 @@ namespace ViewModel
                 Type datatabletolistType = typeof(DataTableToList<>).MakeGenericType(trgType);
                 MethodInfo minfo = datatabletolistType.GetMethod("ConvertToModel");
                 listq = minfo.Invoke(null, new object[] { ds.Tables[i] });
-                collectionViewSources[i].Source = listq;
-                if (i == 1)
-                {
-                    //CollectionViewSources[1].Source = new ObservableCollection<Model.ordetl>(listq);
-                }
-            }
-            return ds;
+                collectionViewSources[i].Source = listq;               
+            }            
         }
         string[] 資料表名稱;
         public string 程式名稱 { get; set; }
@@ -56,27 +53,27 @@ namespace ViewModel
         {
             get; set;
         }
-        public ObservableCollection<欄位編號列表> 欄位編號列表
+        public ObservableCollection<欄位編號ViewModel> 欄位編號列表
         {
             get; set;
         }
-        public ObservableCollection<運算子編號列表> 運算子編號列表
+        public ObservableCollection<運算子編號ViewModel> 運算子編號列表
         {
             get; set;
         }
-        private ObservableCollection<瀏覽Model> _下方查詢list = new ObservableCollection<瀏覽Model>();
-        public ObservableCollection<瀏覽Model> 下方查詢list
+        private ObservableCollection<下方查詢ViewModel> _下方查詢list = new ObservableCollection<下方查詢ViewModel>();
+        public ObservableCollection<下方查詢ViewModel> 下方查詢list
         {
             get
             {
-                return  _下方查詢list;
+                return _下方查詢list;
             }
             set
             {
                 _下方查詢list = value;
             }
         }
-        public 瀏覽Model 瀏覽model { get; set; }
+
         public 瀏覽ViewModel(string[] 資料表名稱)
         {
             this.資料表名稱 = 資料表名稱;
@@ -92,26 +89,28 @@ namespace ViewModel
                 DataRow[] drs = 自訂條件欄位.Select("瀏覽類別 = '" + browsetype + "'");
                 if (drs.Count() != 0)
                 {
-                    欄位編號列表 = new ObservableCollection<欄位編號列表>(DataTableToList<欄位編號列表>.ConvertToModel(drs.CopyToDataTable()));
+                    欄位編號列表 = new ObservableCollection<欄位編號ViewModel>(DataTableToList<欄位編號ViewModel>.ConvertToModel(drs.CopyToDataTable()));
                 }
                 else
                 {
-                    List<欄位編號列表> 欄位編號列表list = new List<欄位編號列表>();
+                    string model = "Model." + 資料表名稱[0].Substring(0, 1).ToUpper() + 資料表名稱[0].Substring(1).ToLower() + "Model";
+                    List<欄位編號ViewModel> 欄位編號列表list = new List<欄位編號ViewModel>();
+                    Assembly.Load("Model");
                     Assembly[] AssembliesLoaded = AppDomain.CurrentDomain.GetAssemblies();
-                    Type trgType = AssembliesLoaded.Select(assembly => assembly.GetType("Model." + this.資料表名稱[0]))
+                    Type trgType = AssembliesLoaded.Select(assembly => assembly.GetType(model))
                         .Where(type => type != null)
                         .FirstOrDefault();
                     PropertyInfo[] pis = trgType.GetProperties();
                     for (int i = 0; i < pis.Count(); i++)
                     {
-                        欄位編號列表 m = new 欄位編號列表();
+                        欄位編號ViewModel m = new 欄位編號ViewModel();
                         m.欄位編號 = i + 1;
                         m.欄位說明 = pis[i].Name;
                         欄位編號列表list.Add(m);
                     }
-                    欄位編號列表 = new ObservableCollection<欄位編號列表>(欄位編號列表list);
+                    欄位編號列表 = new ObservableCollection<欄位編號ViewModel>(欄位編號列表list);
                 }
-                運算子編號列表 = new ObservableCollection<運算子編號列表>(DataTableToList<運算子編號列表>.ConvertToModel(運算子));
+                運算子編號列表 = new ObservableCollection<運算子編號ViewModel>(DataTableToList<運算子編號ViewModel>.ConvertToModel(運算子));
                 欄位Column.ItemsSource = 欄位編號列表;
                 運算子Column.ItemsSource = 運算子編號列表;
                 //ItemSource只能設定一次不然會前面的筆數會出錯
@@ -127,7 +126,7 @@ namespace ViewModel
                     string 運算子說明 = rows運算子.FirstOrDefault()["運算子說明"].ToString();
                     string 欄位type = 尋找欄位type(欄位說明);
 
-                    瀏覽Model browse = new 瀏覽Model();
+                    下方查詢ViewModel browse = new 下方查詢ViewModel();
                     browse.序號 = (i + 1).ToString();
                     browse.欄位編號 = 原始編號[i]["欄位編號"].ToString();
                     browse.欄位說明 = 欄位說明;
@@ -136,8 +135,6 @@ namespace ViewModel
                     browse.起始值 = 原始編號[i]["值1"].ToString();
                     browse.截止值 = 原始編號[i]["值2"].ToString();
                     browse.欄位TYPE = 欄位type;
-                    browse.欄位編號列表 = 欄位編號列表;
-                    browse.運算子編號列表 = 運算子編號列表;
                     下方查詢list.Add(browse);
                 }
             }
@@ -145,7 +142,7 @@ namespace ViewModel
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    瀏覽Model browse = new 瀏覽Model();
+                    下方查詢ViewModel browse = new 下方查詢ViewModel();
                     browse.序號 = (i + 1).ToString();
                     browse.欄位編號 = 欄位編號列表[0].欄位編號.ToString();
                     browse.欄位說明 = 欄位編號列表[0].欄位說明;
@@ -154,8 +151,6 @@ namespace ViewModel
                     browse.起始值 = "QWERT";
                     browse.截止值 = "";
                     browse.欄位TYPE = 尋找欄位type(欄位編號列表[0].欄位說明);
-                    browse.欄位編號列表 = 欄位編號列表;
-                    browse.運算子編號列表 = 運算子編號列表;
                     下方查詢list.Add(browse);
                 }
             }
@@ -197,9 +192,9 @@ namespace ViewModel
             try
             {
                 Assembly assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "Model");
-                for (int j = 0; j < 資料表名稱.Count(); j++)
+                for (int i = 0; i < 資料表名稱.Count(); i++)
                 {
-                    Type type = assembly.GetType(assembly.GetName().Name + "." + 資料表名稱[j]);
+                    Type type = assembly.GetType( "Model." + 資料表名稱[i].Substring(0, 1).ToUpper() + 資料表名稱[i].Substring(1).ToLower()+"Model");
                     PropertyInfo[] f = type.GetProperties();
                     PropertyInfo ff = f.FirstOrDefault(x => x.Name == 要查詢欄位);
                     if (ff != null)
@@ -215,10 +210,10 @@ namespace ViewModel
             }
             return result;
         }
-        public string 查詢條件產生(ObservableCollection<瀏覽Model> searchlist)
+        public string 查詢條件產生()
         {
             StringBuilder 查詢條件 = new StringBuilder();
-            foreach (var search in searchlist)
+            foreach (var search in 下方查詢list)
             {
                 switch (search.運算子編號)
                 {

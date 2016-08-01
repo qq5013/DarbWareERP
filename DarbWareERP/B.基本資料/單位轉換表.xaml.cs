@@ -31,7 +31,8 @@ namespace DarbWareERP.B.基本資料
         {
             base.初始值設定();
             KeyFldValue = "單位";
-            資料表名稱[0] = "unitba";                        
+            資料表名稱[0] = "unitba";
+            瀏覽類型 = 瀏覽系列.瀏覽類型Enum.AForm;
         }
        
         protected override void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
@@ -47,7 +48,7 @@ namespace DarbWareERP.B.基本資料
             txt說明.IsReadOnly = Status == 增刪修Status.一般;
         }
         public override void SetTextBoxOrdetl()
-        {            
+        {                        
             txt單位.Focus();
         }
         

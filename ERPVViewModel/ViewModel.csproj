@@ -51,7 +51,10 @@
     <Compile Include="增刪修\增刪修Enum.cs" />
     <Compile Include="增刪修\增刪修ViewModel.cs" />
     <Compile Include="導覽區ViewModel.cs" />
-    <Compile Include="瀏覽ViewModel.cs" />
+    <Compile Include="瀏覽\下方查詢ViewModel.cs" />
+    <Compile Include="瀏覽\欄位編號ViewModel.cs" />
+    <Compile Include="瀏覽\瀏覽ViewModel.cs" />
+    <Compile Include="瀏覽\運算子編號ViewModel.cs" />
     <Compile Include="登入ViewModel.cs" />
     <Compile Include="資料驗證\主索引驗證ViewModel.cs" />
     <Compile Include="選單ViewModel.cs" />

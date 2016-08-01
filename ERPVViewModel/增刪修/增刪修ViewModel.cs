@@ -16,9 +16,7 @@ namespace ViewModel.增刪修
 {
     public delegate bool 新增複製修改Delegate(CollectionViewSource[] cv, out string result);
     public class 增刪修ViewModel :DependencyObject
-    {
-        private bool _可以儲存 = true;
-        public bool 可以儲存 { get { return _可以儲存; } set { _可以儲存 = value; } }
+    {        
         public string Pkid { get; set; }
         public string[] 資料表名稱 { get; set; }
         public int 放行碼 { get; set; }
