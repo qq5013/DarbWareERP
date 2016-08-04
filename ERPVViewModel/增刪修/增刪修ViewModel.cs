@@ -15,8 +15,8 @@ using 邏輯Bll.登入;
 namespace ViewModel.增刪修
 {
     public delegate bool 新增複製修改Delegate(CollectionViewSource[] cv, out string result);
-    public class 增刪修ViewModel :DependencyObject
-    {        
+    public class 增刪修ViewModel : DependencyObject
+    {
         public string Pkid { get; set; }
         public string[] 資料表名稱 { get; set; }
         public int 放行碼 { get; set; }
@@ -52,7 +52,7 @@ namespace ViewModel.增刪修
                     //string 上傳資料 = XmlToSql<T>.WriteXml(list);                    
                     Type writexml = typeof(XmlToSql<>).MakeGenericType(trgType);
                     MethodInfo xmltosql = writexml.GetMethod("WriteXml");
-                    var list = 值設定(Cvs[i], trgType, 資料表名稱[i], 新增修改);                    
+                    var list = 值設定(Cvs[i], trgType, 資料表名稱[i], 新增修改);
                     string 上傳用資料 = (string)xmltosql.Invoke(null, new object[] { list });
                     stringList[i] = 上傳用資料;
                 }
@@ -83,7 +83,8 @@ namespace ViewModel.增刪修
                 增刪修.SetValue(item, 新增修改.ToString());
                 PropertyInfo 選擇 = item.GetType().GetProperty("選擇");
                 選擇.SetValue(item, "");
-                instance.Add(item.GetType().GetProperty(資料表名稱 + "Model").GetValue(item));
+                instance.Add(item.GetType().GetProperty(資料表名稱 + "Model", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(item));
+                //viewmodel中的model欄位是private，因此用這個方法取的私有成員
             }
             return instance;
         }

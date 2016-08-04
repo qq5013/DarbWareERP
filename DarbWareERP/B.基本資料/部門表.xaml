@@ -5,16 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
       xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
-      xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊"            
+      xmlns:ViewModel="clr-namespace:ViewModel;assembly=ViewModel"
+      xmlns:rule ="clr-namespace:ViewModel.資料驗證;assembly=ViewModel"
+      xmlns:下方共同區塊 ="clr-namespace:DarbWareERP.控制項.下方共同區塊" 
+      xmlns:converter="clr-namespace:DarbWareERP.值轉換器"
       xmlns:控制項="clr-namespace:DarbWareERP.控制項" x:Class="DarbWareERP.B.基本資料.部門表"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
-      Title="部門表" Loaded="頁面繼承_Loaded">
+      Title="部門表">
 
-    <!--<src:頁面繼承.Resources>-->
-        <!--<CollectionViewSource x:Key="deptViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:dept}, CreateList=True}"/>
-        <CollectionViewSource x:Key="dept_1ViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:dept_1}, CreateList=True}"/>
-    </src:頁面繼承.Resources>-->
+    <src:頁面繼承.Resources>
+        <CollectionViewSource x:Key="deptViewModelViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModel:DeptViewModel}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dept_1ViewModelViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModel:Dept_1ViewModel}, CreateList=True}"/>
+        <converter:testconverter x:Key="conver" Cvs="{StaticResource dept_1ViewModelViewSource}"></converter:testconverter>
+    </src:頁面繼承.Resources>
 
     <Grid>
         <Grid>
@@ -23,56 +27,70 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <下方共同區塊:下方共同區塊 Grid.Row="1"></下方共同區塊:下方共同區塊>
-            <Grid x:Name="資料區" Grid.Row="0">
-                <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Content="pkid:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txtpkid" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding pkid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="要員人數:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-                    <TextBox x:Name="要員人數TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding 要員人數, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="負責主管:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-                    <TextBox x:Name="負責主管TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding 負責主管, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="部門代號:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-                    <TextBox x:Name="txt部門代號" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
-                        <!--<Binding Path="部門代號">-->
-                            <!--<Binding.ValidationRules>
-                                <rule:主索引驗證 cvs="{StaticResource deptViewSource}" Table="dept"/>
-                            </Binding.ValidationRules>
-                        </Binding>-->
-                    </TextBox>
-                    <Label Content="部門名稱:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-                    <TextBox x:Name="部門名稱TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding 部門名稱, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="部門簡稱:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-                    <TextBox x:Name="部門簡稱TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding 部門簡稱, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="職稱:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-                    <TextBox x:Name="職稱TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding 職稱, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid x:Name="grid資料區" Grid.Row="0" DataContext="{StaticResource deptViewModelViewSource}">
+                    <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="pkid:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtpkid" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding pkid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="要員人數:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+                        <TextBox x:Name="要員人數TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding 要員人數, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="負責主管:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <TextBox x:Name="負責主管TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding 負責主管, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="部門代號:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt部門代號" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+                            <Binding Path="部門代號">
+                                <Binding.ValidationRules>
+                                    <rule:主索引驗證ViewModel Cvs="{StaticResource deptViewModelViewSource}" Table="dept" CheckField="部門代號"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox>
+                        <Label Content="部門名稱:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="部門名稱TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding 部門名稱, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="部門簡稱:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                        <TextBox x:Name="部門簡稱TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding 部門簡稱, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="職稱:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <TextBox x:Name="職稱TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding 職稱, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    </Grid>                   
                 </Grid>
-                <DataGrid x:Name="dept_1DataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,217,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True" ContextMenuOpening="dept_1DataGrid_ContextMenuOpening">
+                <控制項:tsDataGrid x:Name="dept_1DataGrid"  Grid.Row="2" AutoGenerateColumns="False" DataContext="{StaticResource dept_1ViewModelViewSource}"  ItemsSource="{Binding}" ContextMenuOpening="dept_1DataGrid_ContextMenuOpening" Tag="單位轉換表grid1">
+                    
                     <DataGrid.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="新增數筆" Command="ContextMenu"/>
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="序號Column" Binding="{Binding 序號}" Header="序號" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="人員別Column" Binding="{Binding 人員別}" Header="人員別" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="員工編號Column" Binding="{Binding 員工編號}" Header="員工編號" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="姓名Column" Binding="{Binding 姓名}" Header="姓名" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="備註Column" Binding="{Binding 備註}" Header="備註" Width="SizeToHeader"/>
+                        <DataGridTextColumn Header="序號" Width="SizeToHeader">
+                            <DataGridTextColumn.Binding>
+                                <MultiBinding Converter="{StaticResource conver}">
+                                    <Binding Path="序號"></Binding>
+                                    <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=DataGridRow}"></Binding>
+                                </MultiBinding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn  Binding="{Binding 人員別}" Header="人員別" Width="SizeToHeader"/>
+                        <DataGridTextColumn  Binding="{Binding 員工編號}" Header="員工編號" Width="SizeToHeader"/>
+                        <DataGridTextColumn  Binding="{Binding 姓名}" Header="姓名" Width="SizeToHeader"/>
+                        <DataGridTextColumn  Binding="{Binding 備註}" Header="備註" Width="SizeToHeader"/>
                     </DataGrid.Columns>
-                </DataGrid>             
+                </控制項:tsDataGrid>
             </Grid>
         </Grid>
     </Grid>

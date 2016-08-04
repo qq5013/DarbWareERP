@@ -84,6 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeptViewModel.cs">
+      <DependentUpon>銓育ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dept_1ViewModel.cs">
+      <DependentUpon>銓育ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitbaViewModel.cs">
       <DependentUpon>銓育ViewModel.tt</DependentUpon>

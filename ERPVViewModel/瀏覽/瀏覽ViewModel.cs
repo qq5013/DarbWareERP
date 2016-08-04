@@ -14,7 +14,7 @@ using Model;
 using System.Windows.Controls;
 using System.Globalization;
 using 邏輯Bll.登入;
-
+using ViewModel.訊息相關;
 
 namespace ViewModel.瀏覽
 {
@@ -43,7 +43,10 @@ namespace ViewModel.瀏覽
                 Type datatabletolistType = typeof(DataTableToList<>).MakeGenericType(trgType);
                 MethodInfo minfo = datatabletolistType.GetMethod("ConvertToModel");
                 listq = minfo.Invoke(null, new object[] { ds.Tables[i] });
-                collectionViewSources[i].Source = listq;               
+                Type obser = typeof(ObservableCollection<>);
+                Type obserconstructor = obser.MakeGenericType(trgType);
+                var observableCollection = Activator.CreateInstance(constructor, listq);
+                collectionViewSources[i].Source = observableCollection;               
             }            
         }
         string[] 資料表名稱;

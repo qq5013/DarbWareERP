@@ -131,12 +131,19 @@
     <Compile Include="主視窗.xaml.cs">
       <DependentUpon>主視窗.xaml</DependentUpon>
     </Compile>
+    <Compile Include="值轉換器\testconverter.cs" />
     <Compile Include="台銀匯率.xaml.cs">
       <DependentUpon>台銀匯率.xaml</DependentUpon>
     </Compile>
     <Compile Include="命令\右鍵選單.cs" />
-    <Compile Include="控制項\DataGrid.xaml.cs">
-      <DependentUpon>DataGrid.xaml</DependentUpon>
+    <Compile Include="控制項\tsDataGrid.xaml.cs">
+      <DependentUpon>tsDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\欄位格式設定.xaml.cs">
+      <DependentUpon>欄位格式設定.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\下方共同區塊\導覽區DataGrid.xaml.cs">
+      <DependentUpon>導覽區DataGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項\下方共同區塊\下方共同區塊.xaml.cs">
       <DependentUpon>下方共同區塊.xaml</DependentUpon>
@@ -219,7 +226,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="控制項\DataGrid.xaml">
+    <Page Include="控制項\tsDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\欄位格式設定.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\下方共同區塊\導覽區DataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

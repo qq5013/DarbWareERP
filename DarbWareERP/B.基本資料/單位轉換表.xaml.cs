@@ -48,7 +48,8 @@ namespace DarbWareERP.B.基本資料
             txt說明.IsReadOnly = Status == 增刪修Status.一般;
         }
         public override void SetTextBoxOrdetl()
-        {                        
+        {
+            base.SetTextBoxOrdetl();          
             txt單位.Focus();
         }
         

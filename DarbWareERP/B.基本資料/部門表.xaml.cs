@@ -16,6 +16,7 @@ using DarbWareERP.繼承窗口;
 using ViewModel;
 using System.Data;
 using ViewModel.增刪修;
+using System.Reflection;
 
 namespace DarbWareERP.B.基本資料
 {
@@ -33,25 +34,25 @@ namespace DarbWareERP.B.基本資料
         }
 
         private void ContextMenu_Executed(object sender, ExecutedRoutedEventArgs e)
-        {            
+        {
             MessageBox.Show("qq");
         }
-
+        protected override void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
+        {
+            base.頁面繼承_Loaded(sender, e);
+            CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("deptViewModelViewSource")));
+            CollectionViewSources[1] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("dept_1ViewModelViewSource")));
+        }
         public override void 初始值設定()
         {
-            base.初始值設定();            
+            base.初始值設定();
             資料表名稱[0] = "dept";
             資料表名稱[1] = "dept_1";
             KeyFldValue = "部門代號";
             瀏覽代碼 = "DPT";
+            瀏覽類型 = 瀏覽系列.瀏覽類型Enum.BForm;
         }
 
-        //private void 頁面繼承_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("deptViewSource")));
-        //    CollectionViewSources[1] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("dept_1ViewSource")));
-        //    SetControls();
-        //}
         public override void SetControls()
         {
             base.SetControls();
@@ -62,43 +63,29 @@ namespace DarbWareERP.B.基本資料
                     (c as TextBox).IsReadOnly = Status == 增刪修Status.一般;
                 }
             }
-            txtpkid.IsReadOnly = true;
             dept_1DataGrid.IsReadOnly = Status == 增刪修Status.一般;
         }
         public override void SetTextBoxOrdetl()
         {
             base.SetTextBoxOrdetl();
-            foreach (Control c in grid1.Children)
-            {
-                if (c is TextBox)
-                {
-                    c.Focus();
-                    ((TextBox)c).Text = "";
-                }
-            }
-            DataView dt = (DataView)this.CollectionViewSources[1].View.SourceCollection;
-            dt[0].Row["序號"] = "001";
-            dt[0].Row["人員別"] = 0;
-            txtpkid.Text = "0";
-            txtpkid.Focus();
-            要員人數TextBox.Text = "0";
-            要員人數TextBox.Focus();
+            object 資料表 = CollectionViewSources[1].Source;
+            var items = 資料表.GetType().GetProperty("Item");
+            var item = items.GetValue(資料表, new object[] { 0 }).GetType();
+            item.GetProperty("序號").SetValue(item, "A001"); 
+            var value = 資料表.GetType().GetProperty("Item").GetType().GetProperty("序號").GetValue(資料表);
             txt部門代號.Focus();
         }
         public override void SetValueEndEdit()
         {
-            DataView dt = (DataView)this.CollectionViewSources[1].View.SourceCollection;
-            if (dt[0].Row[2] == DBNull.Value && dt[0].Row[3] == DBNull.Value)
-            {
-                dt.Delete(0);
-            }
-        }
-        public override bool UpdateData()
-        {
-            bool result=false;
-            //部門表Bll dept = new 部門表Bll();
-            //result = dept.UpdateData(cv, out this._增刪修訊息, status);
-            return result;
+            ListCollectionView listcv = (ListCollectionView)this.CollectionViewSources[1].View;
+            object 資料表 = CollectionViewSources[1].Source;
+            //var value = 資料表.GetType().GetProperty("Item").GetType().GetProperty("序號").GetValue(資料表);
+            //DataView dt = (DataView)this.CollectionViewSources[1].View.SourceCollection;
+            //if (dt[0].Row[2] == DBNull.Value && dt[0].Row[3] == DBNull.Value)
+            //{
+            //    dt.Delete(0);
+            //}
+            
         }
 
         private void dept_1DataGrid_ContextMenuOpening(object sender, ContextMenuEventArgs e)

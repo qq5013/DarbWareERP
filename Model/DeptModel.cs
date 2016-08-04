@@ -14,7 +14,7 @@ namespace Model
     using System.Xml.Serialization;
     using System.ComponentModel;
     
-    public partial class UnitbaModel : INotifyPropertyChanged 
+    public partial class DeptModel : INotifyPropertyChanged 
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyname)
@@ -25,14 +25,44 @@ namespace Model
             }
         }
         [XmlAttribute()]
-        public string 單位 { get{ return _單位; } set{ _單位=value;	OnPropertyChanged("單位");} }
-    	private string _單位 ;
+        public string 部門代號 { get{ return _部門代號; } set{ _部門代號=value;	OnPropertyChanged("部門代號");} }
+    	private string _部門代號 ;
         [XmlAttribute()]
-        public string 說明 { get{ return _說明; } set{ _說明=value;	OnPropertyChanged("說明");} }
-    	private string _說明 ;
+        public string 部門簡稱 { get{ return _部門簡稱; } set{ _部門簡稱=value;	OnPropertyChanged("部門簡稱");} }
+    	private string _部門簡稱 ;
         [XmlAttribute()]
-        public byte 小數位數 { get{ return _小數位數; } set{ _小數位數=value;	OnPropertyChanged("小數位數");} }
-    	private byte _小數位數 ;
+        public string 部門名稱 { get{ return _部門名稱; } set{ _部門名稱=value;	OnPropertyChanged("部門名稱");} }
+    	private string _部門名稱 ;
+        [XmlAttribute()]
+        public string 負責主管 { get{ return _負責主管; } set{ _負責主管=value;	OnPropertyChanged("負責主管");} }
+    	private string _負責主管 ;
+        [XmlAttribute()]
+        public string 職稱 { get{ return _職稱; } set{ _職稱=value;	OnPropertyChanged("職稱");} }
+    	private string _職稱 ;
+        [XmlAttribute()]
+        public int 要員人數 { get{ return _要員人數; } set{ _要員人數=value;	OnPropertyChanged("要員人數");} }
+    	private int _要員人數 ;
+        [XmlAttribute()]
+        public string 生產順序 { get{ return _生產順序; } set{ _生產順序=value;	OnPropertyChanged("生產順序");} }
+    	private string _生產順序 ;
+        [XmlAttribute()]
+        public string 製程別 { get{ return _製程別; } set{ _製程別=value;	OnPropertyChanged("製程別");} }
+    	private string _製程別 ;
+        [XmlAttribute()]
+        public string 隸屬倉庫 { get{ return _隸屬倉庫; } set{ _隸屬倉庫=value;	OnPropertyChanged("隸屬倉庫");} }
+    	private string _隸屬倉庫 ;
+        [XmlAttribute()]
+        public string 可用倉庫 { get{ return _可用倉庫; } set{ _可用倉庫=value;	OnPropertyChanged("可用倉庫");} }
+    	private string _可用倉庫 ;
+        [XmlAttribute()]
+        public string 在製倉庫 { get{ return _在製倉庫; } set{ _在製倉庫=value;	OnPropertyChanged("在製倉庫");} }
+    	private string _在製倉庫 ;
+        [XmlAttribute()]
+        public string 出貨倉庫 { get{ return _出貨倉庫; } set{ _出貨倉庫=value;	OnPropertyChanged("出貨倉庫");} }
+    	private string _出貨倉庫 ;
+        [XmlAttribute()]
+        public string 外調倉庫 { get{ return _外調倉庫; } set{ _外調倉庫=value;	OnPropertyChanged("外調倉庫");} }
+    	private string _外調倉庫 ;
         [XmlAttribute()]
         public System.DateTime 輸入日期 { get{ return _輸入日期; } set{ _輸入日期=value;	OnPropertyChanged("輸入日期");} }
     	private System.DateTime _輸入日期 ;

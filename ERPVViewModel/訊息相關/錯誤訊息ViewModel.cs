@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using 邏輯Bll.訊息相關;
 
-namespace ViewModel
+namespace ViewModel.訊息相關
 {
     public class 錯誤訊息ViewModel
     {

@@ -142,7 +142,7 @@ namespace DarbWareERP.繼承窗口
         }
         public virtual void SetValueEndEdit()
         {
-
+            //儲存前的值設定。刪除沒有值的筆數
         }
         public virtual void AfterEndEdit()
         {

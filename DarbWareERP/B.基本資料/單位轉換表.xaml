@@ -15,32 +15,6 @@
 
     <src:頁面繼承.Resources>
         <CollectionViewSource x:Key="unitbaViewModelViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModel:UnitbaViewModel},CreateList=True}"/>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Validation.ErrorTemplate">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <DockPanel LastChildFill="True">
-                            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                                <Grid Width="12" Height="12">
-                                    <Ellipse Width="12" Height="12" Fill="Red" HorizontalAlignment="Center"  VerticalAlignment="Center"></Ellipse>
-                                    <TextBlock Foreground="White" FontWeight="Heavy" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                               TextAlignment="Center"
-                                               ToolTip="{Binding ElementName=ErrorAdorner,Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">X</TextBlock>
-                                </Grid>                                
-                                <TextBlock Foreground="Red" FontSize="12" FontWeight="Light"  Margin="2,0,0,0" 
-                                           Text="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"></TextBlock>
-                            </StackPanel>
-                            <AdornedElementPlaceholder x:Name="ErrorAdorner"></AdornedElementPlaceholder>
-                        </DockPanel>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},Path=(Validation.Errors)[0].ErrorContent}"/>
-                </Trigger>                
-            </Style.Triggers>
-        </Style>
     </src:頁面繼承.Resources>
 
     <Grid>
@@ -60,7 +34,7 @@
                     <ColumnDefinition Width="195"/>
                 </Grid.ColumnDefinitions>
                 <下方共同區塊:指令區 Grid.Column="3" Width="195"/>
-                <下方共同區塊:導覽區 x:Name="導覽區" Grid.Column="2" VerticalAlignment="Top" Height="210"/>
+                <下方共同區塊:導覽區 x:Name="導覽區" Grid.Column="2"  Height="210"/>
             </Grid>
         </Border>
         <Grid x:Name="grid資料區" DataContext="{StaticResource unitbaViewModelViewSource}" HorizontalAlignment="Left" Margin="106,77,0,0" VerticalAlignment="Top">

@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
 using System.ComponentModel;
 using ViewModel;
-
+using ViewModel.訊息相關;
 
 namespace DarbWareERP
 {

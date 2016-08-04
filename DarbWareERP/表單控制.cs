@@ -107,7 +107,7 @@ namespace DarbWareERP
             nav = NavigationService.GetNavigationService(目前頁面);            
             if (表單控制.Page實體列表.Any(x => x.Title == title+"瀏覽頁面"))
             {
-                page = 表單控制.Page實體列表.Find(x => x.Title == title);
+                page = 表單控制.Page實體列表.Find(x => x.Title == title+ "瀏覽頁面");
             }
             else
             {

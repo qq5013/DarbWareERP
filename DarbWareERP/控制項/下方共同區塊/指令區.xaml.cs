@@ -54,11 +54,12 @@ namespace DarbWareERP.控制項.下方共同區塊
                     if (cv != null)
                     {
                         ListCollectionView collectionview = (ListCollectionView)cv.View;
+                        collectionview.NewItemPlaceholderPosition = System.ComponentModel.NewItemPlaceholderPosition.None;                  
                         while (collectionview.Count != 0)
                         {
                             collectionview.Remove(collectionview.CurrentItem);
                         }
-                        collectionview.AddNew();  //用bindingListCollectionView去增加 修改 Datatable值
+                        collectionview.AddNew();  
                     }
                 }
                 page.SetTextBoxOrdetl();
@@ -163,20 +164,21 @@ namespace DarbWareERP.控制項.下方共同區塊
                 {
                     if (page.UpdateData())
                     {
+                        導覽區.查詢();
                         page.Status = 增刪修Status.一般;
                         page.SetControls();
                         page.AfterEndEdit();
                         指令區按鈕顯示(false);
                         導覽區Enable(true);
+                        MessageBox.Show(page.增刪修訊息);                        
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "系統錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
                     page.Status = PrevTableStatus;
-                }
-                導覽區.查詢();
-                MessageBox.Show(page.增刪修訊息);
+                }                
+                
             }
             else
             {

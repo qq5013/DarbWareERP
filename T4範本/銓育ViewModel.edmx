@@ -4,7 +4,55 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="darbdcstcsa1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="darbdcstcsa1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dept">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="部門代號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="部門簡稱" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="部門名稱" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="負責主管" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="職稱" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="要員人數" Type="int" Nullable="false" />
+          <Property Name="生產順序" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="製程別" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="隸屬倉庫" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="可用倉庫" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="在製倉庫" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="出貨倉庫" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="外調倉庫" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="輸入日期" Type="datetime" Nullable="false" />
+          <Property Name="輸入人員" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="輸入地點" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="增刪修" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="選擇" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="管制碼" Type="int" Nullable="false" />
+          <Property Name="srvdbid" Type="smallint" Nullable="false" />
+          <Property Name="pkid" Type="int" Nullable="false" />
+          <Property Name="logid" Type="int" Nullable="false" />
+          <Property Name="linkid" Type="int" />
+        </EntityType>
+        <EntityType Name="dept_1">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="序號" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="人員別" Type="tinyint" Nullable="false" />
+          <Property Name="員工編號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="姓名" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="備註" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="輸入日期" Type="datetime" Nullable="false" />
+          <Property Name="輸入人員" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="輸入地點" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="增刪修" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="選擇" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="管制碼" Type="int" Nullable="false" />
+          <Property Name="srvdbid" Type="smallint" Nullable="false" />
+          <Property Name="pkid" Type="int" Nullable="false" />
+          <Property Name="logid" Type="int" Nullable="false" />
+          <Property Name="linkid" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="unitba">
           <Key>
             <PropertyRef Name="pkid" />
@@ -24,10 +72,11 @@
           <Property Name="linkid" Type="int" />
         </EntityType>
         <EntityContainer Name="darbdcstcsa1ModelStoreContainer">
+          <EntitySet Name="dept" EntityType="Self.dept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dept_1" EntityType="Self.dept_1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="unitba" EntityType="Self.unitba" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="darbdcstcsa1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -51,7 +100,57 @@
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="unitba" EntityType="Self.unitba" />
+          <EntitySet Name="dept" EntityType="darbdcstcsa1Model.dept" />
+          <EntitySet Name="dept_1" EntityType="darbdcstcsa1Model.dept_1" />
         </EntityContainer>
+        <EntityType Name="dept">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="部門代號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="部門簡稱" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="部門名稱" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="負責主管" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="職稱" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="要員人數" Type="Int32" Nullable="false" />
+          <Property Name="生產順序" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="製程別" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="隸屬倉庫" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="可用倉庫" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="在製倉庫" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="出貨倉庫" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="外調倉庫" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="輸入日期" Type="DateTime" Nullable="false" />
+          <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="增刪修" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="選擇" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="管制碼" Type="Int32" Nullable="false" />
+          <Property Name="srvdbid" Type="Int16" Nullable="false" />
+          <Property Name="pkid" Type="Int32" Nullable="false" />
+          <Property Name="logid" Type="Int32" Nullable="false" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dept_1">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="序號" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="人員別" Type="Byte" Nullable="false" />
+          <Property Name="員工編號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="姓名" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="備註" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="輸入日期" Type="DateTime" Nullable="false" />
+          <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="增刪修" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="選擇" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="管制碼" Type="Int32" Nullable="false" />
+          <Property Name="srvdbid" Type="Int16" Nullable="false" />
+          <Property Name="pkid" Type="Int32" Nullable="false" />
+          <Property Name="logid" Type="Int32" Nullable="false" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -74,6 +173,56 @@
                 <ScalarProperty Name="pkid" ColumnName="pkid" />
                 <ScalarProperty Name="logid" ColumnName="logid" />
                 <ScalarProperty Name="linkid" ColumnName="linkid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dept">
+            <EntityTypeMapping TypeName="darbdcstcsa1Model.dept">
+              <MappingFragment StoreEntitySet="dept">
+                <ScalarProperty Name="linkid" ColumnName="linkid" />
+                <ScalarProperty Name="logid" ColumnName="logid" />
+                <ScalarProperty Name="pkid" ColumnName="pkid" />
+                <ScalarProperty Name="srvdbid" ColumnName="srvdbid" />
+                <ScalarProperty Name="管制碼" ColumnName="管制碼" />
+                <ScalarProperty Name="選擇" ColumnName="選擇" />
+                <ScalarProperty Name="增刪修" ColumnName="增刪修" />
+                <ScalarProperty Name="輸入地點" ColumnName="輸入地點" />
+                <ScalarProperty Name="輸入人員" ColumnName="輸入人員" />
+                <ScalarProperty Name="輸入日期" ColumnName="輸入日期" />
+                <ScalarProperty Name="外調倉庫" ColumnName="外調倉庫" />
+                <ScalarProperty Name="出貨倉庫" ColumnName="出貨倉庫" />
+                <ScalarProperty Name="在製倉庫" ColumnName="在製倉庫" />
+                <ScalarProperty Name="可用倉庫" ColumnName="可用倉庫" />
+                <ScalarProperty Name="隸屬倉庫" ColumnName="隸屬倉庫" />
+                <ScalarProperty Name="製程別" ColumnName="製程別" />
+                <ScalarProperty Name="生產順序" ColumnName="生產順序" />
+                <ScalarProperty Name="要員人數" ColumnName="要員人數" />
+                <ScalarProperty Name="職稱" ColumnName="職稱" />
+                <ScalarProperty Name="負責主管" ColumnName="負責主管" />
+                <ScalarProperty Name="部門名稱" ColumnName="部門名稱" />
+                <ScalarProperty Name="部門簡稱" ColumnName="部門簡稱" />
+                <ScalarProperty Name="部門代號" ColumnName="部門代號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dept_1">
+            <EntityTypeMapping TypeName="darbdcstcsa1Model.dept_1">
+              <MappingFragment StoreEntitySet="dept_1">
+                <ScalarProperty Name="linkid" ColumnName="linkid" />
+                <ScalarProperty Name="logid" ColumnName="logid" />
+                <ScalarProperty Name="pkid" ColumnName="pkid" />
+                <ScalarProperty Name="srvdbid" ColumnName="srvdbid" />
+                <ScalarProperty Name="管制碼" ColumnName="管制碼" />
+                <ScalarProperty Name="選擇" ColumnName="選擇" />
+                <ScalarProperty Name="增刪修" ColumnName="增刪修" />
+                <ScalarProperty Name="輸入地點" ColumnName="輸入地點" />
+                <ScalarProperty Name="輸入人員" ColumnName="輸入人員" />
+                <ScalarProperty Name="輸入日期" ColumnName="輸入日期" />
+                <ScalarProperty Name="備註" ColumnName="備註" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="員工編號" ColumnName="員工編號" />
+                <ScalarProperty Name="人員別" ColumnName="人員別" />
+                <ScalarProperty Name="序號" ColumnName="序號" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

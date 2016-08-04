@@ -20,7 +20,7 @@
                     <ColumnDefinition Width="195"/>
                 </Grid.ColumnDefinitions>
                 <下方共同區塊:指令區 Grid.Column="3" Width="195"/>
-                <下方共同區塊:導覽區 x:Name="導覽區" Grid.Column="2" VerticalAlignment="Top" Height="210"/>
+                <下方共同區塊:導覽區 x:Name="導覽區" Grid.Column="2" Height="210" />
             </Grid>
         </Border>
     </Grid>

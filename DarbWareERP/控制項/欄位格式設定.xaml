@@ -1,0 +1,15 @@
+﻿<Window x:Class="DarbWareERP.控制項.欄位格式設定"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DarbWareERP.控制項"
+        mc:Ignorable="d"
+        Title="欄位格式設定" Height="342.4" Width="413.6">
+    <Grid>
+        <Button x:Name="button" Content="儲存表格設定" HorizontalAlignment="Left" Margin="180,61,0,0" VerticalAlignment="Top" Width="88" Height="69" Click="button_Click"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="87,73,0,0" TextWrapping="Wrap" Text="欄位寬度" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="87,100,0,0" TextWrapping="Wrap" Text="欄位順序" VerticalAlignment="Top" FontSize="16"/>
+
+    </Grid>
+</Window>

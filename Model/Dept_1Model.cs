@@ -14,7 +14,7 @@ namespace Model
     using System.Xml.Serialization;
     using System.ComponentModel;
     
-    public partial class UnitbaModel : INotifyPropertyChanged 
+    public partial class Dept_1Model : INotifyPropertyChanged 
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyname)
@@ -25,14 +25,20 @@ namespace Model
             }
         }
         [XmlAttribute()]
-        public string 單位 { get{ return _單位; } set{ _單位=value;	OnPropertyChanged("單位");} }
-    	private string _單位 ;
+        public string 序號 { get{ return _序號; } set{ _序號=value;	OnPropertyChanged("序號");} }
+    	private string _序號 ;
         [XmlAttribute()]
-        public string 說明 { get{ return _說明; } set{ _說明=value;	OnPropertyChanged("說明");} }
-    	private string _說明 ;
+        public byte 人員別 { get{ return _人員別; } set{ _人員別=value;	OnPropertyChanged("人員別");} }
+    	private byte _人員別 ;
         [XmlAttribute()]
-        public byte 小數位數 { get{ return _小數位數; } set{ _小數位數=value;	OnPropertyChanged("小數位數");} }
-    	private byte _小數位數 ;
+        public string 員工編號 { get{ return _員工編號; } set{ _員工編號=value;	OnPropertyChanged("員工編號");} }
+    	private string _員工編號 ;
+        [XmlAttribute()]
+        public string 姓名 { get{ return _姓名; } set{ _姓名=value;	OnPropertyChanged("姓名");} }
+    	private string _姓名 ;
+        [XmlAttribute()]
+        public string 備註 { get{ return _備註; } set{ _備註=value;	OnPropertyChanged("備註");} }
+    	private string _備註 ;
         [XmlAttribute()]
         public System.DateTime 輸入日期 { get{ return _輸入日期; } set{ _輸入日期=value;	OnPropertyChanged("輸入日期");} }
     	private System.DateTime _輸入日期 ;
