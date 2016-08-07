@@ -89,14 +89,14 @@ namespace DarbWareERP.控制項.下方共同區塊
         private void 加入歷程()
         {
             歷程obs[0].Add(page.CollectionViewSources[0].View.CurrentItem);
-            dataGrid.dataGrid.ScrollIntoView(page.CollectionViewSources[0].View.CurrentItem);
+            dataGrid.ScrollIntoView(page.CollectionViewSources[0].View.CurrentItem);
             歷程cvs[0].View.MoveCurrentTo(page.CollectionViewSources[0].View.CurrentItem);
         }
         private void 歷程導覽()
         {
             page.CollectionViewSources[0].Source = 歷程cvs[0].Source;
             page.CollectionViewSources[0].View.MoveCurrentToPosition(歷程cvs[0].View.CurrentPosition);
-            dataGrid.dataGrid.ScrollIntoView(歷程cvs[0].View.CurrentItem);            
+            dataGrid.ScrollIntoView(歷程cvs[0].View.CurrentItem);            
             page.目前KeyFldValue = txtkey.Text;
             page.Pkid = txtpkid.Text;
         }
@@ -104,7 +104,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         {
             page.CollectionViewSources[0].Source = 瀏覽cvs[0].Source;
             page.CollectionViewSources[0].View.MoveCurrentToPosition(瀏覽cvs[0].View.CurrentPosition);
-            dataGrid.dataGrid.ScrollIntoView(瀏覽cvs[0].View.CurrentItem);
+            dataGrid.ScrollIntoView(瀏覽cvs[0].View.CurrentItem);
             加入歷程();
             page.目前KeyFldValue = txtkey.Text;
             page.Pkid = txtpkid.Text;

@@ -25,6 +25,7 @@ namespace DarbWareERP.B.基本資料
     /// </summary>
     public partial class 部門表 : 頁面繼承
     {
+        
         public 部門表()
         {
             InitializeComponent();
@@ -41,7 +42,8 @@ namespace DarbWareERP.B.基本資料
         {
             base.頁面繼承_Loaded(sender, e);
             CollectionViewSources[0] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("deptViewModelViewSource")));
-            CollectionViewSources[1] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("dept_1ViewModelViewSource")));
+            CollectionViewSources[1] = ((System.Windows.Data.CollectionViewSource)(this.FindResource("dept_1ViewModelViewSource")));         
+            
         }
         public override void 初始值設定()
         {
@@ -62,31 +64,15 @@ namespace DarbWareERP.B.基本資料
                 {
                     (c as TextBox).IsReadOnly = Status == 增刪修Status.一般;
                 }
-            }
+            }            
+            txtpkid.IsReadOnly = true;
             dept_1DataGrid.IsReadOnly = Status == 增刪修Status.一般;
         }
         public override void SetTextBoxOrdetl()
         {
             base.SetTextBoxOrdetl();
-            object 資料表 = CollectionViewSources[1].Source;
-            var items = 資料表.GetType().GetProperty("Item");
-            var item = items.GetValue(資料表, new object[] { 0 }).GetType();
-            item.GetProperty("序號").SetValue(item, "A001"); 
-            var value = 資料表.GetType().GetProperty("Item").GetType().GetProperty("序號").GetValue(資料表);
             txt部門代號.Focus();
-        }
-        public override void SetValueEndEdit()
-        {
-            ListCollectionView listcv = (ListCollectionView)this.CollectionViewSources[1].View;
-            object 資料表 = CollectionViewSources[1].Source;
-            //var value = 資料表.GetType().GetProperty("Item").GetType().GetProperty("序號").GetValue(資料表);
-            //DataView dt = (DataView)this.CollectionViewSources[1].View.SourceCollection;
-            //if (dt[0].Row[2] == DBNull.Value && dt[0].Row[3] == DBNull.Value)
-            //{
-            //    dt.Delete(0);
-            //}
-            
-        }
+        }      
 
         private void dept_1DataGrid_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
@@ -95,5 +81,15 @@ namespace DarbWareERP.B.基本資料
                 e.Handled = true;
             }
         }
+
+        private void dept_1DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            
+        }
+
+        private void dept_1DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {           
+        }
+
     }
 }

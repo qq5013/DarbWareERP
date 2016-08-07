@@ -27,4 +27,11 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="readonlycell1" TargetType="{x:Type DataGridCell}">
+            <Style.Triggers>
+                <Trigger Property="IsReadOnly" Value="True">
+                    <Setter Property="Background" Value="Aqua"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 </ResourceDictionary>

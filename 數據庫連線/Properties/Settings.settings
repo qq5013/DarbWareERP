@@ -12,7 +12,7 @@
       <Value Profile="(Default)">qwertgbnm,./</Value>
     </Setting>
     <Setting Name="DataSource" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">192.168.1.228</Value>
+      <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="資料庫名稱" Type="System.String" Scope="Application">
       <Value Profile="(Default)">銓育</Value>

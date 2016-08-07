@@ -14,7 +14,7 @@
         <cm:BackgroundWorker x:Key="backgroundWorker" WorkerReportsProgress="True" WorkerSupportsCancellation="True"
                              DoWork="BackgroundWorker_DoWork"
                              RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted" ProgressChanged="BackgroundWorker_ProgressChanged">
-        </cm:BackgroundWorker>
+        </cm:BackgroundWorker>       
     </src:頁面繼承.Resources>
     <Grid>
         <Grid Margin="152,26,146,10.2" Width="463" Height="470" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -37,7 +37,7 @@
                 <Image Source="Image/icon_png/進入系統00.png"/>
             </Button>
             <Button x:Name="btn離開" Margin="291,332,0,0" HorizontalAlignment="Left" Width="45" Height="45" VerticalAlignment="Top" Click="btn離開_Click">
-                <Image Source="Image/icon_png/離開系統00.png"/>
+                <Image Source="Image/icon_png/離開系統00.png" Stretch="Fill"/>
             </Button>
             <Grid Margin="49,77,135,280">
                 <Label x:Name="label2" Content="Darbware" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C"/>

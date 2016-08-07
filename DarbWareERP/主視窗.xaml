@@ -15,7 +15,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="AUTO"></RowDefinition>
         </Grid.RowDefinitions>
-        <Frame Grid.Row="0" x:Name="frame" Content="Frame" Source="/DarbWareERP;component/登入頁面.xaml" NavigationUIVisibility="Hidden" />
+        <Frame Grid.Row="0" x:Name="frame" Content="Frame" Source="/DarbWareERP;component/登入頁面.xaml" NavigationUIVisibility="Hidden" IsTabStop="False" />
         <Grid Grid.Row="0" x:Name="buttonGrid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="259*"/>

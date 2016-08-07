@@ -27,7 +27,7 @@ namespace ViewModel.增刪修
         {
             資料表名稱 = new string[5];
         }
-        public bool UpdateData(CollectionViewSource[] cvs, out string result, 增刪修Status status, string[] 資料表名稱)
+        public bool UpdateData(CollectionViewSource[] cvs, out string result, 增刪修Status status,string[] 資料表名稱)
         {
             this.資料表名稱 = 資料表名稱;
             this.Cvs = cvs;
@@ -37,13 +37,12 @@ namespace ViewModel.增刪修
             value = dele(cvs, out result);
             return value;
         }
-        private void 反射製作上傳資料(string[] stringList, 新增修改 新增修改)
+        private void 反射製作上傳資料(string[] stringList)
         {
             for (int i = 0; i < Cvs.Count(); i++)
             {
                 if (Cvs[i] != null)
                 {
-                    object 資料表 = Cvs[i].Source;
                     string model資料表 = "Model." + 資料表名稱[i].Substring(0, 1).ToUpper() + 資料表名稱[i].Substring(1).ToLower() + "Model";
                     Assembly[] AssembliesLoaded = AppDomain.CurrentDomain.GetAssemblies();
                     Type trgType = AssembliesLoaded.Select(assembly => assembly.GetType(model資料表))
@@ -52,7 +51,7 @@ namespace ViewModel.增刪修
                     //string 上傳資料 = XmlToSql<T>.WriteXml(list);                    
                     Type writexml = typeof(XmlToSql<>).MakeGenericType(trgType);
                     MethodInfo xmltosql = writexml.GetMethod("WriteXml");
-                    var list = 值設定(Cvs[i], trgType, 資料表名稱[i], 新增修改);
+                    var list = 值設定(Cvs[i], trgType, 資料表名稱[i]);
                     string 上傳用資料 = (string)xmltosql.Invoke(null, new object[] { list });
                     stringList[i] = 上傳用資料;
                 }
@@ -62,8 +61,8 @@ namespace ViewModel.增刪修
                 }
             }
         }
-        protected IList 值設定(CollectionViewSource cv, Type trgType, string 資料表名稱, 新增修改 新增修改)
-        {
+        protected IList 值設定(CollectionViewSource cv, Type trgType, string 資料表名稱)
+        {            
             object source = cv.Source;
             PropertyInfo count = source.GetType().GetProperty("Count");
             PropertyInfo items = source.GetType().GetProperty("Item");
@@ -79,8 +78,8 @@ namespace ViewModel.增刪修
                 輸入日期.SetValue(item, DateTime.Now);
                 PropertyInfo 輸入地點 = item.GetType().GetProperty("輸入地點");
                 輸入地點.SetValue(item, Environment.MachineName);
-                PropertyInfo 增刪修 = item.GetType().GetProperty("增刪修");
-                增刪修.SetValue(item, 新增修改.ToString());
+                //PropertyInfo 增刪修 = item.GetType().GetProperty("增刪修");//在建構式以及指令區設定
+                //增刪修.SetValue(item, 新增修改.ToString());
                 PropertyInfo 選擇 = item.GetType().GetProperty("選擇");
                 選擇.SetValue(item, "");
                 instance.Add(item.GetType().GetProperty(資料表名稱 + "Model", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(item));
@@ -125,7 +124,7 @@ namespace ViewModel.增刪修
         private bool 新增(CollectionViewSource[] cv, out string result)
         {
             string[] stringList = new string[5];
-            反射製作上傳資料(stringList, 新增修改.A);
+            反射製作上傳資料(stringList);
             bool 是否成功 = 上傳資料庫("INPUT-BB", "Normal Add", stringList, out result);
             return 是否成功;
 
@@ -137,7 +136,7 @@ namespace ViewModel.增刪修
         private bool 修改(CollectionViewSource[] cv, out string result)
         {
             string[] stringList = new string[5];
-            反射製作上傳資料(stringList, 新增修改.E);
+            反射製作上傳資料(stringList);
             bool 是否成功 = 上傳資料庫("INPUT-BE", "Normal Edit", stringList, out result, 放行碼.ToString());
             return 是否成功;
         }

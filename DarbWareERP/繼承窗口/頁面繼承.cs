@@ -14,6 +14,8 @@ using ViewModel;
 using System.Reflection;
 using ViewModel.增刪修;
 using System.Windows.Media;
+using System.Collections;
+using DarbWareERP.驗證;
 
 namespace DarbWareERP.繼承窗口
 {
@@ -35,9 +37,10 @@ namespace DarbWareERP.繼承窗口
         private CollectionViewSource[] collectionViesSources = new CollectionViewSource[5];
         public 增刪修Status Status { get { return status; } set { status = value; } } //0瀏覽模式,1新增模式,2修改模式，控制控制項的readonly、enable等         
         增刪修ViewModel 增刪修viewmodel = new 增刪修ViewModel();
-        //在xaml中設定成statistic resource，配合主索引驗證
+        //在xaml中設定成statistic resource，配合主索引驗證        
         public string 增刪修訊息 { get { return _增刪修訊息; } set { _增刪修訊息 = value; } }
         public bool 新增修改中 { get; set; }
+
         public 頁面繼承()
         {
             表單控制.目前頁面 = this;
@@ -52,6 +55,7 @@ namespace DarbWareERP.繼承窗口
             if (txtpkid != null)
             {
                 txtpkid.IsReadOnly = true;
+                txtpkid.IsTabStop = false;
             }
             SetControls();
         }
@@ -105,12 +109,7 @@ namespace DarbWareERP.繼承窗口
         public virtual void AfterCopy()
         {
             DependencyObject dobj = this.FindName("grid資料區") as DependencyObject;
-            foreach (object obj in LogicalTreeHelper.GetChildren(dobj))
-            {
-                TextBox txt = obj as TextBox;
-                if (txt == null) continue;
-                txt.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            }
+            控制項驗證.子代更新資料(dobj);
             增修共同處理(true);
         }
         public virtual bool BeforeCancelEdit()
@@ -128,21 +127,26 @@ namespace DarbWareERP.繼承窗口
             //資料驗證                 
             bool result = true;
             DependencyObject dobj = this.FindName("grid資料區") as DependencyObject;
-            foreach (object obj in LogicalTreeHelper.GetChildren(dobj))
-            {
-                TextBox txt = obj as TextBox;
-                if (txt == null) continue;
-                if (Validation.GetHasError(txt))
-                {
-                    result = false; //只要有一個TEXTBOX錯就不能儲存
-                    break;
-                }
-            }
+            控制項驗證.子代驗證檢查(dobj);
             return result;
         }
-        public virtual void SetValueEndEdit()
+
+        public virtual void EditBeforeUpdate()
         {
-            //儲存前的值設定。刪除沒有值的筆數
+            //按下儲存後，到上傳前的動作
+            if (collectionViesSources[1] != null)
+            {
+                object source = CollectionViewSources[1].Source;
+                PropertyInfo count = source.GetType().GetProperty("Count");
+                PropertyInfo items = source.GetType().GetProperty("Item");
+                for (int j = 0; j < Convert.ToInt32(count.GetValue(source)); j++)
+                {
+                    object item = items.GetValue(source, new object[] { j });
+                    PropertyInfo linkid = item.GetType().GetProperty("linkid");//在建構式以及指令區設定
+                    linkid.SetValue(item,int.Parse( Pkid));
+                }
+
+            }
         }
         public virtual void AfterEndEdit()
         {

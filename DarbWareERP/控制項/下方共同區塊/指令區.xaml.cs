@@ -18,6 +18,7 @@ using ViewModel;
 using 報表;
 using System.Collections.ObjectModel;
 using ViewModel.增刪修;
+using System.Reflection;
 
 namespace DarbWareERP.控制項.下方共同區塊
 {
@@ -25,7 +26,7 @@ namespace DarbWareERP.控制項.下方共同區塊
     /// 指令區.xaml 的互動邏輯
     /// </summary>
     public partial class 指令區 : UserControl
-    {        
+    {
         頁面繼承 page;
         導覽區 導覽區;
         WrapPanel wrap;
@@ -49,17 +50,19 @@ namespace DarbWareERP.控制項.下方共同區塊
                 導覽區Enable(false);
                 page.SetControls();
                 導覽區.btn重新整理.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                foreach (CollectionViewSource cv in page.CollectionViewSources)
+                for (int k = 0; k < page.CollectionViewSources.Count(); k++)
                 {
-                    if (cv != null)
+                    if (page.CollectionViewSources[k] != null)
                     {
-                        ListCollectionView collectionview = (ListCollectionView)cv.View;
-                        collectionview.NewItemPlaceholderPosition = System.ComponentModel.NewItemPlaceholderPosition.None;                  
-                        while (collectionview.Count != 0)
+                        ListCollectionView collectionview = (ListCollectionView)page.CollectionViewSources[k].View;
+                        for (int i = 0; i < collectionview.Count; i++)
                         {
                             collectionview.Remove(collectionview.CurrentItem);
                         }
-                        collectionview.AddNew();  
+                        if (k == 0)
+                        {
+                            collectionview.AddNew();
+                        }
                     }
                 }
                 page.SetTextBoxOrdetl();
@@ -79,12 +82,23 @@ namespace DarbWareERP.控制項.下方共同區塊
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
                 page.SetControls();
-                foreach (CollectionViewSource cv in page.CollectionViewSources)
+                for (int i = 0; i < page.CollectionViewSources.Count(); i++)
                 {
-                    if (cv != null)
+                    if (page.CollectionViewSources[i] != null)
                     {
-                        ListCollectionView collectionview = (ListCollectionView)cv.View;
-                        collectionview.EditItem(collectionview.CurrentItem);
+                        object source= page.CollectionViewSources[i].Source;                        
+                        PropertyInfo count = source.GetType().GetProperty("Count");
+                        PropertyInfo items = source.GetType().GetProperty("Item");
+                        for (int j = 0; j < Convert.ToInt32(count.GetValue(source)); j++)
+                        {
+                            object item = items.GetValue(source, new object[] { j });
+                            PropertyInfo 增刪修 = item.GetType().GetProperty("增刪修");//在建構式以及指令區設定
+                            增刪修.SetValue(item, "E");
+                        }
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
                 page.AfterEdit();
@@ -98,19 +112,6 @@ namespace DarbWareERP.控制項.下方共同區塊
                 指令區按鈕顯示(true);
                 導覽區Enable(false);
                 page.SetControls();
-                foreach (CollectionViewSource cv in page.CollectionViewSources)
-                {
-                    if (cv != null)
-                    {
-                        ListCollectionView collectionview = (ListCollectionView)cv.View;
-                        object obj = cv.View.CurrentItem;
-                        while (collectionview.Count != 0)
-                        {
-                            collectionview.Remove(collectionview.CurrentItem);
-                        }
-                        collectionview.AddNewItem(obj);
-                    }
-                }
                 page.SetTextBoxOrdetl();
                 page.AfterCopy();
             }
@@ -139,7 +140,10 @@ namespace DarbWareERP.控制項.下方共同區塊
             if (page.BeforeEndEdit())
             {
                 增刪修Status PrevTableStatus = page.Status;
-                page.SetValueEndEdit();
+                if (page.Status == 增刪修Status.修改)
+                {
+                    page.EditBeforeUpdate();
+                }
                 foreach (CollectionViewSource cv in page.CollectionViewSources)
                 {
                     if (cv != null)
@@ -170,15 +174,16 @@ namespace DarbWareERP.控制項.下方共同區塊
                         page.AfterEndEdit();
                         指令區按鈕顯示(false);
                         導覽區Enable(true);
-                        MessageBox.Show(page.增刪修訊息);                        
+
                     }
+                    MessageBox.Show(page.增刪修訊息);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "系統錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
                     page.Status = PrevTableStatus;
-                }                
-                
+                }
+
             }
             else
             {
@@ -303,7 +308,7 @@ namespace DarbWareERP.控制項.下方共同區塊
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {            
+        {
             page = 控制項操作.尋找父代<頁面繼承>(this);
             導覽區 = 控制項操作.用名稱尋找子代<導覽區>(page, "導覽區");
             wrap = 控制項操作.用名稱尋找子代<WrapPanel>(this, "wrappanel指令區");

@@ -131,7 +131,8 @@
     <Compile Include="主視窗.xaml.cs">
       <DependentUpon>主視窗.xaml</DependentUpon>
     </Compile>
-    <Compile Include="值轉換器\testconverter.cs" />
+    <Compile Include="值轉換器\序號Converter.cs" />
+    <Compile Include="值轉換器\導覽DataGridConverter.cs" />
     <Compile Include="台銀匯率.xaml.cs">
       <DependentUpon>台銀匯率.xaml</DependentUpon>
     </Compile>
@@ -194,6 +195,7 @@
     <Compile Include="電子賀卡.xaml.cs">
       <DependentUpon>電子賀卡.xaml</DependentUpon>
     </Compile>
+    <Compile Include="驗證\控制項驗證.cs" />
     <Page Include="B.基本資料\單位轉換表.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

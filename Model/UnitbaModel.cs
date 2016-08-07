@@ -12,56 +12,34 @@ namespace Model
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
-    using System.ComponentModel;
     
-    public partial class UnitbaModel : INotifyPropertyChanged 
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyname)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
-            }
-        }
+    public partial class UnitbaModel 
+    {   
         [XmlAttribute()]
-        public string 單位 { get{ return _單位; } set{ _單位=value;	OnPropertyChanged("單位");} }
-    	private string _單位 ;
+        public string 單位 { get; set; }
         [XmlAttribute()]
-        public string 說明 { get{ return _說明; } set{ _說明=value;	OnPropertyChanged("說明");} }
-    	private string _說明 ;
+        public string 說明 { get; set; }
         [XmlAttribute()]
-        public byte 小數位數 { get{ return _小數位數; } set{ _小數位數=value;	OnPropertyChanged("小數位數");} }
-    	private byte _小數位數 ;
+        public byte 小數位數 { get; set; }
         [XmlAttribute()]
-        public System.DateTime 輸入日期 { get{ return _輸入日期; } set{ _輸入日期=value;	OnPropertyChanged("輸入日期");} }
-    	private System.DateTime _輸入日期 ;
+        public System.DateTime 輸入日期 { get; set; }
         [XmlAttribute()]
-        public string 輸入人員 { get{ return _輸入人員; } set{ _輸入人員=value;	OnPropertyChanged("輸入人員");} }
-    	private string _輸入人員 ;
+        public string 輸入人員 { get; set; }
         [XmlAttribute()]
-        public string 輸入地點 { get{ return _輸入地點; } set{ _輸入地點=value;	OnPropertyChanged("輸入地點");} }
-    	private string _輸入地點 ;
+        public string 輸入地點 { get; set; }
         [XmlAttribute()]
-        public string 增刪修 { get{ return _增刪修; } set{ _增刪修=value;	OnPropertyChanged("增刪修");} }
-    	private string _增刪修 ;
+        public string 增刪修 { get; set; }
         [XmlAttribute()]
-        public string 選擇 { get{ return _選擇; } set{ _選擇=value;	OnPropertyChanged("選擇");} }
-    	private string _選擇 ;
+        public string 選擇 { get; set; }
         [XmlAttribute()]
-        public int 管制碼 { get{ return _管制碼; } set{ _管制碼=value;	OnPropertyChanged("管制碼");} }
-    	private int _管制碼 ;
+        public int 管制碼 { get; set; }
         [XmlAttribute()]
-        public short srvdbid { get{ return _srvdbid; } set{ _srvdbid=value;	OnPropertyChanged("srvdbid");} }
-    	private short _srvdbid ;
+        public short srvdbid { get; set; }
         [XmlAttribute()]
-        public int pkid { get{ return _pkid; } set{ _pkid=value;	OnPropertyChanged("pkid");} }
-    	private int _pkid ;
+        public int pkid { get; set; }
         [XmlAttribute()]
-        public int logid { get{ return _logid; } set{ _logid=value;	OnPropertyChanged("logid");} }
-    	private int _logid ;
+        public int logid { get; set; }
         [XmlAttribute()]
-        public int linkid { get{ return _linkid; } set{ _linkid=value;	OnPropertyChanged("linkid");} }
-    	private int _linkid ;
+        public int linkid { get; set; }
     }
 }
