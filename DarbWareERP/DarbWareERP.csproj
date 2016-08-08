@@ -482,6 +482,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="A.系統資料\" />
+    <Folder Include="M.主管資訊\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\NewIcon\齒輪ICO.ico" />

@@ -76,7 +76,14 @@
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                     <DataGrid.Columns>
-                        <DataGridTextColumn  Binding="{Binding 序號, Mode=TwoWay}" Header="序號" Width="SizeToHeader" CellStyle="{StaticResource readonlycell1}" />
+                        <DataGridTextColumn  Header="序號" Width="SizeToHeader" CellStyle="{StaticResource readonlycell1}" IsReadOnly="True">
+                            <DataGridTextColumn.Binding>
+                                <MultiBinding BindingGroupName="qq" Converter="{StaticResource 序號converter}" Mode="TwoWay">
+                                    <Binding Path="序號" Mode="TwoWay"></Binding>
+                                    <Binding RelativeSource="{RelativeSource AncestorType=DataGrid, Mode=FindAncestor}" Mode="OneWay"></Binding>
+                                </MultiBinding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
                         <DataGridTextColumn  Binding="{Binding 人員別, Mode=TwoWay}" Header="人員別" Width="SizeToHeader"/>
                         <DataGridTextColumn  Binding="{Binding 員工編號, Mode=TwoWay}" Header="員工編號" Width="SizeToHeader"/>
                         <DataGridTextColumn  Binding="{Binding 姓名, Mode=TwoWay}" Header="姓名" Width="SizeToHeader"/>

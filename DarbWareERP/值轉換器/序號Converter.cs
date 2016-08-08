@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Reflection;
 
 namespace DarbWareERP.值轉換器
 {
@@ -15,12 +16,24 @@ namespace DarbWareERP.值轉換器
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            if (values[0].ToString() == "{DependencyProperty.UnsetValue}")
+            {
+                return null;
+            }
+            if (values[0].ToString()=="")
+            {
+                DataGrid datagrid = values[1] as DataGrid;
+                int index= datagrid.Items.IndexOf(datagrid.CurrentItem);
+                return (index+1).ToString("000");
+                //PropertyInfo info = values[1].GetType().GetProperty("序號");
+                //return info.GetValue(values[1]);
+            }
+            return values[0];
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return new object[] { value };
         }
     }
 }

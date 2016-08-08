@@ -88,7 +88,10 @@ namespace DarbWareERP.B.基本資料
         }
 
         private void dept_1DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        {           
+        {
+            DataGrid datagrid = sender as DataGrid;            
+            TextBlock t = datagrid.Columns.First(x => x.Header.ToString() == "序號").GetCellContent(e.Row) as TextBlock;
+            BindingOperations.GetMultiBindingExpression(t, TextBlock.TextProperty).UpdateSource();           
         }
 
     }

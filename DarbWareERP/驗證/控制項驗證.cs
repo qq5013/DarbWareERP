@@ -13,15 +13,15 @@ namespace DarbWareERP.驗證
         public static bool 子代驗證檢查(DependencyObject dobj)
         {
             bool result = true;
-            foreach (DependencyObject obj in LogicalTreeHelper.GetChildren(dobj))
+            foreach (object obj in LogicalTreeHelper.GetChildren(dobj))
             {
                 if (obj is ContentControl)
                 {
-                    result = 子代驗證檢查(obj);
+                    result = 子代驗證檢查(obj as DependencyObject);
                 }
                 if (obj is Panel)
                 {
-                    result = 子代驗證檢查(obj);
+                    result = 子代驗證檢查(obj as DependencyObject);
                 }
                 if (result == false)
                 {
@@ -39,15 +39,15 @@ namespace DarbWareERP.驗證
         }
         public static void 子代更新資料(DependencyObject dobj)
         {
-            foreach (DependencyObject obj in LogicalTreeHelper.GetChildren(dobj))
+            foreach (object obj in LogicalTreeHelper.GetChildren(dobj))
             {
                 if (obj is ContentControl)
                 {
-                    子代更新資料(obj);
+                    子代更新資料(obj as DependencyObject);
                 }
                 if (obj is Panel)
                 {
-                    子代更新資料(obj);
+                    子代更新資料(obj as DependencyObject);
                 }
                 else
                 {
