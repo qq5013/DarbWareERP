@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="ButtonFontColor" Color="#FF2036B3"/> <!--表單按鈕的預設顏色-->
-    <Style TargetType="{x:Type TextBox}"> <!--驗證欄位的樣式-->
+        <Style TargetType="{x:Type TextBox}"> <!--驗證欄位的樣式-->
         <Setter Property="Validation.ErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>

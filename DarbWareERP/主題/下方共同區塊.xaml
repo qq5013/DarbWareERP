@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DarbWareERP.主題">
+    <Style x:Key="下方共同區塊Border" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="2"></Setter>
+        <Setter Property="BorderBrush" Value="#FF14601C"/>
+    </Style>
+</ResourceDictionary>

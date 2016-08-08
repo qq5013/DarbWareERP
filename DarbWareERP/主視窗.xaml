@@ -8,7 +8,7 @@
         xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
         xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊" 
         mc:Ignorable="d" Height="768" Width="1024"
-        Background="#FF969696"        WindowState="Maximized"
+        Background="#FF468A57"        WindowState="Maximized"
         Title="{Binding Path=Content.Title,ElementName=frame,StringFormat=DarbWareERP System 2016/07/01 {0}}" Icon="Image/NewIcon/齒輪ICO.ico" Closing="Window_Closing" >
     <Grid>
         <Grid.RowDefinitions>
@@ -21,10 +21,7 @@
                 <RowDefinition Height="259*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Border BorderThickness="3" Grid.Row="1">
-                <Border.BorderBrush>
-                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
-                </Border.BorderBrush>
+            <Border Style="{StaticResource ResourceKey=下方共同區塊Border}" Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>

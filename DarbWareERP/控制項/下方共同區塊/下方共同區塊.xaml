@@ -8,10 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="210" d:DesignWidth="1024">
     <Grid>
-        <Border BorderThickness="3">
-            <Border.BorderBrush>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
-            </Border.BorderBrush>
+        <Border Style="{StaticResource ResourceKey=下方共同區塊Border}">            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MinWidth="100"/>
