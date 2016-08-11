@@ -3,6 +3,9 @@
                     xmlns:local="clr-namespace:DarbWareERP.主題">
     <Style x:Key="下方共同區塊Border" TargetType="{x:Type Border}">
         <Setter Property="BorderThickness" Value="2"></Setter>
-        <Setter Property="BorderBrush" Value="#FF14601C"/>
+        <Setter Property="BorderBrush" Value="#FF14601C"/>        
+    </Style>
+    <Style x:Key="下方共同區塊-查詢Border" TargetType="{x:Type Border}" BasedOn="{StaticResource 下方共同區塊Border}">
+        <Setter Property="Height" Value="210"></Setter>
     </Style>
 </ResourceDictionary>

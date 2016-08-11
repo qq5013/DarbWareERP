@@ -53,6 +53,24 @@
           <Property Name="logid" Type="int" Nullable="false" />
           <Property Name="linkid" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="unicodetb">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="類別" Type="tinyint" Nullable="false" />
+          <Property Name="代號" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="簡稱" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="輸入日期" Type="datetime" Nullable="false" />
+          <Property Name="輸入人員" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="輸入地點" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="增刪修" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="選擇" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="管制碼" Type="int" Nullable="false" />
+          <Property Name="srvdbid" Type="smallint" Nullable="false" />
+          <Property Name="pkid" Type="int" Nullable="false" />
+          <Property Name="logid" Type="int" Nullable="false" />
+          <Property Name="linkid" Type="int" />
+        </EntityType>
         <EntityType Name="unitba">
           <Key>
             <PropertyRef Name="pkid" />
@@ -74,6 +92,7 @@
         <EntityContainer Name="darbdcstcsa1ModelStoreContainer">
           <EntitySet Name="dept" EntityType="Self.dept" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dept_1" EntityType="Self.dept_1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="unicodetb" EntityType="Self.unicodetb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="unitba" EntityType="Self.unitba" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -102,6 +121,7 @@
           <EntitySet Name="unitba" EntityType="Self.unitba" />
           <EntitySet Name="dept" EntityType="darbdcstcsa1Model.dept" />
           <EntitySet Name="dept_1" EntityType="darbdcstcsa1Model.dept_1" />
+          <EntitySet Name="unicodetb" EntityType="darbdcstcsa1Model.unicodetb" />
         </EntityContainer>
         <EntityType Name="dept">
           <Key>
@@ -140,6 +160,24 @@
           <Property Name="員工編號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="姓名" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="備註" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="輸入日期" Type="DateTime" Nullable="false" />
+          <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="增刪修" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="選擇" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="管制碼" Type="Int32" Nullable="false" />
+          <Property Name="srvdbid" Type="Int16" Nullable="false" />
+          <Property Name="pkid" Type="Int32" Nullable="false" />
+          <Property Name="logid" Type="Int32" Nullable="false" />
+          <Property Name="linkid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unicodetb">
+          <Key>
+            <PropertyRef Name="pkid" />
+          </Key>
+          <Property Name="類別" Type="Byte" Nullable="false" />
+          <Property Name="代號" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="簡稱" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="輸入日期" Type="DateTime" Nullable="false" />
           <Property Name="輸入人員" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="輸入地點" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
@@ -223,6 +261,25 @@
                 <ScalarProperty Name="員工編號" ColumnName="員工編號" />
                 <ScalarProperty Name="人員別" ColumnName="人員別" />
                 <ScalarProperty Name="序號" ColumnName="序號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unicodetb">
+            <EntityTypeMapping TypeName="darbdcstcsa1Model.unicodetb">
+              <MappingFragment StoreEntitySet="unicodetb">
+                <ScalarProperty Name="linkid" ColumnName="linkid" />
+                <ScalarProperty Name="logid" ColumnName="logid" />
+                <ScalarProperty Name="pkid" ColumnName="pkid" />
+                <ScalarProperty Name="srvdbid" ColumnName="srvdbid" />
+                <ScalarProperty Name="管制碼" ColumnName="管制碼" />
+                <ScalarProperty Name="選擇" ColumnName="選擇" />
+                <ScalarProperty Name="增刪修" ColumnName="增刪修" />
+                <ScalarProperty Name="輸入地點" ColumnName="輸入地點" />
+                <ScalarProperty Name="輸入人員" ColumnName="輸入人員" />
+                <ScalarProperty Name="輸入日期" ColumnName="輸入日期" />
+                <ScalarProperty Name="簡稱" ColumnName="簡稱" />
+                <ScalarProperty Name="代號" ColumnName="代號" />
+                <ScalarProperty Name="類別" ColumnName="類別" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

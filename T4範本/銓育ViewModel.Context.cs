@@ -24,6 +24,5 @@ namespace T4範本
         {
             throw new UnintentionalCodeFirstException();
         }
-    
     }
 }

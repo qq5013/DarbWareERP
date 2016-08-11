@@ -45,5 +45,24 @@ namespace DarbWareERP.控制項.下方共同區塊
                 }
             }
         }
+        public void unicodetb專用()
+        {
+            txbl系統名稱.Text = 選單ViewModel.GetInstance().系統名稱;
+            List<string> 按鈕列表 = 選單ViewModel.GetInstance().程式名稱列表(txbl系統名稱.Text);
+            int 按鈕數 = VisualTreeHelper.GetChildrenCount(WrapPanel);
+            for (int i = 0; i < 按鈕數; i++)
+            {
+                Button btn = (Button)VisualTreeHelper.GetChild(WrapPanel, i);
+                if (i < 按鈕列表.Count)
+                {
+                    btn.Content = 按鈕列表[i];
+                    btn.Name = "btn" + 按鈕列表[i];
+                }
+                else
+                {
+                    btn.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
     }
-}
+   }

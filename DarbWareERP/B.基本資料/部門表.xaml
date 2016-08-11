@@ -90,7 +90,6 @@
                         <DataGridTextColumn  Binding="{Binding 備註, Mode=TwoWay}" Header="備註" Width="SizeToHeader"/>
                     </DataGrid.Columns>
                 </控制項:tsDataGrid>
-
             </Grid>
         </Grid>
     </Grid>

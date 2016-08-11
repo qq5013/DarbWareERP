@@ -128,6 +128,12 @@
     <Compile Include="E.營業收款\訂單管理.xaml.cs">
       <DependentUpon>訂單管理.xaml</DependentUpon>
     </Compile>
+    <Compile Include="M.主管資訊\客戶資料查詢.xaml.cs">
+      <DependentUpon>客戶資料查詢.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Z.特殊\unicodetb.xaml.cs">
+      <DependentUpon>unicodetb.xaml</DependentUpon>
+    </Compile>
     <Compile Include="主視窗.xaml.cs">
       <DependentUpon>主視窗.xaml</DependentUpon>
     </Compile>
@@ -213,6 +219,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="E.營業收款\訂單管理.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="M.主管資訊\客戶資料查詢.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Z.特殊\unicodetb.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -490,7 +504,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="A.系統資料\" />
-    <Folder Include="M.主管資訊\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\NewIcon\齒輪ICO.ico" />

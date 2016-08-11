@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="darbdcstcsa1Model1.unitba" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="darbdcstcsa1Model1.dept" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="darbdcstcsa1Model1.dept_1" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="darbdcstcsa1Model1.unicodetb" Width="1.5" PointX="0.75" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

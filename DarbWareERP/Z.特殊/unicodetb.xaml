@@ -1,0 +1,83 @@
+﻿<src:頁面繼承
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DarbWareERP.B.基本資料"
+      xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
+      xmlns:控制項="clr-namespace:DarbWareERP.控制項"     
+      xmlns:下方共同區塊="clr-namespace:DarbWareERP.控制項.下方共同區塊"       
+      xmlns:ViewModel="clr-namespace:ViewModel;assembly=ViewModel"  x:Class="DarbWareERP.Z.特殊.unicodetb"
+      xmlns:rule ="clr-namespace:ViewModel.資料驗證;assembly=ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"          
+      Title="unicodetb">
+
+    <src:頁面繼承.Resources>
+        <CollectionViewSource x:Key="unitcodetbViewModelViewSource" d:DesignSource="{d:DesignInstance {x:Type ViewModel:UnicodetbViewModel}, CreateList=True}"/>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                                <Grid Width="12" Height="12">
+                                    <Ellipse Width="12" Height="12" Fill="Red" HorizontalAlignment="Center"  VerticalAlignment="Center"></Ellipse>
+                                    <TextBlock Foreground="White" FontWeight="Heavy" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               TextAlignment="Center"
+                                               ToolTip="{Binding ElementName=ErrorAdorner,Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">X</TextBlock>
+                                </Grid>
+                                <TextBlock Foreground="Red" FontSize="12" FontWeight="Light"  Margin="2,0,0,0" 
+                                           Text="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"></TextBlock>
+                            </StackPanel>
+                            <AdornedElementPlaceholder x:Name="ErrorAdorner"></AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </src:頁面繼承.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="259*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <下方共同區塊:下方共同區塊 Grid.Row="1"></下方共同區塊:下方共同區塊>
+            <Grid x:Name="grid1" DataContext="{StaticResource unitcodetbViewModelViewSource}" HorizontalAlignment="Left" Margin="106,77,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="代號:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="txt代號" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+                <Binding Path="代號" NotifyOnValidationError="True" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <rule:主索引驗證ViewModel Cvs="{StaticResource unitcodetbViewModelViewSource}" Table="unitba" CheckField="單位"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <Label Content="類別:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cbo類別" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding 類別列表}" SelectedIndex="{Binding 類別,Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}">
+
+            </ComboBox>
+            <Label Content="簡稱:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="txt簡稱" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding 簡稱, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="pkid:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtpkid" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding pkid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+    </Grid>
+</src:頁面繼承>
+

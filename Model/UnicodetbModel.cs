@@ -13,18 +13,14 @@ namespace Model
     using System.Collections.Generic;
     using System.Xml.Serialization;
     
-    public partial class Dept_1Model 
+    public partial class UnicodetbModel 
     {   
         [XmlAttribute()]
-        public string 序號 { get; set; }
+        public byte 類別 { get; set; }
         [XmlAttribute()]
-        public byte 人員別 { get; set; }
+        public string 代號 { get; set; }
         [XmlAttribute()]
-        public string 員工編號 { get; set; }
-        [XmlAttribute()]
-        public string 姓名 { get; set; }
-        [XmlAttribute()]
-        public string 備註 { get; set; }
+        public string 簡稱 { get; set; }
         [XmlAttribute()]
         public System.DateTime 輸入日期 { get; set; }
         [XmlAttribute()]

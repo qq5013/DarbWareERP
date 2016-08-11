@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:DarbWareERP.主題">
     <!-- Color Palette -->
     <SolidColorBrush x:Key="OutsideFontColor" Color="#FF000000"/>
-    <SolidColorBrush x:Key="ButtonFontColor" Color="#FF18622D"/>
+    <SolidColorBrush x:Key="ButtonFontColor" Color="#FF1C4214"/>
     <Color x:Key="Focus">#FF04CCFF</Color>
     <Color x:Key="HyperlinkFocus">#FF2B54BA</Color>
     <Color x:Key="Calendar">#FF0066CC</Color>
@@ -142,6 +142,7 @@
         <Setter Property="Padding" Value="3"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource NuclearButtonFocusVisual}"/>
         <Setter Property="Template" Value="{DynamicResource ButtonTemplate}" />
+        
     </Style>
 
     <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type Button}">
@@ -246,4 +247,13 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+    <Style x:Key="查詢按鈕" TargetType="Button" BasedOn="{StaticResource {x:Type Button} }">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Image Source="/DarbWareERP;component/Image/Icon_png/查詢00.png"></Image>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

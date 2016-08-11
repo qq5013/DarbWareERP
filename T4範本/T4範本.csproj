@@ -91,6 +91,9 @@
       <DependentUpon>銓育ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnicodetbViewModel.cs">
+      <DependentUpon>銓育ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UnitbaViewModel.cs">
       <DependentUpon>銓育ViewModel.tt</DependentUpon>
     </Compile>
