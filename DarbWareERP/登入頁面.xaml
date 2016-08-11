@@ -14,25 +14,39 @@
         <cm:BackgroundWorker x:Key="backgroundWorker" WorkerReportsProgress="True" WorkerSupportsCancellation="True"
                              DoWork="BackgroundWorker_DoWork"
                              RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted" ProgressChanged="BackgroundWorker_ProgressChanged">
-        </cm:BackgroundWorker>       
+        </cm:BackgroundWorker>
     </src:頁面繼承.Resources>
     <Grid>
         <Grid Margin="152,26,146,10.2" Width="463" Height="470" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Grid.Background>
                 <ImageBrush ImageSource="Image/Icon_png/登入底圖.png" Stretch="Uniform"/>
             </Grid.Background>
-            <Label x:Name="label" Content="使用者帳號" HorizontalAlignment="Left" Margin="72,212,0,0" VerticalAlignment="Top" FontSize="21.333"/>
-            <Label x:Name="label1" Content="使用者密碼" HorizontalAlignment="Left" Margin="72,260,0,0" VerticalAlignment="Top" FontSize="21.333"/>
-            <TextBox x:Name="txt帳號" Margin="217,211,0,0" TextWrapping="Wrap" FontSize="21.333" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" TabIndex="1" KeyDown="txt帳號_KeyDown">
-                <TextBox.InputScope>
-                    <InputScope>
-                        <InputScope.Names>
-                            <InputScopeName NameValue="AlphanumericHalfWidth"/>
-                        </InputScope.Names>
-                    </InputScope>
-                </TextBox.InputScope>
-            </TextBox>
-            <PasswordBox x:Name="pwd密碼" HorizontalAlignment="Left" Margin="217,256,0,0" FontSize="18.667" VerticalAlignment="Top" Width="170" Height="34"  TabIndex="2" KeyDown="pwd密碼_KeyDown"/>
+            <Grid HorizontalAlignment="Left" Height="120" Margin="59,177,0,0" VerticalAlignment="Top" Width="302">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label x:Name="label語言" Content="{DynamicResource 語言}" Grid.Row="0" Grid.Column="0" FontSize="21.333"/>
+                <ComboBox x:Name="comboBox" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="1" Margin="10.4,3,41.4,2.6" Loaded="comboBox_Loaded"/>
+                <Label x:Name="label" Content="{DynamicResource 使用者名稱}" Grid.Row="1" Grid.Column="0" FontSize="21.333"/>
+                <Label x:Name="label1" Content="{DynamicResource 使用者密碼}" Grid.Row="2" Grid.Column="0" FontSize="21.333"/>
+                <TextBox x:Name="txt帳號"  TextWrapping="Wrap" FontSize="21.333"  Grid.Row="1" Grid.Column="1" Margin="10,0,0,0" Height="34" Width="170" TabIndex="1" KeyDown="txt帳號_KeyDown">
+                    <TextBox.InputScope>
+                        <InputScope>
+                            <InputScope.Names>
+                                <InputScopeName NameValue="AlphanumericHalfWidth"/>
+                            </InputScope.Names>
+                        </InputScope>
+                    </TextBox.InputScope>
+                </TextBox>
+                <PasswordBox x:Name="pwd密碼" FontSize="18.667" Grid.Row="2" Grid.Column="1" Width="170" Height="34" Margin="10,0,0,0" TabIndex="2" KeyDown="pwd密碼_KeyDown"/>
+            </Grid>
+
             <Button x:Name="btn登入" Margin="129,332,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45" Click="btn登入_Click" TabIndex="3">
                 <Image Source="Image/icon_png/進入系統00.png"/>
             </Button>
@@ -43,7 +57,9 @@
                 <Label x:Name="label2" Content="Darbware" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C"/>
                 <Label x:Name="label3" Content="V-ERP System" Margin="39,42,-45,-11.8" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="#FFE6B43C" Height="68"/>
             </Grid>
-            <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="102,177,0,0" VerticalAlignment="Top" Height="30" Width="56"/>
+            <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="345,108,0,0" VerticalAlignment="Top" Height="30" Width="56"/>
+
+
         </Grid>
     </Grid>
 </src:頁面繼承>

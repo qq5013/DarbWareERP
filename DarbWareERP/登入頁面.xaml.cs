@@ -33,7 +33,7 @@ namespace DarbWareERP
             登入viewmodel = new 登入ViewModel();
             txt帳號.Focus();
             label4.Content = 登入viewmodel.資料庫;
-            backgroundWorker = (BackgroundWorker)this.FindResource("backgroundWorker");
+            backgroundWorker = (BackgroundWorker)this.FindResource("backgroundWorker");            
         }
 
         private void btn離開_Click(object sender, RoutedEventArgs e)
@@ -100,6 +100,16 @@ namespace DarbWareERP
         private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             
+        }
+
+        private void comboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> list = new List<string>()
+            {
+               "中文","English"
+            };
+            comboBox.DataContext = list;
+            comboBox.SelectedIndex = 0;
         }
     }
 }

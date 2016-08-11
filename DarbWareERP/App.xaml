@@ -9,7 +9,8 @@
                 <ResourceDictionary Source="繼承窗口/頁面繼承.xaml"/>
                 <ResourceDictionary Source="主題/控制項設定.xaml"/>
                 <ResourceDictionary Source="主題/下方共同區塊.xaml"/>
-                <ResourceDictionary Source="主題/Button.xaml"/>                
+                <ResourceDictionary Source="主題/Button.xaml"/>
+                <ResourceDictionary Source="語言/zh-TW.xaml"/>
                 <!--<ResourceDictionary Source="控制項/自訂樣式.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
             
