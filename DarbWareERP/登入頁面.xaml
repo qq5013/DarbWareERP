@@ -32,7 +32,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label x:Name="label語言" Content="{DynamicResource 語言}" Grid.Row="0" Grid.Column="0" FontSize="21.333"/>
-                <ComboBox x:Name="comboBox" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="1" Margin="10.4,3,41.4,2.6" Loaded="comboBox_Loaded"/>
+                <ComboBox x:Name="comboBox" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="1" Margin="10.4,3,41.4,2.6" Loaded="comboBox_Loaded" SelectionChanged="comboBox_SelectionChanged"/>
                 <Label x:Name="label" Content="{DynamicResource 使用者名稱}" Grid.Row="1" Grid.Column="0" FontSize="21.333"/>
                 <Label x:Name="label1" Content="{DynamicResource 使用者密碼}" Grid.Row="2" Grid.Column="0" FontSize="21.333"/>
                 <TextBox x:Name="txt帳號"  TextWrapping="Wrap" FontSize="21.333"  Grid.Row="1" Grid.Column="1" Margin="10,0,0,0" Height="34" Width="170" TabIndex="1" KeyDown="txt帳號_KeyDown">

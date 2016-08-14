@@ -189,6 +189,7 @@
     <Compile Include="設定畫面.xaml.cs">
       <DependentUpon>設定畫面.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Language\語言幫手.cs" />
     <Compile Include="轉資料\轉Sliy.xaml.cs">
       <DependentUpon>轉Sliy.xaml</DependentUpon>
     </Compile>
@@ -322,12 +323,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Content Include="語言\en-US.xaml">
+    <Content Include="Language\en-US.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Page Include="語言\zh-TW.xaml">
+    <Page Include="Language\zh-TW.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

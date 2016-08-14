@@ -108,8 +108,15 @@ namespace DarbWareERP
             {
                "中文","English"
             };
-            comboBox.DataContext = list;
+            comboBox.DataContext = Enum.GetValues(typeof(語言.語言));
             comboBox.SelectedIndex = 0;
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox combobox = sender as ComboBox;
+            語言.語言 language = (語言.語言)comboBox.SelectedIndex;
+            語言.語言幫手.SwitchLanquage(language);           
         }
     }
 }
