@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace DarbWareERP.驗證
+namespace DarbWareERP.資料驗證
 {
     class 控制項驗證
     {

@@ -15,7 +15,7 @@ using System.Reflection;
 using ViewModel.增刪修;
 using System.Windows.Media;
 using System.Collections;
-using DarbWareERP.驗證;
+using DarbWareERP.資料驗證;
 
 namespace DarbWareERP.繼承窗口
 {

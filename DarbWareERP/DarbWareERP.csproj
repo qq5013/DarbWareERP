@@ -139,12 +139,16 @@
     </Compile>
     <Compile Include="值轉換器\序號Converter.cs" />
     <Compile Include="值轉換器\導覽DataGridConverter.cs" />
+    <Compile Include="值轉換器\日期Converter.cs" />
     <Compile Include="台銀匯率.xaml.cs">
       <DependentUpon>台銀匯率.xaml</DependentUpon>
     </Compile>
     <Compile Include="命令\右鍵選單.cs" />
     <Compile Include="控制項\tsDataGrid.xaml.cs">
       <DependentUpon>tsDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控制項\搜尋TextBox.xaml.cs">
+      <DependentUpon>搜尋TextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="控制項\欄位格式設定.xaml.cs">
       <DependentUpon>欄位格式設定.xaml</DependentUpon>
@@ -202,7 +206,8 @@
     <Compile Include="電子賀卡.xaml.cs">
       <DependentUpon>電子賀卡.xaml</DependentUpon>
     </Compile>
-    <Compile Include="驗證\控制項驗證.cs" />
+    <Compile Include="資料驗證\控制項驗證.cs" />
+    <Compile Include="資料驗證\日期驗證.cs" />
     <Page Include="B.基本資料\單位轉換表.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -235,23 +240,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="主題\Button.xaml">
+    <Page Include="theme\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="主題\WhistlerBlue.xaml">
+    <Page Include="theme\WhistlerBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="主題\控制項設定.xaml">
+    <Page Include="theme\TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="主題\下方共同區塊.xaml">
+    <Page Include="theme\下方共同區塊.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="控制項\tsDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\搜尋TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DarbWareERP.繼承窗口;
 using ViewModel.M.主管資訊;
+using System.Data;
 
 namespace DarbWareERP.M.主管資訊
 {
@@ -30,7 +31,13 @@ namespace DarbWareERP.M.主管資訊
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             客戶資料查詢ViewModel viewModel = this.DataContext as 客戶資料查詢ViewModel;
-            viewModel.查詢();
-        }
+            DataSet[] ds = viewModel.查詢();
+            if (ds[0]!=null)
+            dg訂單資料.DataContext = ds[0].Tables;
+            if (ds[1] != null)
+                dg出貨資料.DataContext = ds[1].Tables[0];
+            if (ds[2] != null)
+                dg未出貨資料.DataContext = ds[2].Tables;
+        }        
     }
 }
