@@ -27,10 +27,15 @@ namespace DarbWareERP.控制項
 
         private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.ImeProcessedKey == Key.OemOpenBrackets||e.Key==Key.OemOpenBrackets)
+            if (e.ImeProcessedKey == Key.OemOpenBrackets || e.Key == Key.OemOpenBrackets)
             {
-                MessageBox.Show("qwe");
-            }          
+                搜尋頁面 window = new 搜尋頁面();
+                window.ShowDialog();
+                if (window.DialogResult == true)
+                {
+                    
+                }
+            }
         }
     }
 }

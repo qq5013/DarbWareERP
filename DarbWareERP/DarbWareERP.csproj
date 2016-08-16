@@ -150,6 +150,9 @@
     <Compile Include="控制項\搜尋TextBox.xaml.cs">
       <DependentUpon>搜尋TextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="控制項\搜尋頁面.xaml.cs">
+      <DependentUpon>搜尋頁面.xaml</DependentUpon>
+    </Compile>
     <Compile Include="控制項\欄位格式設定.xaml.cs">
       <DependentUpon>欄位格式設定.xaml</DependentUpon>
     </Compile>
@@ -261,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="控制項\搜尋TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控制項\搜尋頁面.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

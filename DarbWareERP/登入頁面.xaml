@@ -1,4 +1,4 @@
-﻿<src:頁面繼承 x:Class="DarbWareERP.登入頁面"
+﻿<src:頁面繼承
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:DarbWareERP"
       xmlns:src="clr-namespace:DarbWareERP.繼承窗口"
       xmlns:cm="clr-namespace:System.ComponentModel;assembly=System"
+      xmlns:控制項="clr-namespace:DarbWareERP.控制項" x:Class="DarbWareERP.登入頁面"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1024"
       Title="登入頁面"
@@ -13,8 +14,7 @@
     <src:頁面繼承.Resources>
         <cm:BackgroundWorker x:Key="backgroundWorker" WorkerReportsProgress="True" WorkerSupportsCancellation="True"
                              DoWork="BackgroundWorker_DoWork"
-                             RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted" ProgressChanged="BackgroundWorker_ProgressChanged">
-        </cm:BackgroundWorker>
+                             RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted" ProgressChanged="BackgroundWorker_ProgressChanged"/>
     </src:頁面繼承.Resources>
     <Grid>
         <Grid Margin="152,26,146,10.2" Width="463" Height="470" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -23,13 +23,13 @@
             </Grid.Background>
             <Grid HorizontalAlignment="Left" Height="120" Margin="59,177,0,0" VerticalAlignment="Top" Width="302">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Label x:Name="label語言" Content="{DynamicResource 語言}" Grid.Row="0" Grid.Column="0" FontSize="21.333"/>
                 <ComboBox x:Name="comboBox" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="1" Margin="10.4,3,41.4,2.6" Loaded="comboBox_Loaded" SelectionChanged="comboBox_SelectionChanged"/>
@@ -61,5 +61,6 @@
 
 
         </Grid>
+        <控制項:搜尋TextBox x:Name="搜尋TextBox" HorizontalAlignment="Left" Margin="120,445,0,0" TextWrapping="Wrap" Text="搜尋TextBox" VerticalAlignment="Top"/>
     </Grid>
 </src:頁面繼承>

@@ -53,6 +53,7 @@
     <Compile Include="M.主管資訊\主管資訊查詢.cs" />
     <Compile Include="登入\使用者Bll.cs" />
     <Compile Include="視窗相關\增刪修Bll.cs" />
+    <Compile Include="視窗相關\搜尋TextBoxBll.cs" />
     <Compile Include="訊息相關\語言設定Bll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlToSql.cs" />
